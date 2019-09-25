@@ -1,0 +1,13 @@
+# Python Files
+
+*.pyc
+
+
+
+# Compiled Documents
+
+*.pdf
+
+*.ps
+
+
