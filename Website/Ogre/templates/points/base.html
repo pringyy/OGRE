@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 
+
 <html>
 <head lang = "en">
     {% block head_block %}
@@ -20,9 +21,15 @@
     }
 </style>
 <body>
+
+    {% block sidebar_block %}
+        <a href src = {% url 'base' %}>ogre</a>
+    {% endblock %}
+
     {% block body_block %}
-        <h1>OGRE</h1>
-        <img src = "logo.jpg"></br>
+    <h1>OGRE</h1>
+        <!--<img src = ""></br>-->
+    <a href = {% url 'login' %}>login</a>
     {% endblock %}
 </body>
 </html>
