@@ -22,14 +22,14 @@
 </style>
 <body>
 
-    {% block sidebar_block %}
-        <a href src = {% url 'base' %}>ogre</a>
-    {% endblock %}
+<a href src = "{% url 'base' %}">ogre</a>
+
 
     {% block body_block %}
     <h1>OGRE</h1>
-        <!--<img src = ""></br>-->
-    <a href = {% url 'login' %}>login</a>
+    <img src = "{{ MEDIA_URL }}logo.jpg"></br>
+<a href = "{% url 'login' %}">login</a></br>
+    <a href = "{% url 'ogre_points' %}">OGRE Points</a>
     {% endblock %}
 </body>
 </html>
