@@ -4,24 +4,28 @@
 
 <html>
 <head lang = "en">
+    {% block head_block %}
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% endblock %}
 
     <title>
-        {% block title_block %}OGRE{% endblock %}
-    </title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> <!-- Public domain icons -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        {% block title_block %}
+                OGRE
+        {% endblock %}
 
+    </title>
 </head>
 
-<body ontouchstart="" onload= "getRandomImage()">
+<body>
 
 
 
 
-   
+    {% block body_block %}
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">OGRE</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -33,7 +37,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">Log-in</a>
+        <a class="nav-link" href="#">FAQ</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,43 +75,11 @@
 
 
   </div>
-
-
 </nav>
-
-
-        <div>
-            {% block body_block %}
-
-            {% endblock %}
-        </div>
-
-
-        <!-- FOOTER -->
-        <footer>
-            <div class="container fixed-bottom">
-                <br>
-                <hr>
-                <div class="right">
-                    <a href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main" class="inherit-color">
-                        <i class="fab fa-github fa-2x"></i>
-                    </a>
-                    <a href="mailto:pringle@live.co.uk" class="inherit-color">
-                        <i class="fas fa-envelope fa-2x"></i>
-                    </a>
-                </div>
-                <br>
-                <br>
-            </div>
-
-        </footer>
-
-
-        <!-- FOOTER END -->
     
-
-    
-    
+<a href = "{% url 'login' %}">login</a></br>
+    <a href = "{% url 'ogre_points' %}">OGRE Points</a>
+    {% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
