@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+
+<html>
+<head lang = "en">
+    {% block head_block %}
+    {% endblock %}
+
+    <title>
+        {% block title_block %}
+                OGRE
+        {% endblock %}
+
+    </title>
+</head>
+<style>
+    img{
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<body>
+
+    {% block sidebar_block %}
+        <a href src = {% url 'base' %}>ogre</a>
+    {% endblock %}
+
+    {% block body_block %}
+    <h1>OGRE</h1>
+        <!--<img src = ""></br>-->
+    <a href = {% url 'login' %}>login</a>
+    {% endblock %}
+</body>
+</html>
