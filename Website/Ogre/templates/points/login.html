@@ -8,21 +8,33 @@
 {% block body_block %}
 
 
-    <div class="background">
-        
-        <!-- Set the background image-->
-        <div id="randImage" class="background-cover">
+<div class="background">
 
-           <div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+
+        <!-- Set the background image-->
+  <div id="randImage" class="background-cover"!>
+      <br><br>
+
+     
+
+                 <img onload="this.style.opacity='0.8'" src="{% static "images/logo.png" %}" class= "center" >
+            
+         
+  
+    
+    <div class="vertical-center transparency_bg">
+      <div class="container">
+       <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">Sign In</h5>
+            
+          
+            
             <form class="form-signin">
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputEmail"></label>
+               <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <label for="inputEmail"></label>
               </div>
 
               <div class="form-label-group">
@@ -34,19 +46,21 @@
                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                 <label class="custom-control-label" for="customCheck1">Remember password</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-              <hr class="my-4">
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
               
-            </form>
-          </div>
-        </div>
+              
+          </form>
+       </div>
+       </div>
       </div>
     </div>
   </div>
+</div>
+ <img onload="this.style.opacity='0.8'" src="{% static "images/unilogo.png" %}" class= "center" width = "20%" >
+            
 
-
-
-  
 </div>
 </div>
+
+ <script src="{% static 'js/login.js' %}" ></script>
 {% endblock %}
