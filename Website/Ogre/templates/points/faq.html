@@ -1,0 +1,15 @@
+{% extends 'points/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}Login {% endblock %}
+
+{% block body_block %}
+    <h1>Log In!</h1>
+    {{ login_message }}
+
+    <form><br>
+        Username: <input type = "text" name = "user_name"><br>
+        Password: <input type = "password" name = password"><br>
+
+    </form>
+{% endblock %}
