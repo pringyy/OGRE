@@ -4,118 +4,60 @@
 {% block title %} {{ block.super }} - About {% endblock %}
 
 {% block body_block %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+    <!-- Header -->
+<header class="bg-primary text-center py-5 mb-4">
+  <div class="container">
+    <h1 class="font-weight-light text-white">Meet the Team</h1>
+  </div>
+</header>
 
-    <div class="container">
-        <br>
-        <h1 class="display-4">About</h1>
-
-        <p>Welcome to OGRE! This is a university project created to encourage students to participate in their courses and recieve rewards. The premise of the website is to allow users to earn and spend their OGRE points on games and cosmetic items.</p>
-
-        <p>Meet the team!</p>
-
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="card">
-                    <img class="card-img-top" src="{% static 'images/robert.jpg' %}">
-
-                    <div class="card-body">
-                        <h5 class="card-title">Harry Yau</h5>
-
-                        <a href="" class = "inherit-color">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-
-                        <a href="" class = "inherit-color">
-                            <i class="fab fa-facebook fa-2x"></i>
-                        </a>
-                        <a href="mailto:pringle@live.co.uk" class = "inherit-color">
-                            <i class="fas fa-envelope fa-2x"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="card">
-                    <img class="card-img-top" src="{% static 'images/robert.jpg' %}">
-
-                    <div class="card-body">
-                        <h5 class="card-title">Robert Pringle</h5>
-                        <a href="" class ="inherit-color">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                        <a href="" class ="inherit-color">
-                            <i class="fab fa-linkedin fa-2x"></i>
-                        </a>
-                        <a href="mailto:pringle@live.co.uk" class ="inherit-color">
-                            <i class="fas fa-envelope fa-2x"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="card">
-                    <img class="card-img-top" src="{% static 'images/robert.jpg' %}">
-
-                    <div class="card-body">
-                        <h5 class="card-title">Catriona Murphy </h5>
-
-                        <a href="" class ="inherit-color">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                        <a href="" class ="inherit-color">
-                            <i class="fab fa-facebook fa-2x"></i>
-                        </a>
-                        <a href="mailto:pringle@live.co.uk" class ="inherit-color">
-                            <i class="fas fa-envelope fa-2x"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="card">
-                    <img class="card-img-top" src="{% static 'images/robert.jpg' %}">
-
-                    <div class="card-body">
-                        <h5 class="card-title">Mingfeng Ye</h5>
-
-                        <a href="" class ="inherit-color">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                        <a href="" class ="inherit-color">
-                            <i class="fab fa-facebook fa-2x"></i>
-                        </a>
-                        <a href="mailto:pringle@live.co.uk" class ="inherit-color">
-                            <i class="fas fa-envelope fa-2x"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-3" class="top-padding">
-                <div class="card">
-                    <img class="card-img-top" src="{% static 'images/robert.jpg' %}">
-
-                    <div class="card-body">
-                        <h5 class="card-title">Alastair Innes</h5>
-
-                        <a href="" class ="inherit-color">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                        <a href="" class ="inherit-color">
-                            <i class="fab fa-facebook fa-2x"></i>
-                        </a>
-                        <a href="mailto:pringle@live.co.uk" class ="inherit-color">
-                            <i class="fas fa-envelope fa-2x"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <!-- Team Member 1 -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">Team Member</h5>
+          <div class="card-text text-black-50">Web Developer</div>
         </div>
+      </div>
     </div>
+    <!-- Team Member 2 -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="https://source.unsplash.com/9UVmlIb0wJU/500x350" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">Team Member</h5>
+          <div class="card-text text-black-50">Web Developer</div>
+        </div>
+      </div>
     </div>
+    <!-- Team Member 3 -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="https://source.unsplash.com/sNut2MqSmds/500x350" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">Team Member</h5>
+          <div class="card-text text-black-50">Web Developer</div>
+        </div>
+      </div>
+    </div>
+    <!-- Team Member 4 -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="{% static 'images/robert.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">Team Member</h5>
+          <div class="card-text text-black-50">Web Developer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
 
 {% endblock %}
