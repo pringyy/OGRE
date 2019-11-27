@@ -1,4 +1,3 @@
-
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -12,3 +11,30 @@ def user_login(request):
 def ogre_points(request):
 	context_dict = {}
 	return render(request, 'points/ogre_points.html', context_dict)
+
+def about(request):
+    context_dict = {}
+    return render(request, 'points/about.html', context_dict)
+
+def contact(request):
+    context_dict = {}
+    return render(request, 'points/contact.html', context_dict)
+
+def faq(request):
+    context_dict = {}
+    return render(request, 'points/faq.html', context_dict)
+
+def profile(request):
+    context_dict = {}
+    return render(request, 'points/profile.html', context_dict)
+
+def register(request):
+    context_dict = {}
+    return render(request, 'points/register.html', context_dict)
+
+def add_points(request):
+	student_id = None
+	if request.method == 'GET':
+		student_id = request.GET['user.username']
+		points = request.GET['current_points']
+	return HttpResponse(points)
