@@ -1,10 +1,22 @@
+import time, uuid
 from django.db import models
+from django.contrib.auth.models import User
+from django.contrib.sessions.models import Session
 
-class Student(models.Model):
-    StudentID = models.IntegerField(unique=True)
-    currentPoints = models.IntegerField(default=0)
-    spentPoints = models.IntegerField(default=0)
-    totalPoints = models.IntegerField(default=0)
+class UserProfile(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    avatar = models.ImageField(upload_to='profile_images', blank=True)
+    options = models.TextField(default='null')
+
+    current_points = models.IntegerField(default=0)
+    spent_points = models.IntegerField(default=0)
+    total_points = models.IntegerField(default=0)
 
     def __str__(self):
         return self.StudentID
+
+
+
+
