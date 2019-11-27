@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+ 
+ <!-- This code acts as a base for every other webpage to use to promote consistency-->
+
+<html>
+  <head lang = "en">
+    
+    <title>
+      {% block title_block %}OGRE{% endblock %}
+    </title>
+
+    <!--Used to import bootstrap 3-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> <!-- Public domain icons -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    
+
+  </head>
+
+  <body ontouchstart="" onload= "getRandomImage()">
+    
+
+    <!--Creates a nv bar to be displayed across all intended pages-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <a class="navbar-brand" href="#">
+          <span class="navbar-brand"><h3  style = "font-family:Monaco"><b>OGRE</b></h3></span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+             <a class="nav-link" href="{% url 'profile'%}">My Profile </a>
+           </li>
+
+           <li class="nav-item active">
+            <a class="nav-link" href="{% url 'about'%}">About</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'faq'%}">FAQ</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'contact'%}">Contact</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+    <div>
+      {% block body_block %}
+      
+      <!--Creates footer to be displayed across all intended web pages-->
+      <footer>
+        <div class="container fixed-bottom">
+          <br>
+          <hr>
+          <div class="right">
+            <a href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main" class="inherit-color">
+              <i class="fab fa-github fa-2x"></i>
+            </a>
+            <!--Change email here to change who it links to-->
+            <a href="mailto:pringle@live.co.uk" class="inherit-color">
+              <i class="fas fa-envelope fa-2x"></i>
+            </a>
+          </div>
+          <br>
+          <br>
+        </div>
+
+      </footer>
+
+      {% endblock %}
+    </div>
+
+
+
+    <!--Reads in java script to be used by bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!--Script written to pick a random background of login page (maybe use???)-->
+    <script>
+      var $imageArray = new Array();
+
+      $imageArray[0] = 'images/background.jpg';
+      //$imageArray[1] = 'images/bg2.jpg';
+      //$imageArray[2] = 'images/bg3.jpg';
+      //$imageArray[3] = 'images/bg4.jpg';
+      //$imageArray[4] = 'images/bg5.jpeg';
+      //$imageArray[5] = 'images/bg6.jpeg';
+      //$imageArray[6] = 'images/bg7.png';
+
+      function getRandomImage() {
+        var $num = Math.floor( Math.random() * 1);
+        var $img = $imageArray[$num];
+        var $bg = "url({% static 'replace' %}) ";
+        $bg = $bg.replace('replace',$img);
+        $('#randImage').css('background-image', $bg);
+      };
+    </script>
+  </body>
+</html>
