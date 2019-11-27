@@ -3,8 +3,8 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Ogre.settings")
 
 import django
 django.setup()
-from points.models import UserProfile
 
+from ..Ogre.points.models import UserProfile
 
 def populate():
     students = [{"email": "2317070i@student.gla.ac.uk", "password": "abc", "spentPoints": 20, "totalPoints": 70},
