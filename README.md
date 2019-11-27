@@ -5,6 +5,8 @@ coursework they have completed.
 
 To run on your own machine, you must have a Python 3.7 virtual environemnt with
 the following apis installed:
+
+*  
 autograd==1.3
 certifi==2019.9.11
 Django==2.2.7
