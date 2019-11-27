@@ -28,3 +28,7 @@ def faq(request):
 def profile(request):
     context_dict = {}
     return render(request, 'points/profile.html', context_dict)
+
+def register(request):
+    context_dict = {}
+    return render(request, 'points/register.html', context_dict)
