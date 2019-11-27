@@ -11,5 +11,4 @@ def user_login(request):
 
 def ogre_points(request):
 	context_dict = {}
-
 	return render(request, 'points/ogre_points.html', context_dict)
