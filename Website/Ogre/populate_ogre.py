@@ -1,11 +1,9 @@
 import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE','Ogre.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Ogre.settings")
 
 import django
 django.setup()
-
 from points.models import UserProfile
-from django.contrib.auth.models import User
 
 
 def populate():

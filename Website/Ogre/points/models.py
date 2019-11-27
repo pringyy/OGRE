@@ -15,8 +15,5 @@ class UserProfile(models.Model):
     total_points = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.StudentID
-
-
-
+        return self.user.username
 
