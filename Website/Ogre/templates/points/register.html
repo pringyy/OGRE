@@ -1,112 +1,24 @@
-<!DOCTYPE html>
+{% extends "points/base.html" %}
 {% load staticfiles %}
 
 
-<html>
-<head lang = "en">
-    {% block head_block %}
+{% block body_block %}
+  <div class="container">
+    <div class="jumbotron">
+      {% if registered %}
+        <h1>Thank you for registering!</h1>
+      {% else %}
+        <h1>Register Here</h1>
+        <h3>Just fill out the form.</h3>
 
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    {% endblock %}
-
-    <title>
-        {% block title_block %}
-                OGRE
-        {% endblock %}
-
-    </title>
-</head>
-
-<body>
-
-
-
-
-    {% block body_block %}
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">OGRE</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">FAQ</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      
-    </ul>
-    <div class="col-md-4">
-                    
-                            <a class="dropdown-toggle btn btn-primary-outline navbar-right text sign-in" href="#" data-toggle="dropdown" role="button">Sign in</a>
-
-                            <div class="dropdown-menu dropdown-menu-right">
-                            
-
-                                <form class="px-4 py-3" method="post" novalidate enctype="multipart/form-data">
-                                    
-                                    <input class="btn btn-success" type="submit" name="submit_login" value="Sign in">
-                                </form>
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">Forgot password?</a>
-                            </div>
-
-                            <a href="" class="btn btn-primary-outline navbar-right text sign-up" role="button">Sign up</a>
-                        
-                    </div>
-    
-
-
+        <form enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+          {{ user_form.as_p }}
+          {{ profile_form.as_p }}
+          <input type="submit" name="" value="Register">
+        </form>
+        
+      {% endif %}
+    </div>
   </div>
-</nav>
-    
-<a href = "{% url 'login' %}">login</a></br>
-    <a href = "{% url 'ogre_points' %}">OGRE Points</a>
-    {% endblock %}
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-    <script>
-            var $imageArray = new Array();
-            
-            $imageArray[0] = 'images/concert.jpg';
-            $imageArray[1] = 'images/bg2.jpg';
-            $imageArray[2] = 'images/bg5.jpg';
-            $imageArray[3] = 'images/bg7.jpg';
-            $imageArray[4] = 'images/bg9.jpeg';
-            $imageArray[5] = 'images/bg10.jpeg';
-            $imageArray[6] = 'images/bg1.png';
-          
-            function getRandomImage() {
-                var $num = Math.floor( Math.random() * 7);
-                var $img = $imageArray[$num];
-                var $bg = "url({% static 'replace' %}) ";
-                $bg = $bg.replace('replace',$img);
-                $('#randImage').css('background-image', $bg);
-            };
-        </script>
-
-</body>
-
-
-</html>
+{% endblock %}
