@@ -1,4 +1,3 @@
-
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -32,3 +31,10 @@ def profile(request):
 def register(request):
     context_dict = {}
     return render(request, 'points/register.html', context_dict)
+
+def add_points(request):
+	student_id = None
+	if request.method == 'GET':
+		student_id = request.GET['user.username']
+		points = request.GET['current_points']
+	return HttpResponse(points)
