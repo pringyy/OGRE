@@ -2,6 +2,9 @@ image: "python:3.7"
 
 all_tests:
   script:
+    - sudo lsof /var/lib/dpkg/lock
+    - sudo lsof /var/lib/apt/lists/lock
+    - sudo lsof /var/cache/apt/archives/lock
     - apt-get install -y python-dev python-pip
     - pip install -r requirements.txt
     - python3 Website/Orge/manage.py test 
