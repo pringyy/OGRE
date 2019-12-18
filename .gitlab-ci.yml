@@ -2,7 +2,7 @@ image: python:3.7.1
 
 all_tests:
   script:
-   - pip install -r Website/Ogre/requirements.txt
+   - pip3 install -r Website/Ogre/requirements.txt
    - python3 Website/Ogre/manage.py test -k
   when: on_success
   
