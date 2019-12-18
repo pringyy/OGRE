@@ -1,0 +1,9 @@
+image: python:3.7.1
+
+all_tests:
+    script:
+        pip install -r Website/Ogre/requirements.txt
+        python Website/Orge/manage.py test -k
+        when: on_success
+        
+        
