@@ -1,18 +1,9 @@
-image: python:3.7.1
-
-all_tests:
-  script:
-    - apt-get -y install python3-pip
-    - apt-get -y install python3-dev python3-setuptools
-    - apt-get -y install git
-    - apt-get -y install supervisor
+image: python:3.7.5
+    script:
+        - echo "Building..."
+        - pip install -r Website/Ogre/requirements.txt
+        - python3 Website/Ogre/manage.py test
+        
     
-    - pip3 install -r Website/Ogre/requirements.txt
-    - pip install --upgrade pip
-    - pip install -r requirements.txt
-    
-    - python3 Website/Ogre/manage.py test -k
-  when: on_success
-  
         
         
