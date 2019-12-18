@@ -1,9 +1,8 @@
 image: python:3.7.5
-script:
-    - echo "Building..."
-    - pip install -r Website/Ogre/requirements.txt
-    - python3 Website/Ogre/manage.py test
-        
-    
-        
+
+all_tests:
+  script:
+   - pip install -r Website/Orge/requirements.txt
+   - python3 Website/Orge/manage.py test -k
+  when: on_success
         
