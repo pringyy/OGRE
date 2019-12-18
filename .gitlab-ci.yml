@@ -2,6 +2,6 @@ image: "python:3.7"
 
 all_tests:
   script:
-    - python3 Website/Orge/manage.py test 
+    - python3 Website/Ogre/manage.py test 
   when: on_success
         
