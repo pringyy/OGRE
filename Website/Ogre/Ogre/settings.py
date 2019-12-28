@@ -28,7 +28,7 @@ SECRET_KEY = ')ma#e*lz)m*881+wgkc&vhu5df8t1z8_4pdohndpw2o8g2hf=s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1",]
 
 
 # Application definition
@@ -123,9 +123,19 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATICFILES_DIRS = [STATIC_DIR]
+STATICFILES_DIRS = [STATIC_DIR,]
 STATIC_URL = '/static/'
 
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+# for log in use
+LOGIN_URL = '/points/login/'
+# Caches
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'TIMEOUT': None
+    }
+}

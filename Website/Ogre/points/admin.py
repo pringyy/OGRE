@@ -1,4 +1,8 @@
 from django.contrib import admin
-from points.models import UserProfile
+from points.models import StudentProfileInfo
 
-admin.site.register(UserProfile)
+class StudentProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'StudentID')
+
+
+admin.site.register(StudentProfileInfo,StudentProfileAdmin)
