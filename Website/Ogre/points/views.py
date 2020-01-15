@@ -70,7 +70,9 @@ def user_login(request):
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
-            return HttpResponse("Invalid login details given, please register frist!")
+            
+            return render(request, 'points/login.html', {})
+            
     else:
         return render(request, 'points/login.html', {})
 def ogre_points(request):
