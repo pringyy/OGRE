@@ -1,3 +1,6 @@
+include:
+  template: Dependency-Scanning.gitlab-ci.yml
+
 image: "python:3.7"
 
 all_tests:
