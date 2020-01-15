@@ -1,7 +1,10 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.contrib.staticfiles import finders
 from django.urls import reverse
 from django.test import LiveServerTestCase
+from .models import StudentProfileInfo, User
+
 
 
 class LoginPageTest(TestCase):
@@ -55,4 +58,24 @@ class StaticImageTests(TestCase):
         for p in pngs:
             img = finders.find('images/{}.png'.format(p))
             self.assertIsNotNone(img)
+
+class StudentProfileTests(TestCase):
+
+    def test_student_profile(self):
+
+        User = get_user_model()
+        user = User.objects.create_user('allyinnes99', '2317070i@student.gla.ac.uk', 'bad_password')
+
+        student = StudentProfileInfo()
+        student.user = user
+        student.StudentID = '2317070i'
+        student.spentPoints = 50
+        student.totalPoints = 150
+        student.currentPoints = student.totalPoints - student.spentPoints
+
+        student.save()
+
+        record = StudentProfileInfo.objects.get(pk=1)
+        self.assertEqual(record, student)
+
 
