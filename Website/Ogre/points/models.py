@@ -9,4 +9,4 @@ class StudentProfileInfo(models.Model):
     spentPoints = models.IntegerField(default= 0)
     totalPoints = models.IntegerField(default= 0)
     def __str__(self):
-        return (self.user.username + ": "+self.StudentID)
+        return (self.user.username)
