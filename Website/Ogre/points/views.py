@@ -1,6 +1,6 @@
 
 # HTTP
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 
@@ -8,7 +8,10 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
-from points.forms import UserForm, UserProfileInfoForm
+from points.forms import UserForm, UserProfileInfoForm, ContactForm
+
+# Email
+from django.core.mail import BadHeaderError, EmailMessage
 
 def index(request):
     context_dict={}
@@ -83,8 +86,33 @@ def about(request):
     return render(request, 'points/about.html', context_dict)
 
 def contact(request):
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            contact_name = form.cleaned_data['contact_name']
+            contact_email = form.cleaned_data['contact_email']
+            subject = form.cleaned_data['subject']
+            content = form.cleaned_data['content']
+            try:
+                email = EmailMessage(subject,
+                                    content,
+                                    contact_email,
+                                    ['yauchungki513@gmail.com'], #change to your email
+                                   )
+                email.send()
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('../thanks/')
+    return render(request, 'points/contact.html', {'form': form})
+
+
+def thanks(request):
     context_dict = {}
-    return render(request, 'points/contact.html', context_dict)
+    return render(request, 'points/thanks.html', context_dict)
+
+
 
 def faq(request):
     context_dict = {}

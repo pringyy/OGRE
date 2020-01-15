@@ -18,6 +18,8 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
+# add email for contact page
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'points',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +142,13 @@ CACHES = {
         'TIMEOUT': None
     }
 }
+
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'email@gmail.com'
+# EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
+# DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
+#For development
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
