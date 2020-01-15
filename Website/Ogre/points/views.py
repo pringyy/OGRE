@@ -70,10 +70,9 @@ def user_login(request):
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
-            #åreturn HttpResponse("Invalid login details given, please register frist!")
-            #return render(request, 'points/login.html', {})
-            toastr.error('I do not think that word means what you think it means.', 'Inconceivable!')
-
+            
+            return render(request, 'points/login.html', {})
+            
     else:
         return render(request, 'points/login.html', {})
 def ogre_points(request):
