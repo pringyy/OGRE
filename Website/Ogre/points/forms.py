@@ -3,14 +3,14 @@ from points.models import StudentProfileInfo
 from django.contrib.auth.models import User
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
-    studentID = forms.CharField()
+    
     class Meta():
         model = User
-        fields = ('username','studentID','password','email')
+        fields = ('username','password','email')
 class UserProfileInfoForm(forms.ModelForm):
      class Meta():
          model = StudentProfileInfo
-         fields = ('profile_pic',)
+         fields = ('StudentID','profile_pic')
 
 class ContactForm(forms.Form):
     contact_name = forms.CharField(required=True, label="Name")
