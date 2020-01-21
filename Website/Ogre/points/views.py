@@ -43,6 +43,7 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+            login(request,user)
             if 'profile_pic' in request.FILES:
                 print('found the picture!')
                 profile.profile_pic = request.FILES['profile_pic']
