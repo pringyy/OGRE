@@ -7,9 +7,9 @@ from django.urls import reverse
 # Auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-
+import requests
 from points.forms import UserForm, UserProfileInfoForm, ContactForm
-
+import json
 # Email
 from django.core.mail import BadHeaderError, EmailMessage, send_mail
 
@@ -37,9 +37,21 @@ def register(request):
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileInfoForm(data=request.POST)
-        if user_form.is_valid() and profile_form.is_valid():
+        studentID = request.POST.get('StudentID', None)
+        password = request.POST.get('password', None)
+        myobj = {'username':studentID,'password':password}
+        # add the moodle RESTful api here!
+        r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
+        #if d['status] == 1, the user is a moodle user 
+        d = r.json()
+        print(d['status'])
+        print(studentID,password)
+        if user_form.is_valid() and profile_form.is_valid() and d['status']==1:
+            
+            
             user = user_form.save(commit=False)
             print(user.username)
+            
             user.set_password(user.password)
             user.save()
             profile = profile_form.save(commit=False)
@@ -51,6 +63,8 @@ def register(request):
             profile.save()
             registered = True
         else:
+            if d['status']==0:
+                return HttpResponse("your must enter the correct moodle related info -> student Id and password!!!!")
             print(user_form.errors,profile_form.errors)
     else:
         user_form = UserForm()
