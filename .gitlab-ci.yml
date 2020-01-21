@@ -4,5 +4,5 @@ all_tests:
   script:
     - pip install -r requirements.txt
     - python3 Website/Ogre/manage.py test 
-tags:
-  - docker
+  tags:
+    - docker
