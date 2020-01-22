@@ -6,7 +6,7 @@
     {% if user.is_authenticated %}
         <h2>Hello {{ user.username }} {{user.studentID}}</h2>
     {% else %}
-        <h2>Register or Login to see more!</h2>
+      <h2><a href = "{% url 'register'%}">Register</a> or <a href = "{% url 'login'%}">Login</a> to see more!</h2>
     {% endif %}
   </div>
 
