@@ -3,8 +3,7 @@ image: "python:3.7"
 all_tests:
   script:
     - pip install --upgrade pip
-    - ls
-    - pip install -r requirements.txt
+    - pip install -r requirements
     - python3 Website/Ogre/manage.py test 
   tags:
     - docker
