@@ -147,3 +147,7 @@ def profile(request):
 def addpoints(request):
     context_dict = {}
     return render(request, 'points/addpoints.html', context_dict)
+
+def increment(request):
+    if request.method == 'POST':
+        current = request.POST(['current'])
