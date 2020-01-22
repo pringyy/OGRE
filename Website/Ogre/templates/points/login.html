@@ -1,30 +1,36 @@
-
-{% extends 'points/base.html' %}
-{% load staticfiles %}
-
+<!DOCTYPE html>
+{% load static %}
 
 <!-- This is the HTML code for the login page in which the user initially sees when opening the webpage-->
 
-{% block title_block %}
-	{{ category.name }}
-{% endblock %}
+<html>
+  <head lang = "en">
+    <meta charset="UTF-8" />
+    
+    <title>
+      {% block title_block %}OGRE - platform{% endblock %}
+    </title>
+    
+<!--Used to import bootstrap 3-->
+        <!--Used to import bootstrap 3-->
+    <!-- Public domain icons -->
+    <link rel="stylesheet" href= "{% static 'css/toastr.min.css' %}">
 
-{% block body_block %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
+<body id="bg" style="background-image: url('{% static "images/background.jpg"%}')";>
+<!--Reads in css code for the login page-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 <!-- Makes sure everything is displayed above the background image-->
-<div class="background">
 
-
-  
-  <!-- Set the background image-->
-  <div id="randImage" class="background-cover"!>
   
   <!-- Provides a space between the top of the page and the logo-->
-  <br><br><br>
+  <br><br>
 
      
   <!-- Displays ORGE logo-->
-  <img onload="this.style.opacity='0.8'" src="{% static "images/logo.png" %}" class= "center" >
+  <img onload="this.style.opacity='0.8'" src="{% static "images/ogrelogo.png" %}" class= "center" >
             
     <div class="vertical-center transparency_bg">
       
@@ -36,31 +42,43 @@
             <div class="card-body">
             
           
-            
-              <form class="form-signin">
+              
+              <form class="form-signin" method="post">
+              {% csrf_token %}
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                  <label for="inputEmail"></label>
+                  
+                  <label for="inputUsername"></label>
+                  <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
+                </div>
+
+
+
+                <div class="form-label-group">
+                  
+                  <label for="inputStudentID"></label>
+                  <input type="text" id="inputStudentID" class="form-control" name="studentID" placeholder="StudentID" required autofocus>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  
                   <label for="inputPassword"></label>
+                  <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
                 </div>
 
                 <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  
                   <label class="custom-control-label" for="customCheck1">Remember password</label>
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
                 </div>
               
-              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-primary btn-block" type="submit" name="" value="Login">Sign in</button>
+              <a href={% url 'register' %}><center>Not got an account? Register here.<center></a>
             </form>
           </div>
        </div>
       </div>
     </div>
-  </div>
-</div>
+ 
  
  <!-- Displays university logo-->
  <img onload="this.style.opacity='0.8'" src="{% static "images/unilogo.png" %}" class= "center" width = "20%" >
@@ -68,4 +86,6 @@
 </div>
 </div>
 
-{% endblock %}
+<script src="{% static 'js/toastr.min.js' %}">
+</body>
+</html>

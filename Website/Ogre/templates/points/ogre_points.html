@@ -1,13 +1,35 @@
 {% extends 'points/base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title_block %}Your OGRE Points!{% endblock %}
 
+{% block head_block %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript"></script>
+
+{% endblock %}
+
 {% block body_block %}
 
-<button type = "button"> I went to a Tutorial!</button><br>
-<button type = "button"> I went to a Lecture!</button><br>
+<br><input type = "radio"> I went to a Tutorial!</input><br>
+<input type = "radio"> I went to a Lecture!</input><br>
 
-<input type = "submit" name = "submit" value = "Show My OGRE Points"><br>
+<br> <button id = "showPoints" studid = "{{user.username}}" type = "submit"> Show My OGRE Points! </button>
 
+<div id = "points"> You have 10 OGRE points</div>
+<strong id = "points_count"> {{current_points}}</strong> OGRE Points
+<script>
+    $(document).ready(function() {
+        var studentid;
+        var button;
+        button = document.getElementById("showPoints")
+        studentid = button.getAttribute("studid");
+    });
+
+    $('#showPoints').click(function(){
+        $.get('', {studentid}, function(data){
+            $('#points_count').html(data);
+        });
+    });
+</script>
 {% endblock %}

@@ -18,6 +18,8 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
+# add email for contact page
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -28,7 +30,7 @@ SECRET_KEY = ')ma#e*lz)m*881+wgkc&vhu5df8t1z8_4pdohndpw2o8g2hf=s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1",]
 
 
 # Application definition
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'points',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -104,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+PASSWORD_HASHERS = ('django.contrib.auth.hashers.PBKDF2PasswordHasher',
+                    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -121,9 +126,39 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATICFILES_DIRS = [STATIC_DIR]
+STATICFILES_DIRS = [STATIC_DIR,]
 STATIC_URL = '/static/'
 
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+# for log in use
+LOGIN_URL = '/points/login/'
+# Caches
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'TIMEOUT': None
+    }
+}
+
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'email@gmail.com'
+# EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
+# DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'pcki513 '
+EMAIL_HOST_PASSWORD = 'pcki96618513'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = 'testing@example.com'
+
+#For development
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

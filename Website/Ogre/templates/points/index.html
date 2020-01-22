@@ -1,0 +1,15 @@
+{% extends "points/base.html" %}
+{% block body_block %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome to the OGRE platform !</h1>
+    {% if user.is_authenticated %}
+        <h2>Hello {{ user.username }} {{user.studentID}}</h2>
+    {% else %}
+        <h2>Register or Login to see more!</h2>
+    {% endif %}
+  </div>
+
+  
+</div>
+{% endblock %}

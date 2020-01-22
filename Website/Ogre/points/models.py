@@ -1,9 +1,12 @@
+import time, uuid
 from django.db import models
-
-class Student(models.Model):
-	StudentID = models.IntegerField(unique=True)
-	currentPoints = models.IntegerField(default= 0)
-	spentPoints = models.IntegerField(default= 0)
-	totalPoints = models.IntegerField(default= 0)
-	def __str__(self):
-		return self.StudentID
+from django.contrib.auth.models import User
+class StudentProfileInfo(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    profile_pic = models.ImageField(upload_to='profile_pics',blank=True)
+    StudentID = models.CharField(unique=True,null=True,max_length = 8,help_text='Required. the StudentID must your moodle studentID')
+    currentPoints = models.IntegerField(default= 0)
+    spentPoints = models.IntegerField(default= 0)
+    totalPoints = models.IntegerField(default= 0)
+    def __str__(self):
+        return (self.user.username)

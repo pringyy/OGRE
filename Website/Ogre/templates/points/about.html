@@ -1,0 +1,73 @@
+{% extends 'points/base.html' %}
+{{% load static %}
+
+{% block title %} {{ block.super }} - About {% endblock %}
+
+{% block body_block %}
+    <!-- Header -->
+
+<!-- Page Content -->
+<div class="container">
+
+<br>
+<h1 class="display-4">Meet the team!</h1>
+<hr>
+  <div class="row">
+    <!-- Team Member 1 -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="{% static "images/robert.jpg" %}" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">Robert Pringle</h5>
+          <div class="card-text text-black-50">Team Member</div>
+        </div>
+      </div>
+    </div>
+    <!-- Team Member 2 -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="{% static "images/catoriona.jpg" %}" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">Catriona Murphy</h5>
+          <div class="card-text text-black-50">Team Member</div>
+        </div>
+      </div>
+    </div>
+    <!-- Team Member 3 -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="{% static "images/alastair.jpg" %}" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">Alastair Innes</h5>
+          <div class="card-text text-black-50">Team Member</div>
+        </div>
+      </div>
+    </div>
+    <!-- Team Member 4 -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="{% static "images/mingfeng.jpg" %}" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">Mingfeng Ye</h5>
+          <div class="card-text text-black-50">Team Member</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Team Member 5 -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="{% static "images/harry.jpg" %}" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">Harry Yau</h5>
+          <div class="card-text text-black-50">Team Member</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+{% endblock %}

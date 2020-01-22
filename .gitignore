@@ -2,6 +2,7 @@
 
 *.pyc
 
+*.sqlite3
 
 
 # Compiled Documents
@@ -9,5 +10,3 @@
 *.pdf
 
 *.ps
-
-

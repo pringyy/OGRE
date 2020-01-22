@@ -1,0 +1,21 @@
+{% extends 'points/base.html' %}
+{% load static %}
+
+{% block title %} {{ block.super }} - profile {% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <h1>My Profile</h1>
+    <p>{{ user.studentprofileinfo.profile_pic }}</p>
+    <p>Username: {{ user }}</p>
+    <p>Student ID: {{ user.studentprofileinfo.StudentID }}</p>
+    
+    <p>Email: {{ user.email }}</p>
+    <h2>Ogre Point</h2>
+    <p>Current Points: {{ user.studentprofileinfo.currentPoints }}</p>
+    <p>Total Points: {{ user.studentprofileinfo.totalPoints }}</p>
+    <p>Spent Points: {{ user.studentprofileinfo.spentPoints }}</p>
+
+</div>
+
+{% endblock %}
