@@ -1,0 +1,54 @@
+{% extends 'points/base.html' %}
+{% load static %}
+
+{% block title %} {{ block.super }} - profile {% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body_block %}
+<script type = "text/javascript">
+
+    function add_points(){
+        var x = parseInt(document.getElementById('current').innerHTML);
+        x = x+10;
+        document.getElementById('current').innerHTML = x;
+
+        var y = parseInt(document.getElementById('total').innerHTML);
+        y = y+10;
+        document.getElementById('total').innerHTML = y;
+
+        //{{ user.studentprofileinfo.currentPoints }} = x;
+
+    }
+
+    function use_points(){
+        var z = parseInt(document.getElementById('spent').innerHTML);
+        z = z+10;
+        document.getElementById('spent').innerHTML = z;
+
+        var w = parseInt(document.getElementById('current').innerHTML);
+        w = w - 10;
+        document.getElementById('current').innerHTML = w;
+    }
+
+</script>
+<div class="container">
+    <h1>My Profile</h1>
+    <p>{{ user.studentprofileinfo.profile_pic }}</p>
+    <p>Username: {{ user }}</p>
+    <p>Student ID: {{ user.studentprofileinfo.StudentID }}</p>
+
+    <p>Email: {{ user.email }}</p>
+    <h2>Ogre Point</h2>
+    <p>Current Points: <span id = "current">{{ user.studentprofileinfo.currentPoints }}</span></p>
+    <p>Total Points:<span id = "total"> {{ user.studentprofileinfo.totalPoints }}</span></p>
+    <p>Spent Points:<span id = "spent"> {{ user.studentprofileinfo.spentPoints }}</span></p>
+
+    <input type = button value = "increment" onclick = "add_points()"/>
+    <input type = button value = "decrement" onclick = "use_points()"/>
+</div>
+
+
+{% endblock %}

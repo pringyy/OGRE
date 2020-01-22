@@ -143,3 +143,7 @@ def faq(request):
 def profile(request):
     context_dict = {}
     return render(request, 'points/profile.html', context_dict)
+
+def addpoints(request):
+    context_dict = {}
+    return render(request, 'points/addpoints.html', context_dict)
