@@ -19,5 +19,5 @@ urlpatterns = [
     #url(r'^game/$',views.game,name='game'),
     
     url(r'^getmypoint/$',views.getmypoint,name='getmypoint'),
-    url(r'^ajaxpointlist/$',views.ajaxpointlist,name='ajaxpointlist'),
+    #url(r'^ajaxpointlist/$',views.ajaxpointlist,name='ajaxpointlist'),
 ]

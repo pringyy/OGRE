@@ -107,31 +107,34 @@
       </div> 
 </section>
 
-  <!-- END JAVASCRIPTS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.2.0/jquery.bootgrid.min.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.2.0/jquery.bootgrid.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.2.0/jquery.bootgrid.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.2.0/jquery.bootgrid.fa.js"></script>
+  
+
+	
+	
+	
+
+  
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.js"></script>
 <script type="text/javascript">
-$('document').ready(function(){
+    $('document').ready(function(){
 	
 
     $("#grid-data").bootgrid({
 	    ajaxSettings: {
         method: "GET",
-        cache: false,
+        cache: false
         
     },
         ajax: true,
          
-        url: "{% url 'ajaxpointlist' %}",
+         url: "/ajaxpointlist/",
         
     });
 
 
 
-});
+		});
 	
 
 

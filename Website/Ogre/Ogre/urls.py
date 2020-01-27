@@ -12,5 +12,5 @@ urlpatterns = [
     path('game/',views.game,name='game'),
     #path('getmypoint/',views.getmypoint,name='getmypoint'),
     path('mytranscation/',views.pointlist,name='pointlist'),
-    #path('ajaxpointlist/',views.ajaxpointlist,name='ajaxpointlist'),
+    path('ajaxpointlist/',views.ajaxpointlist,name='ajaxpointlist'),
 ]
