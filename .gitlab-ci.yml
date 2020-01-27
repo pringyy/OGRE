@@ -6,6 +6,6 @@ all_tests:
     - pip install -r requirements
     - cd Website
     - cd Ogre
-    - python Website/Ogre/manage.py test 
+    - python manage.py test 
   tags:
     - docker
