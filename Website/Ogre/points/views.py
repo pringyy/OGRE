@@ -170,6 +170,7 @@ def game(request):
 def getmypoint(request):
     myobj = {'user_id': '1'}
     id=request.session['id']
+    #user.studentprofileinfo.currentPoints = 9
     r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
     return HttpResponse(r)
     
