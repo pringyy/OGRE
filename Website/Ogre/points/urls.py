@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^#/$', views.index, name='index'),
     url(r'^faq/$', views.faq, name='faq'),
     url(r'^about/$', views.about, name='about'),
     url(r'^contact/$', views.contact, name='contact'),
@@ -15,4 +16,8 @@ urlpatterns = [
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^ogre_points/$', views.ogre_points, name = 'ogre_points'),
     url(r'^logout/$', views.user_logout, name='logout'),
+    #url(r'^game/$',views.game,name='game'),
+    
+    url(r'^getmypoint/$',views.getmypoint,name='getmypoint'),
+    url(r'^ajaxpointlist/$',views.ajaxpointlist,name='ajaxpointlist'),
 ]

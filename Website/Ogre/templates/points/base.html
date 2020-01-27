@@ -26,7 +26,7 @@
     <!--Creates a nv bar to be displayed across all intended pages-->
     <nav class="navbar navbar-dark bg-dark">
 
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'index' %}">
           <span class="navbar-brand"><h3  style = "font-family:Monaco"><b href="{% url 'index' %}">OGRE</b></h3></span>
         </a>
         
@@ -75,37 +75,101 @@
     <div>
       {% block body_block %}
       
-      <!--Creates footer to be displayed across all intended web pages-->
-      <footer>
-        <div class="container fixed-bottom">
-          <br>
-          <hr>
-          <div class="right">
-            <a href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main" class="inherit-color">
-              <i class="fab fa-github fa-2x"></i>
-            </a>
-            <!--Change email here to change who it links to-->
-            <a href="mailto:pringle@live.co.uk" class="inherit-color">
-              <i class="fas fa-envelope fa-2x"></i>
-            </a>
-          </div>
-          <br>
-          <br>
-        </div>
-
-      </footer>
+      
 
       {% endblock %}
     </div>
-
+    
 
 
     <!--Reads in java script to be used by bootstrap-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-
+     <script src="../static/assets/vendors/jquery.min.js"></script>
+    <script src="../static/assets/vendors/jquery.migrate.min.js"></script>
+    <script src="../static/assets/vendors/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     
   </body>
+
+
 </html>
+
+<footer id="footer" class="bg-dark py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 text-center text-md-left mb-3 mb-md-0">
+            <small class="text-white">Theme by <a target="_blank" class="text-white" href="https://archirayan.com/">cs17 team</a>. <br/>&copy; All Rights Reserved</small>
+          </div>
+
+          <div class="col-md-4 align-self-center">
+            <ul class="list-inline text-center text-md-right mb-0">
+              <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Facebook">
+                <a class="text-white" target="_blank" href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main">
+                  <i class="fab fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Instagram">
+                <a class="text-white" target="_blank" href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Twitter">
+                <a class="text-white" target="_blank" href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Dribbble">
+                <a class="text-white" target="_blank" href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main">
+                  <i class="fab fa-dribbble"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+  
+    <!-- JS Script Files --> 
+    <script src="../static/assets/vendors/jquery.min.js"></script>
+    <script src="../static/assets/vendors/jquery.migrate.min.js"></script>
+    <script src="../static/assets/vendors/popper.min.js"></script>
+    <script src="../static/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/assets/vendors/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Components Vendor  --> 
+    <script src="../static/assets/vendors/slick-carousel/slick.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+    <script src="../static/assets/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="../static/assets/vendors/counters/waypoint.min.js"></script>
+    <script src="../static/assets/vendors/counters/counterup.min.js"></script>
+
+	<script src="../static/assets/contact/jqBootstrapValidation.js"></script>
+	<script src="../static/assets/contact/contact_me.js"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../static/assets/js/scrolling-nav.js"></script>
+    <!--Plugin Initialize-->
+    <script src="../static/assets/js/global.js"></script>
+
+    <!-- Theme Components and Settings --> 
+    <script src="../static/assets/vendors/carousel.js"></script>
+    <script src="../static/assets/vendors/counters.js"></script>
+	
+    <!-- END JAVASCRIPTS -->
+	
+  </body>
+  <!-- End Body -->
+</html>
+<style type="text/css">
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  
+
+  text-align: center;
+}
+</style>

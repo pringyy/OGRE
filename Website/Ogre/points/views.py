@@ -39,16 +39,20 @@ def register(request):
         profile_form = UserProfileInfoForm(data=request.POST)
         studentID = request.POST.get('StudentID', None)
         password = request.POST.get('password', None)
+        
         myobj = {'username':studentID,'password':password}
         # add the moodle RESTful api here!
         r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
         #if d['status] == 1, the user is a moodle user 
         d = r.json()
+        
         print(d['status'])
         print(studentID,password)
         if user_form.is_valid() and profile_form.is_valid() and d['status']==1:
             
-            
+            #id = d['userinfo']['id']
+            #request.session['id'] = id
+            #request.session['username'] = d['userinfo']['username']
             user = user_form.save(commit=False)
             print(user.username)
             
@@ -82,6 +86,13 @@ def user_login(request):
         print(username,studentID,password)
         if user:
             if user.is_active:
+                myobj = {'username': studentID,'password':password}
+                r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
+                d=r.json()
+                if d['status']==1:
+                    id=d['userinfo']['id']
+                    request.session['id'] = id
+                    request.session['username'] = d['userinfo']['username'] 
                 login(request,user)
                 return HttpResponseRedirect(reverse('index'))
             else:
@@ -143,3 +154,27 @@ def faq(request):
 def profile(request):
     context_dict = {}
     return render(request, 'points/profile.html', context_dict)
+def pointlist(request):
+    if request.session.get('id'):
+        return render(request,'points/pointlist.html')
+        
+
+    
+def game(request):
+    myobj = {'user_id': '1',"points":5}
+    id=request.session['id']
+    r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
+    d=r.json()
+    return render(request,'points/game.html')
+    
+def getmypoint(request):
+    myobj = {'user_id': '1'}
+    id=request.session['id']
+    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    return HttpResponse(r)
+    
+def ajaxpointlist(request): 
+    id=request.session['id']
+    r = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
+    return HttpResponse(r)
+ 
