@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body id="bg" style="background-image: url('{% static "images/background.jpg"%}')";>
+<body id="bg"  style="background-image: url('{% static "images/background.jpg"%}')";>
 <!--Reads in css code for the login page-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 <!-- Makes sure everything is displayed above the background image-->
@@ -86,6 +86,24 @@
 </div>
 </div>
 
-<script src="{% static 'js/toastr.min.js' %}">
+<script>
+            var $imageArray = new Array();
+            
+            $imageArray[0] = 'images/bg1.jpg';
+            $imageArray[1] = 'images/bg2.jpg';
+            $imageArray[2] = 'images/bg3.jpg';
+            $imageArray[3] = 'images/bg4.jpg';
+            
+          
+            function getRandomImage() {
+                var $num = Math.floor( Math.random() * 4);
+                var $img = $imageArray[$num];
+                var $bg = "url({% static 'replace' %}) ";
+                $bg = $bg.replace('replace',$img);
+                $('#randImage').css('background-image', $bg);
+            };
+        </script>
+
+
 </body>
 </html>
