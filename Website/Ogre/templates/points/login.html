@@ -14,14 +14,17 @@
 
     <!-- Imports toastr to notify users-->
     <link rel="stylesheet" href= "{% static 'css/toastr.min.css' %}">
-  <!--Used to import bootstrap 3-->
+    <!--Used to import bootstrap 3-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+     <!--imports jquery and ajax-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
   </head>
 
-<body>
+<body onload= "getRandomImage()">
 
 <!--Reads in css code for the login page-->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+ 
 
   <div id="randImage" class="background-cover">
   
