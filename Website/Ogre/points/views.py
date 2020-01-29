@@ -48,7 +48,9 @@ def register(request):
         print(studentID,password)
         if user_form.is_valid() and profile_form.is_valid() and d['status']==1:
             
-            
+            id=d['userinfo']['id']
+            request.session['id'] = id
+            request.session['username'] = d['userinfo']['username'] 
             user = user_form.save(commit=False)
             print(user.username)
             
