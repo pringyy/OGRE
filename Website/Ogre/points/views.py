@@ -151,10 +151,18 @@ def profile(request):
     context_dict = {}
     return render(request, 'points/profile.html', context_dict)
 
-
+def pointlist(request):
+    if request.session.get('id'):
+        return render(request,'points/pointlist.html')
 def getmypoint(request):
     myobj = {'user_id': '1'}
     id=request.session['id']
     #user.studentprofileinfo.currentPoints = 9
     r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    return HttpResponse(r)
+
+
+def ajaxpointlist(request): 
+    id=request.session['id']
+    r = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
     return HttpResponse(r)
