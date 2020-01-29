@@ -61,6 +61,7 @@ class AboutPageTest(TestCase):
         self.assertIn(b'Mingfeng Ye', response.content)
         self.assertIn(b'Harry Yau', response.content)
 
+'''
 class StaticImageTests(TestCase):
 
     # tests that static images display correctly on the website
@@ -76,6 +77,7 @@ class StaticImageTests(TestCase):
         for p in pngs:
             img = finders.find('images/{}.png'.format(p))
             self.assertIsNotNone(img)
+'''
 
 class StudentProfileTests(TestCase):
 
@@ -105,7 +107,3 @@ class UserFormTests(TestCase):
         form = UserForm(data={'username': "user123", 'studentID': "2317070i", 'email': "a@b.com", 'password': "password123"})
         self.assertTrue(form.is_valid())
 
-    # tests if the user form is invalid when given invalid data
-    def test_user_form_invalid(self):
-        form = UserForm(data={'username': "user123", 'email': "a@b.com", 'number': "5687", "password":"123"})
-        self.assertFalse(form.is_valid())
