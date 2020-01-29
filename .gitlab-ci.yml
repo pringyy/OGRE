@@ -4,6 +4,8 @@ all_tests:
   script:
     - pip install --upgrade pip
     - pip install -r requirements
+    - cd Website
+    - cd Ogre
     - python3 Website/Ogre/manage.py test 
   tags:
     - docker
