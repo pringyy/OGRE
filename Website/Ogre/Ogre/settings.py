@@ -152,8 +152,8 @@ CACHES = {
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'pcki513 '
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'yauchungki513@gmail.com'
 EMAIL_HOST_PASSWORD = 'pcki96618513'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
