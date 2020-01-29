@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^$', views.user_login, name='index'),
     url(r'^points/', include('points.urls')),
     url(r'^logout/$', views.user_logout, name='logout'),
-    
+     path('mytranscation/',views.pointlist,name='pointlist'),
+    path('ajaxpointlist/',views.ajaxpointlist,name='ajaxpointlist'),
     
 ]
