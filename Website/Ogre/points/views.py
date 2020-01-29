@@ -154,6 +154,12 @@ def profile(request):
 def pointlist(request):
     if request.session.get('id'):
         return render(request,'points/pointlist.html')
+def game(request):
+    myobj = {'user_id': '1',"points":5}
+    id=request.session['id']
+    r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
+    d=r.json()
+    return render(request,'points/game.html')
 def getmypoint(request):
     myobj = {'user_id': '1'}
     id=request.session['id']
