@@ -1,15 +1,349 @@
 {% extends "points/base.html" %}
 {% block body_block %}
-<div class="container">
-  <div class="jumbotron">
-    <h1>Welcome to the OGRE platform !</h1>
+
     {% if user.is_authenticated %}
-        <h2>Hello {{ user.username }} {{user.studentID}}</h2>
+        
+        <section class="wt-section" id="login">
+	<div class="container">
+        <div class="row">
+ 				  <!-- dashboard start -->
+				 
+
+
+   <div class="col-lg-12">
+   <h1 class="text-center">Hello {{ user.username }} {{user.studentID}} </h1>
+    <h1 class="text-center">Welcome To Dashboard </h1>
+
+	
+	 </div>
+	 
+	<!--team-1-->
+	<div class="col-lg-4">
+	<div class="our-team-main">
+	
+	<div class="team-front">
+	<img src="https://www.liberaldictionary.com/wp-content/uploads/2018/11/reward.png" class="img-fluid" />
+	<h3>Points</h3>
+	<p class="points">  </p>
+	</div>
+	
+	<div class="team-back">
+	<span>
+	Total Points <b class="points">  </b>
+	</span>
+	</div>
+	
+	</div>
+	</div>
+	<!--team-1-->
+	
+	<!--team-2-->
+
+		 
+		</div>
+      </div> 
+</section>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+$('document').ready(function(){
+	
+
+		  $.ajax({
+			url: "{% url 'getmypoint' %}",
+		  type: "GET",
+			dataType:'json',
+ 		  }).done(function( responce ) {
+			  var status = responce.status;
+			  
+			  $('.alert').hide();
+			  
+			 if(status == '1'){
+				   
+				  
+				  $(".points").html(responce.points)
+			  }else{
+				  
+			  }
+			  
+		   // $('#successmsg').html('<strong>Success! Data saved successfully.');
+		   // $("#successmsgdiv").fadeTo(3000, 500).slideUp(500, function() {
+		    //  $("#successmsgdiv").slideUp(500);
+		    })
+			
+			
+			
+			 $.ajax({
+			url: '/getmynickname/',
+		    type: "GET",
+			dataType:'json',
+ 		  }).done(function( responce ) {
+			  var status = responce.status;
+			  
+			  $('.alert').hide();
+			  
+			 if(status == '1'){
+				   
+				 
+				  $("#nickname").val(responce.nickname)
+			  }else{
+				  
+			  }
+			  
+		   // $('#successmsg').html('<strong>Success! Data saved successfully.');
+		   // $("#successmsgdiv").fadeTo(3000, 500).slideUp(500, function() {
+		    //  $("#successmsgdiv").slideUp(500);
+		    })
+		   
+		   
+		   
+		   	// nickname submit start here 
+	$( "#nicksave" ).submit(function( event ) {
+	
+		  event.preventDefault();
+		  var nickname = $('#nickname').val();
+ 		 
+		  $.ajax({
+			url: '/updatenickname/',
+		    type: "GET",
+			dataType:'json',
+		   data: {  nickname: nickname}
+		  }).done(function( responce ) {
+			  var status = responce.status;
+			  
+			  $('.alert').hide();
+			  
+			 if(status == '0'){
+				  var message = responce.message;
+				  $('#alertdiv').show();
+				  $('#errmsg').text(message);
+			  }else{
+				  var message = responce.message;
+				  $('#successdiv').show();
+				  $('#successmsg').text(message);
+				  
+					var delay = 2000; 
+					var url = '/dashboard/';
+				  
+				  setTimeout(function(){ window.location = url; }, delay);
+			  }
+			  
+		   // $('#successmsg').html('<strong>Success! Data saved successfully.');
+		   // $("#successmsgdiv").fadeTo(3000, 500).slideUp(500, function() {
+		    //  $("#successmsgdiv").slideUp(500);
+		    })
+		  });
+		   
+		   // submit nickname end here 
+
+		});
+	
+
+
+
+</script>
+
+<form   id="nicksave"  >
+<div class="modal fade" id="NicknameModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;</button>
+                <h4 class="modal-title" id="ModalTitle">
+                    Change Nickname</h4>
+            </div>
+            <div class="modal-body">
+				<div class="alert alert-danger" id="alertdiv" style="display:none;">
+						<strong>Error!</strong> <span id="errmsg"></span>
+					</div>
+					
+					<div class="alert alert-success" id="successdiv" style="display:none;">
+						<strong>Success!</strong> <span id="successmsg"></span>
+					</div>
+                <label for="txtUsername">
+                    Nickname</label>
+ 
+                <br />
+                
+                <div class="checkbox">
+				<input type="text" name="nickname" id="nickname" value="" />
+                 </div>
+                <div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
+                    <strong>Error!</strong>
+                 </div>
+            </div>
+            <div class="modal-footer">
+			        <button type="submit" class="btn btn-primary">Save changes</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<form id="form1">
+<div class="modal fade" id="ProfilePictureModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;</button>
+                <h4 class="modal-title" id="ModalTitle">
+                    Change Avatar </h4>
+            </div>
+            <div class="modal-body">
+               
+				<div style="float:left" class="checkbox">
+				<input type="radio" name="check" id="check" value="img_568657.png" />
+
+                <img src="../static/assets/avtar/img_568657.png" width="100" >
+				</div>
+				<div style="float:left" class="checkbox">
+				<input type="radio" name="check" id="check" value="img_568657.png" />
+
+                <img src="../static/assets/avtar/kindpng_248273.png" width="100" >
+				</div>
+				<div style="float:left" class="checkbox">
+				<input type="radio" name="check" id="check" value="img_568657.png" />
+
+                <img src="../static/assets/avtar/kindpng_248442.png" width="100" >
+				</div>
+				
+                <div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
+                    <strong>Error!</strong>
+                 </div>
+            </div>
+            <div class="modal-footer">
+			        <button type="button" class="btn btn-primary">Save changes</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
     {% else %}
         <h2>Register or Login to see more!</h2>
     {% endif %}
-  </div>
-
   
-</div>
+
+
+
+
+
+
+
+
+<style type="text/css">
+
+      body
+{
+	background:#00bcd4;
+}
+
+h1
+{
+	color:#fff;
+	margin:40px 0 60px 0;
+	font-weight:300;
+}
+
+.our-team-main
+{
+	width:100%;
+	height:auto;
+	border-bottom:5px #323233 solid;
+	background:#fff;
+	text-align:center;
+	border-radius:10px;
+	overflow:hidden;
+	position:relative;
+	transition:0.5s;
+	margin-bottom:28px;
+}
+
+
+.our-team-main img
+{
+	border-radius:50%;
+	margin-bottom:20px;
+	width: 90px;
+}
+
+.our-team-main h3
+{
+	font-size:20px;
+	font-weight:700;
+}
+
+.our-team-main p
+{
+	margin-bottom:0;
+}
+
+.team-back
+{
+	width:100%;
+	height:auto;
+	position:absolute;
+	top:0;
+	left:0;
+	padding:5px 15px 0 15px;
+	text-align:left;
+	background:#fff;
+	
+}
+
+.team-front
+{
+	width:100%;
+	height:auto;
+	position:relative;
+	z-index:10;
+	background:#fff;
+	padding:15px;
+	bottom:0px;
+	transition: all 0.5s ease;
+}
+
+.our-team-main:hover .team-front
+{
+	bottom:-200px;
+	transition: all 0.5s ease;
+}
+
+.our-team-main:hover
+{
+	border-color:#777;
+	transition:0.5s;
+}
+
+/*our-team-main*/
+
+
+
+</style>
+<!-- Components Vendor  --> 
+    <script src="../static/assets/vendors/slick-carousel/slick.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+    <script src="../static/assets/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="../static/assets/vendors/counters/waypoint.min.js"></script>
+    <script src="../static/assets/vendors/counters/counterup.min.js"></script>
+
+	
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../static/assets/js/scrolling-nav.js"></script>
+    <!--Plugin Initialize-->
+    <script src="../static/assets/js/global.js"></script>
+
+    <!-- Theme Components and Settings --> 
+    <script src="../static/assets/vendors/carousel.js"></script>
+    <script src="../static/assets/vendors/counters.js"></script>
+
 {% endblock %}
