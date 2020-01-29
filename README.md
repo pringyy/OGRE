@@ -12,8 +12,6 @@ certifi==2019.9.11
 
 Django==2.2.7
 
-jhwutils==1.0
-
 Pillow==6.2.1
 
 pylev==1.3.0
