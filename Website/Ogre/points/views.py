@@ -82,6 +82,13 @@ def user_login(request):
         print(username,studentID,password)
         if user:
             if user.is_active:
+                myobj = {'username': studentID,'password':password}
+                r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
+                d=r.json()
+                if d['status']==1:
+                    id=d['userinfo']['id']
+                    request.session['id'] = id
+                    request.session['username'] = d['userinfo']['username'] 
                 login(request,user)
                 return HttpResponseRedirect(reverse('index'))
             else:
@@ -143,3 +150,11 @@ def faq(request):
 def profile(request):
     context_dict = {}
     return render(request, 'points/profile.html', context_dict)
+
+
+def getmypoint(request):
+    myobj = {'user_id': '1'}
+    id=request.session['id']
+    #user.studentprofileinfo.currentPoints = 9
+    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    return HttpResponse(r)
