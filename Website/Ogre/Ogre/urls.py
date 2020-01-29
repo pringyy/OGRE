@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^logout/$', views.user_logout, name='logout'),
      path('mytranscation/',views.pointlist,name='pointlist'),
     path('ajaxpointlist/',views.ajaxpointlist,name='ajaxpointlist'),
+    path('game/',views.game,name='game'),
     
 ]
