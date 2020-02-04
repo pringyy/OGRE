@@ -164,6 +164,10 @@ def profile(request):
     context_dict = {}
     return render(request, 'points/profile.html', context_dict)
 
+def shop(request):
+    context_dict = {}
+    return render(request, 'points/shop.html', context_dict)
+
 def pointlist(request):
     if request.session.get('id'):
         return render(request,'points/pointlist.html')
