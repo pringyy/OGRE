@@ -13,6 +13,9 @@ import json
 # Email
 from django.core.mail import BadHeaderError, EmailMessage, send_mail
 
+# Notifications
+from django.contrib import messages
+
 def index(request):
     context_dict={}
     return render(request, 'points/index.html', context_dict)
@@ -58,6 +61,7 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+            messages.success(request, "success")
             login(request,user)
             if 'profile_pic' in request.FILES:
                 print('found the picture!')
@@ -97,6 +101,7 @@ def user_login(request):
                     request.session['username'] = d['userinfo']['username'] 
 
                 login(request,user)
+                messages.error(request, "Account is not active")
                 return HttpResponseRedirect(reverse('index'))
 
             else:
@@ -105,9 +110,8 @@ def user_login(request):
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
             messages.error(request, "Incorrect username or password")
-            
-    else:
-        return render(request, 'points/login.html', {})
+
+    return render(request, 'points/login.html', {})
 def ogre_points(request):
     context_dict = {}
     return render(request, 'points/ogre_points.html', context_dict)
