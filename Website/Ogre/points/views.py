@@ -60,6 +60,7 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
+
             login(request,user)
             
             if 'profile_pic' in request.FILES:
@@ -79,7 +80,7 @@ def register(request):
                           {'user_form':user_form,
                            'profile_form':profile_form,
                            'registered':registered})
-    
+
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -93,13 +94,14 @@ def user_login(request):
                 return render(request, 'points/index.html')
                 
             else:
-                messages.error(request, "Incorrect username or password")
+               messages.error(request, "Account is not active")
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
             messages.error(request, "Incorrect username or password")
 
     return render(request, 'points/login.html', {})
+
 def ogre_points(request):
     context_dict = {}
     return render(request, 'points/ogre_points.html', context_dict)
