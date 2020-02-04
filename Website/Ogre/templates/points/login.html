@@ -10,13 +10,18 @@
       {% block title_block %}OGRE - platform{% endblock %}
     </title>
       
-    <!-- Imports toastr to notify users-->
-    <link rel="stylesheet" href= "{% static 'css/toastr.min.css' %}">
+    
     <!--Used to import bootstrap 3-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
      <!--imports jquery and ajax-->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <!--reads in script to display toastr notifications-->
+    <script src="{% static 'js/toastr.min.js' %}"></script>
+     <!--imports the css used for toastr notifcations-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/toastr.min.css' %}">
+
+
   </head>
 
 <body onload= "getRandomImage()">
@@ -78,12 +83,28 @@
        </div>
       </div>
     </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success'%}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% elif message.tags == 'info' %}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% elif message.tags == 'warning' %}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% elif message.tags == 'error' %}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
  
  <!-- Displays university logo-->
  <img onload="this.style.opacity='0.8'" src="{% static "images/unilogo.png" %}" class= "center" width = "20%" >
             
 </div>
 </div>
+
+
 
 <!--Script picks a random background from a selection of them-->
 <script>
