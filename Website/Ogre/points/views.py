@@ -87,20 +87,16 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                messages.error(request, "Incorrect username or password")
-                return HttpResponseRedirect(reverse('index'))
+                return render(request, 'points/index.html')
                 
             else:
-                return HttpResponse("Your account was inactive.")
+                messages.error(request, "Incorrect username or password")
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
             messages.error(request, "Incorrect username or password")
-            return HttpResponse("Invalid login details given, please register frist!")
 
-            
-    else:
-        return render(request, 'points/login.html', {})
+    return render(request, 'points/login.html', {})
 def ogre_points(request):
     context_dict = {}
     return render(request, 'points/ogre_points.html', context_dict)
