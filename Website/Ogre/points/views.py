@@ -38,7 +38,9 @@ def user_logout(request):
 
 def register(request):
     registered = False
+    
     if request.method == 'POST':
+
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileInfoForm(data=request.POST)
         studentID = request.POST.get('StudentID', None)
@@ -50,22 +52,22 @@ def register(request):
         d = r.json()
         print(d['status'])
         print(studentID,password)
+        
         if user_form.is_valid() and profile_form.is_valid() and d['status']==1:
-            
-            
             user = user_form.save(commit=False)
             print(user.username)
-            
             user.set_password(user.password)
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
             login(request,user)
+            
             if 'profile_pic' in request.FILES:
                 print('found the picture!')
                 profile.profile_pic = request.FILES['profile_pic']
             profile.save()
             registered = True
+        
         else:
             if d['status']==0:
                 return HttpResponse("your must enter the correct moodle related info -> student Id and password!!!!")
@@ -77,6 +79,7 @@ def register(request):
                           {'user_form':user_form,
                            'profile_form':profile_form,
                            'registered':registered})
+    
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
