@@ -61,7 +61,7 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-            messages.success(request, "success")
+            messages.success(request, "Sucessfully Registered!")
             login(request,user)
             if 'profile_pic' in request.FILES:
                 print('found the picture!')
@@ -99,9 +99,9 @@ def user_login(request):
                     id=d['userinfo']['id']
                     request.session['id'] = id
                     request.session['username'] = d['userinfo']['username'] 
-
+                messages.success(request, "Sucessfully logged in!")
                 login(request,user)
-                messages.error(request, "Account is not active")
+                
                 return HttpResponseRedirect(reverse('index'))
 
             else:
