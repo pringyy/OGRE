@@ -10,8 +10,12 @@ from django.contrib.auth import authenticate, login, logout
 import requests
 from points.forms import UserForm, UserProfileInfoForm, ContactForm
 import json
+
 # Email
 from django.core.mail import BadHeaderError, EmailMessage, send_mail
+
+# Notifications
+from django.contrib import messages
 
 def index(request):
     context_dict={}
@@ -83,13 +87,18 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
+                messages.error(request, "Incorrect username or password")
                 return HttpResponseRedirect(reverse('index'))
+                
             else:
                 return HttpResponse("Your account was inactive.")
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
+            messages.error(request, "Incorrect username or password")
             return HttpResponse("Invalid login details given, please register frist!")
+
+            
     else:
         return render(request, 'points/login.html', {})
 def ogre_points(request):
