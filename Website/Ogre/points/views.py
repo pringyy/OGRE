@@ -77,28 +77,35 @@ def register(request):
                            'registered':registered})
 def user_login(request):
     if request.method == 'POST':
+
         username = request.POST.get('username')
         studentID = request.POST.get('studentID')
         password = request.POST.get('password')
         user = authenticate(username=username, studentID = studentID, password=password)
         print(username,studentID,password)
+        
         if user:
+
             if user.is_active:
                 myobj = {'username': studentID,'password':password}
                 r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
                 d=r.json()
+
                 if d['status']==1:
                     id=d['userinfo']['id']
                     request.session['id'] = id
                     request.session['username'] = d['userinfo']['username'] 
+
                 login(request,user)
                 return HttpResponseRedirect(reverse('index'))
+
             else:
-                return HttpResponse("Your account was inactive.")
+                messages.error(request, "Account is not active")
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
-            return HttpResponse("Invalid login details given, please register frist!")
+            messages.error(request, "Incorrect username or password")
+            
     else:
         return render(request, 'points/login.html', {})
 def ogre_points(request):
