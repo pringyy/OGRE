@@ -16,4 +16,6 @@ urlpatterns = [
     url(r'^ogre_points/$', views.ogre_points, name = 'ogre_points'),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^getmypoint/$',views.getmypoint,name='getmypoint'),
+    url(r'^profile/$',views.profile,name='profile'),
+    url(r'^iterateJSON/$',views.iterateJSON,name='iterateJSON'),
 ]

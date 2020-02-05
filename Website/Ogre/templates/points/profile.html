@@ -5,17 +5,122 @@
 
 {% block body_block %}
 <div class="container">
-    <h1>My Profile</h1>
-    <p>{{ user.studentprofileinfo.profile_pic }}</p>
-    <p>Username: {{ user }}</p>
-    <p>Student ID: {{ user.studentprofileinfo.StudentID }}</p>
-    
-    <p>Email: {{ user.email }}</p>
-    <h2>Ogre Point</h2>
-    <p>Current Points: {{ user.studentprofileinfo.currentPoints }}</p>
-    <p>Total Points: {{ user.studentprofileinfo.totalPoints }}</p>
-    <p>Spent Points: {{ user.studentprofileinfo.spentPoints }}</p>
+    <div>
+    <h1 class="display-4">Profile</h1>
+    <hr>
+    </div>
+
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">OGRE Points</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Comments</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#wall" data-toggle="tab" class="nav-link">Wall</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <div class="tab-pane active" id="profile">
+                    <h5 class="mb-3"> Profile</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>About</h6>
+                            <p>Username: {{ user }} </p>
+                            <p>Student ID: {{ user.studentprofileinfo.StudentID }}</p>
+                            <p>Email: {{ user.email }}</p>
+                            <h6>Subjects</h6>
+                            <p>Computing Science</p>
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                <div class="tab-pane" id="messages">
+                    <h5>Points</h5>
+                    <h6>Current Points: </h6>
+                    <b class = "points">
+
+                    </b>
+
+                    <h6>Spent Points</h6>
+                    <h6>Total Points</h6>
+                </div>
+
+                <div class="tab-pane" id="edit">
+                    <p>hi</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 order-lg-1 text-center">
+            <img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+
+        </div>
+    </div>
+
 
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+$('document').ready(function(){
+
+
+		  $.ajax({
+			url: "{% url 'getmypoint' %}",
+		  type: "GET",
+			dataType:'json',
+ 		  }).done(function( responce ) {
+			  var status = responce.status;
+
+
+			 if(status == '1'){
+
+
+				  $(".points").html(responce.points)
+			  }else{
+
+			  }
+
+		   // $('#successmsg').html('<strong>Success! Data saved successfully.');
+		   // $("#successmsgdiv").fadeTo(3000, 500).slideUp(500, function() {
+		    //  $("#successmsgdiv").slideUp(500);
+		    })
+
+		});
+
+
+
+
+
+</script>
+
+<style type = "text/css">
+    body {
+        background: #00bcd4;
+    }
+
+    .nav{
+        width: fit-content;
+    }
+    .nav-link{
+        color: black;
+    }
+</style>
+
+
+
+<!-- Components Vendor  -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+
+
+
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!--Plugin Initialize-->
 
 {% endblock %}
