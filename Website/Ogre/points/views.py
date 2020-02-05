@@ -179,7 +179,9 @@ def getmypoint(request):
     #user.studentprofileinfo.currentPoints = 9
     r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
     return HttpResponse(r)
-
+def iterateJSON(request):
+    context_dict = {}
+    return render(request, 'points/iterateJSON.html', context_dict)
 
 def ajaxpointlist(request): 
     id=request.session['id']

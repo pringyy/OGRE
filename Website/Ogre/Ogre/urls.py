@@ -15,5 +15,6 @@ urlpatterns = [
      path('mytranscation/',views.pointlist,name='pointlist'),
     path('ajaxpointlist/',views.ajaxpointlist,name='ajaxpointlist'),
     path('game/',views.game,name='game'),
+    url(r'^iterateJSON/$', views.iterateJSON, name='iterateJSON'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

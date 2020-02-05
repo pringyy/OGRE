@@ -17,4 +17,5 @@ urlpatterns = [
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^getmypoint/$',views.getmypoint,name='getmypoint'),
     url(r'^profile/$',views.profile,name='profile'),
+    url(r'^iterateJSON/$',views.iterateJSON,name='iterateJSON'),
 ]
