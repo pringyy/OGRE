@@ -13,11 +13,10 @@ class UserProfileInfoForm(forms.ModelForm):
          fields = ('StudentID','profile_pic')
 
 class ContactForm(forms.Form):
-    contact_name = forms.CharField(required=True, label="Name")
-    contact_email = forms.EmailField(required=True, label="Email")
-    subject = forms.CharField(required=True, label='subject')
+    contact_name = forms.CharField(required=True)
+    contact_email = forms.EmailField(required=True)
+    subject = forms.CharField(required=True)
     content = forms.CharField(
         required=True,
-        widget=forms.Textarea,
-        label="Message"
+        widget=forms.Textarea
     )

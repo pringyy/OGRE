@@ -11,6 +11,7 @@ import requests
 from points.forms import UserForm, UserProfileInfoForm, ContactForm
 import json
 # Email
+from django.conf import settings
 from django.core.mail import BadHeaderError, EmailMessage, send_mail
 
 def index(request):
@@ -109,31 +110,60 @@ def about(request):
     return render(request, 'points/about.html', context_dict)
 
 def contact(request):
-    if request.method == 'GET':
-        form = ContactForm()
-    else:
-        form = ContactForm(request.POST)
+    form_class = ContactForm
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
         if form.is_valid():
-            contact_name = form.cleaned_data['contact_name']
-            contact_email = form.cleaned_data['contact_email']
-            subject = form.cleaned_data['subject']
-            content = form.cleaned_data['content']
-            try:
-                email = EmailMessage(subject,
-                                    content,
-                                    contact_email,
-                                    ['yauchungki513@gmail.com'], #change to your email
-                                   )
-                # send_mail(subject,
-                #             content,
-                #             contact_email,
-                #             ['yauchungki513@gmail.com'], #change to your email
-                #             )
-                email.send()
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            contact_name = request.POST.get('contact_name', '')
+            contact_email = request.POST.get('contact_email', '')
+            form_content = request.POST.get('content', '')
+            content = "Name:" + contact_name + "\n" +"Email:" + contact_email + "\n" + "Content:" + form_content + "\n"
+            
+
+            context = {'contact_name': contact_name,
+                    'contact_email': contact_email,
+                    'form_content': form_content,
+                }
+            email = EmailMessage(
+                    "New contact form submission",
+                    content,
+                    "Ogre" +'',
+                    ['yaukujira513@gmail.com'],
+                    headers = {'Reply-To': contact_email }
+                )
+            email.send()
+            # send_mail(subject, content, settings.EMAIL_HOST_USER, ['yaukujira513@gmail.com'])
             return redirect('../thanks/')
-    return render(request, 'points/contact.html', {'form': form})
+
+    return render(request, 'points/contact.html', {'form': form_class})
+    
+    # if request.method == 'GET':
+    #     form = ContactForm()
+    # else:
+    #     form = ContactForm(request.POST)
+    #     if form.is_valid():
+    #         contact_name = form.cleaned_data['contact_name']
+    #         contact_email = form.cleaned_data['contact_email']
+    #         subject = form.cleaned_data['subject']
+    #         content = form.cleaned_data['content']
+    #         try:
+    #             email = EmailMessage(subject,
+    #                                 content,
+    #                                 settings.EMAIL_HOST_USER,
+    #                                 to=['yauchungki513@gmail.com'], #change to your email
+    #                                )
+    #             # send_mail(subject,
+    #             #             content,
+    #             #             contact_email,
+    #             #             ['yauchungki513@gmail.com'], #change to your email
+    #             #             )
+    #             email.send()
+    #             # send_mail(subject, content, settings.EMAIL_HOST_USER, ['yaukujira513@gmail.com'])
+    #         except BadHeaderError:
+    #             return HttpResponse('Invalid header found.')
+    #         return redirect('../thanks/')
+    # return render(request, 'points/contact.html', {'form': form})
 
 
 def thanks(request):

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
+from .email_info import *
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -30,7 +30,7 @@ SECRET_KEY = ')ma#e*lz)m*881+wgkc&vhu5df8t1z8_4pdohndpw2o8g2hf=s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1",]
+ALLOWED_HOSTS = ["*",]
 
 
 # Application definition
@@ -150,7 +150,7 @@ CACHES = {
 # EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
 # DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 
-SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+SENDGRID_API_KEY = os.getenv('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')
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'yauchungki513@gmail.com'
