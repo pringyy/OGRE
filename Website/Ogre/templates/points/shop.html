@@ -11,8 +11,65 @@
 
 <br>
 <h1 class="display-4">Avatar Shop</h1>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-  <!-- /.row -->
+
+
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col" class="text-right">Price</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                            <td>Product Name Dada</td>
+                            
+                            
+                            <td class="text-right">124,90 €</td>
+                            <td class="text-right"><button type="button" class="btn btn-success">Buy</button> </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                            <td>Product Name Toto</td>
+                            
+                            
+                            <td class="text-right">33,90 €</td>
+                            <td class="text-right"><button type="button" class="btn btn-success">Buy</button> </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                            <td>Product Name Titi</td>
+                     
+                           
+                            <td class="text-right">70,00 €</td>
+                            <td class="text-right"><button type="button" class="btn btn-success">Buy</button> </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+{% for student in student_number %}
+    {{ student.f_name}}
+    {{ student.l_name }}
+    {{ student.student_number }}
+    {{ student.dob }}
+{% endfor %}
+
+
 
 </div>
 <!-- /.container -->

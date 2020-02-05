@@ -1,6 +1,7 @@
 import time, uuid
 from django.db import models
 from django.contrib.auth.models import User
+
 class StudentProfileInfo(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     profile_pic = models.ImageField(upload_to='profile_pics',blank=True)
@@ -10,3 +11,8 @@ class StudentProfileInfo(models.Model):
     totalPoints = models.IntegerField(default= 0)
     def __str__(self):
         return (self.user.username)
+
+class Avatars(models.Model):
+    avatarID = models.IntegerField(unique=True,null=True)
+    avatar = models.ImageField(upload_to=None)
+    pointsCost = models.IntegerField(default= 0)

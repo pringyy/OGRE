@@ -1,4 +1,7 @@
 
+#Models
+from points.models import Avatars
+
 # HTTP
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -165,8 +168,13 @@ def profile(request):
     return render(request, 'points/profile.html', context_dict)
 
 def shop(request):
-    context_dict = {}
-    return render(request, 'points/shop.html', context_dict)
+    data = Avatars.objects.all()
+
+    stu = {
+        "avatarID": data
+    }
+    
+    return render(request, "points/shop.html", stu)
 
 def pointlist(request):
     if request.session.get('id'):
