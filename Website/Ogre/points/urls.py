@@ -18,4 +18,6 @@ urlpatterns = [
     url(r'^getmypoint/$',views.getmypoint,name='getmypoint'),
     url(r'^profile/$',views.profile,name='profile'),
     url(r'^iterateJSON/$',views.iterateJSON,name='iterateJSON'),
+    
+
 ]
