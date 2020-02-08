@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 import requests
 from points.forms import UserForm, UserProfileInfoForm, ContactForm
 import json
+from django.contrib.auth.models import User
 # Email
 from django.core.mail import BadHeaderError, EmailMessage, send_mail
 
@@ -87,27 +88,48 @@ def user_login(request):
         username = request.POST.get('username')
         studentID = request.POST.get('studentID')
         password = request.POST.get('password')
+        myobj = {'username': studentID,'password':password}
+        r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
+        d=r.json()
         user = authenticate(username=username, studentID = studentID, password=password)
         print(username,studentID,password)
         
         if user:
 
             if user.is_active:
-                myobj = {'username': studentID,'password':password}
-                r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
-                d=r.json()
+                
 
                 if d['status']==1:
                     id=d['userinfo']['id']
                     request.session['id'] = id
                     request.session['username'] = d['userinfo']['username'] 
-                messages.success(request, "Sucessfully logged in! Welcome!")
-                login(request,user)
+                    messages.success(request, "Sucessfully logged in! Welcome!")
+                    login(request,user)
+                    return HttpResponseRedirect(reverse('index'))
+                elif d['status']==0:
+                    messages.error(request, "you seems like change your moodle password, please use that password!")
+                    
                 
-                return HttpResponseRedirect(reverse('index'))
+                
 
             else:
                 messages.error(request, "Account is not active, please register via your moodle account first!")
+        
+        elif d['status']==1:
+            id=d['userinfo']['id']
+            request.session['id'] = id
+            request.session['username'] = d['userinfo']['username'] 
+            u = User.objects.get(username=username)
+            if u:
+                u.set_password(password)
+                u.save()
+                user2 = authenticate(username=username, studentID = studentID, password=password)
+                messages.success(request, "Sucessfully logged in! Welcome!")
+                login(request,user2)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                messages.error(request, "please enter the correct username!")
+                
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
