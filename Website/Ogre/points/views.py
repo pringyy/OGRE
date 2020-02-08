@@ -70,7 +70,9 @@ def register(request):
             registered = True
         else:
             if d['status']==0:
-                return HttpResponse("your must enter the correct moodle related info -> student Id and password!!!!")
+                messages.error(request, "your must enter the correct moodle related info -> student Id and password!!!!")
+                #deprecate this line
+                #return HttpResponse("your must enter the correct moodle related info -> student Id and password!!!!")
             print(user_form.errors,profile_form.errors)
     else:
         user_form = UserForm()
@@ -99,17 +101,17 @@ def user_login(request):
                     id=d['userinfo']['id']
                     request.session['id'] = id
                     request.session['username'] = d['userinfo']['username'] 
-                messages.success(request, "Sucessfully logged in!")
+                messages.success(request, "Sucessfully logged in! Welcome!")
                 login(request,user)
                 
                 return HttpResponseRedirect(reverse('index'))
 
             else:
-                messages.error(request, "Account is not active")
+                messages.error(request, "Account is not active, please register via your moodle account first!")
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
-            messages.error(request, "Incorrect username or password")
+            messages.error(request, "Incorrect username or password!,please register via your moodle account first!")
 
     return render(request, 'points/login.html', {})
 def ogre_points(request):
