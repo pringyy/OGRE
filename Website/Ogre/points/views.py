@@ -194,14 +194,21 @@ def pointlist(request):
 def game(request):
     myobj = {'user_id': '1',"points":5}
     id=request.session['id']
-    r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
+    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
     d=r.json()
-    return render(request,'points/game.html')
+    if int(d['points']) >= 5:
+        r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
+        return render(request,'points/game.html')
+    else:
+        messages.error(request, "you don't have enough points to play!")
+        return HttpResponseRedirect(reverse('index'))
 def getmypoint(request):
     myobj = {'user_id': '1'}
     id=request.session['id']
     #user.studentprofileinfo.currentPoints = 9
     r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    d=r.json()
+    #print(d['points'])
     return HttpResponse(r)
 def iterateJSON(request):
     context_dict = {}
