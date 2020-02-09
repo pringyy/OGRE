@@ -12,11 +12,21 @@
   background:#00bcd4;
 }
 
+.inner
+{
+    display: inline-block;
+}
+
 
 /*this class is used so the icons on the footer display as black*/
 .inherit-color {
   color: inherit;
 }
+
+.button-size {
+  width:100px;
+}
+
 
 /*this class is used so the footer is displayed in the centre*/
 .footer {

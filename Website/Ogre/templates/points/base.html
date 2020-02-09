@@ -26,13 +26,11 @@
   
   <body>
 
-  
     <!--Creates a nv bar to be displayed across all intended pages-->
-     <nav class="navbar navbar-dark navbar-custom">
+     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
 
         <a class="navbar-brand" href="{% url 'index' %}">
-          <img src="{% static "images/ogrelogo.png" %}" width="40%" alt="" class="d-inline-block align-middle mr-2">
-      
+          <img src="{% static "images/ogrelogo.png" %}" width="100 mlpx" alt="" class="d-inline-block align-middle mr-2">
         </a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,10 +38,8 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-
-          
-
+        
+         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'about'%}">About</a>
           </li>
@@ -54,30 +50,31 @@
             <a class="nav-link" href="{% url 'contact'%}">Contact</a>
           </li>
 
-          
-
-          {# Some logic on what to display for last item#}
           {% if user.is_authenticated %}
             <li class="nav-item active">
             <a class="nav-link" href="{% url 'profile'%}">My Profile <span class="sr-only">(current)</span></a>
             </li>
-            <a href="{% url 'logout' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Log out</a>
-            
-          {% else %}
-          <a href="{% url 'login' %}" class="btn btn-primary btn-primary btn-sm active" role="button" aria-pressed="true">Login</a>
-            
-            <li class="nav-item">
-            <a class="nav-link" href="{% url 'register'%}">Register</a>
-            </li>
-          {% endif %}
 
+           {% endif %}  
         </ul>
 
+         <ul class="navbar-nav ml-auto">
+          {# Some logic on what to display for last item#}
+          {% if user.is_authenticated %}
+        
+            <a href="{% url 'logout' %}" class="btn btn-danger btn-md active button-size" role="button" aria-pressed="true">Logout</a>
+            
+          {% else %}
+          <li class="nav-item mr-auto">
+          <a href="{% url 'login' %}" class="btn btn-success btn-primary btn-md active button-size" role="button" aria-pressed="true">Login</a>
+          </li>
+            <li class="nav-item mr-auto">
+              <a href="{% url 'register' %}" class="btn btn-primary  btn-md active button-size" role="button" aria-pressed="true">Register</a>
+            </li>
+          {% endif %}
+        </ul>
       </div>
     </div>
-
-       
-
     </nav>
 
     <!--code used to display all the different Toastr notifcations to the user-->
@@ -124,7 +121,7 @@
              <i class="fas fa-envelope fa-2x"></i>
           </a>
           <a href="https://www.gla.ac.uk/" class="inherit-color logoPadding">
-            <img src="{% static "images/unilogo2.png" %}" class= "center" width = "5%" >
+            <img src="{% static "images/unilogo2.png" %}" class= "center" width = "50px" >
           </a>
           <a href="https://twitter.com/UofGlasgow?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="inherit-color logoPadding">
             <i class="fab fa-twitter fa-2x"></i>
