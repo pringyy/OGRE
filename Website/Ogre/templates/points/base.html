@@ -5,12 +5,11 @@
 <html>
   <head lang = "en">
     <meta charset="UTF-8" />
-    
+
     <title>
       {% block title_block %}OGRE - platform{% endblock %}
     </title>
-    
-    
+
     <!--Used to import bootstrap 4-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> <!-- Public domain icons -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,15 +19,12 @@
     <script src="{% static 'js/toastr.min.js' %}"></script>
      <!--imports the css used for toastr notifcations-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/toastr.min.css' %}">
-    
-  </head>
+    <!--imports the css used for the base template-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 
-  
-  
+  </head>
   
   <body>
-    
-
     <!--Creates a nv bar to be displayed across all intended pages-->
      <nav class="navbar navbar-dark bg-dark">
 
@@ -78,7 +74,8 @@
        
 
     </nav>
-    
+
+    <!--code used to display all the different Toastr notifcations to the user-->
     {% if messages %}
         {% for message in messages %}
             {% if message.tags == 'success'%}
@@ -97,105 +94,50 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <!-- JS Script Files --> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Components Vendor  --> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
   
     <div>
-      {% block body_block %}
-      
-     
 
+      {% block body_block %}
       {% endblock %}
+
     </div>
 
+    <footer>
 
-   
-
-
-   
-
-    
-  </body>
-</html>
-
-
-<!-- FOOTER -->
-        <footer>
-            <div class="container" id="footer">
-                <br>
-                <hr>
-                <div class="right">
-                    <a href="" class="inherit-color">
-                        <i class="fab fa-github fa-2x"></i>
-                    </a>
-                    <a href="mailto:pringle@live.co.uk" class="inherit-color">
-                        <i class="fas fa-envelope fa-2x"></i>
-                    </a>
-                </div>
-                <br>
-                <br>
-            </div>
-        </footer>
-  <!-- FOOTER END -->
-<!--
-<footer id="footer" class="bg-dark py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 text-center text-md-left mb-3 mb-md-0">
-            <small class="text-white">Theme by <a target="_blank" class="text-white" href="https://archirayan.com/">cs17 team</a>. <br/>&copy; All Rights Reserved</small>
-          </div>
-
-          <div class="col-md-4 align-self-center">
-            <ul class="list-inline text-center text-md-right mb-0">
-              <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Facebook">
-                <a class="text-white" target="_blank" href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main">
-                  <i class="fab fa-facebook"></i>
-                </a>
-              </li>
-              <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Instagram">
-                <a class="text-white" target="_blank" href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main">
-                  <i class="fab fa-instagram"></i>
-                </a>
-              </li>
-              <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Twitter">
-                <a class="text-white" target="_blank" href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Dribbble">
-                <a class="text-white" target="_blank" href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main">
-                  <i class="fab fa-dribbble"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
+      <div class= "container footer">
+        <br>
+        <hr>
+        <div class="right">
+          <a href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main" class="inherit-color">
+            <i class="fab fa-github fa-2x"></i>
+          </a>
+          <a href="mailto:pringle@live.co.uk" class="inherit-color logoPadding">
+             <i class="fas fa-envelope fa-2x"></i>
+          </a>
+          <a href="https://www.gla.ac.uk/" class="inherit-color logoPadding">
+            <img src="{% static "images/unilogo2.png" %}" class= "center" width = "5%" >
+          </a>
+          <a href="https://twitter.com/UofGlasgow?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="inherit-color logoPadding">
+            <i class="fab fa-twitter fa-2x"></i>
+          </a>
+          <a href="https://www.facebook.com/UofGlasgow/" class="inherit-color logoPadding">
+            <i class="fab fa-facebook-square fa-2x"></i>
+          </a>
         </div>
       </div>
+      
     </footer>
-    End Footer -->
-  </body>
-  <!-- End Body -->
-</html>
-<style type="text/css">
-#footer {
-  position: fixed;
-  
-  bottom: 0;
-  
-  width: 100%;
-  
 
-  text-align: center;
-}
-</style>
-    
+  <!-- End Body -->
+  </body>
+ 
+</html>
+
+
 
 
 	

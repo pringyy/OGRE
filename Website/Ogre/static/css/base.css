@@ -6,3 +6,21 @@
     background-position: top;
     background-blend-mode: luminosity;
 }
+
+
+/*this class is used so the icons on the footer display as black*/
+.inherit-color {
+    color: inherit;
+}
+
+/*this class is used so the footer is displayed in the centre*/
+.footer {
+  text-align: center;
+}
+
+
+/*this class is to add padding to the left and right of the University logo*/
+.logoPadding {
+  padding-right: 30px;
+  padding-left: 30px;
+}
