@@ -7,10 +7,15 @@
     background-blend-mode: luminosity;
 }
 
+ body
+{
+  background:#00bcd4;
+}
+
 
 /*this class is used so the icons on the footer display as black*/
 .inherit-color {
-    color: inherit;
+  color: inherit;
 }
 
 /*this class is used so the footer is displayed in the centre*/
@@ -23,4 +28,10 @@
 .logoPadding {
   padding-right: 30px;
   padding-left: 30px;
+}
+
+
+.navbar-custom {
+  color: #FFFFFF;
+  background-color: #0e707d;
 }

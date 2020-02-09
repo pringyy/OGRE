@@ -25,11 +25,14 @@
   </head>
   
   <body>
+
+  
     <!--Creates a nv bar to be displayed across all intended pages-->
-     <nav class="navbar navbar-dark bg-dark">
+     <nav class="navbar navbar-dark navbar-custom">
 
         <a class="navbar-brand" href="{% url 'index' %}">
-          <span class="navbar-brand"><h3  style = "font-family:Monaco"><b href="{% url 'index' %}">OGRE</b></h3></span>
+          <img src="{% static "images/ogrelogo.png" %}" width="40%" alt="" class="d-inline-block align-middle mr-2">
+      
         </a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,10 +61,11 @@
             <li class="nav-item active">
             <a class="nav-link" href="{% url 'profile'%}">My Profile <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            <a href="{% url 'logout' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Log out</a>
+            
           {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-
+          <a href="{% url 'login' %}" class="btn btn-primary btn-primary btn-sm active" role="button" aria-pressed="true">Login</a>
+            
             <li class="nav-item">
             <a class="nav-link" href="{% url 'register'%}">Register</a>
             </li>
@@ -70,6 +74,7 @@
         </ul>
 
       </div>
+    </div>
 
        
 
