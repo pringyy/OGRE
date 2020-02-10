@@ -5,14 +5,11 @@
 {% block body_block %}
 
 <style type="text/css">
+    a{
+        text-decoration:none !important;
+    }
 
-        a{
-         text-decoration:none !important;
-         }
-         h1,h2,h3{
-         font-family: 'Kaushan Script', cursive;
-         }
-          .myform{
+    .myform{
 		position: relative;
 		display: -ms-flexbox;
 		display: flex;
@@ -27,23 +24,24 @@
 		border-radius: 1.1rem;
 		outline: 0;
 		max-width: 500px;
-		 }
-         .tx-tfm{
-         text-transform:uppercase;
-         }
-         .mybtn{
-         border-radius:50px;
-         }
+    }
+    .tx-tfm{
+        text-transform:uppercase;
+    }
+    .mybtn{
+        border-radius:50px;
+    }
         
-         .login-or {
+    .login-or {
          position: relative;
          color: #aaa;
          margin-top: 10px;
          margin-bottom: 10px;
          padding-top: 10px;
          padding-bottom: 10px;
-         }
-         .span-or {
+    }
+
+    .span-or {
          display: block;
          position: absolute;
          left: 50%;
@@ -52,59 +50,71 @@
          background-color: #fff;
          width: 50px;
          text-align: center;
-         }
-         .hr-or {
+    }
+
+    .hr-or {
          height: 1px;
          margin-top: 0px !important;
          margin-bottom: 0px !important;
-         }
-         .google {
+    }
+
+    .google {
          color:#666;
          width:100%;
          height:40px;
          text-align:center;
          outline:none;
          border: 1px solid lightgrey;
-         }
-          form .error {
-         color: #ff0000;
-         }
-         #second{display:none;}
+    }
 
+    form .error {
+         color: #ff0000;
+    }
+
+    #second{
+        display:none;
+    }
+
+    .display-4{
+        color: #0e707d;
+    }
+
+    #grid-data{
+        color: #0e707d;
+    }
+
+
+    .text-left{
+        color: #0e707d;
+    }
+
+    .data{
+        color: #0e707d !important;
+    }
 </style>
  
 
+ <div class="container"> <table class="table">
+
 <section class="wt-section" id="login">
 	<div class="container">
-	<h2>My Point Transcations</h2>
+        <br>
+	    <h1 class="display-4">My Point Transactions</h1>
+        <hr>
         <div class="row">
-			 
-
- <div class="container"> <table class="table">
-   
-	<a href="/points/">Back</a>
-    <table id="grid-data" class="table table-condensed table-hover table-striped">
-        <thead>
+            <table id="grid-data" class="table table-condensed table-hover table-striped">
+            <thead class="data">
             <tr>
                 <th data-column-id="id" data-type="numeric">ID</th>
                 <th data-column-id="type">Type(+/-)</th>
                 <th data-column-id="detail" data-order="desc">Point paid for</th>
-			<th data-column-id="amount" data-type="numeric">Amount</th>
-
-             </tr>
-        </thead>
-    </table>
-
-
-	
-	  
-	
-</div>
-				  <!-- dashboard end -->
-				  
-			 
-		</div>
-      </div> 
+                <th data-column-id="amount" data-type="numeric">Amount</th>
+            </tr>
+            </thead>
+            </table>
+        </div><!-- dashboard end -->
+    </div>
+ </div>
 </section>
 
   

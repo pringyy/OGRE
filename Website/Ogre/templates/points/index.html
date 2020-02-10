@@ -1,159 +1,117 @@
 {% extends "points/base.html" %}
 {% block body_block %}
 
-    {% if user.is_authenticated %}
-        
-        <section class="wt-section" id="login">
+{% if user.is_authenticated %}
+<section class="wt-section" id="login">
 	<div class="container">
-        <div class="row">
- 				  <!-- dashboard start -->
-				 
+		<div class="row"><!-- dashboard start -->
+			<div class="col-lg-12">
+				<h1 class="display-4" id = "center">Hello {{ user.username }} {{user.studentID}} </h1>
+				<h2 class="display-4" id = "center2">Welcome To The Dashboard </h2>
+			</div>
+			<!--team-1-->
+			<div class="col-lg-4">
+				<div class="our-team-main">
+					<div class="team-front">
+						<img src="https://www.liberaldictionary.com/wp-content/uploads/2018/11/reward.png" class="img-fluid" />
+						<h3>Points</h3>
+						<p class="points">  </p>
+					</div>
+					<div class="team-back">
+						<span>
+							Total Points <b class="points">  </b>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!--team-1-->
+			<!--team-2-->
+			<div class="col-lg-4">
+				<a href="/game/" style="color:black">
+					<div class="our-team-main">
+						<div class="team-front">
+							<img src="https://cdn3.iconfinder.com/data/icons/pyconic-icons-3-1/512/games-pad-512.png" class="img-fluid" />
+							<h3>Play game</h3>
+							<p>Cost(5 points)</p>
+						</div>
 
-
-   <div class="col-lg-12">
-   <h1 class="text-center">Hello {{ user.username }} {{user.studentID}} </h1>
-    <h1 class="text-center">Welcome To Dashboard </h1>
-
-	
-	 </div>
+						<div class="team-back">
+							<span>
+								Click here to play an interactive game with very minimal amount of points (5 points )
+							</span>
+						</div>
+					</div>
+				</a>
+			</div>
+			<!--team-2-->
+			<!--team-3-->
+			<div class="col-lg-4">
+				<div class="our-team-main">
+					<a href="/changenickname/"  data-toggle="modal" data-target="#NicknameModal" style="color:black">
+						<div class="team-front">
+							<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
+							<h3>Change Nickname</h3>
+							<p>Cost ( 5 points )</p>
+						</div>
+						<div class="team-back">
+							<span>
+								Click here to change your nickname. Costs only 5 points.
+							</span>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!--team-3-->
+			<div class="col-lg-4">
+				<div class="our-team-main">
+					<a href="/changenickname/"   data-toggle="modal" data-target="#ProfilePictureModal"  style="color:black">
+						<div class="team-front">
+							<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
+							<h3>Pick A Avatar</h3>
+							<p>Cost ( 5 points )</p>
+						</div>
+						<div class="team-back">
+							<span>
+								Click here to change Profile Picture. Costs only 5 points.
+							</span>
+						</div>
+					</a>
+				</div>
+			</div>
 	 
-	<!--team-1-->
-	<div class="col-lg-4">
-	<div class="our-team-main">
-	
-	<div class="team-front">
-	<img src="https://www.liberaldictionary.com/wp-content/uploads/2018/11/reward.png" class="img-fluid" />
-	<h3>Points</h3>
-	<p class="points">  </p>
-	</div>
-	
-	<div class="team-back">
-	<span>
-	Total Points <b class="points">  </b>
-	</span>
-
-	</div>
-	
-	</div>
-	</div>
-	<!--team-1-->
-	
-	<!--team-2-->
-<div class="col-lg-4">
-	<a href="/game/" style="color:black">
-
-	<div class="our-team-main">
-	
-	<div class="team-front">
-	<img src="https://cdn3.iconfinder.com/data/icons/pyconic-icons-3-1/512/games-pad-512.png" class="img-fluid" />
-	<h3>Play game</h3>
-	<p>Cost(5 points)</p>
-	</div>
-	
-	<div class="team-back">
-	<span>
-	 click here to Play intercatinve game with very minimal amount of points (5 points )
-	</span>
-	</div>
-	
-	</div>
-	</a>
-	</div>
-	<!--team-2-->
-	
-	<!--team-3-->
-	<div class="col-lg-4">
-	<div class="our-team-main">
-	<a href="/changenickname/"  data-toggle="modal" data-target="#NicknameModal" style="color:black">
-
-	<div class="team-front">
-	<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
-	<h3>Change Nickname</h3>
-	<p>Cost ( 5 points )</p>
-	</div>
-	
-	<div class="team-back">
-	<span>
-	 Click here to change Nickname which cost you 5 points only 
-	</span>
-	</div>
-	</a>
-	</div>
-	</div>
-	<!--team-3-->
-		<div class="col-lg-4">
-	<div class="our-team-main">
-	<a href="/changenickname/"   data-toggle="modal" data-target="#ProfilePictureModal"  style="color:black">
-
-	<div class="team-front">
-	<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
-	<h3>Pick A Avatar</h3>
-	<p>Cost ( 5 points )</p>
-	</div>
-	
-	<div class="team-back">
-	<span>
-	 Click here to change Profile Picture which cost you 5 points only 
-	</span>
-	</div>
-	</a>
-	</div>
-	</div>
+			<div class="col-lg-4">
+				<div class="our-team-main">
+					<a href="/mytranscation/"     style="color:black">
+						<div class="team-front">
+							<img src="https://trunarrative.com/wp-content/uploads/2017/02/TN-Smooth_Transaction_340x340-340x340.png" class="img-fluid" />
+							<h3>Point Tranascation list</h3>
+							<p> &nbsp;</p>
+						</div>
+						<div class="team-back">
+							<span>
+								Click here to get the point spend list
+							</span>
+						</div>
+					</a>
+				</div>
+			</div>
 	 
-	 
-	 <div class="col-lg-4">
-	<div class="our-team-main">
-	<a href="/mytranscation/"     style="color:black">
-
-	<div class="team-front">
-	<img src="https://trunarrative.com/wp-content/uploads/2017/02/TN-Smooth_Transaction_340x340-340x340.png" class="img-fluid" />
-	<h3>Point Tranascation list</h3>
-		<p> &nbsp;</p>
-
- 	</div>
-	
-	<div class="team-back">
-	<span>
-	 Click here to get the point spend list 
-	</span>
-	</div>
-	</a>
-	</div>
-	</div>
-	 
-	 
-	 
-	 <div class="col-lg-4">
-	<div class="our-team-main">
-	<a href="/profile/"     style="color:black">
-
-	<div class="team-front">
-	<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="img-fluid" >
-	<h3>My Profile</h3>
-		<p> &nbsp;</p>
-
- 	</div>
-	
-	<div class="team-back">
-	<span>
-	 Click here to view my profile
-	</span>
-	</div>
-	</a>
-	</div>
-	</div>
-	
-	
-	
-	 
-	 
-	
- 
- 
-				  <!-- dashboard end -->
-				  
-		 
-		 
+			<div class="col-lg-4">
+				<div class="our-team-main">
+					<a href="/profile/"     style="color:black">
+						<div class="team-front">
+							<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="img-fluid" >
+							<h3>My Profile</h3>
+							<p> &nbsp;</p>
+						</div>
+						<div class="team-back">
+							<span>
+								Click here to view your profile
+							</span>
+						</div>
+					</a>
+				</div>
+			</div><!-- dashboard end -->
 		</div>
       </div> 
 </section>
@@ -253,199 +211,157 @@ $('document').ready(function(){
 		   // submit nickname end here 
 
 		});
-	
-
-
 
 </script>
 
-<form   id="nicksave"  >
-<div class="modal fade" id="NicknameModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;</button>
-                <h4 class="modal-title" id="ModalTitle">
-                    Change Nickname</h4>
-            </div>
-            <div class="modal-body">
-				<div class="alert alert-danger" id="alertdiv" style="display:none;">
+<form id="nicksave"  >
+	<div class="modal fade" id="NicknameModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+					<h4 class="modal-title" id="ModalTitle">Change Nickname</h4>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" id="alertdiv" style="display:none;">
 						<strong>Error!</strong> <span id="errmsg"></span>
 					</div>
-					
 					<div class="alert alert-success" id="successdiv" style="display:none;">
 						<strong>Success!</strong> <span id="successmsg"></span>
 					</div>
-                <label for="txtUsername">
-                    Nickname</label>
- 
-                <br />
-                
-                <div class="checkbox">
-				<input type="text" name="nickname" id="nickname" value="" />
-                 </div>
-                <div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
-                    <strong>Error!</strong>
-                 </div>
-            </div>
-            <div class="modal-footer">
-			        <button type="submit" class="btn btn-primary">Save changes</button>
-                 <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+					<label for="txtUsername">Nickname</label>
+					<br/>
+					<div class="checkbox">
+						<input type="text" name="nickname" id="nickname" value="" />
+					</div>
+					<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
+						<strong>Error!</strong>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </form>
 
 <form id="form1">
-<div class="modal fade" id="ProfilePictureModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;</button>
-                <h4 class="modal-title" id="ModalTitle">
-                    Change Avatar </h4>
-            </div>
-            <div class="modal-body">
-               
-				<div style="float:left" class="checkbox">
-				<input type="radio" name="check" id="check" value="img_568657.png" />
-
-                <img src="../static/assets/avtar/img_568657.png" width="100" >
+	<div class="modal fade" id="ProfilePictureModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="ModalTitle">Change Avatar </h4>
 				</div>
-				<div style="float:left" class="checkbox">
-				<input type="radio" name="check" id="check" value="img_568657.png" />
+				<div class="modal-body">
+					<div style="float:left" class="checkbox">
+						<input type="radio" name="check" id="check" value="img_568657.png" />
+						<img src="../static/assets/avtar/img_568657.png" width="100" >
+					</div>
+					<div style="float:left" class="checkbox">
+						<input type="radio" name="check" id="check" value="img_568657.png" />
+						<img src="../static/assets/avtar/kindpng_248273.png" width="100" >
+					</div>
+					<div style="float:left" class="checkbox">
+						<input type="radio" name="check" id="check" value="img_568657.png" />
+						<img src="../static/assets/avtar/kindpng_248442.png" width="100" >
+					</div>
 
-                <img src="../static/assets/avtar/kindpng_248273.png" width="100" >
+					<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
+						<strong>Error!</strong>
+					</div>
 				</div>
-				<div style="float:left" class="checkbox">
-				<input type="radio" name="check" id="check" value="img_568657.png" />
-
-                <img src="../static/assets/avtar/kindpng_248442.png" width="100" >
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
-				
-                <div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
-                    <strong>Error!</strong>
-                 </div>
-            </div>
-            <div class="modal-footer">
-			        <button type="button" class="btn btn-primary">Save changes</button>
-                 <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+			</div>
+		</div>
+	</div>
 </form>
-    {% else %}
-        <h2>Register or Login to see more!</h2>
-    {% endif %}
-  
-
-
-
-
-
-
-
+{% else %}
+<h2>Register or Login to see more!</h2>
+{% endif %}
 
 <style type="text/css">
+	h1 h2{
+		color:#0e707d;
+		margin:40px 0 60px 0;
+		font-weight:300;
+	}
 
-h1
-{
-	color:#fff;
-	margin:40px 0 60px 0;
-	font-weight:300;
-}
+	#center{
+		text-align: center;
+	}
+	#center2{
+		text-align: center;
+	}
+	.our-team-main {
+		width:100%;
+		height:auto;
+		border-bottom:5px #323233 solid;
+		background:#fff;
+		text-align:center;
+		border-radius:10px;
+		overflow:hidden;
+		position:relative;
+		transition:0.5s;
+		margin-bottom:28px;
+	}
 
-.our-team-main
-{
-	width:100%;
-	height:auto;
-	border-bottom:5px #323233 solid;
-	background:#fff;
-	text-align:center;
-	border-radius:10px;
-	overflow:hidden;
-	position:relative;
-	transition:0.5s;
-	margin-bottom:28px;
-}
+	.our-team-main img {
+		border-radius:50%;
+		margin-bottom:20px;
+		width: 90px;
+	}
 
+	.our-team-main h3 {
+		font-size:20px;
+		font-weight:700;
+	}
 
-.our-team-main img
-{
-	border-radius:50%;
-	margin-bottom:20px;
-	width: 90px;
-}
+	.our-team-main p {
+		margin-bottom:0;
+	}
 
-.our-team-main h3
-{
-	font-size:20px;
-	font-weight:700;
-}
+	.team-back {
+		width:100%;
+		height:auto;
+		position:absolute;
+		top:0;
+		left:0;
+		padding:5px 15px 0 15px;
+		text-align:left;
+		background:#fff;
+	}
 
-.our-team-main p
-{
-	margin-bottom:0;
-}
+	.team-front {
+		width:100%;
+		height:auto;
+		position:relative;
+		z-index:10;
+		background:#fff;
+		padding:15px;
+		bottom:0px;
+		transition: all 0.5s ease;
+	}
 
-.team-back
-{
-	width:100%;
-	height:auto;
-	position:absolute;
-	top:0;
-	left:0;
-	padding:5px 15px 0 15px;
-	text-align:left;
-	background:#fff;
-	
-}
+	.our-team-main:hover .team-front {
+		bottom:-200px;
+		transition: all 0.5s ease;
+	}
 
-.team-front
-{
-	width:100%;
-	height:auto;
-	position:relative;
-	z-index:10;
-	background:#fff;
-	padding:15px;
-	bottom:0px;
-	transition: all 0.5s ease;
-}
+	.our-team-main:hover {
+		border-color:#777;
+		transition:0.5s;
+	}
+	/*our-team-main*/
+</style><!-- Components Vendor  -->
 
-.our-team-main:hover .team-front
-{
-	bottom:-200px;
-	transition: all 0.5s ease;
-}
-
-.our-team-main:hover
-{
-	border-color:#777;
-	transition:0.5s;
-}
-
-/*our-team-main*/
-
-
-
-</style>
-<!-- Components Vendor  --> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-   
-
-	
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!--Plugin Initialize-->
-
-   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!--Plugin Initialize-->
 
 {% endblock %}
