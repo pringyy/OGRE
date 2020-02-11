@@ -1,5 +1,6 @@
 image: "python:3.7"
 
+
 # job that runs the Django unit tests
 unit_tests:
   script:
@@ -12,9 +13,7 @@ unit_tests:
     - cd Website/Ogre
     - python3 manage.py test 
     
-  on_success:
-  
-    # if all tests pass, produce report detailing coverage of unit tests
+    # produce report on test coverage
     - pip install coverage
     - coverage run ./manage.py test && coverage report
     
