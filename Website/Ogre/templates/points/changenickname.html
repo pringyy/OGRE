@@ -102,21 +102,22 @@ $('document').ready(function(){
     <div class = "container">
     {% if user.is_authenticated %}
         <div style="text-align: center;"><h1>Change Username</h1><br></div>
-        Please enter your current username and your new username below. Changing your nickname will cost 5 OGRE points.
+        Please enter your new username below. Changing your nickname will cost 5 OGRE points.
 
         <div>
             Current Nickname : {{user.username}}<br>
             Current Points : <b class="points"> </b>
         </div><br>
 
-        <form class = "change_nickname" method="post">
+        <form id = "ChangeNicknameForm" method="post">
+            {% csrf_token %}
             <div>
-              <label for="newNickname"></label>
-              <input type="text" width="20" id="newNickname" class="form-control" name="currentNickname" placeholder="New Nickname" required>
+              <label for="new_nickname"></label>
+              <input type="text" width="20" id="new_nickname" class="form-control" name="new_nickname" placeholder="New Nickname" required>
             </div><br>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Submit changes</button>
+                <button type="submit" formmethod="post" class="btn btn-primary">Submit changes</button>
             </div>
         </form>
     </div>

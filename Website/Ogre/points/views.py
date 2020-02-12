@@ -8,13 +8,16 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 import requests
-from points.forms import UserForm, UserProfileInfoForm, ContactForm
+from points.forms import UserForm, UserProfileInfoForm, ContactForm, ChangeNicknameForm
 import json
 # Email
 from django.core.mail import BadHeaderError, EmailMessage, send_mail
 
 # Notifications
 from django.contrib import messages
+
+from points.models import StudentProfileInfo
+
 
 def index(request):
     context_dict={}
@@ -30,7 +33,7 @@ def show_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
-    
+
 
 #def user_login(request):
  #   return render(request, 'points/login.html', {'login_message': 'Please enter your username and password'})
@@ -45,18 +48,18 @@ def register(request):
         myobj = {'username':studentID,'password':password}
         # add the moodle RESTful api here!
         r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
-        #if d['status] == 1, the user is a moodle user 
+        #if d['status] == 1, the user is a moodle user
         d = r.json()
         print(d['status'])
         print(studentID,password)
         if user_form.is_valid() and profile_form.is_valid() and d['status']==1:
-            
+
             id=d['userinfo']['id']
             request.session['id'] = id
-            request.session['username'] = d['userinfo']['username'] 
+            request.session['username'] = d['userinfo']['username']
             user = user_form.save(commit=False)
             print(user.username)
-            
+
             user.set_password(user.password)
             user.save()
             profile = profile_form.save(commit=False)
@@ -87,7 +90,7 @@ def user_login(request):
         password = request.POST.get('password')
         user = authenticate(username=username, studentID = studentID, password=password)
         print(username,studentID,password)
-        
+
         if user:
 
             if user.is_active:
@@ -98,10 +101,10 @@ def user_login(request):
                 if d['status']==1:
                     id=d['userinfo']['id']
                     request.session['id'] = id
-                    request.session['username'] = d['userinfo']['username'] 
+                    request.session['username'] = d['userinfo']['username']
                 messages.success(request, "Sucessfully logged in!")
                 login(request,user)
-                
+
                 return HttpResponseRedirect(reverse('index'))
 
             else:
@@ -182,12 +185,38 @@ def getmypoint(request):
     return HttpResponse(r)
 
 
-def ajaxpointlist(request): 
+def ajaxpointlist(request):
     id=request.session['id']
     r = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
     return HttpResponse(r)
 
 def changenickname(request):
+
+    # Obtain list of all student profiles
+    try:
+        profiles = StudentProfileInfo.objects.all()
+    except:
+        pass
+    context_dict = {'profiles': profiles}
+
+    if request.method == "POST":
+        instanceProfile = None
+        for p in profiles:
+            if p.user == request.user:
+                instanceProfile = p
+                break
+        form = ChangeNicknameForm(request.POST, request.user)
+
+        if form.isValid():
+            p.user.username = form.cleaned_data['new_nickname']
+            p.save
+            return redirect('points/changenickname.html')
+
+    else:
+        form = ChangeNicknameForm(request.user)
+        context_dict['form'] = form
+        return render(request, "points/changenickname.html", context = context_dict )
+
     myobj = {'user_id': '1',"points":5}
     id=request.session['id']
     return render(request,'points/changenickname.html')

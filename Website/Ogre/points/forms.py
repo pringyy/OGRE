@@ -21,3 +21,8 @@ class ContactForm(forms.Form):
         widget=forms.Textarea,
         label="Message"
     )
+
+class ChangeNicknameForm(forms.Form):
+    class Meta():
+        model = User()
+        fields = ('new_nickname')
