@@ -2,14 +2,17 @@
 {% load static %}
 
 {% block body_block %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 {% if user.is_authenticated %}
 <section class="wt-section" id="login">
 	<div class="container">
 		<div class="row"><!-- dashboard start -->
 			<div class="col-lg-12">
+				<br>
 				<h1 class="display-4" id = "center">Hello {{ user.username }} {{user.studentID}} </h1>
+				<br>
 				<h2 class="display-4" id = "center2">Welcome To The Dashboard </h2>
+				<br>
 			</div>
 			<!--team-1-->
 			<div class="col-lg-4">
@@ -38,9 +41,9 @@
 						</div>
 
 						<div class="team-back">
-							<span>
+							<p class= 'dashboard-text'>
 								Click here to play an interactive game with very minimal amount of points (5 points )
-							</span>
+							</p>
 						</div>
 					</div>
 				</a>
@@ -57,7 +60,8 @@
 						</div>
 						<div class="team-back">
 							<span>
-								Click here to change your nickname. Costs only 5 points.
+								Click here to change your nickname
+								Costs 5 points.
 							</span>
 						</div>
 					</a>
@@ -74,7 +78,8 @@
 						</div>
 						<div class="team-back">
 							<span>
-								Click here to change Profile Picture. Costs only 5 points.
+								Click here to buy a new avatar.
+								Costs 5 points
 							</span>
 						</div>
 					</a>
@@ -86,12 +91,12 @@
 					<a href="/mytranscation/"     style="color:black">
 						<div class="team-front">
 							<img src="https://trunarrative.com/wp-content/uploads/2017/02/TN-Smooth_Transaction_340x340-340x340.png" class="img-fluid" />
-							<h3>Point Tranascation list</h3>
+							<h3>Points Transaction List</h3>
 							<p> &nbsp;</p>
 						</div>
 						<div class="team-back">
 							<span>
-								Click here to get the point spend list
+								Click here to see your previous transactions
 							</span>
 						</div>
 					</a>
@@ -290,81 +295,6 @@ $('document').ready(function(){
 {% else %}
 <h2>Register or Login to see more!</h2>
 {% endif %}
-
-<style type="text/css">
-	h1 h2{
-		color:#0e707d;
-		margin:40px 0 60px 0;
-		font-weight:300;
-	}
-
-	#center{
-		text-align: center;
-	}
-	#center2{
-		text-align: center;
-	}
-	.our-team-main {
-		width:100%;
-		height:auto;
-		border-bottom:5px #323233 solid;
-		background:#fff;
-		text-align:center;
-		border-radius:10px;
-		overflow:hidden;
-		position:relative;
-		transition:0.5s;
-		margin-bottom:28px;
-	}
-
-	.our-team-main img {
-		border-radius:50%;
-		margin-bottom:20px;
-		width: 90px;
-	}
-
-	.our-team-main h3 {
-		font-size:20px;
-		font-weight:700;
-	}
-
-	.our-team-main p {
-		margin-bottom:0;
-	}
-
-	.team-back {
-		width:100%;
-		height:auto;
-		position:absolute;
-		top:0;
-		left:0;
-		padding:5px 15px 0 15px;
-		text-align:left;
-		background:#fff;
-	}
-
-	.team-front {
-		width:100%;
-		height:auto;
-		position:relative;
-		z-index:10;
-		background:#fff;
-		padding:15px;
-		bottom:0px;
-		transition: all 0.5s ease;
-	}
-
-	.our-team-main:hover .team-front {
-		bottom:-200px;
-		transition: all 0.5s ease;
-	}
-
-	.our-team-main:hover {
-		border-color:#777;
-		transition:0.5s;
-	}
-	/*our-team-main*/
-</style><!-- Components Vendor  -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
