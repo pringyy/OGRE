@@ -10,7 +10,9 @@
 
 .white-text{
   color: white;
+  font-weight: 50;
 }
+
  body
 {
   background:#00bcd4;
