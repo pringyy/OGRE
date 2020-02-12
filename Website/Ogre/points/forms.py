@@ -1,6 +1,7 @@
 from django import forms
 from points.models import StudentProfileInfo
 from django.contrib.auth.models import User
+
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(),help_text='Required.  the password must same with your moodle ID')
     

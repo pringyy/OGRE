@@ -1,5 +1,6 @@
 {% extends "points/base.html" %}
-{% load static%}
+{% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %} {{ block.super }} - Register {% endblock %}
 
@@ -19,8 +20,8 @@
     
         <form enctype="multipart/form-data" method="POST">
           {% csrf_token %}
-          {{ user_form.as_p }}
-          {{ profile_form.as_p }}
+          {% crispy user_form %}
+          {% crispy profile_form %}
           <input type="submit" name="" value="Register">
         </form>
         
