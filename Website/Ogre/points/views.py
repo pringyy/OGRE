@@ -183,8 +183,11 @@ def faq(request):
     context_dict = {}
     return render(request, 'points/faq.html', context_dict)
 
-
 def profile(request):
+    context_dict = {}
+    return render(request, 'points/profile.html', context_dict)
+
+def get_user_profile(request, username):
     user = User.objects.get(username=username)
     return render(request, 'points/profile.html', {"user":user})
 
