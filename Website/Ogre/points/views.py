@@ -185,8 +185,8 @@ def faq(request):
 
 
 def profile(request):
-    context_dict = {}
-    return render(request, 'points/profile.html', context_dict)
+    user = User.objects.get(username=username)
+    return render(request, 'points/profile.html', {"user":user})
 
 def pointlist(request):
     if request.session.get('id'):
