@@ -1,4 +1,6 @@
 {% extends "points/base.html" %}
+{% load static %}
+
 {% block body_block %}
 
 {% if user.is_authenticated %}
@@ -100,7 +102,11 @@
 				<div class="our-team-main">
 					<a href="/profile/"     style="color:black">
 						<div class="team-front">
-							<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="img-fluid" >
+							{% if user.studentprofileinfo.profile_pic %}
+                				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
+            				{% else %}
+                				<img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            				{% endif %}
 							<h3>My Profile</h3>
 							<p> &nbsp;</p>
 						</div>

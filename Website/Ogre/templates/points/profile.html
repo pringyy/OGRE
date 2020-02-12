@@ -42,10 +42,10 @@
                 </div>
                 <div class="tab-pane" id="messages">
                     <h5>Points</h5>
-                    <h6>Current Points: </h6>
-                    <b class = "points">
+                    <h6>Current Points:   <b class = "points"></b> </h6>
+                    
 
-                    </b>
+                    
 
                     <h6>Spent Points</h6>
                     <h6>Total Points</h6>
@@ -57,8 +57,11 @@
             </div>
         </div>
         <div class="col-lg-4 order-lg-1 text-center">
-            <img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-
+            {% if user.studentprofileinfo.profile_pic %}
+                <img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
+            {% else %}
+                <img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
+            {% endif %}
         </div>
     </div>
 
