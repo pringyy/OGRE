@@ -7,6 +7,10 @@
     background-blend-mode: luminosity;
 }
 
+
+.white-text{
+  color: white;
+}
  body
 {
   background:#00bcd4;

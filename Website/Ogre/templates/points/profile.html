@@ -4,9 +4,11 @@
 {% block title %} {{ block.super }} - profile {% endblock %}
 
 {% block body_block %}
+<!--Reads in the external CSS for the profile page-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
 <div class="container">
     <br>
-    <h1 class="display-4">Profile</h1>
+    <h1 class="display-4 white-text">Profile</h1>
     <hr>
 
     <div class="row my-2">
@@ -95,41 +97,10 @@ $('document').ready(function(){
 		    })
 
 		});
-
-
-
-
-
 </script>
-
-<style type = "text/css">
-    body {
-        background: #00bcd4;
-    }
-
-    .nav{
-        width: fit-content;
-    }
-    .nav-link{
-        color: black;
-    }
-    .display-4{
-        color: #0e707d;
-    }
-    .nav-item{
-        color: #0e707d;
-    }
-    .tab-content{
-        color: #0e707d;
-    }
-</style>
-
-
 
 <!-- Components Vendor  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-
-
 
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!--Plugin Initialize-->

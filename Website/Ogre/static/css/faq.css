@@ -1,0 +1,10 @@
+
+/*css to make the FAQ questions black on display*/
+.black-text{
+  color: black;
+}
+
+/*css to make the FAQ questions white when you hover over them*/
+.black-text:hover{
+  color: white;
+}

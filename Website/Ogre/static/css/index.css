@@ -5,6 +5,18 @@
 	font-weight: bold;
 }
 
+
+.headings{
+	color: white;
+}
+
+
+.dashboard-text2{
+	padding-top: 85px;
+	text-align: center;
+	font-weight: bold;
+}
+
 h1 h2{
 	color:#0e707d;
 	margin:40px 0 60px 0;
