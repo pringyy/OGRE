@@ -12,8 +12,9 @@ urlpatterns = [
     url(r'^points/', include('points.urls')),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^profile/$',views.profile,name='profile'),
-     path('mytranscation/',views.pointlist,name='pointlist'),
+    path('mytranscation/',views.pointlist,name='pointlist'),
     path('ajaxpointlist/',views.ajaxpointlist,name='ajaxpointlist'),
+    path('pointcalculate/',views.pointcalculate,name = 'pointcalculate'),
     path('game/',views.game,name='game'),
     url(r'^iterateJSON/$', views.iterateJSON, name='iterateJSON'),
     
