@@ -17,6 +17,7 @@ from django.core.mail import BadHeaderError, EmailMessage, send_mail
 # Notifications
 from django.contrib import messages
 
+@login_required
 def index(request):
     context_dict={}
     return render(request, 'points/index.html', context_dict)
@@ -32,10 +33,6 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
     
-
-#def user_login(request):
- #   return render(request, 'points/login.html', {'login_message': 'Please enter your username and password'})
-
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -136,6 +133,7 @@ def user_login(request):
             messages.error(request, "Incorrect username or password!")
 
     return render(request, 'points/login.html', {})
+
 def ogre_points(request):
     context_dict = {}
     return render(request, 'points/ogre_points.html', context_dict)
@@ -187,6 +185,7 @@ def profile(request):
     context_dict = {}
     return render(request, 'points/profile.html', context_dict)
 
+@login_required
 def get_user_profile(request, username):
     user = User.objects.get(username=username)
     return render(request, 'points/profile.html', {"user":user})
