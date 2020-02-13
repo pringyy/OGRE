@@ -90,7 +90,7 @@
 	 
 			<div class="col-lg-4">
 				<div class="our-team-main">
-					<a href="/mytranscation/"     style="color:black">
+					<a href="/mytransaction/"     style="color:black">
 						<div class="team-front">
 							<img src="https://trunarrative.com/wp-content/uploads/2017/02/TN-Smooth_Transaction_340x340-340x340.png" class="img-fluid" />
 							<h3>Points Transaction List</h3>
@@ -108,7 +108,7 @@
 	 
 			<div class="col-lg-4">
 				<div class="our-team-main">
-					<a href="/profile/"     style="color:black">
+					<a href="{% url 'profile' %}"     style="color:black">
 						<div class="team-front">
 							{% if user.studentprofileinfo.profile_pic %}
                 				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">

@@ -4,8 +4,9 @@ body {
 
 .white-bg{
 	background: white; 
-	padding-bottom: 100px;
+	background-size: 300px 150px;
 	border-radius: 25px;
+	background-attachment: fixed;
 }
 
 .nav{
