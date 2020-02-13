@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^points/', include('points.urls')),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'profile/(?P<username>[a-zA-Z0-9]+)$', views.profile),
-    path('mytranscation/',views.pointlist,name='pointlist'),
+    path('mytransaction/',views.pointlist,name='pointlist'),
     path('ajaxpointlist/',views.ajaxpointlist,name='ajaxpointlist'),
     path('game/',views.game,name='game'),
     url(r'^iterateJSON/$', views.iterateJSON, name='iterateJSON'),

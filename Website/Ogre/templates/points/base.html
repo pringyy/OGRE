@@ -4,8 +4,8 @@
  <!-- This code acts as a base for every other webpage to use to promote consistency-->
 <html>
   <head lang = "en">
-    <meta charset="UTF-8" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">  
+  
     <title>
       {% block title_block %}OGRE - platform{% endblock %}
     </title>
@@ -40,6 +40,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         
          <ul class="navbar-nav mr-auto">
+
+
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'index'%}">Dashboard <span class="sr-only">(current)</span></a>
+            </li>
+           {% endif %}  
           <li class="nav-item">
             <a class="nav-link" href="{% url 'about'%}">About</a>
           </li>
@@ -51,7 +58,7 @@
           </li>
 
           {% if user.is_authenticated %}
-            <li class="nav-item active">
+            <li class="nav-item">
             <a class="nav-link" href="{% url 'profile'%}">My Profile <span class="sr-only">(current)</span></a>
             </li>
 
@@ -108,8 +115,9 @@
 
     </div>
 
-    <footer>
+  {% block footer1 %} 
 
+    <footer>
       <div class= "container footer">
         <br>
         <hr>
@@ -131,16 +139,11 @@
           </a>
         </div>
       </div>
-      
     </footer>
 
+  {% endblock %}
+  
   <!-- End Body -->
   </body>
  
 </html>
-
-
-
-
-	
-	

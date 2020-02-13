@@ -1,30 +1,36 @@
 {% extends "points/base.html" %}
-{% load static%}
+{% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %} {{ block.super }} - Register {% endblock %}
 
 {% block body_block %}
 
+  {%if user.is_authenticated %}
+    <meta http-equiv = "refresh" content = "0; url = {% url 'index' %}" />
+  {% else %}
 
   <div class="container">
 
     <br>
-    <h1 class="display-4">Register</h1>
+    <h1 class="display-4 white-text">Register</h1>
     <hr>
 
     <div class="jumbotron">
       {% if registered %}
-        <h1>Thank you for registering!</h1>
+        <br>
+        <center><h1 class="display-4 container white-text">Thanks for registering!</h1></center>
       {% else %}
     
         <form enctype="multipart/form-data" method="POST">
           {% csrf_token %}
-          {{ user_form.as_p }}
-          {{ profile_form.as_p }}
+          {% crispy user_form %}
+          {% crispy profile_form %}
           <input type="submit" name="" value="Register">
         </form>
         
       {% endif %}
     </div>
   </div>
+  {% endif %}
 {% endblock %}

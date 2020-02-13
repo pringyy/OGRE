@@ -4,11 +4,15 @@
 {% block title %} {{ block.super }} - profile {% endblock %}
 
 {% block body_block %}
+{% if user.is_authenticated %}
+<!--Reads in the external CSS for the profile page-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
 <div class="container">
-    <br>
-    <h1 class="display-4">Profile</h1>
-    <hr>
 
+    <br>
+    <h1 class="display-4 white-text"> {{ user }}'s Profile</h1>
+    <hr>
+    <div class= " container white-bg">
     <div class="row my-2">
         <div class="col-lg-8 order-lg-2">
             <ul class="nav nav-tabs">
@@ -34,19 +38,13 @@
                             <p>Username: {{ user }} </p>
                             <p>Student ID: {{ user.studentprofileinfo.StudentID }}</p>
                             <p>Email: {{ user.email }}</p>
-                            <h6>Subjects</h6>
-                            <p>Computing Science</p>
                         </div>
                     </div>
                     <!--/row-->
                 </div>
-                <div class="tab-pane" id="messages">
+                <div class="tab-pane fade" id="messages">
                     <h5>Points</h5>
                     <h6>Current Points:   <b class = "points"></b> </h6>
-                    
-
-                    
-
                     <h6>Spent Points</h6>
                     <h6>Total Points</h6>
                 </div>
@@ -64,7 +62,7 @@
             {% endif %}
         </div>
     </div>
-
+</div>
 
 </div>
 
@@ -95,43 +93,17 @@ $('document').ready(function(){
 		    })
 
 		});
-
-
-
-
-
 </script>
-
-<style type = "text/css">
-    body {
-        background: #00bcd4;
-    }
-
-    .nav{
-        width: fit-content;
-    }
-    .nav-link{
-        color: black;
-    }
-    .display-4{
-        color: #0e707d;
-    }
-    .nav-item{
-        color: #0e707d;
-    }
-    .tab-content{
-        color: #0e707d;
-    }
-</style>
-
-
 
 <!-- Components Vendor  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-
-
-
+<!--Plugin Initialize-->
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!--Plugin Initialize-->
+
+{% else %}
+    <br>
+    <center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
+{% endif %}
+    
 
 {% endblock %}

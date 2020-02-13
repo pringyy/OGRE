@@ -17,6 +17,7 @@ from django.core.mail import BadHeaderError, EmailMessage, send_mail
 # Notifications
 from django.contrib import messages
 
+@login_required
 def index(request):
     context_dict={}
     return render(request, 'points/index.html', context_dict)
@@ -32,10 +33,6 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
     
-
-#def user_login(request):
- #   return render(request, 'points/login.html', {'login_message': 'Please enter your username and password'})
-
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -62,7 +59,7 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-            messages.success(request, "Sucessfully Registered!")
+            messages.success(request, "Successfully Registered!")
             login(request,user)
             if 'profile_pic' in request.FILES:
                 print('found the picture!')
@@ -71,7 +68,7 @@ def register(request):
             registered = True
         else:
             if d['status']==0:
-                messages.error(request, "your must enter the correct moodle related info -> student Id and password!!!!")
+                messages.error(request, "Enter your moodle username and password")
                 #deprecate this line
                 #return HttpResponse("your must enter the correct moodle related info -> student Id and password!!!!")
             print(user_form.errors,profile_form.errors)
@@ -107,13 +104,13 @@ def user_login(request):
                     login(request,user)
                     return HttpResponseRedirect(reverse('index'))
                 elif d['status']==0:
-                    messages.error(request, "you seems like change your moodle password, please use that password!")
+                    messages.error(request, "Please use your moodle password!")
                     
                 
                 
 
             else:
-                messages.error(request, "Account is not active, please register via your moodle account first!")
+                messages.error(request, "Please register with your moodle account first!")
         
         elif d['status']==1:
             id=d['userinfo']['id']
@@ -128,14 +125,15 @@ def user_login(request):
                 login(request,user2)
                 return HttpResponseRedirect(reverse('index'))
             else:
-                messages.error(request, "please enter the correct username!")
+                messages.error(request, "Please enter the correct username!")
                 
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
-            messages.error(request, "Incorrect username or password!,please register via your moodle account first!")
+            messages.error(request, "Incorrect username or password!")
 
     return render(request, 'points/login.html', {})
+
 def ogre_points(request):
     context_dict = {}
     return render(request, 'points/ogre_points.html', context_dict)
@@ -187,6 +185,7 @@ def profile(request):
     context_dict = {}
     return render(request, 'points/profile.html', context_dict)
 
+@login_required
 def get_user_profile(request, username):
     user = User.objects.get(username=username)
     return render(request, 'points/profile.html', {"user":user})
@@ -203,7 +202,7 @@ def game(request):
         r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
         return render(request,'points/game.html')
     else:
-        messages.error(request, "you don't have enough points to play!")
+        messages.error(request, "You don't have enough points to play!")
         return HttpResponseRedirect(reverse('index'))
 def getmypoint(request):
     myobj = {'user_id': '1'}

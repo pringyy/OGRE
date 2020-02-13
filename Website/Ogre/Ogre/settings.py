@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'points',
     'widget_tweaks',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -162,3 +163,6 @@ DEFAULT_FROM_EMAIL = 'testing@example.com'
 
 #For development
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#Sets up crispy forms templates for the forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
