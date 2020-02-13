@@ -2,6 +2,12 @@ body {
     background: #00bcd4;
 }
 
+.white-bg{
+	background: white; 
+	padding-bottom: 100px;
+	border-radius: 25px;
+}
+
 .nav{
     width: fit-content;
 }
