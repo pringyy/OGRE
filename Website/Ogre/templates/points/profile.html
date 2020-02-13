@@ -4,6 +4,7 @@
 {% block title %} {{ block.super }} - profile {% endblock %}
 
 {% block body_block %}
+{% if user.is_authenticated %}
 <!--Reads in the external CSS for the profile page-->
 <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
 <div class="container">
@@ -97,8 +98,13 @@ $('document').ready(function(){
 
 <!-- Components Vendor  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-
+<!--Plugin Initialize-->
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!--Plugin Initialize-->
+
+{% else %}
+    <br>
+    <center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
+{% endif %}
+    
 
 {% endblock %}

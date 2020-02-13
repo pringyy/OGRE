@@ -130,8 +130,80 @@
       </div> 
 </section>
 
+<form id="nicksave"  >
+	<div class="modal fade" id="NicknameModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+					<h4 class="modal-title" id="ModalTitle">Change Nickname</h4>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" id="alertdiv" style="display:none;">
+						<strong>Error!</strong> <span id="errmsg"></span>
+					</div>
+					<div class="alert alert-success" id="successdiv" style="display:none;">
+						<strong>Success!</strong> <span id="successmsg"></span>
+					</div>
+					<label for="txtUsername">Nickname</label>
+					<br/>
+					<div class="checkbox">
+						<input type="text" name="nickname" id="nickname" value="" />
+					</div>
+					<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
+						<strong>Error!</strong>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
 
+<form id="form1">
+	<div class="modal fade" id="ProfilePictureModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="ModalTitle">Change Avatar </h4>
+				</div>
+				<div class="modal-body">
+					<div style="float:left" class="checkbox">
+						<input type="radio" name="check" id="check" value="img_568657.png" />
+						<img src="../static/assets/avtar/img_568657.png" width="100" >
+					</div>
+					<div style="float:left" class="checkbox">
+						<input type="radio" name="check" id="check" value="img_568657.png" />
+						<img src="../static/assets/avtar/kindpng_248273.png" width="100" >
+					</div>
+					<div style="float:left" class="checkbox">
+						<input type="radio" name="check" id="check" value="img_568657.png" />
+						<img src="../static/assets/avtar/kindpng_248442.png" width="100" >
+					</div>
 
+					<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
+						<strong>Error!</strong>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+{% else %}
+<br>
+<center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
+{% endif %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 $('document').ready(function(){
@@ -227,81 +299,5 @@ $('document').ready(function(){
 		});
 
 </script>
-
-<form id="nicksave"  >
-	<div class="modal fade" id="NicknameModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-					<h4 class="modal-title" id="ModalTitle">Change Nickname</h4>
-				</div>
-				<div class="modal-body">
-					<div class="alert alert-danger" id="alertdiv" style="display:none;">
-						<strong>Error!</strong> <span id="errmsg"></span>
-					</div>
-					<div class="alert alert-success" id="successdiv" style="display:none;">
-						<strong>Success!</strong> <span id="successmsg"></span>
-					</div>
-					<label for="txtUsername">Nickname</label>
-					<br/>
-					<div class="checkbox">
-						<input type="text" name="nickname" id="nickname" value="" />
-					</div>
-					<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
-						<strong>Error!</strong>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Save changes</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
-
-<form id="form1">
-	<div class="modal fade" id="ProfilePictureModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="ModalTitle">Change Avatar </h4>
-				</div>
-				<div class="modal-body">
-					<div style="float:left" class="checkbox">
-						<input type="radio" name="check" id="check" value="img_568657.png" />
-						<img src="../static/assets/avtar/img_568657.png" width="100" >
-					</div>
-					<div style="float:left" class="checkbox">
-						<input type="radio" name="check" id="check" value="img_568657.png" />
-						<img src="../static/assets/avtar/kindpng_248273.png" width="100" >
-					</div>
-					<div style="float:left" class="checkbox">
-						<input type="radio" name="check" id="check" value="img_568657.png" />
-						<img src="../static/assets/avtar/kindpng_248442.png" width="100" >
-					</div>
-
-					<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
-						<strong>Error!</strong>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">Save changes</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
-{% else %}
-<br>
-<center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
-{% endif %}
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<!--Plugin Initialize-->
 
 {% endblock %}
