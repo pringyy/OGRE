@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'profile/(?P<username>[a-zA-Z0-9]+)$', views.profile),
     path('mytransaction/',views.pointlist,name='pointlist'),
     path('ajaxpointlist/',views.ajaxpointlist,name='ajaxpointlist'),
+    path('pointcalculate/',views.pointcalculate,name = 'pointcalculate'),
     path('game/',views.game,name='game'),
     url(r'^iterateJSON/$', views.iterateJSON, name='iterateJSON'),
     

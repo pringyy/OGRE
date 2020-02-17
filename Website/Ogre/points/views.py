@@ -220,3 +220,25 @@ def ajaxpointlist(request):
     id=request.session['id']
     r = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
     return HttpResponse(r)
+
+def pointcalculate(request):
+    id=request.session['id']
+    r = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
+    d = r.json()
+    point_d = d['rows']
+    total_point = 0
+    spent_point = 0
+    #print(d['rows'])
+    for i in range(len(point_d)):
+        #print(point_d[i]['amount'])
+        if (point_d[i]['type'] == '-'):
+            spent_point += int(point_d[i]['amount'])
+        else:
+            total_point +=int(point_d[i]['amount'])
+    d.update({'total_point':total_point})
+    d.update({'spent_point':spent_point})
+    # print(r)
+    # print(total_point)
+    # print(spent_point)
+    # print(d)
+    return JsonResponse(d)
