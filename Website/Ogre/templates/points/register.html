@@ -24,8 +24,8 @@
     
         <form enctype="multipart/form-data" method="POST">
           {% csrf_token %}
-          {% crispy user_form %}
-          {% crispy profile_form %}
+          {{user_form|crispy}}
+          {{profile_form|crispy}}
           <input type="submit" name="" value="Register">
         </form>
         
