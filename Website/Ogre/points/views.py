@@ -3,7 +3,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
-
 # Auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -154,16 +153,9 @@ def contact(request):
             contact_email = form.cleaned_data['contact_email']
             subject = form.cleaned_data['subject']
             content = form.cleaned_data['content']
-            
-            email = EmailMessage(subject,
-                                content,
-                                to=["contactogre2020@gmail.com"], #change to your email
-                               )
-            # send_mail(subject,
-            #             content,
-            #             contact_email,
-            #             ['yauchungki513@gmail.com'], #change to your email
-            #             )
+            message = "Name: " + contact_name + "\nEmail: " + contact_email +  "\nMessage: " + content
+            email = EmailMessage(subject, message,
+                                to=["contactogre2020@gmail.com"]), #change to your email
             email.send()
 
             return redirect('../thanks/')
