@@ -9,7 +9,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.user_login, name='index'),
-    url(r'^OGRE/', include('points.urls')),
+    url(r'^points/', include('points.urls')),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'profile/(?P<username>[a-zA-Z0-9]+)$', views.profile),
     path('mytransaction/',views.pointlist,name='pointlist'),
