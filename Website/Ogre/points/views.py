@@ -13,7 +13,6 @@ import json
 from django.contrib.auth.models import User
 # Email
 from django.core.mail import BadHeaderError, EmailMessage, send_mail
-
 # Notifications
 from django.contrib import messages
 
@@ -79,6 +78,7 @@ def register(request):
                           {'user_form':user_form,
                            'profile_form':profile_form,
                            'registered':registered})
+
 def user_login(request):
     if request.method == 'POST':
 
@@ -144,29 +144,28 @@ def about(request):
     return render(request, 'points/about.html', context_dict)
 
 def contact(request):
-    if request.method == 'GET':
-        form = ContactForm()
-    else:
+    form = ContactForm()
+
+    if request.method == 'POST':
         form = ContactForm(request.POST)
+
         if form.is_valid():
             contact_name = form.cleaned_data['contact_name']
             contact_email = form.cleaned_data['contact_email']
             subject = form.cleaned_data['subject']
             content = form.cleaned_data['content']
-            try:
-                email = EmailMessage(subject,
-                                    content,
-                                    contact_email,
-                                    ['yauchungki513@gmail.com'], #change to your email
-                                   )
-                # send_mail(subject,
-                #             content,
-                #             contact_email,
-                #             ['yauchungki513@gmail.com'], #change to your email
-                #             )
-                email.send()
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            
+            email = EmailMessage(subject,
+                                content,
+                                to=["contactogre2020@gmail.com"], #change to your email
+                               )
+            # send_mail(subject,
+            #             content,
+            #             contact_email,
+            #             ['yauchungki513@gmail.com'], #change to your email
+            #             )
+            email.send()
+
             return redirect('../thanks/')
     return render(request, 'points/contact.html', {'form': form})
 
@@ -174,7 +173,6 @@ def contact(request):
 def thanks(request):
     context_dict = {}
     return render(request, 'points/thanks.html', context_dict)
-
 
 
 def faq(request):
@@ -193,6 +191,7 @@ def get_user_profile(request, username):
 def pointlist(request):
     if request.session.get('id'):
         return render(request,'points/pointlist.html')
+
 def game(request):
     myobj = {'user_id': '1',"points":5}
     id=request.session['id']
@@ -204,6 +203,7 @@ def game(request):
     else:
         messages.error(request, "You don't have enough points to play!")
         return HttpResponseRedirect(reverse('index'))
+
 def getmypoint(request):
     myobj = {'user_id': '1'}
     id=request.session['id']
@@ -212,6 +212,7 @@ def getmypoint(request):
     d=r.json()
     #print(d['points'])
     return HttpResponse(r)
+
 def iterateJSON(request):
     context_dict = {}
     return render(request, 'points/iterateJSON.html', context_dict)
