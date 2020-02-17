@@ -45,8 +45,8 @@
                 <div class="tab-pane fade" id="messages">
                     <h5>Points</h5>
                     <h6>Current Points:   <b class = "points"></b> </h6>
-                    <h6>Spent Points</h6>
-                    <h6>Total Points</h6>
+                    <h6>Spent Points: <b class = "spent"></b></h6>
+                    <h6>Total Points: <b class = "total"></b></h6>
                 </div>
 
                 <div class="tab-pane" id="edit">
@@ -92,7 +92,20 @@ $('document').ready(function(){
 		    //  $("#successmsgdiv").slideUp(500);
 		    })
 
+        $.ajax({
+			url: "{% url 'pointcalculate' %}",
+		type: "GET",
+			dataType:'json',
+ 		}).done(function( responce ) {
+			var total_pt = responce.total_point;
+		$(".total").html(responce.total_point)
+        $(".spent").html(responce.spent_point)
+		})
 		});
+
+
+
+        
 </script>
 
 <!-- Components Vendor  -->
