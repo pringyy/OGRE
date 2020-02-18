@@ -9,13 +9,13 @@
 
 
 .white-text{
-  color: white;
+  color: black;
   font-weight: 50;
 }
 
  body
 {
-  background:#00bcd4;
+  background: #ebf1f5;
 }
 
 .inner
@@ -49,5 +49,5 @@
 
 .navbar-custom {
   color: #FFFFFF;
-  background-color: #0e707d;
+  background-color: #005398;
 }
