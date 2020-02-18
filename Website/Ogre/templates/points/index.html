@@ -7,13 +7,19 @@
 <section class="wt-section" id="login">
 	<div class="container">
 		<div class="row"><!-- dashboard start -->
+			<!--<div class="col-lg-12">
+				<br><br>
+				<h1 class="headings"  id = "center">Hello {{ user.username }} {{user.studentID}} </h1>
+				<br>
+				<h2 class="headings"  id = "center2">Welcome to the Dashboard! </h2>
+				<br><br>
+				
+			</div>-->
 			<div class="col-lg-12">
-				<br>
-				<h1 class="display-4 headings" style = "color: white" id = "center">Hello {{ user.username }} {{user.studentID}} </h1>
-				<br>
-				<h2 class="display-4 headings" style = "color: white" id = "center2">Welcome to the Dashboard! </h2>
-				<br>
-			</div>
+			<br>
+       		<h1 class="display-4 white-text">Hello {{ user.username}}{{user.studentID}}!</h1>
+        	<hr>
+        </div>
 			<!--team-1-->
 			<div class="col-lg-4">
 				<div class="our-team-main">
