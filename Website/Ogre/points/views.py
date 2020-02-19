@@ -46,6 +46,8 @@ def register(request):
         d = r.json()
         print(d['status'])
         print(studentID,password)
+        
+        # the status 1 indicate this user is valid in moodle
         if user_form.is_valid() and profile_form.is_valid() and d['status']==1:
             
             id=d['userinfo']['id']
@@ -228,15 +230,14 @@ def pointcalculate(request):
             total_point +=int(point_d[i]['amount'])
     d.update({'total_point':total_point})
     d.update({'spent_point':spent_point})
-    # print(r)
-    # print(total_point)
-    # print(spent_point)
-    # print(d)
+    
     return JsonResponse(d)
 
 
 def changeUsername(request):
+    # first get the session id, this user for each transaction record
     id=request.session['id']
+    # get the curretn auth user
     user = request.user
     print(user.username)
     username = request.GET.get('username', None)
