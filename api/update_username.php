@@ -19,3 +19,7 @@ if(mysqli_num_rows($result) > 0){
         $sql = "SELECT * FROM mdl_user_points WHERE user_id = '".$user_id."' ";
         if($result = mysqli_query($con, $sql)){
                 if(mysqli_num_rows($result) > 0){
+                    $row = mysqli_fetch_assoc($result);
+                    $user_points = $row['points'];
+
+                    if($user_points >= $nicknamepoint){
