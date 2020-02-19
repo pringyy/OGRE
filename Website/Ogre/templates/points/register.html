@@ -6,31 +6,30 @@
 
 {% block body_block %}
 
-  {%if user.is_authenticated %}
-    <meta http-equiv = "refresh" content = "0; url = {% url 'index' %}" />
-  {% else %}
+{%if user.is_authenticated %}
+<meta http-equiv = "refresh" content = "0; url = {% url 'index' %}" />
+{% else %}
 
-  <div class="container">
+<div class="container">
+  <br>
+  <h1 class="display-4 white-text">Register</h1>
+  <hr>
 
+  <div class="jumbotron">
+    {% if registered %}
     <br>
-    <h1 class="display-4 white-text">Register</h1>
-    <hr>
-
-    <div class="jumbotron">
-      {% if registered %}
-        <br>
-        <center><h1 class="display-4 container white-text">Thanks for registering!</h1></center>
-      {% else %}
+    <center><h1 class="display-4 container white-text">Thanks for registering!</h1></center>
+    {% else %}
     
-        <form enctype="multipart/form-data" method="POST">
-          {% csrf_token %}
-          {{user_form|crispy}}
-          {{profile_form|crispy}}
-          <input type="submit" name="" value="Register">
-        </form>
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      {{user_form|crispy}}
+      {{profile_form|crispy}}
+      <input type="submit" name="" value="Register">
+    </form>
         
-      {% endif %}
-    </div>
+    {% endif %}
   </div>
-  {% endif %}
+</div>
+{% endif %}
 {% endblock %}

@@ -13,48 +13,43 @@
     <p class="lead bold-text">Drop Us a Message</p>
 
     <div class="row">
-
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
             <form class="form-horizontal" role="form" action="." method="post">
-            {% csrf_token %}
+                {% csrf_token %}
                 {% for field in form %}
-                    {% if field.errors %}
-                    <div class="form-group has-error">
-                        <label class="col-md-3 control-label" for="id_{{ field.name }}">{{ field.label }}</label>
-                        <div class="col-md-6">
-                            {{ field|attr:"class:form-control" }}
-                            <span class="help-block">
-                                {% for error in  field.errors %}{{ error }}{% endfor %}
-                            </span>
-                        </div>
+                {% if field.errors %}
+                <div class="form-group has-error">
+                    <label class="col-md-3 control-label" for="id_{{ field.name }}">{{ field.label }}</label>
+                    <div class="col-md-6">
+                        {{ field|attr:"class:form-control" }}
+                        <span class="help-block">
+                            {% for error in  field.errors %}{{ error }}{% endfor %}
+                        </span>
                     </div>
-                {% else %}
-                    <div class="form-group">
-                        <label class="col-md-3 control-label" for="id_{{ field.name }}">{{ field.label }}</label>
-                        <div class="col-md-6">
-                            {{ field|attr:"class:form-control" }}
-                            {% if field.help_text %}
-                                <p class="help-block"><small>{{ field.help_text }}</small></p>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-
-            <div class="form-group">
-                <div class="col-md-offset-3 col-md-6">
-                    <button type="submit" class="btn btn-primary">Send</button>
                 </div>
-            </div>
-
-        </form>
+                {% else %}
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="id_{{ field.name }}">{{ field.label }}</label>
+                    <div class="col-md-6">
+                        {{ field|attr:"class:form-control" }}
+                        {% if field.help_text %}
+                        <p class="help-block"><small>{{ field.help_text }}</small></p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-6">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </form>
 
             <div class="status"></div>
         </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
         <div class="col-md-3 text-center">
             <ul class="list-unstyled mb-0">
                 <li><i class="fas fa-map-marker-alt fa-2x"></i>
@@ -68,17 +63,11 @@
                 <li><i class="fas fa-envelope mt-4 fa-2x"></i>
                     <p class = "bold-text">contact@OGRE.com</p>
                 </li>
+
                 <li>
                     <iframe width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJs2n0CtJFiEgRg0leZQti8KM&key=AIzaSyCZ7PwXIZos1wJzKKQQlm15b39pR9BjimY" allowfullscreen></iframe>
                 </li>
             </ul>
-
         </div>
-        <!--Grid column-->
-
     </div>
-
-
-
-
 {% endblock %}

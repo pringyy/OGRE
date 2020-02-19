@@ -8,58 +8,50 @@
 <!--Reads in the external CSS for the profile page-->
 <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
 <div class="container">
-
     <br>
     <h1 class="display-4 white-text"> {{ user }}'s Profile</h1>
     <hr>
+
     <div class= " container white-bg">
-    <div class="row my-2">
-        <div class="col-lg-8 order-lg-2">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">OGRE Points</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Comments</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#wall" data-toggle="tab" class="nav-link">Wall</a>
-                </li>
-            </ul>
-            <div class="tab-content py-4">
-                <div class="tab-pane active" id="profile">
-                    <h5 class="mb-3"> Profile</h5>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>About</h6>
-                            <p>Username: {{ user }} </p>
-                            <p>Student ID: {{ user.studentprofileinfo.StudentID }}</p>
-                            <p>Email: {{ user.email }}</p>
+        <div class="row my-2">
+            <div class="col-lg-8 order-lg-2">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="" data-target="#messages" data-toggle="tab" class="nav-link">OGRE Points</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content py-4">
+                    <div class="tab-pane active" id="profile">
+                        <h5 class="mb-3"> Profile</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>About</h6>
+                                <p>Username: {{ user }} </p>
+                                <p>Student ID: {{ user.studentprofileinfo.StudentID }}</p>
+                                <p>Email: {{ user.email }}</p>
+                            </div>
                         </div>
                     </div>
-                    <!--/row-->
-                </div>
-                <div class="tab-pane fade" id="messages">
-                    <h5>Points</h5>
-                    <h6>Current Points:   <b class = "points"></b> </h6>
-                    <h6>Total Points spent: <b class = "spent"></b></h6>
-                    <h6>Total Points earned: <b class = "total"></b></h6>
-                </div>
-
-                <div class="tab-pane" id="edit">
-                    <p>hi</p>
+                    <div class="tab-pane fade" id="messages">
+                        <h5>Points</h5>
+                        <h6>Current Points:   <b class = "points"></b> </h6>
+                        <h6>Total Points spent: <b class = "spent"></b></h6>
+                        <h6>Total Points earned: <b class = "total"></b></h6>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 order-lg-1 text-center">
-            {% if user.studentprofileinfo.profile_pic %}
+
+            <div class="col-lg-4 order-lg-1 text-center">
+                {% if user.studentprofileinfo.profile_pic %}
                 <img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
-            {% else %}
+                {% else %}
                 <img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
-            {% endif %}
+                {% endif %}
         </div>
     </div>
 </div>
@@ -69,54 +61,38 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 $('document').ready(function(){
+    $.ajax({
+        url: "{% url 'getmypoint' %}",
+        type: "GET",
+        dataType:'json',
+    }).done(function( responce ) {
+        var status = responce.status;
+        if(status == '1'){
+            $(".points").html(responce.points)
+        }else{
+        }
+    })
 
-
-		  $.ajax({
-			url: "{% url 'getmypoint' %}",
-		  type: "GET",
-			dataType:'json',
- 		  }).done(function( responce ) {
-			  var status = responce.status;
-
-
-			 if(status == '1'){
-
-
-				  $(".points").html(responce.points)
-			  }else{
-
-			  }
-
-		   // $('#successmsg').html('<strong>Success! Data saved successfully.');
-		   // $("#successmsgdiv").fadeTo(3000, 500).slideUp(500, function() {
-		    //  $("#successmsgdiv").slideUp(500);
-		    })
-
-        $.ajax({
-			url: "{% url 'pointcalculate' %}",
-		type: "GET",
-			dataType:'json',
- 		}).done(function( responce ) {
-			var total_pt = responce.total_point;
-		$(".total").html(responce.total_point)
+    $.ajax({
+        url: "{% url 'pointcalculate' %}",
+        type: "GET",
+        dataType:'json',
+    }).done(function( responce ) {
+        var total_pt = responce.total_point;
+        $(".total").html(responce.total_point)
         $(".spent").html(responce.spent_point)
-		})
-		});
-
-
-
-        
+    })
+});
 </script>
 
 <!-- Components Vendor  -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+
 <!--Plugin Initialize-->
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 {% else %}
-    <br>
-    <center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
+<br>
+<center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
 {% endif %}
-    
-
 {% endblock %}

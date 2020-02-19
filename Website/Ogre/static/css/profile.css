@@ -1,16 +1,12 @@
-
-
 .white-bg{
 	background: white; 
 	background-size: 300px 150px;
 	border-radius: 25px;
 	background-attachment: fixed;
 }
-
 .nav{
     width: fit-content;
 }
 .nav-link{
     color: black;
 }
-
