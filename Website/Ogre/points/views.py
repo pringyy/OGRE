@@ -155,7 +155,7 @@ def contact(request):
             content = form.cleaned_data['content']
             message = "Name: " + contact_name + "\nEmail: " + contact_email +  "\nMessage: " + content
             email = EmailMessage(subject, message,
-                                to=["contactogre2020@gmail.com"]), #change to your email
+                                to=['contactogre2020@gmail.com']) #change to your email
             email.send()
 
             return redirect('../thanks/')
