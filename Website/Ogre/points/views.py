@@ -226,6 +226,7 @@ def pointcalculate(request):
 
 
 def changeUsername(request):
+    id=request.session['id']
     user = request.user
     print(user.username)
     username = request.GET.get('username', None)
@@ -237,8 +238,9 @@ def changeUsername(request):
     
 
     if request.user.username == username:
-        messages.error(request, "Please do not enter same username!")
-
+        #messages.error(request, "Please do not enter same username!")
+        d = {"status":1,'message':'  dont not enter the same username!   '}
+        return JsonResponse(d)
         
 
         '''
