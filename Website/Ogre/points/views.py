@@ -239,19 +239,23 @@ def changeUsername(request):
     id=request.session['id']
     # get the curretn auth user
     user = request.user
-    print(user.username)
+    #print(user.username)
+    
+    # get the new username user entered
     username = request.GET.get('username', None)
     
-    print(username)
+    #print(username)
    
     
-
+    # if they are same, we reject this action
     if request.user.username == username:
         
-        
+        # o means failed
         d = {"status":0,'message':'  Do not enter the same username!   '}
         return JsonResponse(d)
     else:
+        # user the offical django user moodle api to get and modify current user info
+        # we now get the user by the username
         u = User.objects.get(username=request.user.username)
         u.username = username
         u.save()
