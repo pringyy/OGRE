@@ -25,4 +25,4 @@ class ContactForm(forms.Form):
 class ChangeNicknameForm(forms.Form):
     class Meta():
         model = User()
-        fields = ('new_nickname')
+        fields = ('username')

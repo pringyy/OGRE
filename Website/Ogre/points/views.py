@@ -205,12 +205,16 @@ def changenickname(request):
             if p.user == request.user:
                 instanceProfile = p
                 break
+
         form = ChangeNicknameForm(request.POST, request.user)
 
-        if form.isValid():
-            p.user.username = form.cleaned_data['new_nickname']
-            p.save
-            return redirect('points/changenickname.html')
+        print(instanceProfile.user.username)
+
+        if form.is_valid():
+            instanceProfile.user.username = request.POST.get("username")
+            instanceProfile.save
+            print(instanceProfile.user.username)
+            return render(request, "points/changenickname.html")
 
     else:
         form = ChangeNicknameForm(request.user)
