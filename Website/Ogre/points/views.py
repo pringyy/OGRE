@@ -32,10 +32,13 @@ def user_logout(request):
 def register(request):
     registered = False
     if request.method == 'POST':
+        # we use the crispy form, which has post request
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileInfoForm(data=request.POST)
         studentID = request.POST.get('StudentID', None)
         password = request.POST.get('password', None)
+        
+        #store the user password and uername, sent it via the api by post request, moodle have the auth function for it
         myobj = {'username':studentID,'password':password}
         # add the moodle RESTful api here!
         r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
