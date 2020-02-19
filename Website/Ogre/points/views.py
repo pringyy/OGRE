@@ -6,7 +6,8 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 import requests
-from points.forms import UserForm, UserProfileInfoForm, ContactForm
+from points.forms import UserForm, UserProfileInfoForm, ContactForm, ChangeNicknameForm
+from points.models import StudentProfileInfo
 import json
 from django.contrib.auth.models import User
 # Email
@@ -222,3 +223,46 @@ def pointcalculate(request):
     # print(spent_point)
     # print(d)
     return JsonResponse(d)
+
+
+def changenickname(request):
+    
+    # Obtain list of all student profiles
+    try:
+        profiles = StudentProfileInfo.objects.all()
+    except:
+        pass
+    context_dict = {'profiles': profiles}
+
+    if request.method == "POST":
+        instanceProfile = None
+        for p in profiles:
+            if p.user == request.user:
+                instanceProfile = p
+                break
+
+        form = ChangeNicknameForm(request.POST, request.user)
+
+        print(instanceProfile.user.username)
+
+        if form.is_valid():
+
+            new_username = request.POST.get("username")
+
+            if new_username != instanceProfile.user.username:
+                instanceProfile.user.username = request.POST.get("username")
+                instanceProfile.save
+                print(instanceProfile.user.username)
+                return render(request, "points/changenickname.html", context= {"fail":False})
+            else:
+                return render(request, "points/changenickname.html", context={"fail":True})
+
+
+    else:
+        form = ChangeNicknameForm(request.user)
+        context_dict['form'] = form
+        return render(request, "points/changenickname.html", context = context_dict )
+
+    myobj = {'user_id': '1',"points":5}
+    id=request.session['id']
+    return render(request,'points/changenickname.html', context = {"fail": False})
