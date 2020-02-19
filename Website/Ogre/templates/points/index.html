@@ -148,7 +148,7 @@
 					<label for="txtUsername">Change your Username</label><br/>
 
 					<div class="checkbox">
-						<input type="text" name="username" id="username" value="" />
+						<input type="text" name="username" id="username" />
 					</div>
 
 					<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
@@ -227,18 +227,7 @@ $('document').ready(function(){
 		}
 	})
 
-	$.ajax({
-		url: '/getmyusername/',
-		type: "GET",
-		dataType:'json',
-	}).done(function( responce ) {
-		var status = responce.status;
-		$('.alert').hide();
-		if(status == '1'){
-			$("#username").val(responce.username)
-		}else{
-		}
-	})
+	
 
 	$( "#usersave" ).submit(function( event ) {
 		event.preventDefault();
