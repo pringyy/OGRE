@@ -6,8 +6,8 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 import requests
-from points.forms import UserForm, UserProfileInfoForm, ContactForm, ChangeNicknameForm
-from points.models import StudentProfileInfo
+from points.forms import UserForm, UserProfileInfoForm, ContactForm
+
 import json
 from django.contrib.auth.models import User
 # Email
@@ -225,7 +225,7 @@ def pointcalculate(request):
     return JsonResponse(d)
 
 
-def changenickname(request):
+def changeUsername(request):
     
     # Obtain list of all student profiles
     try:

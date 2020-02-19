@@ -24,7 +24,3 @@ class ContactForm(forms.Form):
         label="Message"
     )
     
-class ChangeNicknameForm(forms.Form):
-    class Meta():
-        model = User()
-        fields = ('username')
