@@ -239,7 +239,7 @@ def changeUsername(request):
 
     if request.user.username == username:
         #messages.error(request, "Please do not enter same username!")
-        d = {"status":1,'message':'  Do not enter the same username!   '}
+        d = {"status":0,'message':'  Do not enter the same username!   '}
         return JsonResponse(d)
     else:
         u = User.objects.get(username=request.user.username)
