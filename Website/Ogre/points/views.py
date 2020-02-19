@@ -32,10 +32,13 @@ def user_logout(request):
 def register(request):
     registered = False
     if request.method == 'POST':
+        # we use the crispy form, which has post request
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileInfoForm(data=request.POST)
         studentID = request.POST.get('StudentID', None)
         password = request.POST.get('password', None)
+        
+        #store the user password and uername, sent it via the api by post request, moodle have the auth function for it
         myobj = {'username':studentID,'password':password}
         # add the moodle RESTful api here!
         r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
@@ -43,6 +46,8 @@ def register(request):
         d = r.json()
         print(d['status'])
         print(studentID,password)
+        
+        # the status 1 indicate this user is valid in moodle
         if user_form.is_valid() and profile_form.is_valid() and d['status']==1:
             
             id=d['userinfo']['id']
@@ -225,33 +230,38 @@ def pointcalculate(request):
             total_point +=int(point_d[i]['amount'])
     d.update({'total_point':total_point})
     d.update({'spent_point':spent_point})
-    # print(r)
-    # print(total_point)
-    # print(spent_point)
-    # print(d)
+    
     return JsonResponse(d)
 
 
 def changeUsername(request):
+    # first get the session id, this user for each transaction record
     id=request.session['id']
+    # get the curretn auth user
     user = request.user
-    print(user.username)
-    username = request.GET.get('username', None)
-    #id=request.session['id']
-    #r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+nickname)
-    #return HttpResponse(r)    
-    print(username)
-    # Obtain list of all student profiles
+    #print(user.username)
     
-
+    # get the new username user entered
+    username = request.GET.get('username', None)
+    
+    #print(username)
+   
+    
+    # if they are same, we reject this action
     if request.user.username == username:
-        #messages.error(request, "Please do not enter same username!")
+        
+        # o means failed
         d = {"status":0,'message':'  Do not enter the same username!   '}
         return JsonResponse(d)
     else:
+        # user the offical django user moodle api to get and modify current user info
+        # we now get the user by the username
         u = User.objects.get(username=request.user.username)
+        # then we chnge the username
         u.username = username
+        # save it
         u.save()
+        # call the api, this api mainly update the orge points for users
         r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+username)
         return HttpResponse(r)    
 
