@@ -236,13 +236,12 @@ def changeUsername(request):
     # Obtain list of all student profiles
     
 
-    if request.user == username:
+    if request.user.username == username:
         messages.error(request, "Please do not enter same username!")
 
-        form = ChangeNicknameForm(request.POST, request.user)
+        
 
-        print(instanceProfile.user.username)
-
+        '''
         if form.is_valid():
 
             new_username = request.POST.get("username")
@@ -260,7 +259,7 @@ def changeUsername(request):
         form = ChangeNicknameForm(request.user)
         context_dict['form'] = form
         return render(request, "points/changenickname.html", context = context_dict )
-
+'''
     myobj = {'user_id': '1'}
     id=request.session['id']
     #user.studentprofileinfo.currentPoints = 9
