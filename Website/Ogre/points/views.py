@@ -77,8 +77,8 @@ def register(request):
                            'registered':registered})
 
 def user_login(request):
-    if request.method == 'POST':
-
+     if request.method == 'POST':
+    
         username = request.POST.get('username')
         studentID = request.POST.get('studentID')
         password = request.POST.get('password')
