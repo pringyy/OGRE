@@ -102,6 +102,9 @@ $('document').ready(function(){
     <div class = "container">
     {% if user.is_authenticated %}
         <div style="text-align: center;"><h1>Change Username</h1><br></div>
+        {% if fail %}
+            <b>Please use a different username</b><br>
+        {% endif %}
         Please enter your new username below. Changing your nickname will cost 5 OGRE points.
 
         <div>

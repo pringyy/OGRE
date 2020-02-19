@@ -211,10 +211,17 @@ def changenickname(request):
         print(instanceProfile.user.username)
 
         if form.is_valid():
-            instanceProfile.user.username = request.POST.get("username")
-            instanceProfile.save
-            print(instanceProfile.user.username)
-            return render(request, "points/changenickname.html")
+
+            new_username = request.POST.get("username")
+
+            if new_username != instanceProfile.user.username:
+                instanceProfile.user.username = request.POST.get("username")
+                instanceProfile.save
+                print(instanceProfile.user.username)
+                return render(request, "points/changenickname.html", context= {"fail":False})
+            else:
+                return render(request, "points/changenickname.html", context={"fail":True})
+
 
     else:
         form = ChangeNicknameForm(request.user)
@@ -223,4 +230,4 @@ def changenickname(request):
 
     myobj = {'user_id': '1',"points":5}
     id=request.session['id']
-    return render(request,'points/changenickname.html')
+    return render(request,'points/changenickname.html', context = {"fail": False})
