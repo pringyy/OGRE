@@ -44,3 +44,27 @@ if(mysqli_num_rows($result) > 0){
                         echo json_encode($data);
                         exit;
                     }
+                }}
+
+            }else {
+
+                     $data = array('status'=>0,'message'=>'Insufficient Parameters.');
+    echo json_encode($data);
+    exit;
+
+            }
+
+    }else {
+
+$row = mysqli_fetch_assoc($result);
+    $data = array('status'=>1,'message'=>'Get Nickname', 'user_id'=>$user_id, 'nickname'=>$row['alternatename']);
+    echo json_encode($data);
+    exit;
+
+    }
+
+}else{
+$data = array('status'=>0,'message'=>'User does not exist.');
+echo json_encode($data);
+exit;
+} 
