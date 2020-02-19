@@ -23,3 +23,9 @@ if(mysqli_num_rows($result) > 0){
                     $user_points = $row['points'];
 
                     if($user_points >= $nicknamepoint){
+                        $updated_points = $user_points - $nicknamepoint;
+                        $sql = "insert into mdl_user_points_trans (type,detail,userid,amount,spentTime) values('-','Change nickname','".$user_id."','".$nicknamepoint."',now())  ";
+                        mysqli_query($con, $sql);
+
+                        $sql = "UPDATE mdl_user_points SET points='".$updated_points."' WHERE user_id='".$user_id."' ";
+                        mysqli_query($con, $sql);
