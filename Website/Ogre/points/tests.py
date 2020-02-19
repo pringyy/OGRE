@@ -7,8 +7,6 @@ from .models import StudentProfileInfo, User
 from .forms import UserForm
 
 class LoginPageTest(TestCase):
-
-    # tests that login page uses template
     def test_login_page_uses_templates(self):
         response = self.client.get(reverse('login'))
         self.assertTemplateUsed(response, 'points/login.html')
@@ -26,35 +24,29 @@ class FAQPageTest(TestCase):
         self.assertTemplateUsed(response, 'points/faq.html')
 
 class ContactPageTest(TestCase):
-
     # tests that contact page uses template
     def test_contact_page_uses_templates(self):
         response = self.client.get(reverse('contact'))
         self.assertTemplateUsed(response, 'points/contact.html')
 
 class RegisterPageTest(TestCase):
-
     # tests that register page uses template
     def test_faq_page_uses_templates(self):
         response = self.client.get(reverse('register'))
         self.assertTemplateUsed(response, 'points/register.html')
 
 class AboutPageTest(TestCase):
-
     # tests that about page uses template
     def test_about_page_uses_templates(self):
         response = self.client.get(reverse('about'))
         self.assertTemplateUsed(response, 'points/about.html')
-
     def test_about_page_has_title(self):
         response = self.client.get(reverse('about'))
         self.assertIn(b'<title>', response.content)
         self.assertIn(b'</title>', response.content)
-
     # tests that the about page correctly displays the name of the staff
     def test_about_page_contains_staff(self):
         response = self.client.get(reverse('about'))
-
         self.assertIn(b'Alastair Innes', response.content)
         self.assertIn(b'Robert Pringle', response.content)
         self.assertIn(b'Catriona Murphy', response.content)
@@ -62,22 +54,17 @@ class AboutPageTest(TestCase):
         self.assertIn(b'Harry Yau', response.content)
 
 class StaticImageTests(TestCase):
-
     # tests that static images display correctly on the website
     def test_correct_static_images(self):
-
         images = {"jpg" : ['alastair', 'bg1', 'bg2', 'bg3', 'bg4',
                            'bg5', 'bg6', 'bg7', 'catoriona', 'harry',
                            'mingfeng', 'robert'],
                   "png" : ['ogrelogo', 'unilogo']}
-
         for format, file in images.items():
             img = finders.find('images/{}.{}'.format(file, format))
 
 class StudentProfileTests(TestCase):
-
     def test_student_profile(self):
-
         # create User object
         User = get_user_model()
         user = User.objects.create_user('allyinnes99', '2317070i@student.gla.ac.uk', 'bad_password')
@@ -96,9 +83,7 @@ class StudentProfileTests(TestCase):
         self.assertEqual(record, student)
 
 class UserFormTests(TestCase):
-
     # tests if the user form is valid when given valid data
     def test_user_form_valid(self):
         form = UserForm(data={'username': "user123", 'studentID': "2317070i", 'email': "a@b.com", 'password': "password123"})
         self.assertTrue(form.is_valid())
-

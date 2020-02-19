@@ -1,4 +1,3 @@
-
 # HTTP
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -20,11 +19,9 @@ def index(request):
     context_dict={}
     return render(request, 'points/index.html', context_dict)
 
-
 @login_required
 def show_login(request):
     return HttpResponse("Now you are logged in!")
-
 
 @login_required
 def user_logout(request):
@@ -104,18 +101,14 @@ def user_login(request):
                     return HttpResponseRedirect(reverse('index'))
                 elif d['status']==0:
                     messages.error(request, "Please use your moodle password!")
-                    
-                
-                
+                else:
+                    messages.error(request, "Please register with your moodle account first!")
 
-            else:
-                messages.error(request, "Please register with your moodle account first!")
-        
-        elif d['status']==1:
-            id=d['userinfo']['id']
-            request.session['id'] = id
-            request.session['username'] = d['userinfo']['username'] 
-            u = User.objects.get(username=username)
+            elif d['status']==1:
+                id=d['userinfo']['id']
+                request.session['id'] = id
+                request.session['username'] = d['userinfo']['username']
+                u = User.objects.get(username=username)
             if u:
                 u.set_password(password)
                 u.save()
@@ -125,12 +118,10 @@ def user_login(request):
                 return HttpResponseRedirect(reverse('index'))
             else:
                 messages.error(request, "Please enter the correct username!")
-                
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
             messages.error(request, "Incorrect username or password!")
-
     return render(request, 'points/login.html', {})
 
 def ogre_points(request):
@@ -144,10 +135,8 @@ def about(request):
 
 def contact(request):
     form = ContactForm()
-
     if request.method == 'POST':
         form = ContactForm(request.POST)
-
         if form.is_valid():
             contact_name = form.cleaned_data['contact_name']
             contact_email = form.cleaned_data['contact_email']
@@ -161,11 +150,9 @@ def contact(request):
             return redirect('../thanks/')
     return render(request, 'points/contact.html', {'form': form})
 
-
 def thanks(request):
     context_dict = {}
     return render(request, 'points/thanks.html', context_dict)
-
 
 def faq(request):
     context_dict = {}
