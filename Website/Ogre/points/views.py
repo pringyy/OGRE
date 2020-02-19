@@ -226,24 +226,18 @@ def pointcalculate(request):
 
 
 def changeUsername(request):
+    user = request.user
+    print(user.username)
     username = request.GET.get('username', None)
     #id=request.session['id']
     #r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+nickname)
     #return HttpResponse(r)    
     print(username)
     # Obtain list of all student profiles
-    try:
-        profiles = StudentProfileInfo.objects.all()
-    except:
-        pass
-    context_dict = {'profiles': profiles}
+    
 
-    if request.method == "POST":
-        instanceProfile = None
-        for p in profiles:
-            if p.user == request.user:
-                instanceProfile = p
-                break
+    if request.user == username:
+        messages.error(request, "Please do not enter same username!")
 
         form = ChangeNicknameForm(request.POST, request.user)
 
