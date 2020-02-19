@@ -237,15 +237,14 @@ def changeUsername(request):
     user = request.user
     print(user.username)
     username = request.GET.get('username', None)
-    #id=request.session['id']
-    #r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+nickname)
-    #return HttpResponse(r)    
+    
     print(username)
-    # Obtain list of all student profiles
+   
     
 
     if request.user.username == username:
-        #messages.error(request, "Please do not enter same username!")
+        
+        
         d = {"status":0,'message':'  Do not enter the same username!   '}
         return JsonResponse(d)
     else:
