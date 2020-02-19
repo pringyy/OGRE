@@ -248,24 +248,6 @@ def changeUsername(request):
         r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+username)
         return HttpResponse(r)    
 
-        '''
-        if form.is_valid():
-
-            new_username = request.POST.get("username")
-
-            if new_username != instanceProfile.user.username:
-                instanceProfile.user.username = request.POST.get("username")
-                instanceProfile.save
-                print(instanceProfile.user.username)
-                return render(request, "points/changenickname.html", context= {"fail":False})
-            else:
-                return render(request, "points/changenickname.html", context={"fail":True})
-
-
-    else:
-        form = ChangeNicknameForm(request.user)
-        context_dict['form'] = form
-        return render(request, "points/changenickname.html", context = context_dict )
-'''
+       
     
    
