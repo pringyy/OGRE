@@ -257,8 +257,11 @@ def changeUsername(request):
         # user the offical django user moodle api to get and modify current user info
         # we now get the user by the username
         u = User.objects.get(username=request.user.username)
+        # then we chnge the username
         u.username = username
+        # save it
         u.save()
+        # call the api, this api mainly update the orge points for users
         r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+username)
         return HttpResponse(r)    
 
