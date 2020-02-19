@@ -39,3 +39,8 @@ if(mysqli_num_rows($result) > 0){
                         $data = array('status'=>1,'message'=>'  Nickname Updated ', 'user_id'=>$user_id, 'nickname'=>$row['alternatename']);
                         echo json_encode($data);
                         exit;
+                    }else{
+                        $data = array('status'=>0,'message'=>'User does not have sufficient points');
+                        echo json_encode($data);
+                        exit;
+                    }
