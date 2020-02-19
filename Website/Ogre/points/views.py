@@ -226,7 +226,10 @@ def pointcalculate(request):
 
 
 def changeUsername(request):
-    username = request.POST.get('username')
+    username = request.GET.get('username', None)
+    #id=request.session['id']
+    #r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+nickname)
+    #return HttpResponse(r)    
     print(username)
     # Obtain list of all student profiles
     try:

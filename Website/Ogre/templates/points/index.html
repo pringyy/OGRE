@@ -127,7 +127,7 @@
 	</div>
 </section>
 
-<form id="usersave" method="post">
+<form id="usersave" >
 	<div class="modal fade" id="usernameModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -234,7 +234,7 @@ $('document').ready(function(){
 		var username = $('#username').val();
  		 
 		$.ajax({
-			url: '/updateusername/',
+			url: '/changeUsername/',
 		    type: "GET",
 			dataType:'json',
 			data: {  username: username}
