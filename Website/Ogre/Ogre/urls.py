@@ -17,4 +17,6 @@ urlpatterns = [
     path('pointcalculate/',views.pointcalculate,name = 'pointcalculate'),
     path('game/',views.game,name='game'),
     url(r'^iterateJSON/$', views.iterateJSON, name='iterateJSON'),
+    path('changeUsername/', views.changeUsername, name='changeUsername'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

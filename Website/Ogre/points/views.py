@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 import requests
 from points.forms import UserForm, UserProfileInfoForm, ContactForm
+
 import json
 from django.contrib.auth.models import User
 # Email
@@ -101,14 +102,18 @@ def user_login(request):
                     return HttpResponseRedirect(reverse('index'))
                 elif d['status']==0:
                     messages.error(request, "Please use your moodle password!")
-                else:
-                    messages.error(request, "Please register with your moodle account first!")
+                    
+                
+                
 
-            elif d['status']==1:
-                id=d['userinfo']['id']
-                request.session['id'] = id
-                request.session['username'] = d['userinfo']['username']
-                u = User.objects.get(username=username)
+            else:
+                messages.error(request, "Please register with your moodle account first!")
+        
+        elif d['status']==1:
+            id=d['userinfo']['id']
+            request.session['id'] = id
+            request.session['username'] = d['userinfo']['username'] 
+            u = User.objects.get(username=username)
             if u:
                 u.set_password(password)
                 u.save()
@@ -118,11 +123,14 @@ def user_login(request):
                 return HttpResponseRedirect(reverse('index'))
             else:
                 messages.error(request, "Please enter the correct username!")
+                
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
             messages.error(request, "Incorrect username or password!")
+
     return render(request, 'points/login.html', {})
+
 
 def ogre_points(request):
     context_dict = {}
@@ -222,3 +230,31 @@ def pointcalculate(request):
     # print(spent_point)
     # print(d)
     return JsonResponse(d)
+
+
+def changeUsername(request):
+    id=request.session['id']
+    user = request.user
+    print(user.username)
+    username = request.GET.get('username', None)
+    #id=request.session['id']
+    #r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+nickname)
+    #return HttpResponse(r)    
+    print(username)
+    # Obtain list of all student profiles
+    
+
+    if request.user.username == username:
+        #messages.error(request, "Please do not enter same username!")
+        d = {"status":0,'message':'  Do not enter the same username!   '}
+        return JsonResponse(d)
+    else:
+        u = User.objects.get(username=request.user.username)
+        u.username = username
+        u.save()
+        r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+username)
+        return HttpResponse(r)    
+
+       
+    
+   

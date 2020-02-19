@@ -23,3 +23,4 @@ class ContactForm(forms.Form):
         widget=forms.Textarea,
         label="Message"
     )
+    
