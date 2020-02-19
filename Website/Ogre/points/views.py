@@ -77,8 +77,8 @@ def register(request):
                            'registered':registered})
 
 def user_login(request):
-     if request.method == 'POST':
-    
+    if request.method == 'POST':
+
         username = request.POST.get('username')
         studentID = request.POST.get('studentID')
         password = request.POST.get('password')
@@ -102,14 +102,18 @@ def user_login(request):
                     return HttpResponseRedirect(reverse('index'))
                 elif d['status']==0:
                     messages.error(request, "Please use your moodle password!")
-                else:
-                    messages.error(request, "Please register with your moodle account first!")
+                    
+                
+                
 
-            elif d['status']==1:
-                id=d['userinfo']['id']
-                request.session['id'] = id
-                request.session['username'] = d['userinfo']['username']
-                u = User.objects.get(username=username)
+            else:
+                messages.error(request, "Please register with your moodle account first!")
+        
+        elif d['status']==1:
+            id=d['userinfo']['id']
+            request.session['id'] = id
+            request.session['username'] = d['userinfo']['username'] 
+            u = User.objects.get(username=username)
             if u:
                 u.set_password(password)
                 u.save()
@@ -119,11 +123,14 @@ def user_login(request):
                 return HttpResponseRedirect(reverse('index'))
             else:
                 messages.error(request, "Please enter the correct username!")
+                
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
             messages.error(request, "Incorrect username or password!")
+
     return render(request, 'points/login.html', {})
+
 
 def ogre_points(request):
     context_dict = {}
