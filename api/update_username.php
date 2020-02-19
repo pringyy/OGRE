@@ -29,3 +29,9 @@ if(mysqli_num_rows($result) > 0){
 
                         $sql = "UPDATE mdl_user_points SET points='".$updated_points."' WHERE user_id='".$user_id."' ";
                         mysqli_query($con, $sql);
+
+                        $sql = "update mdl_user set alternatename = '".$nickname."' WHERE id = '".$user_id."' ";
+                        $result = mysqli_query($con, $sql);
+                        $sql = "SELECT * FROM mdl_user WHERE id = '".$user_id."' ";
+                        $result = mysqli_query($con, $sql);
+                        $row = mysqli_fetch_assoc($result);
