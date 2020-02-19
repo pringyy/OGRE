@@ -35,3 +35,7 @@ if(mysqli_num_rows($result) > 0){
                         $sql = "SELECT * FROM mdl_user WHERE id = '".$user_id."' ";
                         $result = mysqli_query($con, $sql);
                         $row = mysqli_fetch_assoc($result);
+
+                        $data = array('status'=>1,'message'=>'  Nickname Updated ', 'user_id'=>$user_id, 'nickname'=>$row['alternatename']);
+                        echo json_encode($data);
+                        exit;
