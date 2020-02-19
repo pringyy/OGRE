@@ -4,16 +4,16 @@
 {% block title %} {{ block.super }} - FAQ {% endblock %}
 
 {% block body_block %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/faq.css' %}">
     <div class="container">
         <br>
-        <h1 class="display-4">FAQ</h1>
+        <h1 class="display-4 white-text">FAQ</h1>
         <hr>
-
         <div class="panel-group" id="faqAccordion">
             <div class="panel panel-default">
                 <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
                     <h4 class="panel-title">
-                        <a href="#" class="ing">Q: What is OGRE?</a>
+                        <a href="#" >Q: What is OGRE?</a>
                     </h4>
                 </div>
 
@@ -28,7 +28,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question1">
                      <h4 class="panel-title">
-                        <a href="#" class="ing">Q: What can I spend OGRE points on? </a>
+                        <a href="#" >Q: What can I spend OGRE points on? </a>
                   </h4>
 
                 </div>
@@ -43,7 +43,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question2">
                      <h4 class="panel-title">
-                        <a href="#" class="ing">Q: How do I earn OGRE points?</a>
+                        <a href="#" >Q: How do I earn OGRE points?</a>
                   </h4>
 
                 </div>
@@ -57,6 +57,4 @@
         </div>
         <!--/panel-group-->
     </div>
-     
-
 {% endblock %}

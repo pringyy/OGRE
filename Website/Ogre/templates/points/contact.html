@@ -5,11 +5,12 @@
 {% block title %} {{ block.super }} - Contact {% endblock %}
 
 {% block body_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
 <div class="mb-4 container">
     <br>
-    <h1 class="display-4">Contact</h1>
+    <h1 class="display-4 white-text ">Contact</h1>
     <hr>
-    <p class="lead">Drop Us a Message</p>
+    <p class="lead bold-text">Drop Us a Message</p>
 
     <div class="row">
 
@@ -57,22 +58,27 @@
         <div class="col-md-3 text-center">
             <ul class="list-unstyled mb-0">
                 <li><i class="fas fa-map-marker-alt fa-2x"></i>
-                    <p>Glasgow, G12 8QQ, Scotland</p>
+                    <p class = "bold-text">Glasgow, G12 8QQ, Scotland</p>
                 </li>
 
                 <li><i class="fas fa-phone mt-4 fa-2x"></i>
-                    <p>0141 330 2000</p>
+                    <p class = "bold-text">0141 330 2000</p>
                 </li>
 
                 <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-                    <p>contact@OGRE.com</p>
+                    <p class = "bold-text">contact@OGRE.com</p>
+                </li>
+                <li>
+                    <iframe width="300" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJs2n0CtJFiEgRg0leZQti8KM&key=AIzaSyCZ7PwXIZos1wJzKKQQlm15b39pR9BjimY" allowfullscreen></iframe>
                 </li>
             </ul>
+
         </div>
         <!--Grid column-->
 
     </div>
 
-</div>
-    
+
+
+
 {% endblock %}

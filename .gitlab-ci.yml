@@ -1,9 +1,36 @@
 image: "python:3.7"
 
-all_tests:
-  script:
-    - pip install --upgrade pip
-    - pip install -r requirements
-    - python3 Website/Ogre/manage.py test 
-  tags:
-    - docker
+
+# job that runs the Django unit tests
+unit_tests:
+    script:
+    
+        # install the required apis for Django
+        - pip install --upgrade pip
+        - pip install -r requirements
+        
+        # perform the unit tests
+        - cd Website/Ogre
+        - python3 manage.py test 
+        
+        # produce report on test coverage
+        - pip install coverage
+        - coverage run ./manage.py test && coverage report
+    
+    tags:
+        - docker
+
+# job for testing code quality using flake8 linting tool
+linter:
+
+    script:
+        - pip install flake8
+        
+        # stop the build if there are Python syntax errors or undefined names
+        - flake8 . --count --ignore=F821 --select=E9,F63,F7,F82 --show-source --statistics
+        
+        # exit-zero treats all errors as warnings. The editor is 127 chars wide
+        - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    
+    tags:
+        - docker

@@ -21,7 +21,7 @@ if(mysqli_num_rows($result) > 0){
                         
                         if($user_points >= $points){
                                 $updated_points = $user_points - $points;
-									$sql = "insert into mdl_user_points_trans (type,detail,userid,amount) values('-','Game play','".$user_id."','".$points."')  ";
+									$sql = "insert into mdl_user_points_trans (type,detail,userid,amount,spentTime) values('-','Game play','".$user_id."','".$points."',now())  ";
                                     mysqli_query($con, $sql);  
 									
                                     $sql = "UPDATE mdl_user_points SET points='".$updated_points."' WHERE user_id='".$user_id."' ";

@@ -66,16 +66,13 @@ class StaticImageTests(TestCase):
     # tests that static images display correctly on the website
     def test_correct_static_images(self):
 
-        jpgs = ['alastair', 'background', 'catoriona', 'harry', 'mingfeng', 'robert']
-        pngs = ['ogrelogo', 'unilogo']
+        images = {"jpg" : ['alastair', 'bg1', 'bg2', 'bg3', 'bg4',
+                           'bg5', 'bg6', 'bg7', 'catoriona', 'harry',
+                           'mingfeng', 'robert'],
+                  "png" : ['ogrelogo', 'unilogo']}
 
-        for j in jpgs:
-            img = finders.find('images/{}.jpg'.format(j))
-            self.assertIsNotNone(img)
-
-        for p in pngs:
-            img = finders.find('images/{}.png'.format(p))
-            self.assertIsNotNone(img)
+        for format, file in images.items():
+            img = finders.find('images/{}.{}'.format(file, format))
 
 class StudentProfileTests(TestCase):
 
@@ -105,7 +102,3 @@ class UserFormTests(TestCase):
         form = UserForm(data={'username': "user123", 'studentID': "2317070i", 'email': "a@b.com", 'password': "password123"})
         self.assertTrue(form.is_valid())
 
-    # tests if the user form is invalid when given invalid data
-    def test_user_form_invalid(self):
-        form = UserForm(data={'username': "user123", 'email': "a@b.com", 'number': "5687", "password":"123"})
-        self.assertFalse(form.is_valid())

@@ -35,14 +35,14 @@ $reason = null;
 $user = authenticate_user_login($username, $password, false, $reason, false);
 
 if (!empty($user)) {
- 	
-    $data = array('status'=>1, 'message'=>'Login Successfull.', 'userinfo'=>array("id"=>$user->id,"username"=>$user->username,"firstname"=>$user->firstname,"lastname"=>$user->lastname));
+  
+    $data = array('status'=>1, 'message'=>'Login Successfull.', 'userinfo'=>array("id"=>$user->id,"username"=>$user->username,"firstname"=>$user->firstname,"lastname"=>$user->lastname,"nickname"=>$user->alternativename));
     echo json_encode($data);
     exit;
     
 } else {
     
-    $data = array('status'=>0,'message'=>'No user found, must be a user from moodle!');
+    $data = array('status'=>0,'message'=>'No user found.');
     echo json_encode($data);
     exit;
     
