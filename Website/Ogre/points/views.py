@@ -239,9 +239,14 @@ def changeUsername(request):
 
     if request.user.username == username:
         #messages.error(request, "Please do not enter same username!")
-        d = {"status":1,'message':'  dont not enter the same username!   '}
+        d = {"status":1,'message':'  Do not enter the same username!   '}
         return JsonResponse(d)
-        
+    else:
+        u = User.objects.get(username=request.user.username)
+        u.username = username
+        u.save()
+        r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+username)
+        return HttpResponse(r)    
 
         '''
         if form.is_valid():
@@ -262,8 +267,5 @@ def changeUsername(request):
         context_dict['form'] = form
         return render(request, "points/changenickname.html", context = context_dict )
 '''
-    myobj = {'user_id': '1'}
-    id=request.session['id']
-    #user.studentprofileinfo.currentPoints = 9
-    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
-    return HttpResponse(r)
+    
+   
