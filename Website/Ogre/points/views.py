@@ -82,6 +82,7 @@ def register(request):
                            'registered':registered})
 
 def user_login(request):
+    # use post request to get related user info
     if request.method == 'POST':
 
         username = request.POST.get('username')
@@ -219,6 +220,7 @@ def ajaxpointlist(request):
     return HttpResponse(r)
 
 def pointcalculate(request):
+    # mainly use for loop to generate the points info
     id=request.session['id']
     r = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
     d = r.json()
