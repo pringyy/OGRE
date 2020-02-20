@@ -82,14 +82,17 @@ def register(request):
                            'registered':registered})
 
 def user_login(request):
+    # use post request to get related user info
     if request.method == 'POST':
 
         username = request.POST.get('username')
         studentID = request.POST.get('studentID')
         password = request.POST.get('password')
         myobj = {'username': studentID,'password':password}
+        # send related user info to moodle (moodle side has auth api function)
         r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
         d=r.json()
+        # and then we auth user in dajngo
         user = authenticate(username=username, studentID = studentID, password=password)
         print(username,studentID,password)
         
@@ -97,7 +100,7 @@ def user_login(request):
 
             if user.is_active:
                 
-
+                # status 1 indicated this user is moodle user, so we login this user
                 if d['status']==1:
                     id=d['userinfo']['id']
                     request.session['id'] = id
@@ -113,7 +116,7 @@ def user_login(request):
 
             else:
                 messages.error(request, "Please register with your moodle account first!")
-        
+        # this user reset the password
         elif d['status']==1:
             id=d['userinfo']['id']
             request.session['id'] = id
@@ -186,13 +189,17 @@ def pointlist(request):
 
 def game(request):
     myobj = {'user_id': '1',"points":5}
+    # get the session id to auth user
     id=request.session['id']
+    # call the get user points api 
     r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
     d=r.json()
+    # if user has points more than 5 then play game
     if int(d['points']) >= 5:
         r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
         return render(request,'points/game.html')
     else:
+        # else reject user action
         messages.error(request, "You don't have enough points to play!")
         return HttpResponseRedirect(reverse('index'))
 
@@ -215,6 +222,7 @@ def ajaxpointlist(request):
     return HttpResponse(r)
 
 def pointcalculate(request):
+    # mainly use for loop to generate the points info
     id=request.session['id']
     r = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
     d = r.json()
