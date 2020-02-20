@@ -100,7 +100,7 @@ def user_login(request):
 
             if user.is_active:
                 
-
+                # status 1 indicated this user is moodle user, so we login this user
                 if d['status']==1:
                     id=d['userinfo']['id']
                     request.session['id'] = id
@@ -116,7 +116,7 @@ def user_login(request):
 
             else:
                 messages.error(request, "Please register with your moodle account first!")
-        
+        # this user reset the password
         elif d['status']==1:
             id=d['userinfo']['id']
             request.session['id'] = id
