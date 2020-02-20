@@ -89,8 +89,10 @@ def user_login(request):
         studentID = request.POST.get('studentID')
         password = request.POST.get('password')
         myobj = {'username': studentID,'password':password}
+        # send related user info to moodle (moodle side has auth api function)
         r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
         d=r.json()
+        # and then we auth user in dajngo
         user = authenticate(username=username, studentID = studentID, password=password)
         print(username,studentID,password)
         
