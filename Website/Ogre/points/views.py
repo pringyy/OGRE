@@ -166,6 +166,10 @@ def contact(request):
             return redirect('../thanks/')
     return render(request, 'points/contact.html', {'form': form})
 
+def game_menu(request):
+    context_dict = {}
+    return render(request, 'points/game_menu.html', context_dict)
+
 def thanks(request):
     context_dict = {}
     return render(request, 'points/thanks.html', context_dict)
@@ -187,7 +191,7 @@ def pointlist(request):
     if request.session.get('id'):
         return render(request,'points/pointlist.html')
 
-def game(request):
+def game1(request):
     myobj = {'user_id': '1',"points":5}
     # get the session id to auth user
     id=request.session['id']
@@ -197,11 +201,15 @@ def game(request):
     # if user has points more than 5 then play game
     if int(d['points']) >= 5:
         r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
-        return render(request,'points/game.html')
+        return render(request,'points/game1.html')
     else:
         # else reject user action
         messages.error(request, "You don't have enough points to play!")
         return HttpResponseRedirect(reverse('index'))
+
+
+def game2(request):
+    return render(request, 'points/game2.html')
 
 def getmypoint(request):
     myobj = {'user_id': '1'}

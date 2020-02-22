@@ -1,0 +1,57 @@
+{% extends "points/base.html" %}
+{% load static %}
+{% block title %} {{ block.super }} - Game Menu {% endblock %}
+
+{% block body_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+<div class="container">
+<h1>
+Game Menu
+</h1>
+<div class="col-lg-4">
+			<a href="/game1/" style="color:black">
+				<div class="our-team-main">
+					<div class="team-front">
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ6QKJhgPL0MBFWIMHdW5Gfu-1OChOpMHJDAU78MEbBIDFKH2--" class="img-fluid" />
+						<h3>Re-wire</h3>
+						<p>Costs 5 points</p>
+					</div>
+
+					<div class="team-back">
+						<p class= 'dashboard-text'>
+							Click here to play a game!
+						<center> (Costs 5 Points)</center>
+						</p>
+					</div>
+				</div>
+			</a>
+		</div>
+
+
+<div class="col-lg-4">
+			<a href="/game2/" style="color:black">
+				<div class="our-team-main">
+					<div class="team-front">
+						<img src="data:image/png;base64,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" class="img-fluid" />
+						<h3>2048</h3>
+						<p>Costs 5 points</p>
+					</div>
+
+					<div class="team-back">
+						<p class= 'dashboard-text'>
+							Click here to play a game!
+						<center> (Costs 5 Points)</center>
+						</p>
+					</div>
+				</div>
+			</a>
+		</div>
+</div>
+
+
+</div>
+
+
+
+{% endblock %}
