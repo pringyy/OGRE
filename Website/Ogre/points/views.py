@@ -252,7 +252,7 @@ def changeUsername(request):
     # get the new username user entered
     username = request.GET.get('username', None)
     
-    #print(username)
+    
    
     
     # if they are same, we reject this action
@@ -261,16 +261,21 @@ def changeUsername(request):
         # o means failed
         d = {"status":0,'message':'  Do not enter the same username!   '}
         return JsonResponse(d)
+    
     else:
         # user the offical django user moodle api to get and modify current user info
-        # we now get the user by the username
-        u = User.objects.get(username=request.user.username)
-        # then we chnge the username
-        u.username = username
-        # save it
-        u.save()
+        
         # call the api, this api mainly update the orge points for users
         r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+username)
+        d = r.json()
+        if d["status"] != 0:
+            # we now get the user by the username
+            u = User.objects.get(username=request.user.username)
+            # then we chnge the username
+            u.username = username
+        # save it
+            u.save()
+            
         return HttpResponse(r)    
 
        
