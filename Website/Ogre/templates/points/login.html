@@ -29,7 +29,7 @@
 <body onload= "getRandomImage()">
 
 <!--Reads in css code for the login page-->
-  <div id="randImage" class="background-cover" style = 'vertical-align: center;'>
+  <div id="randImage" class="background-cover">
   
   <!-- Provides a space between the top of the page and the logo-->
   <br><br>
@@ -84,6 +84,7 @@
       </div>
     </div>
 
+    <!--Displays toaster notifications to the user-->
     {% if messages %}
         {% for message in messages %}
             {% if message.tags == 'success'%}

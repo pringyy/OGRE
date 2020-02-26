@@ -21,6 +21,8 @@ body, html {
 /*CSS used to make the login panel slightly transparent*/
 .transparency_bg {
   opacity: 0.9;
+  margin: auto;
+  width: 50%;
 }
 
 
