@@ -139,6 +139,9 @@ def user_login(request):
 
     return render(request, 'points/login.html', {})
 
+def shop(request):
+    context_dict = {}
+    return render(request, 'points/shop.html', context_dict)
 
 def ogre_points(request):
     context_dict = {}
