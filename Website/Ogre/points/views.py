@@ -250,24 +250,15 @@ def changeUsername(request):
     id=request.session['id']
     # get the curretn auth user
     user = request.user
-    #print(user.username)
-    
     # get the new username user entered
     username = request.GET.get('username', None)
-    
-    
-   
-    
     # if they are same, we reject this action
     if request.user.username == username:
-        
         # o means failed
         d = {"status":0,'message':'  Do not enter the same username!   '}
         return JsonResponse(d)
-    
     else:
         # user the offical django user moodle api to get and modify current user info
-        
         # call the api, this api mainly update the orge points for users
         r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+username)
         d = r.json()
@@ -278,9 +269,13 @@ def changeUsername(request):
             u.username = username
         # save it
             u.save()
-            
-        return HttpResponse(r)    
+        return HttpResponse(r)
 
-       
-    
-   
+def changeAvatar(request):
+    id = request.session['id']
+    user = request.user
+    profile_pic = request.GET.get('profile_pic', None)
+
+    if request.user.profile_pic == profile_pic:
+        d = {"status":0, 'message': 'Already your avatar'}
+        return JsonResponse(d)

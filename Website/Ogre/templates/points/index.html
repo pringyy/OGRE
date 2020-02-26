@@ -70,7 +70,7 @@
 
 		<div class="col-lg-4">
 			<div class="our-team-main">
-				<a href="{% url 'shop' %}" style = "...">
+				<a href="{% url 'shop' %}" style = "color:black;">
 					<div class="team-front">
 						<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
 						<h3>Pick A Avatar</h3>
@@ -227,18 +227,14 @@ $('document').ready(function(){
 		}
 	})
 
-	
-
-	$( "#usersave" ).submit(function( event ) {
+	$("#usersave").submit(function(event) {
 		event.preventDefault();
 		var username = $('#username').val();
- 		 
 		$.ajax({
 			url: '/changeUsername/',
 		    type: "GET",
 			dataType:'json',
 			data: {  username: username}
-
 		}).done(function( responce ) {
 			var status = responce.status;
 			  
