@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 import requests
 from points.forms import UserForm, UserProfileInfoForm, ContactForm
+from points.models import StudentProfileInfo
 
 import json
 from django.contrib.auth.models import User
@@ -280,6 +281,6 @@ def changeUsername(request):
 
 def leaderboard(request):
 
-    context_dict = {}
+    context_dict = {'leaderboard': StudentProfileInfo.objects.order_by("-totalPoints")[:5]}
     return render(request, 'points/leaderboard.html', context_dict)
 

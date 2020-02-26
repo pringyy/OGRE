@@ -1,15 +1,41 @@
-{% extends "points/base.html" %}
+{% extends 'points/base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
-
-{% block title %} {{ block.super }} - Leaderboard {% endblock %}
-
-<div class="container">
-
-
-
-</div>
 
 {% block body_block %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/leaderboard.css' %}">
+<div class="container"> <table class="table">
+    <section class="wt-section" id="login">
+        <div class="container">
+            <br>
+            <h1 class="display-4 white-text">Ogre Points Leaderboard</h1>
+            <hr>
+            <div class="row">
+                <table id="grid-data" class="table table-condensed table-hover table-striped">
+                <thead class="data">
+                <tr>
+                    <th data-column-id="Position" data-type="numeric">Position</th>
+                    <th data-column-id="Username">Username</th>
+                    <th data-column-id="Points" data-order="desc">Points</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                    {% for student in leaderboard %}
+                       <tr>
+                           <th scope="row"><counter></counter></th>
+                           <td>{{student.user.username}}</td>
+                           <td>{{student.totalPoints}}</td>
+                       </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div><!-- dashboard end -->
+        </div>
+    </section>
+</div>
+
+</div>
 
 {% endblock %}
