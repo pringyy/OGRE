@@ -4,6 +4,10 @@ body, html {
     margin: 0;
 }
 
+.padding-center{
+  padding-top:500px;
+}
+
 
 .background-cover {
   background-position: center;
@@ -20,19 +24,6 @@ body, html {
 }
 
 
-.container {
-  width:1025px;
-}
-
-/*CSS used tput a container in the vertically center of the screen*/
-.vertical-center {
-  min-height: 40%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 40vh; /* These two lines are counted as one :-)       */
-  display: flex;
-  align-items: center;
-}
-
-/*CSS used ceonter the user input section on login page*/
 .center {
   display: block;
   margin-left: auto;
