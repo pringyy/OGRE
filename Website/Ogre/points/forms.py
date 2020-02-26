@@ -7,11 +7,13 @@ class UserForm(forms.ModelForm):
     
     class Meta():
         model = User
-        fields = ('username','password','email')
+        fields = ('password', 'username')
+
+
 class UserProfileInfoForm(forms.ModelForm):
-     class Meta():
-         model = StudentProfileInfo
-         fields = ('StudentID','profile_pic')
+    class Meta():
+        model = StudentProfileInfo
+        fields = ('StudentID','profile_pic')
 
 class ContactForm(forms.Form):
     contact_name = forms.CharField(required=True, label="Name")
