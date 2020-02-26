@@ -278,6 +278,8 @@ def changeUsername(request):
             
         return HttpResponse(r)    
 
-       
-    
-   
+def leaderboard(request):
+
+    context_dict = {}
+    return render(request, 'points/leaderboard.html', context_dict)
+
