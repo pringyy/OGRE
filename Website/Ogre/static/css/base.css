@@ -28,10 +28,19 @@
 .footer {
   text-align: center;
 }
+
+.footerRight {
+  text-align: right;
+}
+
+.footerLeft {
+  text-align: left;
+}
+
 /*this class is to add padding to the left and right of the University logo*/
 .logoPadding {
-  padding-right: 30px;
-  padding-left: 30px;
+  padding-right: 3%;
+  padding-left: 3%;
 }
 .navbar-custom {
   color: #FFFFFF;

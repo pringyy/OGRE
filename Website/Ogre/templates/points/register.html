@@ -6,9 +6,11 @@
 
 {% block body_block %}
 
-{%if user.is_authenticated %}
-<meta http-equiv = "refresh" content = "0; url = {% url 'index' %}" />
-{% else %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+  {%if user.is_authenticated %}
+    <meta http-equiv = "refresh" content = "0; url = {% url 'index' %}" />
+  {% else %}
+
 
 <div class="container">
   <br>
@@ -21,15 +23,16 @@
     <center><h1 class="display-4 container white-text">Thanks for registering!</h1></center>
     {% else %}
     
-    <form enctype="multipart/form-data" method="POST">
-      {% csrf_token %}
-      {{user_form|crispy}}
-      {{profile_form|crispy}}
-      <input type="submit" name="" value="Register">
-    </form>
+        <form enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+          {{profile_form.StudentID|as_crispy_field}}
+          {{user_form|crispy}}
+          <input type="submit" class= "button1" name="" value="Register">
+        </form>
         
     {% endif %}
   </div>
+
 </div>
 {% endif %}
 {% endblock %}

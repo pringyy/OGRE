@@ -1,8 +1,17 @@
 /*This is the CSS code for the login page*/
+
+
+/*sets the height and margin for the whole page*/
 body, html {
     height: 100%;
     margin: 0;
 }
+
+
+.padding-center{
+  padding-top:500px;
+}
+
 .background-cover {
   background-position: center;
   background-size: cover;
@@ -13,23 +22,35 @@ body, html {
 /*CSS used to make the login panel slightly transparent*/
 .transparency_bg {
   opacity: 0.9;
+  position: sticky;
+  
 }
-.container {
-  width:1025px;
-}
-/*CSS used tput a container in the vertically center of the screen*/
-.vertical-center {
-  min-height: 40%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 40vh; /* These two lines are counted as one :-)       */
-  display: flex;
-  align-items: center;
-}
-/*CSS used ceonter the user input section on login page*/
+
+
+/*CSS used to display the OGRE logo*/
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 390px;
+  position: relative;
+
+}
+
+/*Used to make the page contents absoutely center*/
+.outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/*Used to make the page contents absoutely center*/
+.middle {
+  display: table-cell;
+  vertical-align: middle;
 }
 /*CSS used to fade in images on Login page*/
 img {opacity:0;

@@ -5,13 +5,18 @@
 {%if user.is_authenticated %}
 <meta http-equiv = "refresh" content = "0; url = {% url 'index' %}" />
 {% else %}
-<head lang = "en">
-    <meta charset="UTF-8" />
+
+
+  <head lang = "en">
+  <meta name="viewport" content="width=device-width, initial-scale=0.7">  
+    
     <title>
         {% block title_block %}OGRE - platform{% endblock %}
     </title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--Reads in css code for the login page-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 
     <!--imports jquery and ajax-->
@@ -27,79 +32,87 @@
 
 <body onload= "getRandomImage()">
 
-<!--Reads in css code for the login page-->
-<div id="randImage" class="background-cover">
-    <!-- Provides a space between the top of the page and the logo-->
+  <div id="randImage" class="background-cover">
+  
+  <!-- Provides a space between the top of the page and the logo-->
     <br><br>
-    <!-- Displays ORGE logo-->
-    <img onload="this.style.opacity='0.8'" src="{% static "images/ogrelogo.png" %}" class= "center" >
-    <div class="vertical-center transparency_bg">
-        <!-- All code below until next comment sets up the UI for the Login box-->
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                    <div class="card card-signin my-5">
-                        <div class="card-body">
-                            <form class="form-signin" method="post">
-                                {% csrf_token %}
-                                <!--div class for where the user enters their username-->
-                                <div class="form-label-group">
-                                    <label for="inputUsername"></label>
-                                    <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
-                                </div>
-                                <!--div class for where the user eneters their student ID-->
-                                <div class="form-label-group">
-                                    <label for="inputStudentID"></label>
-                                    <input type="text" id="inputStudentID" class="form-control" name="studentID" placeholder="StudentID" required autofocus>
-                                </div>
+    <div class="outer">
 
-                                <!--div class for where the user enters their password-->
-                                <div class="form-label-group">
-                                    <label for="inputPassword"></label>
-                                    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
-                                </div>
-
-
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <label class="custom-control-label" for="customCheck1">Remember password</label>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                </div>
+     <div class="middle">
+      <!-- Displays ORGE logo-->
+      <img onload="this.style.opacity='0.8'" src="{% static "images/ogrelogo.png" %}" class= "center" >
               
-                                <!--Button submits user form-->
-                                <button class="btn btn-lg btn-primary btn-block" type="submit" name="" value="Login">Sign in</button>
-                                <!--Link sends user to a page to register-->
-                                <a href={% url 'register' %}><center>Not got an account? Register here.<center></a>
-                            </form>
+        <div class="transparency_bg">
 
-                        </div>
+          
+          <!-- All code below until next comment sets up the UI for the Login box-->
+          <div class="container">
+           <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+              <div class="card card-signin my-5">
+                <div class="card-body">
+          
+                  <form class="form-signin" method="post">
+                  {% csrf_token %}
+
+                    <!--div class for where the user eneters their username-->
+                    <div class="form-label-group">
+                      <label for="inputUsername"></label>
+                      <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
                     </div>
-                </div>
-            </div>
 
-            {% if messages %}
-            {% for message in messages %}
 
-            {% if message.tags == 'success'%}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                    <!--div class for where the user eneters their student ID-->
+                    <div class="form-label-group">
+                      <label for="inputStudentID"></label>
+                      <input type="text" id="inputStudentID" class="form-control" name="studentID" placeholder="StudentID" required autofocus>
+                    </div>
 
-            {% elif message.tags == 'info' %}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                    <!--div class for where the user eneters their password-->
+                    <div class="form-label-group">
+                      <label for="inputPassword"></label>
+                      <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+                    </div>
 
-            {% elif message.tags == 'warning' %}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-
-            {% elif message.tags == 'error' %}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-
-            <!-- Displays university logo-->
-            <img onload="this.style.opacity='0.8'" src="{% static "images/unilogo.png" %}" class= "center" width = "20%" >
+                    <div class="custom-control custom-checkbox mb-3">
+                      
+                      <label class="custom-control-label" for="customCheck1">Remember password</label>
+                      <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    </div>
+                  
+                  <!--Button submits user form-->
+                  <button class="btn btn-lg btn-primary btn-block" type="submit" name="" value="Login">Sign in</button>
+                  <!--Link sends user to a page to register-->
+                  <a href={% url 'register' %}><center>Not got an account? Register here.</center></a>
+                </form>
+              </div>
+           </div>
+          </div>
         </div>
+
+        <!--Displays toaster notifications to the user-->
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success'%}
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                {% elif message.tags == 'info' %}
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                {% elif message.tags == 'warning' %}
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                {% elif message.tags == 'error' %}
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+     
+     <!-- Displays university logo-->
+       <img onload="this.style.opacity='0.8'" src="{% static "images/unilogo.png" %}" class= "center" width = "20%" >
+                
+      </div>
+      </div>
+      </div>
     </div>
-</div>
+
 <!--Script picks a random background from a selection of them-->
 <script>
     var $imageArray = new Array();

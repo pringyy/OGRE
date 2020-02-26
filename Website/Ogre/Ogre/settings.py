@@ -139,7 +139,7 @@ CACHES = {
 }
 
 #Sets up crispy forms templates for the forms
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #For development
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
