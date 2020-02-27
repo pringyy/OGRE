@@ -281,6 +281,14 @@ def changeUsername(request):
 
 def leaderboard(request):
 
+    id = request.session['id']
+
+    r = requests.get('http://157.245.126.159/api/get_leaderboard.php?user_id='+id)
+    print(r.json())
+    data = r.json()
+
+    print(data)
+
     context_dict = {'leaderboard': StudentProfileInfo.objects.order_by("-totalPoints")[:5]}
     return render(request, 'points/leaderboard.html', context_dict)
 
