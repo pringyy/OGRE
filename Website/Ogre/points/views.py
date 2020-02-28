@@ -290,5 +290,5 @@ def leaderboard(request):
     r = requests.get('http://157.245.126.159/api/get_leaderboard.php?user_id='+id)
     print(r.json())
     data = r.json()
-
+    return HttpResponse(r)    
    

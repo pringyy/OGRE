@@ -8,16 +8,16 @@
     <section class="wt-section" id="login">
     	<div class="container">
             <br>
-    	    <h1 class="display-4 white-text">My Point Transactions</h1>
+    	    <h1 class="display-4 white-text">The LeaderBoard</h1>
             <hr>
             <div class="row">
                 <table id="grid-data" class="table table-condensed table-hover table-striped">
                 <thead class="data">
                 <tr>
-                    <th data-column-id="id" data-type="numeric">ID</th>
-                    <th data-column-id="type">Type(+/-)</th>
-                    <th data-column-id="detail" data-order="desc">Point paid for</th>
-                    <th data-column-id="amount" data-type="numeric">Amount</th>
+                    <th data-column-id="id" data-type="numeric">USER_ID</th>
+                    <th data-column-id="type">Student ID</th>
+                    <th data-column-id="detail" data-order="desc">Points</th>
+                    
                 </tr>
                 </thead>
                 </table>
@@ -37,7 +37,7 @@
             cache: false
             },
             ajax: true,
-            url: "/ajaxpointlist/",
+            url: "/leaderboard/",
         });
     });
 </script>
