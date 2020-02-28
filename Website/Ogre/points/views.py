@@ -299,8 +299,7 @@ def get_user_profile(request, username):
     return render(request, 'points/profile.html', {"user":user})
 
 
-#Displays profile page to the user when requested
-@login_required
+# Displays profile page to the user when requested
 def profile(request):
     return render(request, 'points/profile.html')
 
