@@ -194,11 +194,11 @@ def game(request):
     # get the session id to auth user
     id=request.session['id']
     # call the get user points api 
-    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id)
     d=r.json()
     # if user has points more than 5 then play game
     if int(d['points']) >= 5:
-        r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
+        r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5')
         return render(request,'points/game.html')
     else:
         # else reject user action
@@ -206,10 +206,10 @@ def game(request):
         return HttpResponseRedirect(reverse('index'))
 
 def getmypoint(request):
-    myobj = {'user_id': '1'}
+    
     id=request.session['id']
     #user.studentprofileinfo.currentPoints = 9
-    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id)
     d=r.json()
     #print(d['points'])
     return HttpResponse(r)
@@ -268,7 +268,7 @@ def changeUsername(request):
         # user the offical django user moodle api to get and modify current user info
         
         # call the api, this api mainly update the orge points for users
-        r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+username)
+        r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&points=5&action=update&alternatename='+username)
         d = r.json()
         if d["status"] != 0:
             # we now get the user by the username

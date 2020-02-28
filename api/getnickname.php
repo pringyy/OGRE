@@ -16,7 +16,7 @@ if(mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_assoc($result);
         if(isset($_REQUEST['alternatename'])){
         $nickname=$_REQUEST['alternatename'];
-        $nicknamepoint=5;
+        $nicknamepoint=$points;
         $sql = "SELECT * FROM mdl_user_points WHERE user_id = '".$user_id."' ";
         if($result = mysqli_query($con, $sql)){
                 if(mysqli_num_rows($result) > 0){
