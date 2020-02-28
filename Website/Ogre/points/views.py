@@ -20,9 +20,9 @@ from django.core.mail import BadHeaderError, EmailMessage, send_mail
 #Notifications import for toastr pop ups
 from django.contrib import messages
 #Imports the links of where the API calls are made
-from points import APIcalls
+from points.APIcalls import *
 #Imports the cost for each of the activities
-from points import costValues
+from points.costValues import * 
 
 
 #View to define the back-end functionality for user registration
@@ -44,7 +44,7 @@ def register(request):
         myobj = {'username':studentID,'password':password} 
 
         #This sends a reuest to the moodle API
-        r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
+        r = requests.post(loginAPIcall, data = myobj)
 
         #if valid['status] == 1, the user is a moodle user, meaning the moodle details provided are correct
         valid = r.json()
@@ -97,7 +97,7 @@ def user_login(request):
         myobj = {'username': studentID,'password':password}
 
         #Send related user info to moodle (moodle side has auth api function)
-        r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
+        r = requests.post(loginAPIcall, data = myobj)
 
         d=r.json()
         # and then we auth user in dajngo
@@ -170,22 +170,18 @@ def contact(request):
     return render(request, 'points/contact.html', {'form': form})
 
 
-#Displays the list of points to the user if they are logged in
-def pointlist(request):
-    if request.session.get('id'):
-        return render(request,'points/pointlist.html')
 
 #Provides back-end functionaility to see if the user can afford to play the game or not
 def game(request):
-    myobj = {'user_id': '1',"points":5}
+    myobj = {'user_id': '1',"points":gameCost}
     # get the session id to auth user
     id=request.session['id']
     # call the get user points api 
-    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    r = requests.get(getPointsAPIcall+id, data = myobj)
     d=r.json()
     #If user has points more than the points required to play the game let them play
-    if int(d['points']) >= 5:
-        r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
+    if int(d['points']) >= gameCost:
+        r = requests.get(removePointsAPIcall+id+'&points='+str(gameCost), data = myobj)
         return render(request,'points/game.html')
     else:
         #Else reject the user from playing them game
@@ -198,7 +194,7 @@ def getmypoint(request):
     id=request.session['id']
 
     #Retrieves the number of points the user currently has
-    noOfPoints = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    noOfPoints = requests.get(getPointsAPIcall+id, data = myobj)
 
     #Returns the number of points
     return HttpResponse(noOfPoints)
@@ -211,7 +207,7 @@ def pointcalculate(request):
     id=request.session['id']
 
     #API call to get the user points list
-    r = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
+    r = requests.get(transactionsAPIcall+id)
 
     #Intialisies variable stroing the JSON information
     d = r.json()
@@ -255,7 +251,7 @@ def changeUsername(request):
     else:
         # If they are not the same then it is valid
         # Calls the API to update the OGRE points of the user
-        r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+username)
+        r = requests.get(changeNicknameAPIcall+id+'&action=update&alternatename='+username)
         d = r.json()
         if d["status"] != 0:
             #We now get the user by the username
@@ -269,17 +265,24 @@ def changeUsername(request):
         return HttpResponse(r)    
 
 
-#View used for allowing users to navigate to login page if they AREN'T logged in
-@login_required
-def index(request):
-    return render(request, 'points/index.html')
 
 
 #Displays the list of points to the user if they are logged in
 def ajaxpointlist(request): 
     id=request.session['id']
-    request = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
+    request = requests.get(transactionsAPIcall+id)
     return HttpResponse(request)
+
+#Displays the list of points to the user if they are logged in
+def pointlist(request):
+    if request.session.get('id'):
+        return render(request,'points/pointlist.html')
+
+#View used for allowing users to navigate to login page if they AREN'T logged in
+@login_required
+def index(request):
+    return render(request, 'points/index.html')
+
 
 
 #View used for redirecting user to login page when they log out
