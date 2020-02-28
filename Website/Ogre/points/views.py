@@ -148,7 +148,7 @@ def user_login(request):
 
 #Provides the back end functionaility for the contact page
 def contact(request):
-    
+    form = ContactForm()
     if request.method == 'POST':
         form = ContactForm(request.POST)
 
