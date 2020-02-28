@@ -103,6 +103,7 @@ def user_login(request):
                 # status 1 indicated this user is moodle user, so we login this user
                 if d['status']==1:
                     id=d['userinfo']['id']
+                    print(id)
                     request.session['id'] = id
                     request.session['username'] = d['userinfo']['username'] 
                     messages.success(request, "Sucessfully logged in! Welcome!")
@@ -121,15 +122,16 @@ def user_login(request):
             id=d['userinfo']['id']
             request.session['id'] = id
             request.session['username'] = d['userinfo']['username'] 
-            u = User.objects.get(username=username)
-            if u:
+            try:
+                u = User.objects.get(username=username)
                 u.set_password(password)
                 u.save()
                 user2 = authenticate(username=username, studentID = studentID, password=password)
                 messages.success(request, "Sucessfully logged in! Welcome!")
                 login(request,user2)
                 return HttpResponseRedirect(reverse('index'))
-            else:
+            
+            except:
                 messages.error(request, "Please enter the correct username!")
                 
         else:
