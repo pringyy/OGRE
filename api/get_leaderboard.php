@@ -13,7 +13,7 @@ if(isset($_REQUEST['user_id'])){
     if(mysqli_num_rows($result) > 0){
 
 
-    $sql = "SELECT * FROM mdl_user_points order by points desc ";
+    $sql = "select mdl_user_points.user_id, mdl_user.username,mdl_user_points.points from mdl_user_points,mdl_user where mdl_user.id = mdl_user_points.user_id order by mdl_user_points.points desc;";
     if($result = mysqli_query($con, $sql)){
     if(mysqli_num_rows($result) > 0){
        
@@ -28,7 +28,7 @@ if(isset($_REQUEST['user_id'])){
 		 exit;
         
     }else{
-        $data = array('status'=>0,'message'=>'No User points found for this user.');
+        $data = array('status'=>0,'message'=>'we could not get any user points now!');
         echo json_encode($data);
         exit;
     }
