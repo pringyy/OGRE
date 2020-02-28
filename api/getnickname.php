@@ -24,7 +24,7 @@ if(mysqli_num_rows($result) > 0){
 
                     if($user_points >= $nicknamepoint){
                         $updated_points = $user_points - $nicknamepoint;
-                        $sql = "insert into mdl_user_points_trans (type,detail,userid,amount,spentTime) values('-','Change nickname','".$user_id."','".$nicknamepoint."',now())  ";
+                        $sql = "insert into mdl_user_points_trans (type,detail,userid,amount,spentTime) values('-','Change username','".$user_id."','".$nicknamepoint."',now())  ";
                         mysqli_query($con, $sql);
 
                         $sql = "UPDATE mdl_user_points SET points='".$updated_points."' WHERE user_id='".$user_id."' ";
@@ -36,7 +36,7 @@ if(mysqli_num_rows($result) > 0){
                         $result = mysqli_query($con, $sql);
                         $row = mysqli_fetch_assoc($result);
 
-                        $data = array('status'=>1,'message'=>'  Nickname Updated ', 'user_id'=>$user_id, 'nickname'=>$row['alternatename']);
+                        $data = array('status'=>1,'message'=>'  Username Updated ', 'user_id'=>$user_id, 'nickname'=>$row['alternatename']);
                         echo json_encode($data);
                         exit;
                     }else{
