@@ -1,4 +1,9 @@
-#HTTP importa
+#THIS FILE PROVIDES THE VIEWS FOR THE WHOLE APPLICATION
+#THIS FILE ALLOWS FOR REQUESTS IN THE APPLICATION
+#IT IS ALSO WHERE THE API CALLS ARE MADE, IF YOU WANT TO EDIT THEM CHANGE THE APIcall.py FILE
+#IF YOU WANT TO CHANGE THE COST OF CERTAIN REQUESTS THAT WILL REMOVE POINTS, EDIT THE costValues.py FILE
+
+#HTTP imports
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
@@ -9,25 +14,17 @@ import requests
 from points.forms import UserForm, UserProfileInfoForm, ContactForm
 import json
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import user_passes_test
 # Email imports for contact view
 from django.core.mail import BadHeaderError, EmailMessage, send_mail
 #Notifications import for toastr pop ups
 from django.contrib import messages
+#Imports the links of where the API calls are made
+from points import APIcalls
+#Imports the cost for each of the activities
+from points import costValues
 
 
-#View used for allowing users to navigate to login page if they AREN'T logged in
-@login_required
-def index(request):
-    context_dict={}
-    return render(request, 'points/index.html', context_dict)
-
-
-#View used for redirecting user to login page when they log out
-@login_required
-def user_logout(request):
-    logout(request)
-    return HttpResponseRedirect(reverse('index'))
-    
 #View to define the back-end functionality for user registration
 def register(request):
 
@@ -37,7 +34,7 @@ def register(request):
     #Use post request to get Moodle related information
     if request.method == 'POST':
 
-        # we use the crispy form, which has post request
+        #We use crispy forms, which has post request
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileInfoForm(data=request.POST)
         studentID = request.POST.get('StudentID', None)
@@ -102,7 +99,6 @@ def user_login(request):
         #Send related user info to moodle (moodle side has auth api function)
         r = requests.post('http://157.245.126.159/api/login.php', data = myobj)
 
-
         d=r.json()
         # and then we auth user in dajngo
         user = authenticate(username=username, studentID = studentID, password=password)
@@ -122,9 +118,6 @@ def user_login(request):
                 elif d['status']==0:
                     messages.error(request, "Please use your moodle password!")
                     
-                
-                
-
             else:
                 messages.error(request, "Please register with your moodle account first!")
         # this user reset the password
@@ -153,7 +146,6 @@ def user_login(request):
 
 
 
-
 #Provides the back end functionaility for the contact page
 def contact(request):
     
@@ -171,25 +163,12 @@ def contact(request):
                                 to=['contactogre2020@gmail.com']) #change to your email
             email.send()
 
+            #Redirect them to the thanky you page
             return redirect('../thanks/')
+
+    #Returns the contact page when requested
     return render(request, 'points/contact.html', {'form': form})
 
-#Displays the thanks page to the user when they request the page
-def thanks(request):
-    return render(request, 'points/thanks.html')
-
-#Displays FAQ page to the user when requested
-def faq(request):
-    return render(request, 'points/faq.html')
-
-#Displays prodile page to the user when requested
-def profile(request):
-    return render(request, 'points/profile.html')
-
-@login_required
-def get_user_profile(request, username):
-    user = User.objects.get(username=username)
-    return render(request, 'points/profile.html', {"user":user})
 
 #Displays the list of points to the user if they are logged in
 def pointlist(request):
@@ -213,6 +192,7 @@ def game(request):
         messages.error(request, "You don't have enough points to play!")
         return HttpResponseRedirect(reverse('index'))
 
+#View used to retrieve the users points from the Moodle server
 def getmypoint(request):
     myobj = {'user_id': '1'}
     id=request.session['id']
@@ -224,31 +204,38 @@ def getmypoint(request):
     return HttpResponse(noOfPoints)
 
 
-
-#Displays the list of points to the user if they are logged in
-def ajaxpointlist(request): 
-    id=request.session['id']
-    request = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
-    return HttpResponse(request)
-
+#Provides the back end functionality to calcualte the points the user has spent and the total points they have earned
 def pointcalculate(request):
-    # mainly use for loop to generate the points info
+
+    #Gets session id
     id=request.session['id']
+
+    #API call to get the user points list
     r = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
+
+    #Intialisies variable stroing the JSON information
     d = r.json()
+
+    #Stores points list in this variables for the user logged in
     point_d = d['rows']
+
+    #Initialises the variables being calculatedß
     total_point = 0
     spent_point = 0
-    #print(d['rows'])
+
+    #Loops through points list and calculates points
     for i in range(len(point_d)):
         #print(point_d[i]['amount'])
         if (point_d[i]['type'] == '-'):
             spent_point += int(point_d[i]['amount'])
         else:
             total_point +=int(point_d[i]['amount'])
+
+    #Updates the variable stroing the JSON information
     d.update({'total_point':total_point})
     d.update({'spent_point':spent_point})
-    
+
+    #Returns the calculated variables via a JSON response
     return JsonResponse(d)
 
 #Provides back-end fucntionality for users changing their username
@@ -261,39 +248,86 @@ def changeUsername(request):
     #If they are trying to change it to the same username reject the action
     if request.user.username == username:
         
-        # 0 means failed
+        #0 means invalid
         invalid = {"status":0,'message':'  Do not enter the same username!'}
         return JsonResponse(invalid)
     
     else:
-        #If they are not the same then it is valid
-        # user the offical django user moodle api to get and modify current user info
-        
+        # If they are not the same then it is valid
         # Calls the API to update the OGRE points of the user
         r = requests.get('http://157.245.126.159/api/getnickname.php?user_id='+id+'&action=update&alternatename='+username)
         d = r.json()
         if d["status"] != 0:
-            # we now get the user by the username
+            #We now get the user by the username
             u = User.objects.get(username=request.user.username)
-            # then we chnge the username
+            #Change the username on Django
             u.username = username
-        # save it
+            #Save the username on Django
             u.save()
-            
+
+        #Returns the request
         return HttpResponse(r)    
 
 
-#MAKE SURE TO DELETE THIS BEFORE CODE FREEZE
+#View used for allowing users to navigate to login page if they AREN'T logged in
+@login_required
+def index(request):
+    return render(request, 'points/index.html')
+
+
+#Displays the list of points to the user if they are logged in
+def ajaxpointlist(request): 
+    id=request.session['id']
+    request = requests.get('http://157.245.126.159/api/get_user_pointlist.php?user_id='+id)
+    return HttpResponse(request)
+
+
+#View used for redirecting user to login page when they log out
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
+
+#Used to display other users profiles when requested
+@login_required
+def get_user_profile(request, username):
+    user = User.objects.get(username=username)
+    return render(request, 'points/profile.html', {"user":user})
+
+
+#Displays profile page to the user when requested
+@login_required
+def profile(request):
+    return render(request, 'points/profile.html')
+
+
+#Makes sure user is an admin to see the JSON files for testing purposes
+@user_passes_test(lambda u: u.is_superuser)
 def iterateJSON(request):
     return render(request, 'points/iterateJSON.html')
+
 
 #Displays OGRE points page to the user when requested
 def ogre_points(request):
     return render(request, 'points/ogre_points.html')
 
+
 #Displays about page to the user when requested
 def about(request):
     return render(request, 'points/about.html')
+
+
+#Displays the thanks page to the user when they request the page
+def thanks(request):
+    return render(request, 'points/thanks.html')
+
+
+#Displays FAQ page to the user when requested
+def faq(request):
+    return render(request, 'points/faq.html')
+
+
 
 
        
