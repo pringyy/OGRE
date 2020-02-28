@@ -45,7 +45,7 @@ class FAQPageTest(TestCase):
 
 class ProfilePageTest(TestCase):
     # tests that profile page uses profile url
-    def test_faq_view_url_by_name(self):
+    def test_profile_view_url_by_name(self):
         response = self.client.get(reverse('profile'))
         self.assertEquals(response.status_code, 200)
 
