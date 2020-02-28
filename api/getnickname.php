@@ -3,9 +3,10 @@
 include(dirname(dirname(__FILE__)).'/include/config.php');
 
 
-if(isset($_REQUEST['user_id'])  ){
+if(isset($_REQUEST['user_id']) && isset($_REQUEST['points'])){
 
 $user_id = $_REQUEST['user_id'];
+$points = $_REQUEST['points'];
 
 
 $sql = "SELECT * FROM mdl_user WHERE id = '".$user_id."' ";
