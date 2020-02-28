@@ -328,7 +328,8 @@ def thanks(request):
 
 #Displays FAQ page to the user when requested
 def faq(request):
-    return render(request, 'points/faq.html')
+    context_dic = {}
+    return render(request, 'points/faq.html', context_dic)
 
 
 
