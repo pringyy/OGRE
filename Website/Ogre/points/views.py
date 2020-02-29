@@ -174,18 +174,18 @@ def contact(request):
 
 #Provides back-end functionaility to see if the user can afford to play the game or not
 def game(request):
-    myobj = {'user_id': '1',"points":gameCost}
+   
     # get the session id to auth user
     id=request.session['id']
 
     #Calls the API to get the active users points
-    r = requests.get(getPointsAPIcall+id, data = myobj)
+    r = requests.get(getPointsAPIcall+id)
     d=r.json()
     #If user has points more than the points required to play the game let them play
     if int(d['points']) >= gameCost:
         #Calls the API to remove user points from Moodle
         #Variable gameCost is refrenced from costValues.py where the cost to play the game is defined
-        r = requests.get(removePointsAPIcall+id+'&points='+str(gameCost), data = myobj)
+        r = requests.get(removePointsAPIcall+id+'&points='+str(gameCost))
         return render(request,'points/game.html')
     else:
         #Else reject the user from playing them game
@@ -200,7 +200,7 @@ def getmypoint(request):
     id=request.session['id']
 
     #Retrieves the number of points the user currently has
-    noOfPoints = requests.get(getPointsAPIcall+id, data = myobj)
+    noOfPoints = requests.get(getPointsAPIcall+id)
 
     #Returns the number of points
     return HttpResponse(noOfPoints)
