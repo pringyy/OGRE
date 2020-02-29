@@ -1,38 +1,40 @@
-{% extends "points/base.html" %}
+<!--THIS HTML PAGE REPRESENTS THE REGISTRATION PAGE-->
+
+{% extends "points/base.html" %} <!--Inherits HTML from page-->
 {% load static %}
-{% load crispy_forms_tags %}
-
+{% load crispy_forms_tags %} <!--loads crispy forms to make the form look nicer-->
 {% block title %} {{ block.super }} - Register {% endblock %}
-
 {% block body_block %}
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+
+  <!--Checks to see if the user is logged in, and if they are it redirects them to the dashboard-->
   {%if user.is_authenticated %}
     <meta http-equiv = "refresh" content = "0; url = {% url 'index' %}" />
   {% else %}
 
+    <div class="container">
+      <br>
+      <h1 class="display-4 white-text">Register</h1> <!--Title of the page-->
+      <hr>
+      <div class="jumbotron">
 
-<div class="container">
-  <br>
-  <h1 class="display-4 white-text">Register</h1>
-  <hr>
-
-  <div class="jumbotron">
-    {% if registered %}
-    <br>
-    <center><h1 class="display-4 container white-text">Thanks for registering!</h1></center>
-    {% else %}
-    
-        <form enctype="multipart/form-data" method="POST">
-          {% csrf_token %}
-          {{profile_form.StudentID|as_crispy_field}}
-          {{user_form|crispy}}
-          <input type="submit" class= "button1" name="" value="Register">
-        </form>
+        <!--Checks to see if the user is registered successfully, and if they are display the heading below-->
+        {% if registered %} 
+          <br>
+          <center><h1 class="display-4 container white-text">Thanks for registering!</h1></center>
+        {% else %} <!--Else display the registration form-->
         
-    {% endif %}
-  </div>
-
-</div>
-{% endif %}
+          <!--Form displays where the user fills in their information to register-->
+          <form enctype="multipart/form-data" method="POST"> 
+            {% csrf_token %}
+            {{profile_form.StudentID|as_crispy_field}} <!--Display just the StudentID field from the Profile form defined in form.py-->
+            {{user_form|crispy}}
+            <input type="submit" class= "button1" name="" value="Register"> <!--Code for submit button-->
+          </form>
+            
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}
