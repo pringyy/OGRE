@@ -19,9 +19,9 @@ from django.contrib.auth.decorators import user_passes_test
 from django.core.mail import BadHeaderError, EmailMessage, send_mail
 #Notifications import for toastr pop ups
 from django.contrib import messages
-#Imports the links of where the API calls are made
+#Imports the links stored in variables of the API calls 
 from points.APIcalls import *
-#Imports the cost for each of the activities
+#Imports the cost for each of the activities stored in an integer variable
 from points.costValues import * 
 
 
@@ -176,11 +176,14 @@ def game(request):
     myobj = {'user_id': '1',"points":gameCost}
     # get the session id to auth user
     id=request.session['id']
-    # call the get user points api 
+
+    #Calls the API to get the active users points
     r = requests.get(getPointsAPIcall+id, data = myobj)
     d=r.json()
     #If user has points more than the points required to play the game let them play
     if int(d['points']) >= gameCost:
+        #Calls the API to remove user points from Moodle
+        #Variable gameCost is refrenced from costValues.py where the cost to play the game is defined
         r = requests.get(removePointsAPIcall+id+'&points='+str(gameCost), data = myobj)
         return render(request,'points/game.html')
     else:
@@ -190,7 +193,8 @@ def game(request):
 
 #View used to retrieve the users points from the Moodle server
 def getmypoint(request):
-    myobj = {'user_id': '1'}
+    
+    #retrieves session ID
     id=request.session['id']
 
     #Retrieves the number of points the user currently has
@@ -251,7 +255,9 @@ def changeUsername(request):
     else:
         # If they are not the same then it is valid
         # Calls the API to update the OGRE points of the user
-        r = requests.get(changeNicknameAPIcall+id+'&action=update&alternatename='+username)
+        #Variable changeNicknameCost is refrenced from costValues.py where you can change the values
+        r = requests.get(changeNicknameAPIcall+id+'&points='+str(changeNicknameCost)+'&action=update&alternatename='+username)
+
         d = r.json()
         if d["status"] != 0:
             #We now get the user by the username
@@ -265,24 +271,23 @@ def changeUsername(request):
         return HttpResponse(r)    
 
 
-
-
 #Displays the list of points to the user if they are logged in
 def ajaxpointlist(request): 
     id=request.session['id']
     request = requests.get(transactionsAPIcall+id)
     return HttpResponse(request)
 
+
 #Displays the list of points to the user if they are logged in
 def pointlist(request):
     if request.session.get('id'):
         return render(request,'points/pointlist.html')
 
+
 #View used for allowing users to navigate to login page if they AREN'T logged in
 @login_required
 def index(request):
     return render(request, 'points/index.html')
-
 
 
 #View used for redirecting user to login page when they log out
@@ -304,12 +309,6 @@ def profile(request):
     return render(request, 'points/profile.html')
 
 
-#Makes sure user is an admin to see the JSON files for testing purposes
-@user_passes_test(lambda u: u.is_superuser)
-def iterateJSON(request):
-    return render(request, 'points/iterateJSON.html')
-
-
 #Displays OGRE points page to the user when requested
 def ogre_points(request):
     return render(request, 'points/ogre_points.html')
@@ -327,12 +326,20 @@ def thanks(request):
 
 #Displays FAQ page to the user when requested
 def faq(request):
-    context_dic = {}
     return render(request, 'points/faq.html')
 
 
+#This view is used to provide the backend functo   
+def leaderboard(request):
+    id = request.session['id']
+    #API call to the leader board php file in the moodle server
+    r = requests.get(leaderboardAPIcall+id)
+    data = r.json()
+    return HttpResponse(r)    
 
 
-       
-    
+#Makes sure user is an admin to see the JSON files for testing purposes
+@user_passes_test(lambda u: u.is_superuser)
+def iterateJSON(request):
+    return render(request, 'points/iterateJSON.html')
    
