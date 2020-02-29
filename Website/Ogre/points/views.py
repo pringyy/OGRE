@@ -74,6 +74,7 @@ def register(request):
                 messages.error(request, "The Moodle username or password is incorrect")
 
     else:
+        #Else request type is invalid, so save the forms and display them to the user 
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
     return render(request,'points/register.html',
@@ -85,10 +86,10 @@ def register(request):
 #This view provides the back-end for the user login page
 def user_login(request):
 
-    # use post request to get related user info
+    #Use post request to get related user info
     if request.method == 'POST':
 
-        #gets the user details from Django
+        #Gets the user details from Django
         username = request.POST.get('username')
         studentID = request.POST.get('studentID')
         password = request.POST.get('password')
@@ -96,17 +97,17 @@ def user_login(request):
         #Stores username and password in an object
         myobj = {'username': studentID,'password':password}
 
-        #Send related user info to moodle (moodle side has auth api function)
+        #Send related user info to moodle (moodle side has auth passwor API function)
         r = requests.post(loginAPIcall, data = myobj)
 
         d=r.json()
-        # and then we auth user in dajngo
+        #Authentictes the user in dajngo
         user = authenticate(username=username, studentID = studentID, password=password)
         print(username,studentID,password)
         
         if user:
             if user.is_active:   
-                # status 1 indicated this user is moodle user, so we login this user
+                # status 1 indicated this user is a user, so we login this user
                 if d['status']==1:
                     id=d['userinfo']['id']
                     print(id)
@@ -115,12 +116,14 @@ def user_login(request):
                     messages.success(request, "Sucessfully logged in! Welcome!")
                     login(request,user)
                     return HttpResponseRedirect(reverse('index'))
+
                 elif d['status']==0:
+                    #else the user is not a user stored so we send error message
                     messages.error(request, "Please use your moodle password!")
-                    
             else:
                 messages.error(request, "Please register with your moodle account first!")
-        # this user reset the password
+
+        # Used to account for if the user reset their password via moodle and then registered again
         elif d['status']==1:
             id=d['userinfo']['id']
             request.session['id'] = id
@@ -145,7 +148,6 @@ def user_login(request):
     return render(request, 'points/login.html', {})
 
 
-
 #Provides the back end functionaility for the contact page
 def contact(request):
     form = ContactForm()
@@ -163,12 +165,11 @@ def contact(request):
                                 to=['contactogre2020@gmail.com']) #change to your email
             email.send()
 
-            #Redirect them to the thanky you page
+            #Redirect them to the thank you page
             return redirect('../thanks/')
 
     #Returns the contact page when requested
     return render(request, 'points/contact.html', {'form': form})
-
 
 
 #Provides back-end functionaility to see if the user can afford to play the game or not
@@ -190,6 +191,7 @@ def game(request):
         #Else reject the user from playing them game
         messages.error(request, "You don't have enough points to play!")
         return HttpResponseRedirect(reverse('index'))
+
 
 #View used to retrieve the users points from the Moodle server
 def getmypoint(request):
@@ -225,7 +227,6 @@ def pointcalculate(request):
 
     #Loops through points list and calculates points
     for i in range(len(point_d)):
-        #print(point_d[i]['amount'])
         if (point_d[i]['type'] == '-'):
             spent_point += int(point_d[i]['amount'])
         else:
@@ -237,6 +238,7 @@ def pointcalculate(request):
 
     #Returns the calculated variables via a JSON response
     return JsonResponse(d)
+
 
 #Provides back-end fucntionality for users changing their username
 def changeUsername(request):
@@ -304,7 +306,7 @@ def get_user_profile(request, username):
     return render(request, 'points/profile.html', {"user":user})
 
 
-# Displays profile page to the user when requested
+#Displays profile page to the user when requested
 def profile(request):
     return render(request, 'points/profile.html')
 
@@ -329,7 +331,7 @@ def faq(request):
     return render(request, 'points/faq.html')
 
 
-#This view is used to provide the backend functo   
+#This view is used to provide the backend functionality  
 def leaderboard(request):
     id = request.session['id']
     #API call to the leader board php file in the moodle server
