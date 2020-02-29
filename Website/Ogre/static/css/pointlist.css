@@ -1,6 +1,9 @@
+/*USED TO REPRESENT THE CSS CODE USED IN THE TRANSACTION HISTORY PAGE*/
+
 a{
     text-decoration:none !important;
 }
+
 .myform{
     position: relative;
     display: -ms-flexbox;
@@ -17,12 +20,15 @@ a{
     outline: 0;
     max-width: 500px;
 }
+
 .tx-tfm{
     text-transform:uppercase;
 }
+
 .mybtn{
     border-radius:50px;
-}
+}]
+
 .login-or {
     position: relative;
     color: #aaa;
@@ -31,6 +37,7 @@ a{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .span-or {
     display: block;
     position: absolute;
@@ -41,11 +48,13 @@ a{
     width: 50px;
     text-align: center;
 }
+
 .hr-or {
     height: 1px;
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
+
 .google {
     color:#666;
     width:100%;
@@ -54,19 +63,24 @@ a{
     outline:none;
     border: 1px solid lightgrey;
 }
+
 form .error {
     color: #ff0000;
 }
+
 #second{
     display:none;
 }
+
 #grid-data{
     color: black;
     background: white;
 }
+
 .text-left{
     color: black;
 }
+
 .data{
     color: black; !important;
 }
