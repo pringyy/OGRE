@@ -12,7 +12,7 @@ if(isset($_REQUEST['user_id'])){
     $result = mysqli_query($con, $sql);
     if(mysqli_num_rows($result) > 0){
 
-
+        // select the points of users and order it( from table mdl_user_points and mdl_user)
     $sql = "select mdl_user_points.user_id, mdl_user.username,mdl_user_points.points from mdl_user_points,mdl_user where mdl_user.id = mdl_user_points.user_id order by mdl_user_points.points desc;";
     if($result = mysqli_query($con, $sql)){
     if(mysqli_num_rows($result) > 0){
