@@ -1,19 +1,22 @@
 <?php
 
 include(dirname(dirname(__FILE__)).'/include/config.php');
-
+// verfiy if the php side receive the id and points
 if(isset($_REQUEST['user_id']) && isset($_REQUEST['points'])){
 
+// receive the user_id and related points here
 $user_id = $_REQUEST['user_id'];
 $points = $_REQUEST['points'];
 
+// use sql statement to exact the user
 $sql = "SELECT * FROM mdl_user WHERE id = '".$user_id."' ";
 $result = mysqli_query($con, $sql);
 if(mysqli_num_rows($result) > 0){
 
-
+            // to see if the use has points records
             $sql = "SELECT * FROM mdl_user_points WHERE user_id = '".$user_id."' ";
             if($result = mysqli_query($con, $sql)){
+                
                 if(mysqli_num_rows($result) > 0){
                    
                         $row = mysqli_fetch_assoc($result);
