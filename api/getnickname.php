@@ -15,6 +15,7 @@ if(mysqli_num_rows($result) > 0){
     if($_REQUEST['action']=="update"){
         $row = mysqli_fetch_assoc($result);
         if(isset($_REQUEST['alternatename'])){
+            // get the user require change name here
         $nickname=$_REQUEST['alternatename'];
         $nicknamepoint=$points;
         $sql = "SELECT * FROM mdl_user_points WHERE user_id = '".$user_id."' ";
@@ -25,9 +26,10 @@ if(mysqli_num_rows($result) > 0){
 
                     if($user_points >= $nicknamepoint){
                         $updated_points = $user_points - $nicknamepoint;
+                        //update the transaction table
                         $sql = "insert into mdl_user_points_trans (type,detail,userid,amount,spentTime) values('-','Change username','".$user_id."','".$nicknamepoint."',now())  ";
                         mysqli_query($con, $sql);
-
+                        // update the points table
                         $sql = "UPDATE mdl_user_points SET points='".$updated_points."' WHERE user_id='".$user_id."' ";
                         mysqli_query($con, $sql);
 
