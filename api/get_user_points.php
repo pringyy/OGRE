@@ -12,7 +12,7 @@ if(isset($_REQUEST['user_id'])){
     $result = mysqli_query($con, $sql);
     if(mysqli_num_rows($result) > 0){
 
-
+        // select the user points here
     $sql = "SELECT * FROM mdl_user_points WHERE user_id = '".$user_id."' ";
     if($result = mysqli_query($con, $sql)){
     if(mysqli_num_rows($result) > 0){
