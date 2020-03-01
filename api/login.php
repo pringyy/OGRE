@@ -15,7 +15,7 @@ header('Access-Control-Allow-Origin: *');
 if((isset($_REQUEST['username']) && $_REQUEST['username'] != "") && (isset($_REQUEST['password']) && $_REQUEST['password'] != '')){
 
 
-
+// get the moodle username and passwword here
 $username = required_param('username', PARAM_USERNAME);
 $password = required_param('password', PARAM_RAW);
 
@@ -32,6 +32,8 @@ if (is_restored_user($username)) {
 }
 $systemcontext = context_system::instance();
 $reason = null;
+
+// use this moodle offical api to verify the django user
 $user = authenticate_user_login($username, $password, false, $reason, false);
 
 if (!empty($user)) {
