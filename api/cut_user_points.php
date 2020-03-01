@@ -26,14 +26,15 @@ if(mysqli_num_rows($result) > 0){
                                 $updated_points = $user_points - $points;
 									$sql = "insert into mdl_user_points_trans (type,detail,userid,amount,spentTime) values('-','Game play','".$user_id."','".$points."',now())  ";
                                     mysqli_query($con, $sql);  
-									
+									// update the points of user.
                                     $sql = "UPDATE mdl_user_points SET points='".$updated_points."' WHERE user_id='".$user_id."' ";
                                     mysqli_query($con, $sql);                
                                    
+                                    // send the related message to dajngp
                                     $data = array('status'=>1,'message'=>'Points deducted successfully.', 'user_id'=>$user_id, 'points'=>$updated_points);
                                     echo json_encode($data);
                                     exit;    
-                        }else{
+                        }else{      // else send the error message
                                     $data = array('status'=>0,'message'=>'User does not have sufficient points');
                                     echo json_encode($data);
                                     exit;    
@@ -41,7 +42,7 @@ if(mysqli_num_rows($result) > 0){
                         
                         
                     
-                }else{
+                }else{ // the user has no records
 
                     $data = array('status'=>0,'message'=>'No User points found for this user.');
                     echo json_encode($data);
