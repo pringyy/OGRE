@@ -16,12 +16,12 @@ if(mysqli_num_rows($result) > 0){
             // to see if the use has points records
             $sql = "SELECT * FROM mdl_user_points WHERE user_id = '".$user_id."' ";
             if($result = mysqli_query($con, $sql)){
-                
+                // if this user has points records
                 if(mysqli_num_rows($result) > 0){
                    
                         $row = mysqli_fetch_assoc($result);
                         $user_points = $row['points'];
-                        
+                        // do the points cutting here!
                         if($user_points >= $points){
                                 $updated_points = $user_points - $points;
 									$sql = "insert into mdl_user_points_trans (type,detail,userid,amount,spentTime) values('-','Game play','".$user_id."','".$points."',now())  ";
