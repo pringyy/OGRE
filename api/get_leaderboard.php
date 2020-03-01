@@ -22,7 +22,7 @@ if(isset($_REQUEST['user_id'])){
 		}
 		 
 		 $total=mysqli_num_rows($result);
-		 
+		 // send the leadboard data
 		 $data = array('status'=>1,"current"=> 1,"rowCount"=>10,'user_id'=>$user_id,'total'=>$total,'rows'=>$data);
 		 echo json_encode($data);
 		 exit;
