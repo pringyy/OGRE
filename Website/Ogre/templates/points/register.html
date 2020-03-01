@@ -18,7 +18,6 @@
       <h1 class="display-4 white-text">Register</h1> <!--Title of the page-->
       <hr>
       <div class="jumbotron">
-
         <!--Checks to see if the user is registered successfully, and if they are display the heading below-->
         {% if registered %} 
           <br>
@@ -31,8 +30,7 @@
             {{profile_form.StudentID|as_crispy_field}} <!--Display just the StudentID field from the Profile form defined in form.py-->
             {{user_form|crispy}}
             <input type="submit" class= "button1" name="" value="Register"> <!--Code for submit button-->
-          </form>
-            
+          </form>    
         {% endif %}
       </div>
     </div>

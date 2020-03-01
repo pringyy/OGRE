@@ -82,7 +82,6 @@
 
     <!--Script used to retrieve the user OGRE points-->
     <script type="text/javascript">
-
         $('document').ready(function(){
             $.ajax({
                 url: "{% url 'getmypoint' %}",
@@ -95,7 +94,6 @@
                 }else{
                 }
             })
-
             $.ajax({
                 url: "{% url 'pointcalculate' %}",
                 type: "GET",
@@ -106,12 +104,10 @@
                 $(".spent").html(responce.spent_point)
             })
         });
-
     </script>
 
     <!-- Components Vendor  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-
     <!--Plugin Initialize-->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
