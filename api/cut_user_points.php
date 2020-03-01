@@ -51,7 +51,7 @@ if(mysqli_num_rows($result) > 0){
             
             }
 
-}else{
+}else{// this user does not exist
     $data = array('status'=>0,'message'=>'User does not exist.');
     echo json_encode($data);
     exit;
