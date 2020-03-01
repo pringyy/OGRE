@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 import requests
 from points.forms import UserForm, UserProfileInfoForm, ContactForm
+from points.models import StudentProfileInfo
 import json
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
@@ -59,9 +60,12 @@ def register(request):
             user = user_form.save(commit=False)
             user.set_password(user.password)
             user.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
-
+            studentProfileInfo = profile_form.save(commit=False)
+            studentProfileInfo.user = user
+            studentProfileInfo.StudentID = studentID
+            studentProfileInfo.save()
+            #profile.user = user
+            
             #Displays notification if the user has successfully registered
             messages.success(request, "Successfully Registered!")
 
