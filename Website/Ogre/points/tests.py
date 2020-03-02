@@ -54,6 +54,10 @@ class ProfilePageTest(TestCase):
         response = self.client.get(reverse('profile'))
         self.assertTemplateUsed(response, 'points/profile.html')
 
+    # tests that profile page displays users points
+    def test_profile_page_displays_points(self):
+        response = self.client.get(reverse('profile'))
+
 
 class ThanksPageTest(TestCase):
     # tests that thanks page uses thanks url
@@ -85,7 +89,7 @@ class RegisterPageTest(TestCase):
         self.assertEquals(response.status_code, 200)
 
     # tests that register page uses template
-    def test_faq_page_uses_templates(self):
+    def test_register_page_uses_templates(self):
         response = self.client.get(reverse('register'))
         self.assertTemplateUsed(response, 'points/register.html')
 
@@ -126,7 +130,9 @@ class StaticImageTests(TestCase):
                   "png" : ['ogrelogo', 'unilogo']}
 
         for format, file in images.items():
-            img = finders.find('images/{}.{}'.format(file, format))
+            for f in file:
+                img = finders.find('images/{}.{}'.format(f, format))
+                self.assertIsNotNone(img)
 
 class StudentProfileTests(TestCase):
 
@@ -172,4 +178,3 @@ class ContactFormTests(TestCase):
     def test_user_form_invalid(self):
         form = ContactForm(data={'contact_email': "a@b.com", "subject":"test", "content":"This is a test!"})
         self.assertFalse((form.is_valid()))
-
