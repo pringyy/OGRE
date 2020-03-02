@@ -17,18 +17,20 @@
 
 				<!--Tile 1-->
 				<div class="col-lg-4">
-					<div class="our-team-main">
-						<div class="team-front">
-							<img src="https://www.liberaldictionary.com/wp-content/uploads/2018/11/reward.png" class="img-fluid" />
-							<h3>Points</h3>
-							<p class="points"> Loading... </p>
+					<a href="{% url 'leaderboard' %}"     style="color:black">
+						<div class="our-team-main">
+							<div class="team-front">
+								<img src="https://www.liberaldictionary.com/wp-content/uploads/2018/11/reward.png" class="img-fluid" />
+								<h3>Points</h3>
+								<p class="points"> Loading... </p>
+							</div>
+							<div class="team-back">
+								<p class= 'dashboard-text2'>
+										Click here for leaderboard!
+								</p>
+							</div>
 						</div>
-						<div class="team-back">
-							<p class= 'dashboard-text2'>
-									Total Points: <b class="points"> Loading... </b>
-							</p>
-						</div>
-					</div>
+					</a>
 				</div>
 				
 				<!--Tile-2-->
@@ -200,30 +202,6 @@
 			</div>
 		</div>
 	</form>
-
-	<!--Used to display the leadeboard-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/pointlist.css' %}">
-	<div class="container"> <table class="table">
-	    <section class="wt-section" id="login">
-	    	<div class="container">
-	            <br>
-	    	    <h1 class="display-4 white-text">The LeaderBoard</h1>
-	            <hr>
-	            <div class="row">
-	                <table id="grid-data" class="table table-condensed table-hover table-striped">
-	                <thead class="data">
-	                <tr>
-	                    <th data-column-id="user_id" data-type="numeric">USER_ID</th>
-	                    <th data-column-id="username">Student ID</th>
-	                    <th data-column-id="points" data-order="desc">Points</th>
-	                </tr>
-	                </thead>
-	                </table>
-	            </div><!-- dashboard end -->
-	        </div>
-	    </section>
-	</div>
-
 
 	<script type="text/javascript">
 		$('document').ready(function(){

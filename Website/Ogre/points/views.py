@@ -282,13 +282,16 @@ def thanks(request):
 def faq(request):
     return render(request, 'points/faq.html')
 
-#This view is used to provide the backend functionality  
+# View that displays the points leaderboard to the user, using data from Moodle
 def leaderboard(request):
     id = request.session['id']
-    #API call to the leader board php file in the moodle server
-    r = requests.get(leaderboardAPIcall+id)
+
+    # API call to the leader board php file in the Moodle server
+    r = requests.get(leaderboardAPIcall + id)
     data = r.json()
-    return HttpResponse(r)    
+    leaderboard = data["rows"]
+
+    return render(request, 'points/leaderboard.html', {"leaderboard": leaderboard})
 
 #Makes sure user is an admin to see the JSON files for testing purposes
 @user_passes_test(lambda u: u.is_superuser)
