@@ -14,9 +14,9 @@
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-0 shadow">
-                <img src="{% static "images/bee.jpg" %}" class="card-img-top" alt="...">
+                <img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Bee</h5>
+                    <h5 class="card-title mb-0">Current Avatar</h5>
                 </div>
             </div>
         </div>
@@ -25,7 +25,8 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/dog.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Dog</h5>
+                    <input type = "radio" name = "avatar" id = "dog" value = "dog">
+                    <label for = "dog">Dog</label>
                 </div>
             </div>
         </div>
@@ -34,7 +35,8 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/cat.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Cat</h5>
+                    <input type = "radio" name = "avatar" id = "cat" value = "cat">
+                    <label for = "cat">Cat</label>
                 </div>
             </div>
         </div>
@@ -43,7 +45,8 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/dragon.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Dragon</h5>
+                    <input type = "radio" name = "avatar" id = "dragon" value = "dragon">
+                    <label for = "dragon">Dragon</label>
                 </div>
             </div>
         </div>
@@ -54,7 +57,8 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/pig.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Pig</h5>
+                    <input type = "radio" name = "avatar" id = "pig" value = "pig">
+                    <label for = "pig">Pig</label>
                 </div>
             </div>
         </div>
@@ -63,7 +67,8 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/chameleon.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">chameleon</h5>
+                    <input type = "radio" name = "avatar" id = "chameleon" value = "chameleon">
+                    <label for = "chameleon">Chameleon</label>
                 </div>
             </div>
         </div>
@@ -72,7 +77,8 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/shark.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Shark</h5>
+                    <input type = "radio" name = "avatar" id = "shark" value = "shark">
+                    <label for = "shark">Shark</label>
                 </div>
             </div>
         </div>
@@ -81,7 +87,8 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/monster.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Monster</h5>
+                    <input type = "radio" name = "avatar" id = "monster" value = "monster">
+                    <label for = "monster">Monster</label>
                 </div>
             </div>
         </div>
@@ -92,7 +99,8 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/panda.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Panda</h5>
+                    <input type = "radio" name = "avatar" id = "panda" value = "panda">
+                    <label for = "panda">Panda</label>
                 </div>
             </div>
         </div>
@@ -101,7 +109,8 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/chicken.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Chicken</h5>
+                    <input type = "radio" name = "avatar" id = "chicken" value = "chicken">
+                    <label for = "chicken">Chicken</label>
                 </div>
             </div>
         </div>
@@ -110,7 +119,8 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/tiger.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Tiger</h5>
+                    <input type = "radio" name = "avatar" id = "tiger" value = "tiger">
+                    <label for = "tiger">Tiger</label>
                 </div>
             </div>
         </div>
@@ -119,17 +129,29 @@
             <div class="card border-0 shadow">
                 <img src="{% static "images/lion.jpg" %}" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">Lion</h5>
+                    <input type = "radio" name = "avatar" id = "lion" value = "lion" onclick="CB(this.src)">
+                    <label for = "lion">Lion</label>
                 </div>
             </div>
         </div>
     </div>
+
+    <div style = "text-align: center">
+        <input type = "button" value = "Change Avatar" >
+    </div>
+
 </div>
 
 <script type = "text/javascript">
+    function CB(bg) {
+        var pic;
+        if (bg == "{% static "images/lion.jpg" %}"){
+
+        }
+
+    }
 
 </script>
-
 
 
 {% endblock %}

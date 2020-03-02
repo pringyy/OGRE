@@ -19,5 +19,5 @@ urlpatterns = [
     url(r'^iterateJSON/$', views.iterateJSON, name='iterateJSON'),
     path('changeUsername/', views.changeUsername, name='changeUsername'),
     url(r'^shop/$', views.shop, name='shop'),
-
+    path('changeAvatar/', views.changeAvatar, name = 'changeAvatar')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

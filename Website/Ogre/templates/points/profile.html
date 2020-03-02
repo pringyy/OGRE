@@ -42,17 +42,16 @@
                         <h6>Current Points:   <b class = "points"></b> </h6>
                         <h6>Total Points spent: <b class = "spent"></b></h6>
                         <h6>Total Points earned: <b class = "total"></b></h6>
+                    </div>
                 </div>
             </div>
-        </div>
-
             <div class="col-lg-4 order-lg-1 text-center">
                 {% if user.studentprofileinfo.profile_pic %}
                 <img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
                 {% else %}
                 <img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
                 {% endif %}
-        </div>
+            </div>
     </div>
 </div>
 
