@@ -1,3 +1,6 @@
+//THIS JAVASCRIPT FILE RESPRESENTS THE GAME USED AS AN EXAMPLE
+//WE DID NOT CREATE THIS, BUT USED IT TO SHOW HOW TO APPLICATION WOULD WORK
+
 "use strict";
 var n, t, r = function(n, t) {
         var r = document.createElement("canvas");

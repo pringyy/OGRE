@@ -1,9 +1,11 @@
-{% extends 'points/base.html' %}
+<!--THIS HTML PAGE IS WHERE THE USER IS NAVIGATED TO 
+WHEN THEY SUBMIT A SUCCESSFUL CONTACT PAGE FORM-->
+
+{% extends 'points/base.html' %} <!--Inherits HTML from base -->
 {{% load static %}
-
 {% block title %} {{ block.super }} - Thanks {% endblock %}
-
 {% block body_block %}
-<br>
-<center><h1 class="display-4 container white-text">Thanks for submitting the contact form!</h1></center>
+	<br> 
+	<!-- Page Content -->
+	<center><h1 class="display-4 container white-text">Thanks for submitting the contact form!</h1></center> 
 {% endblock %}
