@@ -1,0 +1,228 @@
+{% extends 'points/base.html' %}
+{% load static %}
+
+{% block title %} {{ block.super }} -Avatar Shop {% endblock %}
+{% block body_block %}
+<!--Reads in the external CSS for the shop page-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/shop.css' %}">
+
+<div class="container">
+    <br>
+    <h1 class="display-4 white-text"> Avatar Shop</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-0">Current Avatar</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/dog.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "dog" value = "dog">
+                    <label for = "dog">Dog</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/cat.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "cat" value = "cat">
+                    <label for = "cat">Cat</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/dragon.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "dragon" value = "dragon">
+                    <label for = "dragon">Dragon</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/pig.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "pig" value = "pig">
+                    <label for = "pig">Pig</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/chameleon.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "chameleon" value = "chameleon">
+                    <label for = "chameleon">Chameleon</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/shark.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "shark" value = "shark">
+                    <label for = "shark">Shark</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/monster.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "monster" value = "monster">
+                    <label for = "monster">Monster</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class = "row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/panda.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "panda" value = "panda">
+                    <label for = "panda">Panda</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/chicken.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "chicken" value = "chicken">
+                    <label for = "chicken">Chicken</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/tiger.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "tiger" value = "tiger">
+                    <label for = "tiger">Tiger</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{% static "images/lion.jpg" %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <input type = "radio" name = "avatar" id = "lion" value = "lion" onclick="CB(this.src)">
+                    <label for = "lion">Lion</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <input type = "button" value = "Change Avatar" data-toggle="modal" data-target = "#ProfilePictureModal">
+    </div>
+
+    <form id="changeAv">
+        <div class="modal fade" id="ProfilePictureModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="ModalTitle">Change Avatar </h4>
+                    </div>
+
+                    <div class="modal-body">
+					    <div style="float:left" class="checkbox">
+						    <input type="radio" name="check" id="tiger1" value="{% static "images/tiger.jpg" %}" />
+						    <img src="{% static "images/tiger.jpg" %}" width="100" >
+					    </div>
+
+					    <div style="float:left" class="checkbox">
+						    <input type="radio" name="check" id="lion1" value="{% static "images/lion.jpg" %}" />
+						    <img src="{% static "images/lion.jpg" %}" width="100" >
+					    </div>
+
+					    <div style="float:left" class="checkbox">
+						    <input type="radio" name="check" id="monster1" value="{% static "images/monster.jpg" %}" />
+						    <img src="{% static "images/monster.jpg" %}" width="100" >
+					    </div>
+
+                        <div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
+						    <strong>Error!</strong><span id = "errmsg"></span>
+					    </div>
+                    </div>
+
+				    <div class="modal-footer">
+					    <button type="button" class="btn btn-primary">Save changes</button>
+					    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+    </form>
+
+    <div style = "text-align: center">
+        <input type = "button" value = "Change Avatar" >
+    </div>
+
+
+</div>
+
+
+
+
+
+<script type = "text/javascript">
+    $('document').ready(function(){
+        $('#changeAv').submit(function(event){
+            event.preventDefault();
+            var profile_pic = $('#check').val();
+            $.ajax({
+                url: '/changeUsername',
+                type: "GET",
+                dataType: 'json',
+                data: {
+                    profile_pic: profile_pic
+                }
+
+            }).done(function(responce){
+                var status = responce.status;
+                $('.alert').hide();
+                if (status == '0'){
+                    var message = responce.message;
+                    $('#alertdiv').show();
+                    $('#errmsg').text(message);
+                }else{
+                    var message = responce.message;
+                    $('#successdiv').show();
+                    $('#successmsg').text(message);
+                    var delay = 2000;
+                    var url = '/points/';
+                    setTimeout(function(){ window.location = url; }, delay);
+                }
+            })
+        });
+    });
+</script>
+
+
+{% endblock %}

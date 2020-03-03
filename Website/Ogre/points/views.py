@@ -302,6 +302,8 @@ def changeAvatar(request):
     if request.user.profile_pic == profile_pic:
         d = {"status":0, 'message': 'Already your avatar'}
         return JsonResponse(d)
+    context_dict = {}
+    return render(request, 'points/shop.html', context_dict)
 
 #Makes sure user is an admin to see the JSON files for testing purposes
 @user_passes_test(lambda u: u.is_superuser)
