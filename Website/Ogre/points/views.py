@@ -293,6 +293,16 @@ def leaderboard(request):
 
     return render(request, 'points/leaderboard.html', {"leaderboard": leaderboard})
 
+
+def changeAvatar(request):
+    id = request.session['id']
+    user = request.user
+    profile_pic = request.GET.get('profile_pic', None)
+
+    if request.user.profile_pic == profile_pic:
+        d = {"status":0, 'message': 'Already your avatar'}
+        return JsonResponse(d)
+
 #Makes sure user is an admin to see the JSON files for testing purposes
 @user_passes_test(lambda u: u.is_superuser)
 def iterateJSON(request):
