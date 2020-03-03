@@ -295,13 +295,13 @@ def leaderboard(request):
 
 
 def changeAvatar(request):
-    id = request.session['id']
-    user = request.user
-    profile_pic = request.GET.get('profile_pic', None)
+    # id = request.session['id']
+    # user = request.user
+    # profile_pic = request.GET.get('profile_pic', None)
 
-    if request.user.profile_pic == profile_pic:
-        d = {"status":0, 'message': 'Already your avatar'}
-        return JsonResponse(d)
+    # if request.user.profile_pic == profile_pic:
+    #     d = {"status":0, 'message': 'Already your avatar'}
+    #     return JsonResponse(d)
     context_dict = {}
     return render(request, 'points/shop.html', context_dict)
 

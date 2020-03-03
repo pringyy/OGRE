@@ -137,48 +137,9 @@
     </div>
 
 
-    <div>
-        <input type = "button" value = "Change Avatar" data-toggle="modal" data-target = "#ProfilePictureModal">
-    </div>
+   
 
-    <form id="changeAv">
-        <div class="modal fade" id="ProfilePictureModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="ModalTitle">Change Avatar </h4>
-                    </div>
-
-                    <div class="modal-body">
-					    <div style="float:left" class="checkbox">
-						    <input type="radio" name="check" id="tiger1" value="{% static "images/tiger.jpg" %}" />
-						    <img src="{% static "images/tiger.jpg" %}" width="100" >
-					    </div>
-
-					    <div style="float:left" class="checkbox">
-						    <input type="radio" name="check" id="lion1" value="{% static "images/lion.jpg" %}" />
-						    <img src="{% static "images/lion.jpg" %}" width="100" >
-					    </div>
-
-					    <div style="float:left" class="checkbox">
-						    <input type="radio" name="check" id="monster1" value="{% static "images/monster.jpg" %}" />
-						    <img src="{% static "images/monster.jpg" %}" width="100" >
-					    </div>
-
-                        <div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
-						    <strong>Error!</strong><span id = "errmsg"></span>
-					    </div>
-                    </div>
-
-				    <div class="modal-footer">
-					    <button type="button" class="btn btn-primary">Save changes</button>
-					    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				    </div>
-			    </div>
-		    </div>
-	    </div>
-    </form>
+    
 
     <div style = "text-align: center">
         <input type = "button" value = "Change Avatar" >
