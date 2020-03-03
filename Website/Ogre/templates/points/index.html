@@ -116,7 +116,7 @@
 						<a href="{% url 'profile' %}"     style="color:black">
 							<div class="team-front">
 								{% if user.studentprofileinfo.profile_pic %}
-	                				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
+	                				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
 	            				{% else %}
 	                				<img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
 	            				{% endif %}
