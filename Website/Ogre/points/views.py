@@ -153,25 +153,50 @@ def contact(request):
     #Returns the contact page when requested
     return render(request, 'points/contact.html', {'form': form})
 
-#Provides back-end functionaility to see if the user can afford to play the game or not
-def game(request):
+
+
+def game1(request):
+    
+
+    #Provides back-end functionaility to see if the user can afford to play the game or not
+    myobj = {'user_id': '1',"points":5}
     # get the session id to auth user
     id=request.session['id']
     #Calls the API to get the active users points
     r = requests.get(getPointsAPIcall+id)
     d=r.json()
+
     #If user has points more than the points required to play the game let them play
     if int(d['points']) >= gameCost:
         #Calls the API to remove user points from Moodle
         #Variable gameCost is refrenced from costValues.py where the cost to play the game is defined
         r = requests.get(removePointsAPIcall+id+'&points='+str(gameCost))
         return render(request,'points/game.html')
+
     else:
         #Else reject the user from playing them game
         messages.error(request, "You don't have enough points to play!")
         return HttpResponseRedirect(reverse('index'))
 
+
+def game2(request):
+    myobj = {'user_id': '1',"points":5}
+    # get the session id to auth user
+    id=request.session['id']
+    # call the get user points api 
+    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    d=r.json()
+    # if user has points more than 5 then play game
+    if int(d['points']) >= 5:
+        r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
+        return render(request,'points/game2.html')
+    else:
+        messages.error(request, "You don't have enough points to play!")
+        return HttpResponseRedirect(reverse('index'))
+
+
 #View used to retrieve the users points from the Moodle server
+
 def getmypoint(request):
     #retrieves session ID
     id=request.session['id']
@@ -249,6 +274,12 @@ def ajaxpointlist(request):
 def pointlist(request):
     if request.session.get('id'):
         return render(request,'points/pointlist.html')
+
+#Displays the list a list of games the user can play when requested
+@login_required
+def game_menu(request):
+    context_dict = {}
+    return render(request, 'points/game_menu.html', context_dict)
 
 #View used for allowing users to navigate to login page if they AREN'T logged in
 @login_required
