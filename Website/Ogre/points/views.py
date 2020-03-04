@@ -211,12 +211,17 @@ def changeUsername(request):
     id=request.session['id'] # Gets the session id
     user = request.user # Getsthe current auth user
     username = request.GET.get('username', None) #Gets the new username user entered
-    
+    mightBeOtherusername = User.objects.get(username=username)
     #If they are trying to change it to the same username reject the action
     if request.user.username == username: 
         #0 means invalid
         invalid = {"status":0,'message':'  Do not enter the same username!'}
         return JsonResponse(invalid)
+    elif mightBeOtherusername.username:
+        invalid = {"status":0,'message':'  This username already exist for other user!   '}
+
+        return JsonResponse(invalid)
+      
     else:
         # If they are not the same then it is valid
         # Calls the API to update the OGRE points of the user
