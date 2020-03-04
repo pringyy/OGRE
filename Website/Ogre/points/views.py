@@ -236,33 +236,38 @@ def changeUsername(request):
     id=request.session['id'] # Gets the session id
     user = request.user # Getsthe current auth user
     username = request.GET.get('username', None) #Gets the new username user entered
-    mightBeOtherusername = User.objects.get(username=username)
-    #If they are trying to change it to the same username reject the action
-    if request.user.username == username: 
-        #0 means invalid
-        invalid = {"status":0,'message':'  Do not enter the same username!'}
+    try:
+        
+        mightBeOtherusername = User.objects.get(username=username)
+        invalid = {"status":0,'message':'  This username already exist for other user!'}
         return JsonResponse(invalid)
-    elif mightBeOtherusername.username:
-        invalid = {"status":0,'message':'  This username already exist for other user!   '}
+    except:
+        #If they are trying to change it to the same username reject the action
+        if request.user.username == username: 
+            #0 means invalid
+            invalid = {"status":0,'message':'  Do not enter the same username!    '}
+            return JsonResponse(invalid)
+        
 
-        return JsonResponse(invalid)
+            
       
-    else:
-        # If they are not the same then it is valid
-        # Calls the API to update the OGRE points of the user
-        #Variable changeNicknameCost is refrenced from costValues.py where you can change the values
-        r = requests.get(changeNicknameAPIcall+id+'&points='+str(changeNicknameCost)+'&action=update&alternatename='+username)
+        else:
+            # If they are not the same then it is valid
+            # Calls the API to update the OGRE points of the user
+            #Variable changeNicknameCost is refrenced from costValues.py where you can change the values
+            r = requests.get(changeNicknameAPIcall+id+'&points='+str(changeNicknameCost)+'&action=update&alternatename='+username)
 
-        d = r.json()
-        if d["status"] != 0:
-            #We now get the user by the username
-            u = User.objects.get(username=request.user.username)
-            #Change the username on Django
-            u.username = username
-            #Save the username on Django
-            u.save()
+            d = r.json()
+            if d["status"] != 0:
+                #We now get the user by the username
+                u = User.objects.get(username=request.user.username)
+                #Change the username on Django
+                u.username = username
+                #Save the username on Django
+                u.save()
         #Returns the request
-        return HttpResponse(r)    
+            return HttpResponse(r)   
+     
 
 #Displays the list of points to the user if they are logged in
 def ajaxpointlist(request): 
