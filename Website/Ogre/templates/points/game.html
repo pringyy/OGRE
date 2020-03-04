@@ -1,44 +1,45 @@
+<!--THIS IS THE HTML CODE FOR THE PAGE WHERE USERS CAN PLAY A GAME-->
+
 {% extends "points/base.html" %}
 {% load static %}
 {% block title %} {{ block.super }} - Game {% endblock %}
 
 {% block body_block %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/game.css' %}">
-<title>Re-Wire</title>
-<div class="container">
-    <div class="row">Paying game cost you 5 points</div>
+    <!--Used to import the css for the wire game-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/game.css' %}">
+    <title>Re-Wire</title>
 
-    <div id="game" class="center">
-        <div id="content"></div>
-        <div id="levelInfo" class="blueFont hidden">Level 6</div>
-        <div id="nodeInfo" class="blueFont hidden">3 / 10</div>
-        <div id="title" class="center hidden">
-            <h1 class="blueFont">Re-Wire</h1>
+   <!--Page content-->
+    <div class="container">
+        <div class="row">Paying game cost you 5 points</div>
+        <div id="game" class="center">
+            <div id="content"></div>
+            <div id="levelInfo" class="blueFont hidden">Level 6</div>
+            <div id="nodeInfo" class="blueFont hidden">3 / 10</div>
+            <div id="title" class="center hidden">
+                <h1 class="blueFont">Re-Wire</h1>
+            </div>
+            <div id="description" class="blueFont center hidden">
+                <h2>Bring the system back online by rewiring the power nodes.</h2>
+                <h3>The game saves progress automatically, you can come back later and continue from the last played level.</h3>
+            </div>
+            <div id="loading" class="center hidden"></div>
+            <div id="menu" class="center hidden"><a id="startBtn" class="btn">START NEW GAME</a> <a id="continueBtn" class="btn">CONTINUE GAME</a></div>
+            <div id="levelDone" class="center hidden">
+                <div>
+                    <h1 id="nextMsg" class="blueFont">Level completed!</h1>
+                </div><a id="nextBtn" class="btn">NEXT LEVEL</a>
+            </div>
+            <div id="reset" class="hidden"><a id="resetBtn" class="btn">RESET</a> <a id="backBtn" class="btn hidden">BACK</a> <a id="skipBtn" class="btn hidden">NEXT</a></div>
         </div>
-
-        <div id="description" class="blueFont center hidden">
-            <h2>Bring the system back online by rewiring the power nodes.</h2>
-            <h3>The game saves progress automatically, you can come back later and continue from the last played level.</h3>
-        </div>
-
-        <div id="loading" class="center hidden"></div>
-
-        <div id="menu" class="center hidden"><a id="startBtn" class="btn">START NEW GAME</a> <a id="continueBtn" class="btn">CONTINUE GAME</a></div>
-
-        <div id="levelDone" class="center hidden">
-            <div>
-                <h1 id="nextMsg" class="blueFont">Level completed!</h1>
-            </div><a id="nextBtn" class="btn">NEXT LEVEL</a>
-        </div>
-
-        <div id="reset" class="hidden"><a id="resetBtn" class="btn">RESET</a> <a id="backBtn" class="btn hidden">BACK</a> <a id="skipBtn" class="btn hidden">NEXT</a></div>
     </div>
-</div>
 
-<script src="{% static 'js/wireGame.js' %}"></script>
-<script src="{% static 'js/points.js' %}"></script>
+    <!--Imports the javascript for the game-->
+    <script src="{% static 'js/wireGame.js' %}"></script>
+    <script src="{% static 'js/points.js' %}"></script>
 
-{% block footer1 %}
-{% endblock %}
+    <!--Used to hide the footer for the game-->
+    {% block footer1 %}
+    {% endblock %}
 
 {% endblock %}

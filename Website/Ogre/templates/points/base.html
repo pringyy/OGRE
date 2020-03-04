@@ -1,3 +1,4 @@
+<!--THIS HTML PAGE IS WHAT ALL OTHER HTML PAGES INHERIT THE PROPERTIES EXCEPT FROM THE LOGIN PAGE-->
 <!DOCTYPE html>
 {% load static %}
 
@@ -24,7 +25,7 @@
   </head>
   
   <body>
-  <!--Creates a nv bar to be displayed across all intended pages-->
+  <!--Creates a nav bar to be displayed across all intended pages-->
   <nav class="navbar navbar-lg navbar-dark navbar-custom ">
       <a class="navbar-brand" href="{% url 'index' %}">
           <img src="{% static "images/ogrelogo.png" %}" width="100 mlpx" alt="" class="d-inline-block align-middle mr-2">
@@ -78,23 +79,23 @@
       </div>
   </nav>
 
-  <!--code used to display all the different Toastr notifcations to the user-->
+  <!--Code used to display all the different Toastr notifcations to the user-->
   {% if messages %}
-  {% for message in messages %}
-  {% if message.tags == 'success'%}
-  <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+    {% for message in messages %}
+      {% if message.tags == 'success'%}
+        <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
 
-  {% elif message.tags == 'info' %}
-  <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+      {% elif message.tags == 'info' %}
+        <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
 
-  {% elif message.tags == 'warning' %}
-  <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+      {% elif message.tags == 'warning' %}
+        <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
 
-  {% elif message.tags == 'error' %}
-  <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+      {% elif message.tags == 'error' %}
+        <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
 
-  {% endif %}
-  {% endfor %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
 
   <!--Reads in java script to be used by bootstrap-->
@@ -107,35 +108,41 @@
 
   <!-- Components Vendor  -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-  
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" rel="stylesheet" id="bootstrap-css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.js"></script>
+
+
+  
   <div>
       {% block body_block %}
       {% endblock %}
   </div>
 
   {% block footer1 %}
+  <!--Represents the global footer you see on all the other pages except login-->
   <footer>
       <div class= "container footer">
-          <br>
-          <hr>
-          <div class="right">
-              <a href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main" class="inherit-color">
-                  <i class="fab fa-github fa-2x"></i>
-              </a>
-              <a href="mailto:pringle@live.co.uk" class="inherit-color logoPadding">
-                  <i class="fas fa-envelope fa-2x"></i>
-              </a>
-              <a href="https://www.gla.ac.uk/" class="inherit-color logoPadding">
-                  <img src="{% static "images/unilogo2.png" %}" class= "center" width = "50px" >
-              </a>
-              <a href="https://twitter.com/UofGlasgow?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="inherit-color logoPadding">
-                  <i class="fab fa-twitter fa-2x"></i>
-              </a>
-              <a href="https://www.facebook.com/UofGlasgow/" class="inherit-color logoPadding">
-                  <i class="fab fa-facebook-square fa-2x"></i>
-              </a>
-          </div>
+        <br>
+        <hr>
+          <a href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main" class="inherit-color logoPadding">
+            <i class="fab fa-github fa-2x"></i>
+          </a>
+          <a href="{% url 'contact' %}" class="inherit-color logoPadding">
+             <i class="fas fa-envelope fa-2x"></i>
+          </a>
+          <a href="https://www.gla.ac.uk/" class="inherit-color logoPadding">
+            <img src="{% static "images/unilogo2.png" %}" class= "center" width = "40px" >
+          </a>
+          <a href="https://twitter.com/UofGlasgow?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="inherit-color logoPadding">
+            <i class="fab fa-twitter fa-2x"></i>
+          </a>
+          <a href="https://www.facebook.com/UofGlasgow/" class="inherit-color logoPadding">
+            <i class="fab fa-facebook-square fa-2x"></i>
+          </a>
       </div>
   </footer>
 

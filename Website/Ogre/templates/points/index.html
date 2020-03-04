@@ -1,73 +1,94 @@
+<!--THIS CODE REPRESENTS THE DASHBOARD/INDEX OF THE WEB APPLICATION-->
+
 {% extends "points/base.html" %}
 {% load static %}
-
 {% block body_block %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+	<section class="wt-section" id="login">
 
-{% if user.is_authenticated %}
-<section class="wt-section" id="login">
-	<div class="container">
-		<div class="row"></div>
-		<div class="col-lg-12">
-			<br>
-			<h1 class="display-4 white-text">Hello {{ user.username}}{{user.studentID}}!</h1>
-			<hr>
-        </div>
+		<!--Page content-->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+				<br>
+	       		<h1 class="display-4 white-text">Hello {{ user.username}}{{user.studentID}}!</h1>
+	        	<hr>
+	        </div>
 
-		<div class="col-lg-4">
-			<div class="our-team-main">
-				<div class="team-front">
-					<img src="https://www.liberaldictionary.com/wp-content/uploads/2018/11/reward.png" class="img-fluid" />
-					<h3>Points</h3>
-					<p class="points"> Loading... </p>
-				</div>
-
-				<div class="team-back">
-					<p class= 'dashboard-text2'>
-						Total Points: <b class="points"> Loading... </b>
-					</p>
-				</div>
-
-			</div>
-		</div>
-
-		<div class="col-lg-4">
-			<a href="/game/" style="color:black">
-				<div class="our-team-main">
-					<div class="team-front">
-						<img src="https://cdn3.iconfinder.com/data/icons/pyconic-icons-3-1/512/games-pad-512.png" class="img-fluid" />
-						<h3>Play game</h3>
-						<p>Costs 5 points</p>
-					</div>
-
-					<div class="team-back">
-						<p class= 'dashboard-text'>
-							Click here to play a game!
-						<center> (Costs 5 Points)</center>
-						</p>
+				<!--Tile 1-->
+				<div class="col-lg-4">
+					<div class="our-team-main">
+						<div class="team-front">
+							<img src="https://www.liberaldictionary.com/wp-content/uploads/2018/11/reward.png" class="img-fluid" />
+							<h3>Points</h3>
+							<p class="points"> Loading... </p>
+						</div>
+						<div class="team-back">
+							<p class= 'dashboard-text2'>
+									Total Points: <b class="points"> Loading... </b>
+							</p>
+						</div>
 					</div>
 				</div>
-			</a>
-		</div>
-
-		<div class="col-lg-4">
-			<div class="our-team-main">
-				<a href="/changeusername/"  data-toggle="modal" data-target="#usernameModal" style="color:black">
-					<div class="team-front">
-						<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
-						<h3>Change username</h3>
-						<p>Cost 5 points</p>
+				
+				<!--Tile-2-->
+				<div class="col-lg-4">
+					<a href="/game/" style="color:black">
+						<div class="our-team-main">
+							<div class="team-front">
+								<img src="https://cdn3.iconfinder.com/data/icons/pyconic-icons-3-1/512/games-pad-512.png" class="img-fluid" />
+								<h3>Play game</h3>
+								<p>Costs 5 points</p>
+							</div>
+							<div class="team-back">
+								<p class= 'dashboard-text'>
+									Click here to play a game!
+									<center> (Costs 5 Points)</center>
+								</p>
+							</div>
+						</div>
+					</a>
+				</div>
+				
+				<!--Title 3-->
+				<div class="col-lg-4">
+					<div class="our-team-main">
+						<a href="/changeusername/"  data-toggle="modal" data-target="#usernameModal" style="color:black">
+							<div class="team-front">
+								<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
+								<h3>Change username</h3>
+								<p>Cost 5 points</p>
+							</div>
+							<div class="team-back">
+								<p class= 'dashboard-text'>
+									Click here to change your username!
+								<center> (Costs 5 Points)</center>
+								</p>
+							</div>
+						</a>
 					</div>
-					<div class="team-back">
-						<p class= 'dashboard-text'>
-							Click here to change your username!
-						<center> (Costs 5 Points)</center>
-						</p>
-					</div>
-				</a>
-			</div>
-		</div>
+				</div>
 
+				<!--Tile 4-->
+		 		<div class="col-lg-4">
+					<div class="our-team-main">
+						<a href="/changeusername/"   data-toggle="modal" data-target="#ProfilePictureModal"  style="color:black">
+							<div class="team-front">
+								<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
+								<h3>Pick A Avatar</h3>
+								<p>Cost 5 points</p>
+							</div>
+							<div class="team-back">
+								<p class= 'dashboard-text'>
+									Click here to buy a new avatar!
+								<center> (Costs 5 Points)</center>
+								</p>
+							</div>
+						</a>
+					</div>
+				</div>
+
+<<<<<<< HEAD
 		<div class="col-lg-4">
 			<div class="our-team-main">
 				<a href="{% url 'shop' %}" style = "color:black;">
@@ -86,177 +107,190 @@
 			</div>
 		</div>
 
-		<div class="col-lg-4">
-			<div class="our-team-main">
-				<a href="/mytransaction/" style="color:black">
-					<div class="team-front">
-						<img src="https://trunarrative.com/wp-content/uploads/2017/02/TN-Smooth_Transaction_340x340-340x340.png" class="img-fluid" />
-						<h3>Points Transaction List</h3>
-						<p> &nbsp;</p>
+				<!--Tile 5-->
+				<div class="col-lg-4">
+					<div class="our-team-main">
+						<a href="/mytransaction/"     style="color:black">
+							<div class="team-front">
+								<img src="https://trunarrative.com/wp-content/uploads/2017/02/TN-Smooth_Transaction_340x340-340x340.png" class="img-fluid" />
+								<h3>Points Transaction List</h3>
+								<p> &nbsp;</p>
+							</div>
+							<div class="team-back">
+								<p class= 'dashboard-text'>
+									Click here to see your point 
+									<center class = 'dashboard-weight'>transaction history!</center>
+								</p>
+							</div>
+						</a>
 					</div>
-					<div class="team-back">
-						<p class= 'dashboard-text'>
-							Click here to see your point transaction
-							history!
-						</p>
+				</div>
+		 		
+		 		<!--Tile 6-->
+				<div class="col-lg-4">
+					<div class="our-team-main">
+						<a href="{% url 'profile' %}"     style="color:black">
+							<div class="team-front">
+								{% if user.studentprofileinfo.profile_pic %}
+	                				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
+	            				{% else %}
+	                				<img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+	            				{% endif %}
+								<h3>My Profile</h3>
+								<p> &nbsp;</p>
+							</div>
+							<div class="team-back">
+								<p class= 'dashboard-text2'>
+									Click here to view your Profile!
+								</p>
+							</div>
+						</a>
 					</div>
-				</a>
+				</div><!-- dashboard end -->
+			</div>
+	      </div> 
+	</section>
+
+	<!--Used to display the pop up box when tile 3 is clicked-->
+	<form id="usersave" >
+		<div class="modal fade" id="usernameModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+						<h4 class="modal-title" id="ModalTitle">Change Username</h4>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-danger" id="alertdiv" style="display:none;">
+							<strong>Error!</strong> <span id="errmsg"></span>
+						</div>
+						<div class="alert alert-success" id="successdiv" style="display:none;">
+							<strong>Success!</strong> <span id="successmsg"></span>
+						</div>
+						<label for="txtUsername">Change your Username</label><br/>
+						<div class="checkbox">
+							<input type="text" name="username" id="username" />
+						</div>
+						<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
+							<strong>Error!</strong>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">Save changes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
 			</div>
 		</div>
-	 
-		<div class="col-lg-4">
-			<div class="our-team-main">
-				<a href="{% url 'profile' %}"     style="color:black">
-					<div class="team-front">
-						{% if user.studentprofileinfo.profile_pic %}
-						<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
-						{% else %}
-						<img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-						{% endif %}
-						<h3>My Profile</h3>
-						<p> &nbsp;</p>
+	</form>
+
+	<!--Used to display the pop up box when tile 4 is clicked-->
+	<form id="form1">
+		<div class="modal fade" id="ProfilePictureModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="ModalTitle">Change Avatar </h4>
 					</div>
-					<div class="team-back">
-						<p class= 'dashboard-text2'>
-							Click here to view your Profile!
-						</p>
+					<div class="modal-body">
+						<div style="float:left" class="checkbox">
+							<input type="radio" name="check" id="check" value="img_568657.png" />
+							<img src="../static/assets/avtar/img_568657.png" width="100" >
+						</div>
+						<div style="float:left" class="checkbox">
+							<input type="radio" name="check" id="check" value="img_568657.png" />
+							<img src="../static/assets/avtar/kindpng_248273.png" width="100" >
+						</div>
+						<div style="float:left" class="checkbox">
+							<input type="radio" name="check" id="check" value="img_568657.png" />
+							<img src="../static/assets/avtar/kindpng_248442.png" width="100" >
+						</div>
+						<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
+							<strong>Error!</strong>
+						</div>
 					</div>
-				</a>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">Save changes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
 			</div>
 		</div>
+	</form>
+
+	<!--Used to display the leadeboard-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/pointlist.css' %}">
+	<div class="container"> <table class="table">
+	    <section class="wt-section" id="login">
+	    	<div class="container">
+	            <br>
+	    	    <h1 class="display-4 white-text">The LeaderBoard</h1>
+	            <hr>
+	            <div class="row">
+	                <table id="grid-data" class="table table-condensed table-hover table-striped">
+	                <thead class="data">
+	                <tr>
+	                    <th data-column-id="user_id" data-type="numeric">USER_ID</th>
+	                    <th data-column-id="username">Student ID</th>
+	                    <th data-column-id="points" data-order="desc">Points</th>
+	                </tr>
+	                </thead>
+	                </table>
+	            </div><!-- dashboard end -->
+	        </div>
+	    </section>
+	</table>
 	</div>
-</section>
 
-<form id="usersave" >
-	<div class="modal fade" id="usernameModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-					<h4 class="modal-title" id="ModalTitle">Change Username</h4>
-				</div>
 
-				<div class="modal-body">
-					<div class="alert alert-danger" id="alertdiv" style="display:none;">
-						<strong>Error!</strong> <span id="errmsg"></span>
-					</div>
-
-					<div class="alert alert-success" id="successdiv" style="display:none;">
-						<strong>Success!</strong> <span id="successmsg"></span>
-					</div>
-
-					<label for="txtUsername">Change your Username</label><br/>
-
-					<div class="checkbox">
-						<input type="text" name="username" id="username" />
-					</div>
-
-					<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
-						<strong>Error!</strong>
-					</div>
-
-				</div>
-
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Save changes</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
-
-<form id="form1">
-	<div class="modal fade" id="ProfilePictureModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="ModalTitle">Change Avatar </h4>
-				</div>
-
-				<div class="modal-body">
-					<div style="float:left" class="checkbox">
-						<input type="radio" name="check" id="check" value="img_568657.png" />
-						<img src="../static/assets/avtar/img_568657.png" width="100" >
-					</div>
-
-					<div style="float:left" class="checkbox">
-						<input type="radio" name="check" id="check" value="img_568657.png" />
-						<img src="../static/assets/avtar/kindpng_248273.png" width="100" >
-					</div>
-
-					<div style="float:left" class="checkbox">
-						<input type="radio" name="check" id="check" value="img_568657.png" />
-						<img src="../static/assets/avtar/kindpng_248442.png" width="100" >
-					</div>
-
-					<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
-						<strong>Error!</strong>
-					</div>
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">Save changes</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
-{% else %}
-<br>
-{% endif %}
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<script type="text/javascript">
-$('document').ready(function(){
-	$.ajax({
-		url: "{% url 'getmypoint' %}",
-		type: "GET",
-		dataType:'json',
-	}).done(function( responce ) {
-		var status = responce.status;
-		$('.alert').hide();
-		if(status == '1'){
-			$(".points").html(responce.points)
-		}else{
-		}
-	})
-
-	$("#usersave").submit(function(event) {
-		event.preventDefault();
-		var username = $('#username').val();
-		$.ajax({
-			url: '/changeUsername/',
-		    type: "GET",
-			dataType:'json',
-			data: {  username: username}
-		}).done(function( responce ) {
-			var status = responce.status;
-			  
-			$('.alert').hide();
-			if(status == '0'){
-				var message = responce.message;
-				$('#alertdiv').show();
-				$('#errmsg').text(message);
-			}else{
-				var message = responce.message;
-				$('#successdiv').show();
-				$('#successmsg').text(message);
-				  
-				var delay = 2000;
-				var url = '/points/';
-				  
-				setTimeout(function(){ window.location = url; }, delay);
-			}
-		})
-	});
-});
-
-</script>
-
+	<script type="text/javascript">
+		$('document').ready(function(){
+				  $.ajax({
+					url: "{% url 'getmypoint' %}",
+				  type: "GET",
+					dataType:'json',
+		 		  }).done(function( responce ) {
+					  var status = responce.status;
+					  $('.alert').hide();
+					 if(status == '1'){  
+						  $(".points").html(responce.points)
+					  }else{	  
+					  }
+				})   
+		        $("#grid-data").bootgrid({
+		            ajaxSettings: {
+		            method: "GET",
+		            cache: false
+		            },
+		            ajax: true,
+		            url: "/leaderboard/",
+		        });  
+			$( "#usersave" ).submit(function( event ) {
+				event.preventDefault();
+				var username = $('#username').val(); 
+				$.ajax({
+					url: '/changeUsername/',
+				    type: "GET",
+					dataType:'json',
+					data: {  username: username}
+				}).done(function( responce ) {
+					var status = responce.status;  
+					$('.alert').hide();
+					if(status == '0'){
+						var message = responce.message;
+						$('#alertdiv').show();
+						$('#errmsg').text(message);
+					}else{
+						var message = responce.message;
+						$('#successdiv').show();
+						$('#successmsg').text(message);
+						var delay = 2000;
+						var url = '/points/';
+						setTimeout(function(){ window.location = url; }, delay);
+					}
+				})
+			});
+		});
+	</script>
 {% endblock %}

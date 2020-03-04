@@ -12,7 +12,7 @@ if(isset($_REQUEST['user_id'])){
     $result = mysqli_query($con, $sql);
     if(mysqli_num_rows($result) > 0){
 
-
+    // select the transaction data from this table mdl_user_points_trans
     $sql = "SELECT * FROM mdl_user_points_trans WHERE userid = '".$user_id."' order by id desc ";
     if($result = mysqli_query($con, $sql)){
     if(mysqli_num_rows($result) > 0){

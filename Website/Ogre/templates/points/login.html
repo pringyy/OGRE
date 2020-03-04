@@ -1,127 +1,128 @@
+<!--THIS PAGE IS USED TO REPRESENT WHAT THE LAUNCH PAGE OR THE LOGIN PAGE UI
+It is a unique HTML page, hence it does not inherit from base-->
+
 <!DOCTYPE html>
 {% load static %}
-
 <html>
-{%if user.is_authenticated %}
-<meta http-equiv = "refresh" content = "0; url = {% url 'index' %}" />
-{% else %}
-<head lang = "en">
-    <meta charset="UTF-8" />
-    <title>
+  <!--If the user is already logged in, navigate them to the dashboard-->
+  {%if user.is_authenticated %}
+    <meta http-equiv = "refresh" content = "0; url = {% url 'index' %}" />
+  <!--else display the page contents-->
+  {% else %}
+    <head lang = "en">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">  
+      <title>
         {% block title_block %}OGRE - platform{% endblock %}
-    </title>
+      </title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+      <!--Imports bootstrap css-->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!--Reads in css code for the login page-->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+      <!--imports jquery and ajax-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!--reads in script to display toastr notifications-->
+      <script src="{% static 'js/toastr.min.js' %}"></script>
+      <!--imports the css used for toastr notifcations-->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/toastr.min.css' %}">
+    </head>
 
-    <!--imports jquery and ajax-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Page Content -->
+    <body onload= "getRandomImage()">
+      <div id="randImage" class="background-cover">
 
-    <!--reads in script to display toastr notifications-->
-    <script src="{% static 'js/toastr.min.js' %}"></script>
-
-    <!--imports the css used for toastr notifcations-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/toastr.min.css' %}">
-
-</head>
-
-<body onload= "getRandomImage()">
-
-<!--Reads in css code for the login page-->
-<div id="randImage" class="background-cover">
-    <!-- Provides a space between the top of the page and the logo-->
-    <br><br>
-    <!-- Displays ORGE logo-->
-    <img onload="this.style.opacity='0.8'" src="{% static "images/ogrelogo.png" %}" class= "center" >
-    <div class="vertical-center transparency_bg">
-        <!-- All code below until next comment sets up the UI for the Login box-->
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <!-- Provides a space between the top of the page and the logo-->
+        <br><br>
+        <div class="outer">
+          <div class="middle">
+            <!-- Displays ORGE logo-->
+            <img onload="this.style.opacity='0.8'" src="{% static "images/ogrelogo.png" %}" class= "center" >    
+            <div class="transparency_bg">
+              <!-- All code below until next comment sets up the UI for the Login box-->
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                     <div class="card card-signin my-5">
-                        <div class="card-body">
-                            <form class="form-signin" method="post">
-                                {% csrf_token %}
-                                <!--div class for where the user enters their username-->
-                                <div class="form-label-group">
-                                    <label for="inputUsername"></label>
-                                    <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
-                                </div>
-                                <!--div class for where the user eneters their student ID-->
-                                <div class="form-label-group">
-                                    <label for="inputStudentID"></label>
-                                    <input type="text" id="inputStudentID" class="form-control" name="studentID" placeholder="StudentID" required autofocus>
-                                </div>
+                      <div class="card-body">
+                         <form class="form-signin" method="post">
+                          {% csrf_token %}
 
-                                <!--div class for where the user enters their password-->
-                                <div class="form-label-group">
-                                    <label for="inputPassword"></label>
-                                    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
-                                </div>
+                            <!--div class for where the user eneters their username-->
+                            <div class="form-label-group">
+                              <label for="inputUsername"></label>
+                              <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
+                            </div>
 
+                            <!--div class for where the user eneters their student ID-->
+                            <div class="form-label-group">
+                              <label for="inputStudentID"></label>
+                              <input type="text" id="inputStudentID" class="form-control" name="studentID" placeholder="StudentID" required autofocus>
+                            </div>
 
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <label class="custom-control-label" for="customCheck1">Remember password</label>
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                </div>
-              
-                                <!--Button submits user form-->
-                                <button class="btn btn-lg btn-primary btn-block" type="submit" name="" value="Login">Sign in</button>
-                                <!--Link sends user to a page to register-->
-                                <a href={% url 'register' %}><center>Not got an account? Register here.<center></a>
-                            </form>
+                            <!--div class for where the user eneters their password-->
+                            <div class="form-label-group">
+                              <label for="inputPassword"></label>
+                              <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+                            </div>
 
+                            <!--IMPORTANT- change the link here to correspond with YOUR moodle server-->
+                            <a href="http://157.245.126.159/login/forgot_password.php">Forgotten password?</a>
+                            <br><br>
+
+                            <!--Button submits user form-->
+                            <button class="btn btn-lg btn-primary btn-block" type="submit" name="" value="Login">Sign in</button>
+                            
+                            <!--Link sends user to a page to register-->
+                            <a href={% url 'register' %}><center>Not got an account? Register here.</center></a>
+                          </form>
                         </div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+              </div>
+
+              <!--Displays toaster notifications to the user-->
+              {% if messages %}
+                  {% for message in messages %}
+                      {% if message.tags == 'success'%}
+                          <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                      {% elif message.tags == 'info' %}
+                          <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                      {% elif message.tags == 'warning' %}
+                          <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                      {% elif message.tags == 'error' %}
+                          <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                      {% endif %}
+                  {% endfor %}
+              {% endif %}
+         
+              <!-- Displays university logo-->
+              <img onload="this.style.opacity='0.8'" src="{% static "images/unilogo.png" %}" class= "center" width = "20%" >       
             </div>
-
-            {% if messages %}
-            {% for message in messages %}
-
-            {% if message.tags == 'success'%}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-
-            {% elif message.tags == 'info' %}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-
-            {% elif message.tags == 'warning' %}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-
-            {% elif message.tags == 'error' %}
-            <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-
-            <!-- Displays university logo-->
-            <img onload="this.style.opacity='0.8'" src="{% static "images/unilogo.png" %}" class= "center" width = "20%" >
+          </div>
         </div>
-    </div>
-</div>
-<!--Script picks a random background from a selection of them-->
-<script>
-    var $imageArray = new Array();
-    //Array stores all the possible background
-    $imageArray[0] = 'images/bg1.jpg';
-    $imageArray[1] = 'images/bg2.jpg';
-    $imageArray[2] = 'images/bg3.jpg';
-    $imageArray[3] = 'images/bg4.jpg';
-    $imageArray[4] = 'images/bg5.jpg';
-    $imageArray[5] = 'images/bg6.jpg';
-    $imageArray[6] = 'images/bg7.jpg';
+      </div>
 
-    //function picks the image randomly using the random function
-    function getRandomImage() {
-        var $num = Math.floor( Math.random() * 7);
-        var $img = $imageArray[$num];
-        var $bg = "url({% static 'replace' %}) ";
-        $bg = $bg.replace('replace',$img);
-        $('#randImage').css('background-image', $bg);
-    };
-</script>
-{% endif %}
+      <!--Script picks a random background from a selection of them-->
+      <script>
+          var $imageArray = new Array();
+          //Array stores all the possible background
+          $imageArray[0] = 'images/bg1.jpg';
+          $imageArray[1] = 'images/bg2.jpg';
+          $imageArray[2] = 'images/bg3.jpg';
+          $imageArray[3] = 'images/bg4.jpg';
+          $imageArray[4] = 'images/bg5.jpg';
+          $imageArray[5] = 'images/bg6.jpg';
+          $imageArray[6] = 'images/bg7.jpg';
 
-</body>
+          //function picks the image randomly using the random function
+          function getRandomImage() {
+              var $num = Math.floor( Math.random() * 7);
+              var $img = $imageArray[$num];
+              var $bg = "url({% static 'replace' %}) ";
+              $bg = $bg.replace('replace',$img);
+              $('#randImage').css('background-image', $bg);
+          };
+      </script>
+  {% endif %}
+  </body>
 </html>
