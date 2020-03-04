@@ -209,7 +209,19 @@ def game1(request):
 
 
 def game2(request):
-    return render(request, 'points/game2.html')
+    myobj = {'user_id': '1',"points":5}
+    # get the session id to auth user
+    id=request.session['id']
+    # call the get user points api 
+    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    d=r.json()
+    # if user has points more than 5 then play game
+    if int(d['points']) >= 5:
+        r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
+        return render(request,'points/game2.html')
+    else:
+        messages.error(request, "You don't have enough points to play!")
+        return HttpResponseRedirect(reverse('index'))
 
 def getmypoint(request):
     myobj = {'user_id': '1'}
