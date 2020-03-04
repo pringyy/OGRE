@@ -25,37 +25,53 @@ cd Desktop/
 ```
 git clone https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main.git
 ```
-*This will save the repository into whatever directory you navigted to in Step 2.*
+*This will save the repository into whatever directory you navigated into in Step 1.2.*
 
 
 ### Step 2: Django Application
 
+**Step 2.1**: You need to have Python 3.7 installed onto your machine to run this application. Download the version for the Operating System you are using here: 
+*  https://www.python.org/downloads/release/python-376/
 
+**Step 2.2**: Check you have successfully installed the correct version of Python using the command:
+```
+python --version
+```
+*If the wrong version is displayed, try uninstalling python and reinstalling it again via the link.*
 
-You must have must have a Python 3.7 virtual environment installed on your machine for this to work.
-
-Here is the official guide on how to setup Django on your machine to run the application: https://tinyurl.com/DjangoSetupGuide
-
-Once you have completed the setup above, navigate to the 'cs17-main' folder on your terminal and run the following command:
+**Step 2.3**: Once you have completed the setup above, navigate to the 'cs17-main' folder on your terminal and run the following command:
 
 ```
 pip install -r requirements
 ```
-This installs all the APIs we use at the correct version required for the application to work.
+*This installs all the packages, including Django, at the correct version required for the application to work.*<br>
+*Pip is a python package manager that automatically comes installed when you download Python 3.4 or above.*
+
+**Step 2.4**: Next navigate into the directory where the actual Django application is being stored by entering the following into the console:
+```
+cd website/Ogre
+```
+
+
+**Step 2.5**: Next you need to setup the Django database on your system, to do this run these two commands one after the other:
 ```
 python manage.py makemigrations  
 
 python manage.py migrate
 ```
 
-Now you will be able to run the server using:
+**Step 2.6**: Now you will be able to run the Django server using:
 ```
 python manage.py runserver
 ```
+*To see the application you need navigate to the address displayed in the console on a web browser.*
 
-**You WILL NOT be able to register or login until you complete the next part of the installation guide!**
+**You WILL NOT be able to register or login until you complete the installation guide!**
 
 ### Step 3: Moodle Server
+
+
+### Step 4: Link Django with Moodle Server
 
 ## Feautures
 * Ability to register to the Django applicstion if and only if the user is registered on the linked Moodle server
