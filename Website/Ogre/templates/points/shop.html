@@ -10,7 +10,7 @@
     <br>
     <h1 class="display-4 white-text"> Avatar Shop</h1>
     <hr>
-
+    <!--
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-0 shadow">
@@ -135,6 +135,16 @@
             </div>
         </div>
     </div>
+    -->
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+            <img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+                <h5 class="card-title mb-0">Current Avatar</h5>
+            </div>
+        </div>
+    </div>
 
 
     <div>
@@ -180,11 +190,6 @@
 	    </div>
     </form>
 
-    <div style = "text-align: center">
-        <input type = "button" value = "Change Avatar" >
-    </div>
-
-
 </div>
 
 
@@ -197,7 +202,7 @@
             event.preventDefault();
             var profile_pic = $('#check').val();
             $.ajax({
-                url: '/changeUsername',
+                url: '/changeAvatar/',
                 type: "GET",
                 dataType: 'json',
                 data: {
