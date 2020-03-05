@@ -5,7 +5,7 @@ quizes.
 
 ## Installation
 
-### Step 1: Git
+### 1. Git
 
 **Step 1.1**: To clone this repository through the console, you have to have Git installed on your machine:
 
@@ -28,7 +28,7 @@ git clone https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main.git
 *This will save the repository into whatever directory you navigated into in Step 1.2.*
 
 
-### Step 2: Django Application
+### 2. Django Application
 
 **Step 2.1**: You need to have Python 3.7 installed onto your machine to run this application. Download the version for the Operating System you are using here: 
 *  https://www.python.org/downloads/release/python-376/
@@ -68,7 +68,7 @@ python manage.py runserver
 
 **You WILL NOT be able to register or login until you complete the installation guide!**
 
-### Step 3: Moodle Server
+### 3. Moodle Server
 **Step 3.1**: we assume you have the moodle installed, and have the database and source code access and modify permission. If you do not have these, see link below for moodle installtion:
 *  https://docs.moodle.org/38/en/Step-by-step_Installation_Guide_for_Ubuntu
 
@@ -112,9 +112,10 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 *to moodle/*
 
-### Step 4: Link Django with Moodle Server
+### 4. Link Django with Moodle Server
 
 ## Feautures
+
 * Ability to register to the Django applicstion if and only if the user is registered on the linked Moodle server
 * User authentication system with secure password hashing
 * Password reset via email link (reset via Moodle server)
