@@ -77,6 +77,7 @@ python manage.py runserver
 mysql -u <database_username> -p
 ```
 *Then create that two table*
+
 *mdl_user_points*
 ```
 CREATE TABLE IF NOT EXISTS mdl_user_points (
@@ -97,7 +98,19 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 );
 ```
 
-**Step 3.3**: Once you have completed the setup above, navigate to the 'cs17-main' folder on your terminal and run the following command:
+**Step 3.3**: Once you have completed the setup above, you need to  replace and add some files in the moodle side:  
+
+*1. replace the moodle/api/mod/quiz/locallib.php*
+
+*with cs-main/api/mod/quiz/locallib.php*
+
+*2. replace the moodle/api/mod/assign/locallib.php*
+
+*with cs-main/api/mod/assign/locallib.php*
+
+*3. move cs-main/api directory*
+
+*to moodle/*
 
 ### Step 4: Link Django with Moodle Server
 
