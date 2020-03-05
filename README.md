@@ -69,7 +69,28 @@ python manage.py runserver
 **You WILL NOT be able to register or login until you complete the installation guide!**
 
 ### Step 3: Moodle Server
+**Step 3.1**: we assume you have the moodle installed, and have the database and source code access and modify permission. If you do not have these, see link below for moodle installtion:
+*  https://docs.moodle.org/38/en/Step-by-step_Installation_Guide_for_Ubuntu
 
+**Step 3.2**: Next we need to access the moodle database, create two related table "mdl_user_points" and "mdl_user_points_trans", so enter the database mode by:
+```
+mysql -u <database_username> -p
+```
+*Then create that two table*
+```
+CREATE TABLE IF NOT EXISTS mdl_user_points (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    start_date DATE,
+    due_date DATE,
+    status TINYINT NOT NULL,
+    priority TINYINT NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+**Step 3.3**: Once you have completed the setup above, navigate to the 'cs17-main' folder on your terminal and run the following command:
 
 ### Step 4: Link Django with Moodle Server
 
