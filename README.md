@@ -77,16 +77,23 @@ python manage.py runserver
 mysql -u <database_username> -p
 ```
 *Then create that two table*
+*mdl_user_points*
 ```
 CREATE TABLE IF NOT EXISTS mdl_user_points (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    start_date DATE,
-    due_date DATE,
-    status TINYINT NOT NULL,
-    priority TINYINT NOT NULL,
-    description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    points INT NOT NULL
+);
+```
+*mdl_user_points_trans*
+```
+CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(50) NOT NULL,
+    detail VARCHAR(50) NOT NULL,
+    amount INT NOT NULL,
+    user_id INT NOT NULL,
+    spentTime DATE
 );
 ```
 
