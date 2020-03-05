@@ -102,13 +102,13 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 *1. replace the moodle/api/mod/quiz/locallib.php*
 
-*with cs-main/api/mod/quiz/locallib.php*
+*with cs17-main/api/mod/quiz/locallib.php*
 
 *2. replace the moodle/api/mod/assign/locallib.php*
 
-*with cs-main/api/mod/assign/locallib.php*
+*with cs17-main/api/mod/assign/locallib.php*
 
-*3. move cs-main/api directory*
+*3. move cs17-main/api directory*
 
 *to moodle/*
 
