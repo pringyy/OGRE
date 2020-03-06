@@ -2,12 +2,20 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.contrib.staticfiles import finders
 from django.urls import reverse
+from django.test.client import Client
 
 from .models import StudentProfileInfo, User
 from .forms import UserForm, ContactForm, UserProfileInfoForm
 
-'''
+
 class IndexPageTest(TestCase):
+
+    # Page can only be used when user is logged in, so create user and log them in
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        self.client.login(username='john', password='johnpassword')
+
     # tests that login page uses login url
     def test_index_view_url_by_name(self):
         response = self.client.get(reverse('index'))
@@ -17,7 +25,7 @@ class IndexPageTest(TestCase):
     def test_index_page_uses_templates(self):
         response = self.client.get(reverse('index'))
         self.assertTemplateUsed(response, 'points/index.html')
-'''
+
 
 class LoginPageTest(TestCase):
     # tests that login page uses login url
@@ -53,10 +61,6 @@ class ProfilePageTest(TestCase):
     def test_profile_page_uses_templates(self):
         response = self.client.get(reverse('profile'))
         self.assertTemplateUsed(response, 'points/profile.html')
-
-    # tests that profile page displays users points
-    def test_profile_page_displays_points(self):
-        response = self.client.get(reverse('profile'))
 
 
 class ThanksPageTest(TestCase):
@@ -137,7 +141,6 @@ class StaticImageTests(TestCase):
 class StudentProfileTests(TestCase):
 
     def test_student_profile(self):
-
         # create User object
         User = get_user_model()
         user = User.objects.create_user('allyinnes99', '2317070i@student.gla.ac.uk', 'bad_password')
@@ -151,7 +154,6 @@ class StudentProfileTests(TestCase):
         student.currentPoints = student.totalPoints - student.spentPoints
 
         student.save()
-
         record = StudentProfileInfo.objects.get(pk=1)
         self.assertEqual(record, student)
 
