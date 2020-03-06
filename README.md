@@ -33,7 +33,7 @@ git clone https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main.git
 **Step 2.1**: You need to have Python 3.7 installed onto your machine to run this application. Download the version for the Operating System you are using here: 
 *  https://www.python.org/downloads/release/python-376/
 
-**Step 2.2**: Check you have successfully installed the correct version of Python using the command:
+**Step 2.2**: Check you have successfully installed the correct version of Python using the command in the console:
 ```
 python --version
 ```
@@ -53,12 +53,13 @@ cd website/Ogre
 ```
 
 
-**Step 2.5**: Next you need to setup the Django database on your system, to do this run these two commands one after the other:
+**Step 2.5**: Next you need to setup the Django database on your system, to do this run these two commands in the console one after the other:
 ```
 python manage.py makemigrations  
 
 python manage.py migrate
 ```
+*If this does not work make sure you are in the correct directory shown in Step 2.4*
 
 **Step 2.6**: Now you will be able to run the Django server using:
 ```
