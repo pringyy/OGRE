@@ -296,14 +296,29 @@ def leaderboard(request):
 
 def changeAvatar(request):
     # id = request.session['id']
-    # user = request.user
+    user = request.user
     # profile_pic = request.GET.get('profile_pic', None)
 
     # if request.user.profile_pic == profile_pic:
     #     d = {"status":0, 'message': 'Already your avatar'}
     #     return JsonResponse(d)
-    context_dict = {}
-    return render(request, 'points/shop.html', context_dict)
+    if request.method == 'POST':
+        profile_form = UserProfileInfoForm(data=request.POST)
+        
+
+        if 'profile_pic' in request.FILES and profile_form.is_valid():
+            print('found the picture!')
+            studentProfileInfo = profile_form.save(commit=False)
+            studentProfileInfo.user = user
+            studentProfileInfo.profile_pic = request.FILES['profile_pic']
+            studentProfileInfo.save()
+            
+        else:
+            print(request.FILES)
+            print(0)
+    else:
+        profile_form = UserProfileInfoForm()
+    return render(request, 'points/shop.html', {'profile_form':profile_form})
 
 #Makes sure user is an admin to see the JSON files for testing purposes
 @user_passes_test(lambda u: u.is_superuser)
