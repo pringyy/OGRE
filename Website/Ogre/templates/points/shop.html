@@ -14,8 +14,8 @@
     <hr>
     <form enctype="multipart/form-data" method="POST"> 
         {% csrf_token %}
-        {{profile_form.profile_pic|as_crispy_field}}
-        <input type="submit" class= "button1" name="" value="Update">
+        <input id = "id_image" type = "file" class = "" name = "image">
+        <input type="submit" class= "button1" name="" value="update">
     </form>
 </div>
 
