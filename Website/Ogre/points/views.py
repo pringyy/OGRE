@@ -317,11 +317,15 @@ def changeAvatar(request):
             u.studentprofileinfo.profile_pic = request.FILES['image']
             u.studentprofileinfo.save()
            # StudentProfileInfo.profile_pic = request.FILES['profile_pic']
-            #StudentProfileInfo.save()
+            #StudentProfileInfo.save()#
+                        
+            messages.success(request, "Successfully update your avatar")
+
+            return HttpResponseRedirect(reverse('index'))    
             
         else:
-            print(request.FILES)
-            print(0)
+            messages.error(request, "something went wrong!")         
+
    
     return render(request, 'points/shop.html')
 
