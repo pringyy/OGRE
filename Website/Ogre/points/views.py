@@ -295,33 +295,32 @@ def leaderboard(request):
 
 
 def changeAvatar(request):
-    # id = request.session['id']
     
-    # profile_pic = request.GET.get('profile_pic', None)
-
-    # if request.user.profile_pic == profile_pic:
-    #     d = {"status":0, 'message': 'Already your avatar'}
-    #     return JsonResponse(d)
     if request.method == 'POST':
        
-        
-        #store the user password and uername, sent it via the api by post request, moodle have the auth function for it
-     
         if 'image' in request.FILES:
             print('found the picture!')
+            id=request.session['id']
+            r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id)
+            d=r.json()
+            if int(d['points']) >= 5:
+                r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5')
+     
+                u = User.objects.get(username=request.user.username)
             
-            u = User.objects.get(username=request.user.username)
-            
-            print(u.studentprofileinfo.profile_pic)
-            print(request.FILES)
-            u.studentprofileinfo.profile_pic = request.FILES['image']
-            u.studentprofileinfo.save()
-           # StudentProfileInfo.profile_pic = request.FILES['profile_pic']
-            #StudentProfileInfo.save()#
-                        
-            messages.success(request, "Successfully update your avatar")
+                print(u.studentprofileinfo.profile_pic)
+                print(request.FILES)
+                u.studentprofileinfo.profile_pic = request.FILES['image']
+                u.studentprofileinfo.save()
+                messages.success(request, "Successfully update your avatar")
+                return HttpResponseRedirect(reverse('index'))    
 
-            return HttpResponseRedirect(reverse('index'))    
+            else:
+                messages.error(request, "you do not have enough points!")         
+
+                        
+
+            
             
         else:
             messages.error(request, "something went wrong!")         
