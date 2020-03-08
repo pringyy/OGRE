@@ -336,7 +336,7 @@ def leaderboard(request):
 
 
 def changeAvatar(request):
-    
+    #post request
     if request.method == 'POST':
        
         if 'image' in request.FILES:
