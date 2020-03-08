@@ -99,13 +99,12 @@ def user_login(request):
         d=r.json()
         #Authentictes the user in dajngo
         user = authenticate(username=username, studentID = studentID, password=password)
-        print(username,studentID,password) 
         if user:
             if user.is_active:   
                 # status 1 indicated this user is a user, so we login this user
                 if d['status']==1:
                     id=d['userinfo']['id']
-                    print(id)
+                    
                     request.session['id'] = id
                     request.session['username'] = d['userinfo']['username'] 
                     messages.success(request, "Sucessfully logged in! Welcome!")
@@ -113,7 +112,6 @@ def user_login(request):
                     return HttpResponseRedirect(reverse('index'))
 
                 elif d['status']==0:
-                    print(d)
                     #else the user is not a user stored so we send error message
                     messages.error(request, "Please use your moodle password!")
             else:
