@@ -30,6 +30,7 @@ from points.costValues import *
 # encrypt all the sensitve data
 from points.encrypt import *
 cipher = Cryptor()
+enc_key = cipher.encrypt(APIkeys)
 #View to define the back-end functionality for user registration
 def register(request):
     #Initalising registered variable
@@ -277,7 +278,7 @@ def changeUsername(request):
 #Displays the list of points to the user if they are logged in
 def ajaxpointlist(request): 
     id=request.session['id']
-    request = requests.get(transactionsAPIcall+id)
+    request = requests.get(transactionsAPIcall+id+'&encrypted_key=' + enc_key)
     return HttpResponse(request)
 
 #Displays the list of points to the user if they are logged in
@@ -348,7 +349,7 @@ def leaderboard(request):
 
 def changeAvatar(request):
     # id=request.session['id']
-    enc_key = cipher.encrypt(APIkeys)
+    
     # r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5' + '&encrypted_key='+enc_str)
     # return HttpResponse(r)
     if request.method == 'POST':
