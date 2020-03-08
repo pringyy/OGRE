@@ -16,6 +16,9 @@ from points.models import StudentProfileInfo
 import json
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
+
+from Crypto.Cipher import AES
+import base64
 # Email imports for contact view
 from django.core.mail import BadHeaderError, EmailMessage, send_mail
 #Notifications import for toastr pop ups
@@ -24,7 +27,9 @@ from django.contrib import messages
 from points.APIcalls import *
 #Imports the cost for each of the activities stored in an integer variable
 from points.costValues import * 
-
+# encrypt all the sensitve data
+from points.encrypt import *
+cipher = Cryptor()
 #View to define the back-end functionality for user registration
 def register(request):
     #Initalising registered variable
@@ -289,6 +294,10 @@ def game_menu(request):
 #View used for allowing users to navigate to login page if they AREN'T logged in
 @login_required
 def index(request):
+    
+    enc_str = cipher.encrypt('secret')
+    dnc_str = cipher.decrypt(enc_str)
+    print(enc_str,dnc_str)   
     return render(request, 'points/index.html')
 
 #View used for redirecting user to login page when they log out
@@ -305,6 +314,7 @@ def get_user_profile(request, username):
 
 #Displays profile page to the user when requested
 def profile(request):
+    
     return render(request, 'points/profile.html')
 
 #Displays OGRE points page to the user when requested

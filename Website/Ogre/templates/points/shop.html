@@ -19,38 +19,5 @@
     </form>
 </div>
 
-<script type = "text/javascript">
-    $('document').ready(function(){
-        $('#changeAv').submit(function(event){
-            event.preventDefault();
-            var profile_pic = $('#check').val();
-            $.ajax({
-                url: '/changeAvatar/',
-                type: "GET",
-                dataType: 'json',
-                data: {
-                    profile_pic: profile_pic
-                }
-
-            }).done(function(responce){
-                var status = responce.status;
-                $('.alert').hide();
-                if (status == '0'){
-                    var message = responce.message;
-                    $('#alertdiv').show();
-                    $('#errmsg').text(message);
-                }else{
-                    var message = responce.message;
-                    $('#successdiv').show();
-                    $('#successmsg').text(message);
-                    var delay = 2000;
-                    var url = '/points/';
-                    setTimeout(function(){ window.location = url; }, delay);
-                }
-            })
-        });
-    });
-</script>
-
 
 {% endblock %}
