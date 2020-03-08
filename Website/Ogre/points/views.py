@@ -356,10 +356,10 @@ def changeAvatar(request):
     if request.method == 'POST':
        
         if 'image' in request.FILES:
-            print('found the picture!')
+            
             id=request.session['id']
-            print(id)
-            print(enc_key)
+           
+           
             r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id+'&encrypted_key=' + enc_key)
             d=r.json()
             if int(d['points']) >= 5:
@@ -367,7 +367,7 @@ def changeAvatar(request):
      
                 u = User.objects.get(username=request.user.username)
                 d = r.json()
-                print(d)
+                
                 u.studentprofileinfo.profile_pic = request.FILES['image']
                 u.studentprofileinfo.save()
                 messages.success(request, "Successfully update your avatar")
