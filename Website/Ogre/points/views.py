@@ -44,7 +44,7 @@ def register(request):
         password = request.POST.get('password', None)
         
         #store the user password and uername, sent it via the api by post request, moodle have the auth function for it
-        myobj = {'username':studentID,'password':password} 
+        myobj = {'username':studentID,'password':password, 'encrypted_key':enc_key} 
 
         #This sends a reuest to the moodle API
         r = requests.post(loginAPIcall, data = myobj)
@@ -93,7 +93,7 @@ def user_login(request):
         studentID = request.POST.get('studentID')
         password = request.POST.get('password')
         #Stores username and password in an object
-        myobj = {'username': studentID,'password':password}
+        myobj = {'username': studentID,'password':password, 'encrypted_key':enc_key}
         #Send related user info to moodle (moodle side has auth passwor API function)
         r = requests.post(loginAPIcall, data = myobj)
         d=r.json()
@@ -113,6 +113,7 @@ def user_login(request):
                     return HttpResponseRedirect(reverse('index'))
 
                 elif d['status']==0:
+                    print(d)
                     #else the user is not a user stored so we send error message
                     messages.error(request, "Please use your moodle password!")
             else:
@@ -359,7 +360,7 @@ def changeAvatar(request):
             id=request.session['id']
             print(id)
             print(enc_key)
-            r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id)
+            r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id+'&encrypted_key=' + enc_key)
             d=r.json()
             if int(d['points']) >= 5:
                 r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5&encrypted_key=' + enc_key)

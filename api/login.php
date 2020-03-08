@@ -6,15 +6,26 @@ define('NO_MOODLE_COOKIES', true);
 
 require_once(dirname(dirname(__FILE__)).'/config.php');
 require_once($CFG->libdir . '/externallib.php');
+include(dirname(dirname(__FILE__)).'/include/encrypt.php');
 
 // Allow CORS requests.
 header('Access-Control-Allow-Origin: *');
 
 
 
-if((isset($_REQUEST['username']) && $_REQUEST['username'] != "") && (isset($_REQUEST['password']) && $_REQUEST['password'] != '')){
+if((isset($_REQUEST['username']) && $_REQUEST['username'] != "") && (isset($_REQUEST['password']) && $_REQUEST['password'] != '') && isset($_REQUEST['encrypted_key'])){
 
+    $encrypted_key = $_REQUEST['encrypted_key'];
 
+    $cypher = new MyCypher();
+    $encrypted_api_key = $cypher->encrypt($api_key);
+    
+    if (strcmp($encrypted_api_key,$encrypted_key)!=0){
+            $data = array('status'=>0,'message'=>'wrong api key');
+            echo json_encode($data);
+            exit;
+    }
+    
 // get the moodle username and passwword here
 $username = required_param('username', PARAM_USERNAME);
 $password = required_param('password', PARAM_RAW);
