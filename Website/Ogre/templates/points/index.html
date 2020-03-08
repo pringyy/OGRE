@@ -73,18 +73,18 @@
 				</div>
 			</div>
 
-			<!--Tile 4-->
-	 		<div class="col-lg-4">
-				<div class="our-team-main">
-					<a href="/changeusername/"   data-toggle="modal" data-target="#ProfilePictureModal"  style="color:black">
-						<div class="team-front">
-							<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
-							<h3>Pick A Avatar</h3>
-							<p>Cost 5 points</p>
-						</div>
-						<div class="team-back">
-							<p class= 'dashboard-text'>
-								Click here to buy a new avatar!
+				<!--Tile 4-->
+		 		<div class="col-lg-4">
+					<div class="our-team-main">
+						<a href="/changeAvatar/"   style="color:black">
+							<div class="team-front">
+								<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
+								<h3>Pick A Avatar</h3>
+								<p>Cost 5 points</p>
+							</div>
+							<div class="team-back">
+								<p class= 'dashboard-text'>
+									Click here to buy a new avatar!
 								<center> (Costs 5 Points)</center>
 							</p>
 						</div>
@@ -110,30 +110,30 @@
 						</div>
 					</a>
 				</div>
-			</div>
+		 		
+		 		<!--Tile 6-->
+				<div class="col-lg-4">
+					<div class="our-team-main">
+						<a href="{% url 'profile' %}"     style="color:black">
+							<div class="team-front">
+								{% if user.studentprofileinfo.profile_pic %}
+	                				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+	            				{% else %}
+	                				<img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+	            				{% endif %}
+								<h3>My Profile</h3>
+								<p> &nbsp;</p>
+							</div>
+							<div class="team-back">
+								<p class= 'dashboard-text2'>
+									Click here to view your Profile!
+								</p>
+							</div>
+						</a>
+					</div>
+				</div><!-- dashboard end -->
+			
 	 		
-	 		<!--Tile 6-->
-			<div class="col-lg-4">
-				<div class="our-team-main">
-					<a href="{% url 'profile' %}"     style="color:black">
-						<div class="team-front">
-							{% if user.studentprofileinfo.profile_pic %}
-                				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
-            				{% else %}
-                				<img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            				{% endif %}
-							<h3>My Profile</h3>
-							<p> &nbsp;</p>
-						</div>
-						<div class="team-back">
-							<p class= 'dashboard-text2'>
-								Click here to view your Profile!
-							</p>
-						</div>
-					</a>
-				</div>
-			</div>	
-		</div><!-- dashboard end -->
 	</section>
 
 	<!--Used to display the pop up box when tile 3 is clicked-->
@@ -170,39 +170,7 @@
 	</form>
 
 	<!--Used to display the pop up box when tile 4 is clicked-->
-	<form id="form1">
-		<div class="modal fade" id="ProfilePictureModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="ModalTitle">Change Avatar </h4>
-					</div>
-					<div class="modal-body">
-						<div style="float:left" class="checkbox">
-							<input type="radio" name="check" id="check" value="img_568657.png" />
-							<img src="../static/assets/avtar/img_568657.png" width="100" >
-						</div>
-						<div style="float:left" class="checkbox">
-							<input type="radio" name="check" id="check" value="img_568657.png" />
-							<img src="../static/assets/avtar/kindpng_248273.png" width="100" >
-						</div>
-						<div style="float:left" class="checkbox">
-							<input type="radio" name="check" id="check" value="img_568657.png" />
-							<img src="../static/assets/avtar/kindpng_248442.png" width="100" >
-						</div>
-						<div id="dvMessage" runat="server" visible="false" class="alert alert-danger">
-							<strong>Error!</strong>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">Save changes</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
+	
 
 	<script type="text/javascript">
 		$('document').ready(function(){

@@ -334,6 +334,41 @@ def leaderboard(request):
 
     return render(request, 'points/leaderboard.html', {"leaderboard": leaderboard})
 
+
+def changeAvatar(request):
+    
+    if request.method == 'POST':
+       
+        if 'image' in request.FILES:
+            print('found the picture!')
+            id=request.session['id']
+            r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id)
+            d=r.json()
+            if int(d['points']) >= 5:
+                r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5')
+     
+                u = User.objects.get(username=request.user.username)
+            
+                print(u.studentprofileinfo.profile_pic)
+                print(request.FILES)
+                u.studentprofileinfo.profile_pic = request.FILES['image']
+                u.studentprofileinfo.save()
+                messages.success(request, "Successfully update your avatar")
+                return HttpResponseRedirect(reverse('index'))    
+
+            else:
+                messages.error(request, "you do not have enough points!")         
+
+                        
+
+            
+            
+        else:
+            messages.error(request, "something went wrong!")         
+
+   
+    return render(request, 'points/shop.html')
+
 #Makes sure user is an admin to see the JSON files for testing purposes
 @user_passes_test(lambda u: u.is_superuser)
 def iterateJSON(request):
