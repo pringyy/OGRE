@@ -340,7 +340,7 @@ def leaderboard(request):
     id = request.session['id']
 
     # API call to the leader board php file in the Moodle server
-    r = requests.get(leaderboardAPIcall + id)
+    r = requests.get(leaderboardAPIcall + id +'&encrypted_key=' + enc_key)
     data = r.json()
     leaderboard = data["rows"]
 
