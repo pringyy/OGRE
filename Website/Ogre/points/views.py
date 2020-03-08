@@ -261,7 +261,7 @@ def changeUsername(request):
             # If they are not the same then it is valid
             # Calls the API to update the OGRE points of the user
             #Variable changeNicknameCost is refrenced from costValues.py where you can change the values
-            r = requests.get(changeNicknameAPIcall+id+'&points='+str(changeNicknameCost)+'&action=update&alternatename='+username)
+            r = requests.get(changeNicknameAPIcall+id+'&points='+str(changeNicknameCost)+'&action=update&alternatename='+username+'&encrypted_key=' + enc_key)
 
             d = r.json()
             if d["status"] != 0:
