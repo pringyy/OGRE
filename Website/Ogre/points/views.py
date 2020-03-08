@@ -207,7 +207,7 @@ def getmypoint(request):
     #retrieves session ID
     id=request.session['id']
     #Retrieves the number of points the user currently has
-    noOfPoints = requests.get(getPointsAPIcall+id)
+    noOfPoints = requests.get(getPointsAPIcall+id+'&encrypted_key=' + enc_key)
     #Returns the number of points
     return HttpResponse(noOfPoints)
 
@@ -216,7 +216,7 @@ def pointcalculate(request):
     #Gets session id
     id=request.session['id']
     #API call to get the user points list
-    r = requests.get(transactionsAPIcall+id)
+    r = requests.get(transactionsAPIcall+id+'&encrypted_key=' + enc_key)
     #Intialisies variable stroing the JSON information
     d = r.json()
     #Stores points list in this variables for the user logged in
