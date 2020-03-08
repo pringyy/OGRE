@@ -49,7 +49,7 @@ class Cryptor:
 
     def encrypt(self, text):
         cipher = AES.new(self.getKEY(), self.method, self.getIV(), segment_size=128)
-        return base64.b64encode(cipher.encrypt(self.pad(text)))
+        return str(base64.b64encode(cipher.encrypt(self.pad(text))))[2:-1]
 
     """
     Decrypt given string using AES standard

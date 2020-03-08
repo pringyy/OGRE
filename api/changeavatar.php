@@ -1,12 +1,23 @@
 <?php
 
 include(dirname(dirname(__FILE__)).'/include/config.php');
+include(dirname(dirname(__FILE__)).'/include/encrypt.php');
 // verfiy if the php side receive the id and points
-if(isset($_REQUEST['user_id']) && isset($_REQUEST['points'])){
+if(isset($_REQUEST['user_id']) && isset($_REQUEST['points']) && isset($_REQUEST['encrypted_key'])){
 
 // receive the user_id and related points here
 $user_id = $_REQUEST['user_id'];
 $points = $_REQUEST['points'];
+$cypher = new MyCypher();
+$php_decrypted = $cypher->decrypt($api_key);
+$ORGE_decrypted = $cypher->decrypt($_REQUEST['encrypted_key']);
+if (strcmp($php_decrypted,$ORGE_decrypted)!=0){
+        $data = array('status'=>0,'message'=>'wrong api key');
+        echo json_encode($data);
+        exit;
+}
+
+
 
 // use sql statement to exact the user
 $sql = "SELECT * FROM mdl_user WHERE id = '".$user_id."' ";
@@ -58,9 +69,10 @@ if(mysqli_num_rows($result) > 0){
 }
 
 }else{
-        $data = array('status'=>0,'message'=>'Insufficient Parameters.');
-        echo json_encode($data);
-        exit;
+    $cypher = new MyCypher();
+    $php_encrypted = $cypher->encrypt(')ma#e*lz)m*881+wgkc&vodfodfdopvjdqp9vb_4pdohndpw2o8g2hf=s');
+    $data = array('status'=>0,'message'=>'Insufficient Parameters.', 'php_encrypted'=>$php_encrypted);
+    exit;
 }
 
 ?>

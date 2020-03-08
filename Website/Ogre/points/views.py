@@ -295,9 +295,10 @@ def game_menu(request):
 @login_required
 def index(request):
     
-    enc_str = cipher.encrypt('secret')
-    dnc_str = cipher.decrypt(enc_str)
-    print(enc_str,dnc_str)   
+    # enc_str = cipher.encrypt(APIkeys)
+    # dnc_str = cipher.decrypt(enc_str)
+    # print(enc_str)
+    #print(enc_str,dnc_str)   
     return render(request, 'points/index.html')
 
 #View used for redirecting user to login page when they log out
@@ -346,21 +347,25 @@ def leaderboard(request):
 
 
 def changeAvatar(request):
-    #post request
+    # id=request.session['id']
+    enc_key = cipher.encrypt(APIkeys)
+    # r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5' + '&encrypted_key='+enc_str)
+    # return HttpResponse(r)
     if request.method == 'POST':
        
         if 'image' in request.FILES:
             print('found the picture!')
             id=request.session['id']
+            print(id)
+            print(enc_key)
             r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id)
             d=r.json()
             if int(d['points']) >= 5:
-                r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5')
+                r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5&encrypted_key=' + enc_key)
      
                 u = User.objects.get(username=request.user.username)
-            
-                print(u.studentprofileinfo.profile_pic)
-                print(request.FILES)
+                d = r.json()
+                print(d)
                 u.studentprofileinfo.profile_pic = request.FILES['image']
                 u.studentprofileinfo.save()
                 messages.success(request, "Successfully update your avatar")
