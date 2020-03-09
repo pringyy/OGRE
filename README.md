@@ -6,7 +6,11 @@ Before deploying the application, **please make sure you read through this entir
 
 ## Installation Guide
 
-Click here to navigate to the Installation Guide: [INSTALLATION GUIDE](INSTALLATIONGUIDE.md)
+See [Installation Guide](INSTALLATIONGUIDE.md)
+
+## License
+See [License](LICENSE.md)
+
 
 ## Introduction
 
@@ -44,13 +48,9 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 ## Features
 
-
-
 * Responsive UI (mobile mode)
 * Cross browser support
 * Navigation bar displayed on all webpages except the Login/Launch page
-
-
 
 #### Login/Launch screen
 
@@ -62,39 +62,51 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 ![Screenshot of login page](https://i.imgur.com/THzP6tu.png)
 
 #### Registration
+
 * Only lets user register to the Django application if and only if the user is registered on the corresponding Moodle server.
 * Does this by checking Student ID and Password entered  match an user ID and corresponding password on the Moodle server.
 * Lets users decide a username or 'nickname' for the application.
 ![Screenshot of the registration page](https://i.imgur.com/H8czMjd.png)
 
-
 #### Dashboard
-* Main menu of the application
+
+* Main menu of the application.
+* Users can see how many points they currently have.
 *![Screenshot of the dashboard](https://i.imgur.com/qXh9Jb5.png)
 
 #### About
+
 * See information about the development team
 ![Screenshot of about page](https://i.imgur.com/kTNNaQc.png)
 
 #### Contact
+
 * Contact form to send a message to the development team
 ![Screenshot of contact page](https://i.imgur.com/Jb8f427.png)
 
-* How to reconfigure this for your own email:
-
 #### FAQ
-* Displays freuqently asked questions to the user if they have a query:
+
+* Displays freuqently asked questions to the user.
 ![Screenshot of FAQ page]
 
 #### Profile
-* Ability to view your profile and other user's profiles
-*See your OGRE points
-![Screenshot of contact page]
 
-#### Games Page
+* Ability to view your profile.
+* See your OGRE points and account information.
+![Screenshot of  profile page](https://i.imgur.com/gVd2C2Q.png)
+
+#### Leaderboard
+![Screenshot of the leaderboard](https://i.imgur.com/lYkhZPQ.png)
+
+#### Games
+* Lets users play game that cost 5 points to play.
+![Screenshot of games list page](https://i.imgur.com/6V0lTaf.png)
 
 
 #### Avatar Shop
 
 #### Transaction History
+![Screenshot of the transaction history page](https://i.imgur.com/4druPxc.png)
+
+
 
