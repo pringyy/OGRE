@@ -6,7 +6,7 @@ Before deploying the application, **please make sure you read through this entir
 
 # Installation Guide
 
-Click here to navigate to the Installation Guide:
+Click here to navigate to the Installation Guide: [INSTALLATION GUIDE](INSTALLATIONGUIDE.md)
 
 # Introduction
 
