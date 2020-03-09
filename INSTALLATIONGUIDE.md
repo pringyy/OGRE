@@ -1,6 +1,15 @@
 # Installation Guide
 
-### 1. Git
+Please make sure you complete this **whole** guide for the application to work as intended.
+## Contents
+
+1. [Git](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#1-git)
+2. [Django Application](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#2-django-application)
+3. [Moodle Server](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#3-moodle-server)
+4. [Link Django Application with Moodle server](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#4-link-django-with-moodle-server)
+5. [Further Django Setup](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#5-further-django-setup)
+
+## 1. Git
 
 **Step 1.1**: To clone this repository through the console, you have to have Git installed on your machine:
 
@@ -23,7 +32,7 @@ git clone https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main.git
 *This will save the repository into whatever directory you navigated into in Step 1.2.*
 
 
-### 2. Django Application
+## 2. Django Application
 
 **Step 2.1**: You need to have Python 3.7 installed onto your machine to run this application. Download the version for the Operating System you are using here: 
 *  https://www.python.org/downloads/release/python-376/
@@ -64,7 +73,7 @@ python manage.py runserver
 
 **You WILL NOT be able to register or login until you complete the installation guide!**
 
-### 3. Moodle Server
+## 3. Moodle Server
 
 **Step 3.1**: You need to have a running Moodle server to link the Django application. If you do not already have one running, you can follow this setup guide:
 *  https://docs.moodle.org/38/en/Installing_Moodle
@@ -109,8 +118,9 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 *to moodle/*
 
-### 4. Link Django with Moodle Server
+## 4. Link Django with Moodle Server
 
+## 5. Further Django Setup
 
 
 ```
