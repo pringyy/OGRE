@@ -32,22 +32,21 @@ This project has been created to motivate students to do University work. It doe
 
 *Functional Requirements:*
 *  The application must be able to track OGRE points, when users submit an assignment on moodle.
-*  The application need to provide APIs for other games to observe and manipulate OGRE points
+*  The application need to provide APIs for other games to observe and manipulate OGRE points.
 *  Provide a sample Unity videogame to demonstrate the application's API. 
 
 *Non-Functional Requirements:*
 *  Demonstration Unity videogame does not need to be interesting.
-*  The application must have sufficient amount of security. (E.g. Can not give points randomly.)
+*  The application must have sufficient amount of security (e.g. can not give points randomly).
 *  The application does not need to comply with GDPR.
 *  The application can use any extension (That they have the right to use, such as MIT license).
-*  Have to make use of a database table to store point details
+*  Have to make use of a database table to store point details.
 
 #### Approach
 
 We decided to approach this challenge by creating a mySQL table on a Moodle server which stores users points. Event listeners were then implemented which would update the table when users submit an assignment or quiz. From this we decided to create a Django web application which used API calls to link it with the Moodle server. The API calls allowed us to retrieve and update points on the mySQL table using the Django application. It also allowed us to set up a regitration system, which only allows you to register for the Django application if you are an existing user on the corresponding Moodle server. The Django applicaiton provides an interface for users to see and spend their OGRE points. They can spend them to play games or on cosmetic items. The cosmetic items and games we implemented are placeholders, as this is the aspects of the application our customers are working on.
 
 ## Features
-
 
 #### User Interface
 
@@ -93,7 +92,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 #### Contact
 
 * Contact form to send a message to the development team
-![Screenshot of contact page](https://i.imgur.com/Jb8f427.png)
+![Screenshot of contact page](https://i.imgur.com/9u0sgHI.png)
 
 #### FAQ
 
