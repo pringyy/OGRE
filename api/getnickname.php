@@ -1,13 +1,29 @@
 <?php
 
 include(dirname(dirname(__FILE__)).'/include/config.php');
+include(dirname(dirname(__FILE__)).'/include/encrypt.php');
 
 
-if(isset($_REQUEST['user_id']) && isset($_REQUEST['points'])){
 
+
+
+// verfiy if the php side receive the id and points
+if(isset($_REQUEST['user_id']) && isset($_REQUEST['points']) && isset($_REQUEST['encrypted_key'])){
+
+// receive the user_id and related points here
 $user_id = $_REQUEST['user_id'];
 $points = $_REQUEST['points'];
 
+$encrypted_key = $_REQUEST['encrypted_key'];
+
+$cypher = new MyCypher();
+$encrypted_api_key = $cypher->encrypt($api_key);
+
+if (strcmp($encrypted_api_key,$encrypted_key)!=0){
+        $data = array('status'=>0,'message'=>'wrong api key');
+        echo json_encode($data);
+        exit;
+}
 
 $sql = "SELECT * FROM mdl_user WHERE id = '".$user_id."' ";
 $result = mysqli_query($con, $sql);
@@ -47,27 +63,35 @@ if(mysqli_num_rows($result) > 0){
                         echo json_encode($data);
                         exit;
                     }
-                }}
-
+                }}		
+		
             }else {
-
-                     $data = array('status'=>0,'message'=>'Insufficient Parameters.');
-    echo json_encode($data);
-    exit;
-
+                
+                 $data = array('status'=>0,'message'=>'Insufficient Parameters.');
+            echo json_encode($data);
+            exit;
+     
             }
-
-    }else {
-
-$row = mysqli_fetch_assoc($result);
-    $data = array('status'=>1,'message'=>'Get Nickname', 'user_id'=>$user_id, 'nickname'=>$row['alternatename']);
-    echo json_encode($data);
-    exit;
-
+            
+        }else {
+            
+        $row = mysqli_fetch_assoc($result);
+        $data = array('status'=>1,'message'=>'Get Nickname', 'user_id'=>$user_id, 'nickname'=>$row['alternatename']);
+        echo json_encode($data);
+        exit;
+        
+        }
+    
+    }else{
+        $data = array('status'=>0,'message'=>'User does not exist.');
+        echo json_encode($data);
+        exit;
     }
-
-}else{
-$data = array('status'=>0,'message'=>'User does not exist.');
-echo json_encode($data);
-exit;
-} 
+    
+    }else{
+            $data = array('status'=>0,'message'=>'Insufficient Parameters.');
+            echo json_encode($data);
+            exit;
+    }
+    
+    ?>

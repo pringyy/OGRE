@@ -1,12 +1,23 @@
 <?php
 
 include(dirname(dirname(__FILE__)).'/include/config.php');
+include(dirname(dirname(__FILE__)).'/include/encrypt.php');
 
 
-if(isset($_REQUEST['user_id'])){
+if(isset($_REQUEST['user_id']) && isset($_REQUEST['encrypted_key'])){
     
     
     $user_id = $_REQUEST['user_id'];
+    $encrypted_key = $_REQUEST['encrypted_key'];
+
+    $cypher = new MyCypher();
+    $encrypted_api_key = $cypher->encrypt($api_key);
+
+    if (strcmp($encrypted_api_key,$encrypted_key)!=0){
+        $data = array('status'=>0,'message'=>'wrong api key');
+        echo json_encode($data);
+        exit;
+    }
     
     $sql = "SELECT * FROM mdl_user WHERE id = '".$user_id."' ";
     $result = mysqli_query($con, $sql);

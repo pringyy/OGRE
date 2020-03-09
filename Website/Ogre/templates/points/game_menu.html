@@ -1,0 +1,59 @@
+<!--THIS HTML PAGE REPRESENTS THE GAME MENU PAGE-->
+
+{% extends "points/base.html" %}
+{% load static %}
+{% block title %} {{ block.super }} - Game Menu {% endblock %}
+{% block body_block %}
+
+	<!--Imports the same css and the index as this page makes use of the dashboard-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+	<!--Page content-->
+	<div class="container">
+		<br>
+	    <h1 class="display-4 white-text">Game Menu</h1> <!--Title of the page-->
+	    <hr>
+
+	    <!--Tile 1-->
+		<div class="col-lg-4">
+			<a href="/game1/" style="color:black">
+				<div class="our-team-main">
+					<div class="team-front">
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ6QKJhgPL0MBFWIMHdW5Gfu-1OChOpMHJDAU78MEbBIDFKH2--" class="img-fluid" />
+						<h3>Re-wire</h3>
+						<p>Costs 5 points</p>
+					</div>
+					<div class="team-back">
+						<p class= 'dashboard-text'>
+							Click here to play a game!
+							<center> (Costs 5 Points)</center>
+						</p>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<!--Tile 2-->
+		<div class="col-lg-4">
+			<a href="/game2/" style="color:black">
+				<div class="our-team-main">
+					<div class="team-front">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Tic_tac_toe.svg" class="img-fluid" />
+						<h3>2048</h3>
+						<p>Costs 5 points</p>
+					</div>
+
+					<div class="team-back">
+						<p class= 'dashboard-text'>
+							Click here to play a game!
+						<center> (Costs 5 Points)</center>
+						</p>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+
+
+{% endblock %}

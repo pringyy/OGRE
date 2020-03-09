@@ -1,44 +1,53 @@
+<!--THIS HTML PAGE REPRESENTS THE LEADERBOARD PAGE-->
+
 {% extends "points/base.html" %}
 {% load static %}
+{% block title %} {{ block.super }} - Leaderboard {% endblock %}
 {% block body_block %}
 
-{%if user.is_authenticated %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/pointlist.css' %}">
-<div class="container"> <table class="table">
-    <section class="wt-section" id="login">
-    	<div class="container">
-            <br>
-    	    <h1 class="display-4 white-text">Ogre Points Leaderboard</h1><br>
-            See below the current leaderboard for Ogre Points
-            <hr>
-            <div class="row">
-                <table id="grid-data" class="table table-condensed table-hover table-striped">
-                <thead class="data">
-                <tr>
-                    <th data-column-id="id" data-type="numeric">Position</th>
-                    <th data-column-id="type">Student ID</th>
-                    <th data-column-id="detail" data-order="desc">Points</th>
+    <!--If user is logged in display contents-->
+    {%if user.is_authenticated %}
 
-                </tr>
-                {% if leaderboard %}
-                    {% for student in leaderboard %}
-                        <tr>
-                            <td>{{forloop.counter}}</td>
-                            <td>{{student.username}}</td>
-                            <td>{{student.points}}</td>
-                        </tr>
-                    {% endfor %}
-                {% endif %}
-                </thead>
-                </table>
-            </div><!-- dashboard end -->
+        <!--imports CSS for grid table-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/pointlist.css' %}">
+        
+        <!--Page contents-->
+        <div class="container"> 
+            <table class="table">
+                <section class="wt-section" id="login">
+            	   <div class="container">
+                        <br>
+            	        <h1 class="display-4 white-text">Ogre Points Leaderboard</h1><br>
+                        <hr>
+                        <div class="row">
+                            <table id="grid-data" class="table table-condensed table-hover table-striped">
+                                <thead class="data">
+                                    <tr>
+                                        <th data-column-id="id" data-type="numeric">Position</th>
+                                        <th data-column-id="type">Student ID</th>
+                                        <th data-column-id="detail" data-order="desc">Points</th>
+
+                                    </tr>
+
+                                    {% if leaderboard %}
+                                        {% for student in leaderboard %}
+                                            <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{student.username}}</td>
+                                                <td>{{student.points}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                </thead>
+                            </table>
+                        </div><!-- dashboard end -->
+                    </div>
+                </section>
+            </table>
         </div>
-    </section>
-</div>
 
-{% else %}
-<br>
-<center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
-{% endif %}
-
+    {% else %} <!--Else inform the user what to do to access the page-->
+        <br>
+        <center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
+    {% endif %}
 {% endblock %}

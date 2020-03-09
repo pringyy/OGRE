@@ -1,6 +1,6 @@
 <!--THIS HTML PAGE REPRESENTS THE REGISTRATION PAGE-->
 
-{% extends "points/base.html" %} <!--Inherits HTML from page-->
+{% extends "points/base.html" %} 
 {% load static %}
 {% load crispy_forms_tags %} <!--loads crispy forms to make the form look nicer-->
 {% block title %} {{ block.super }} - Register {% endblock %}
@@ -18,7 +18,7 @@
       <h1 class="display-4 white-text">Register</h1> <!--Title of the page-->
       <hr>
       <div class="jumbotron">
-        <!--Checks to see if the user is registered successfully, and if they are display the heading below-->
+        <!--Checks to see if the user is registered successfully-->
         {% if registered %} 
           <br>
           <center><h1 class="display-4 container white-text">Thanks for registering!</h1></center>
@@ -29,7 +29,7 @@
             {% csrf_token %}
             {{profile_form.StudentID|as_crispy_field}} <!--Display just the StudentID field from the Profile form defined in form.py-->
             {{user_form|crispy}}
-            <input type="submit" class= "button1" name="" value="Register"> <!--Code for submit button-->
+            <input type="submit" class= "button1" name="" value="Register"> 
           </form>    
         {% endif %}
       </div>
