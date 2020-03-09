@@ -2,8 +2,6 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.contrib.staticfiles import finders
 from django.urls import reverse
-from django.test.client import Client
-
 from .models import StudentProfileInfo, User
 from .forms import UserForm, ContactForm, UserProfileInfoForm
 
@@ -25,6 +23,10 @@ class IndexPageTest(TestCase):
     def test_index_page_uses_templates(self):
         self.assertTemplateUsed(self.response, 'points/index.html')
 
+    # tests that the index page displays a users points to them
+    def test_index_page_displays_points(self):
+        self.assertContains(self.response, 'Points')
+
     # tests that user can't see index page when logged out
     def test_index_page_restricted_when_logged_out(self):
         # Log user out and obtain response again
@@ -32,8 +34,6 @@ class IndexPageTest(TestCase):
         self.response = self.client.get(reverse('index'))
 
         self.assertEquals(self.response.status_code, 302)
-
-    # tests that index page has the required
 
 
 class LoginPageTest(TestCase):
@@ -152,6 +152,7 @@ class RegisterPageTest(TestCase):
     def test_register_page_has_register_button(self):
         self.assertContains(self.response, "Register")
 
+
 class AboutPageTest(TestCase):
 
     def setUp(self):
@@ -182,11 +183,13 @@ class StaticImageTests(TestCase):
     # tests that static images display correctly on the website
     def test_correct_static_images(self):
 
+        # Create dict mapping each file format to a list of the photos of that kind
         images = {"jpg": ['alastair', 'bg1', 'bg2', 'bg3', 'bg4',
                           'bg5', 'bg6', 'bg7', 'catoriona', 'harry',
                           'mingfeng', 'robert'],
                   "png": ['ogrelogo', 'unilogo']}
 
+        # Check that each image exists in th website
         for format, file in images.items():
             for f in file:
                 img = finders.find('images/{}.{}'.format(f, format))
@@ -218,13 +221,31 @@ class UserFormTests(TestCase):
     # tests if the user form is valid when given valid data
     def test_user_form_valid(self):
         form = UserForm(
-            data={'username': "user123", 'studentID': "2317070i", 'email': "a@b.com", 'password': "password123"})
+            data={'username': "user123", 'password': "password123"})
         self.assertTrue(form.is_valid())
 
     # tests if the user form is invalid when given invalid data
     def test_user_form_invalid(self):
-        form = UserForm(data={'studentID': "2317070i", 'email': "a@b.com", 'password': "password123"})
-        self.assertFalse((form.is_valid()))
+        form = UserForm(data={'studentID': "2317070i", 'password': "password123"})
+        self.assertFalse(form.is_valid())
+
+
+class UserProfileInfoFormTests(TestCase):
+
+    # tests is the user profile form is valid when given valid data
+    def test_user_profile_info_form(self):
+        form = UserProfileInfoForm(data={"StudentID": "2317070i", "profile_pic": "test.jpg"})
+        self.assertTrue(form.is_valid())
+
+    # tests if the user profile form is valid with no profile picture provided
+    def test_user_profile_info_form_with_no_profile_pic(self):
+        form = UserProfileInfoForm(data={"StudentID": "2317070i"})
+        self.assertTrue(form.is_valid())
+
+    # tests if the user profile form is invalid when given invalid data
+    def test_user_profile_form_invalid(self):
+        form = UserForm(data={'password': "password123"})
+        self.assertFalse(form.is_valid())
 
 
 class ContactFormTests(TestCase):
