@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'profile/(?P<username>[a-zA-Z0-9]+)$', views.profile),
     url(r'^game_menu/$', views.game_menu, name = 'game_menu'),
     path('mytransaction/',views.pointlist,name='pointlist'),
-    path('ajaxpointlist/',views.ajaxpointlist,name='ajaxpointlist'),
+    path('pointlist/',views.pointlist,name='pointlist'),
     path('pointcalculate/',views.pointcalculate,name = 'pointcalculate'),
     path('game1/',views.game1,name='game1'),
     path('game2/', views.game2, name = 'game2'),

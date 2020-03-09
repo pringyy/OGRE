@@ -39,14 +39,14 @@ if(isset($_REQUEST['user_id']) && isset($_REQUEST['encrypted_key'])){
         exit;
         
     }else{
-        $data = array('status'=>0,'message'=>'No User points found for this user.');
+        $data = array('status'=>0,"current"=> 1,"rowCount"=>10,'user_id'=>'null','total'=>'null','rows'=>'null');
         echo json_encode($data);
         exit;
     }
 
     }
     }else{
-        $data = array('status'=>0,'message'=>'User does not exist.');
+        $data = array('status'=>0,"current"=> 1,"rowCount"=>10,'user_id'=>'null','total'=>'null','rows'=>'null');
         echo json_encode($data);
         exit;
     }
@@ -54,7 +54,7 @@ if(isset($_REQUEST['user_id']) && isset($_REQUEST['encrypted_key'])){
     
     
 }else{
-        $data = array('status'=>0,'message'=>$_REQUEST);
+        $data = array('status'=>0,"current"=> 1,"rowCount"=>10,'user_id'=>'null','total'=>'null','rows'=>$data);
         echo json_encode($data);
         exit;
 }

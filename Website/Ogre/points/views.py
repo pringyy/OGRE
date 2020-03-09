@@ -273,17 +273,27 @@ def changeUsername(request):
         #Returns the request
             return HttpResponse(r)   
      
+def leaderboard2(request):
+    id = request.session['id']
 
+    # API call to the leader board php file in the Moodle server
+    r = requests.get(leaderboardAPIcall + id +'&encrypted_key=' + enc_key)
+    data = r.json()
+    leaderboard = data["rows"]
+
+    return render(request, 'points/leaderboard.html', {"leaderboard": leaderboard})
 #Displays the list of points to the user if they are logged in
-def ajaxpointlist(request): 
+def pointlist(request): 
     id=request.session['id']
-    request = requests.get(transactionsAPIcall+id+'&encrypted_key=' + enc_key)
-    return HttpResponse(request)
+    r = requests.get(transactionsAPIcall+id+'&encrypted_key=' + enc_key)
+    data = r.json()
+    pointlist = data["rows"]
+    return render(request,'points/pointlist.html', {"pointlist": pointlist})
 
 #Displays the list of points to the user if they are logged in
-def pointlist(request):
-    if request.session.get('id'):
-        return render(request,'points/pointlist.html')
+# def pointlist(request):
+#     if request.session.get('id'):
+#         return render(request,'points/pointlist.html')
 
 #Displays the list a list of games the user can play when requested
 @login_required
