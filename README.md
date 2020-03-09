@@ -48,11 +48,14 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 ## Features
 
-* Responsive UI (mobile mode)
-* Cross browser support
-* Navigation bar displayed on all webpages except the Login/Launch page
 
-#### Login/Launch screen
+#### User Interface
+
+* Responsive UI (mobile mode).
+* Cross browser support.
+* Clear and readable design.
+
+#### Login
 
 * First interface the user interacts with when application is opened.
 * User authentication system with secure password hashing.
@@ -73,6 +76,16 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 * Main menu of the application.
 * Users can see how many points they currently have.
 *![Screenshot of the dashboard](https://i.imgur.com/qXh9Jb5.png)
+
+#### Navigation Bar
+
+*  Navigation bar displayed on every page except Login/ Launch Screen
+*  Looks like this when logged:
+
+
+
+
+*  Looks like this when not logged in:
 
 #### About
 
