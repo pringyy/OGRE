@@ -5,7 +5,7 @@ It also provides a link to our hand over documentation ([installation guide](INS
 If you have any queries about anything to do with this application please contact us using our emails below.<br>
 Before deploying the application, **please make sure you read through this entire document.** 
 
-## Installation Guide
+## Handover Documentation
 
 See [Installation Guide](INSTALLATIONGUIDE.md).
 
@@ -34,10 +34,10 @@ This project has been created to motivate students to do University work. It doe
 *Functional Requirements:*
 *  The application must be able to track OGRE points, when users submit an assignment on moodle.
 *  The application need to provide APIs for other games to observe and manipulate OGRE points.
-*  Provide a sample Unity videogame to demonstrate the application's API. 
+*  Provide a sample videogame to demonstrate the application's API. 
 
 *Non-Functional Requirements:*
-*  Demonstration Unity videogame does not need to be interesting.
+*  Demonstration videogame does not need to be interesting.
 *  The application must have sufficient amount of security (e.g. can not give points randomly).
 *  The application does not need to comply with GDPR.
 *  The application can use any extension (That they have the right to use, such as MIT license).
