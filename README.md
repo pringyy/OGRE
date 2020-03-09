@@ -78,14 +78,12 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 *![Screenshot of the dashboard](https://i.imgur.com/qXh9Jb5.png)
 
 #### Navigation Bar
+* Navigation bar displayed on every page except Login/ Launch Screen
+* Looks like this when logged
+![Picture of nav bar when user is logged in](https://i.imgur.com/iyFPgHH.png)
 
-*  Navigation bar displayed on every page except Login/ Launch Screen
-*  Looks like this when logged:
-
-
-
-
-*  Looks like this when not logged in:
+* Looks like this when not logged in:
+![Picture of nav bar when user is logged out](https://i.imgur.com/EMKbfvX.png)
 
 #### About
 
@@ -112,8 +110,13 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 ![Screenshot of the leaderboard](https://i.imgur.com/lYkhZPQ.png)
 
 #### Games
-* Lets users play game that cost 5 points to play.
-![Screenshot of games list page](https://i.imgur.com/6V0lTaf.png)
+* Lets users play game that costs (by default) 5 points to play.
+![Screenshot of games menu page](https://i.imgur.com/6V0lTaf.png)
+
+#### Change nickname
+*  Allows user to change their nickname/Django username for (by default) 5 points.
+*  Displays as a pop up box on the dashboard
+![Screen shot of where users can change their nickname](https://i.imgur.com/Gt7Cb5x.png)
 
 
 #### Avatar Shop
