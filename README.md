@@ -1,9 +1,27 @@
+# University of Glasgow- Online Games and Resource Environment (OGRE)
+
+This README file outlines all the functionality of this project, with an extensive installation guide. <br>
+If you have any queries about anything to do with this application please contact any of use using our emails below.
+
+## Introduction
+
+
+### Meet the team
+
+*  Robert Pringle- 2304777P@student.gla.ac.uk
+*  Mingfeng Ye- 2325714Y@student.gla.ac.uk
+*  Alastair Innes- 2317070I@student.gla.ac.uk
+*  Catriona Murphy- 2312695M@student.gla.ac.uk
+*  Harry Yau- @student.gla.ac.uk
+
+
+### Requirements
 This is a project that uses a Django web application to connect to an external 
 Moodle server so users can log in and see their "ORGE Points" - a point system
 that works with Moodle to reward users for submitting assignments and completing
 quizes.
 
-## Installation
+## Installation Guide
 
 ### 1. Git
 
