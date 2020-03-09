@@ -4,6 +4,10 @@ This README file outlines all the functionality of this project, with an extensi
 If you have any queries about anything to do with this application please contact us using our emails below.<br>
 Before deploying the application, **please make sure you read through this entire document.** 
 
+# Installation Guide
+
+Click here to navigate to the Installation Guide:
+
 # Introduction
 
 
