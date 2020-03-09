@@ -12,7 +12,6 @@ class IndexPageTest(TestCase):
 
     # Page can only be used when user is logged in, so create user and log them in
     def setUp(self):
-        self.client = Client()
         self.user = User.objects.create_user('test', 'test@test.com', 'testpassword')
         self.client.login(username='test', password='testpassword')
 
@@ -25,6 +24,16 @@ class IndexPageTest(TestCase):
     # tests that index page uses template
     def test_index_page_uses_templates(self):
         self.assertTemplateUsed(self.response, 'points/index.html')
+
+    # tests that user can't see index page when logged out
+    def test_index_page_restricted_when_logged_out(self):
+        # Log user out and obtain response again
+        self.client.logout()
+        self.response = self.client.get(reverse('index'))
+
+        self.assertEquals(self.response.status_code, 302)
+
+    # tests that index page has the required
 
 
 class LoginPageTest(TestCase):
@@ -39,6 +48,19 @@ class LoginPageTest(TestCase):
     # tests that login page uses template
     def test_login_page_uses_templates(self):
         self.assertTemplateUsed(self.response, 'points/login.html')
+
+    def test_login_page_has_required_fields(self):
+        self.assertContains(self.response, 'StudentID')
+        self.assertContains(self.response, 'Password')
+        self.assertContains(self.response, 'Username')
+
+    # tests that login page contains sign in button
+    def test_login_page_has_sign_in_button(self):
+        self.assertContains(self.response, "Sign in")
+
+    # tests that login page contains register button
+    def test_login_page_has_register_button(self):
+        self.assertContains(self.response, "Register here")
 
 
 class FAQPageTest(TestCase):
@@ -58,6 +80,9 @@ class FAQPageTest(TestCase):
 class ProfilePageTest(TestCase):
 
     def setUp(self):
+        self.user = User.objects.create_user('test', 'test@test.com', 'testpassword')
+        self.client.login(username='test', password='testpassword')
+
         self.response = self.client.get(reverse('profile'))
 
     # tests that profile page uses profile url
@@ -67,6 +92,10 @@ class ProfilePageTest(TestCase):
     # tests that profile page uses template
     def test_profile_page_uses_templates(self):
         self.assertTemplateUsed(self.response, 'points/profile.html')
+
+    # tests that profile page displays points
+    def test_profile_page_displays_points(self):
+        self.assertContains(self.response, "Total Points")
 
 
 class ThanksPageTest(TestCase):
@@ -108,13 +137,20 @@ class RegisterPageTest(TestCase):
 
     # tests that register page uses register url
     def test_register_view_url_by_name(self):
-        #response = self.client.get(reverse('register'))
         self.assertEquals(self.response.status_code, 200)
 
     # tests that register page uses template
     def test_register_page_uses_templates(self):
         self.assertTemplateUsed(self.response, 'points/register.html')
 
+    def test_register_page_has_required_fields(self):
+        self.assertContains(self.response, 'StudentID')
+        self.assertContains(self.response, 'Password')
+        self.assertContains(self.response, 'Username')
+
+    # tests that login page contains register button
+    def test_register_page_has_register_button(self):
+        self.assertContains(self.response, "Register")
 
 class AboutPageTest(TestCase):
 
@@ -135,7 +171,6 @@ class AboutPageTest(TestCase):
 
     # tests that the about page correctly displays the name of the staff
     def test_about_page_contains_staff(self):
-
         self.assertIn(b'Alastair Innes', self.response.content)
         self.assertIn(b'Robert Pringle', self.response.content)
         self.assertIn(b'Catriona Murphy', self.response.content)
