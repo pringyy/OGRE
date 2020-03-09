@@ -1,15 +1,16 @@
 # University of Glasgow- Online Games and Resource Environment (OGRE)
 
-This README file outlines all the functionality of this project, with an extensive installation guide. <br>
+This README file outlines the [license](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#license), [requirements](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#requirements), our [approach](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#approach) and all the [features](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#features) that are implemented in our project.<br> 
+It also provides a link to our hand over documentation ([installation guide](INSTALLATIONGUIDE.md)). <br>
 If you have any queries about anything to do with this application please contact us using our emails below.<br>
 Before deploying the application, **please make sure you read through this entire document.** 
 
 ## Installation Guide
 
-See [Installation Guide](INSTALLATIONGUIDE.md)
+See [Installation Guide](INSTALLATIONGUIDE.md).
 
 ## License
-See [License](LICENSE)
+See [License](LICENSE).
 
 
 ## Introduction
