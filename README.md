@@ -9,7 +9,7 @@ Before deploying the application, **please make sure you read through this entir
 See [Installation Guide](INSTALLATIONGUIDE.md)
 
 ## License
-See [License](LICENSE.md)
+See [License](LICENSE)
 
 
 ## Introduction
