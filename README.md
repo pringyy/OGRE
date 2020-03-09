@@ -15,7 +15,7 @@ See [License](LICENSE)
 ## Introduction
 
 
-#### Meet the teamm
+#### Meet the team
 
 *  Robert Pringle (*Team Leader*)- 2304777P@student.gla.ac.uk
 *  Mingfeng Ye (*Product Checker*)- 2325714Y@student.gla.ac.uk
@@ -77,11 +77,12 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 *![Screenshot of the dashboard](https://i.imgur.com/qXh9Jb5.png)
 
 #### Navigation Bar
-* Navigation bar displayed on every page except Login/ Launch Screen
-* Looks like this when logged
+
+*  Navigation bar displayed on every page except Login page, and is a drop down design which expands when the button is pressed.
+*  . Looks like this when logged:
 ![Picture of nav bar when user is logged in](https://i.imgur.com/iyFPgHH.png)
 
-* Looks like this when not logged in:
+*  Looks like this when not logged in:
 ![Picture of nav bar when user is logged out](https://i.imgur.com/EMKbfvX.png)
 
 #### About
