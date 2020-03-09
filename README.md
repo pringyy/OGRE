@@ -3,7 +3,7 @@
 This README file outlines the [license](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#license), [requirements](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#requirements), our [approach](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#approach) and all the [features](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#features) that are implemented in our project.<br> 
 It also provides a link to our hand over documentation ([installation guide](INSTALLATIONGUIDE.md)). <br>
 If you have any queries about anything to do with this application please contact us using our emails below.<br>
-Before deploying the application, **please make sure you read through this entire document.** 
+Before deploying the application, **please make sure you read through the entire document.** 
 
 ## Handover Documentation
 
@@ -125,5 +125,12 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 #### Transaction History
 ![Screenshot of the transaction history page](https://i.imgur.com/4druPxc.png)
 
+## External Sources
+
+
+* django-crispy-forms | https://django-crispy-forms.readthedocs.io/en/latest/ | used to make forms match the look of Bootstrap
+* Bootstrap 4 | https://getbootstrap.com | CSS framework for all pages
+* Google Maps API | https://developers.google.com/maps/documentation/ | Map used to display the location of the University on the contact page
+* jQuery | https://jquery.com | 
 
 
