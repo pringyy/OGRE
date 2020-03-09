@@ -15,7 +15,7 @@ See [License](LICENSE)
 ## Introduction
 
 
-#### Meet the team
+#### Meet the teamm
 
 *  Robert Pringle (*Team Leader*)- 2304777P@student.gla.ac.uk
 *  Mingfeng Ye (*Product Checker*)- 2325714Y@student.gla.ac.uk
