@@ -138,25 +138,6 @@ def user_login(request):
             messages.error(request, "Incorrect username or password!")
     return render(request, 'points/login.html', {})
 
-#Provides the back end functionaility for the contact page
-def contact(request):
-    form = ContactForm()
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        #If the form is valid send the email to the account
-        if form.is_valid():
-            contact_name = form.cleaned_data['contact_name']
-            contact_email = form.cleaned_data['contact_email']
-            subject = form.cleaned_data['subject']
-            content = form.cleaned_data['content']
-            message = "Name: " + contact_name + "\nEmail: " + contact_email +  "\nMessage: " + content
-            email = EmailMessage(subject, message,
-                                to=['contactogre2020@gmail.com']) #change to your email
-            email.send()
-            #Redirect them to the thank you page
-            return redirect('../thanks/')
-    #Returns the contact page when requested
-    return render(request, 'points/contact.html', {'form': form})
 
 
 
@@ -168,7 +149,7 @@ def game1(request):
     # get the session id to auth user
     id=request.session['id']
     #Calls the API to get the active users points
-    r = requests.get(getPointsAPIcall+id)
+    r = requests.get(getPointsAPIcall+id+'&encrypted_key=' + enc_key)
     d=r.json()
 
     #If user has points more than the points required to play the game let them play
@@ -176,7 +157,7 @@ def game1(request):
         #Calls the API to remove user points from Moodle
         #Variable gameCost is refrenced from costValues.py where the cost to play the game is defined
         r = requests.get(removePointsAPIcall+id+'&points='+str(gameCost))
-        return render(request,'points/game.html')
+        return render(request,'points/game1.html')
 
     else:
         #Else reject the user from playing them game
@@ -189,7 +170,7 @@ def game2(request):
     # get the session id to auth user
     id=request.session['id']
     # call the get user points api 
-    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id+'&encrypted_key=' + enc_key)
     d=r.json()
     # if user has points more than 5 then play game
     if int(d['points']) >= 5:
@@ -219,20 +200,22 @@ def pointcalculate(request):
     #Intialisies variable stroing the JSON information
     d = r.json()
     #Stores points list in this variables for the user logged in
-    point_d = d['rows']
-    #Initialises the variables being calculatedß
-    total_point = 0
-    spent_point = 0
-
-    #Loops through points list and calculates points
-    for i in range(len(point_d)):
-        if (point_d[i]['type'] == '-'):
-            spent_point += int(point_d[i]['amount'])
-        else:
-            total_point +=int(point_d[i]['amount'])
-    #Updates the variable stroing the JSON information
-    d.update({'total_point':total_point})
-    d.update({'spent_point':spent_point})
+    if d['status']==1:
+        point_d = d['rows']
+        #Initialises the variables being calculatedß
+        total_point = 0
+        spent_point = 0
+        #Loops through points list and calculates points
+        for i in range(len(point_d)):
+            if (point_d[i]['type'] == '-'):
+                spent_point += int(point_d[i]['amount'])
+            else:
+                total_point +=int(point_d[i]['amount'])
+        #Updates the variable stroing the JSON information
+        d.update({'total_point':total_point})
+        d.update({'spent_point':spent_point})
+    else:
+        return JsonResponse({'total_point':0,'spent_point':0})
     #Returns the calculated variables via a JSON response
     return JsonResponse(d)
 
@@ -253,13 +236,11 @@ def changeUsername(request):
             invalid = {"status":0,'message':'  Do not enter the same username!    '}
             return JsonResponse(invalid)
         
-
-            
-      
         else:
             # If they are not the same then it is valid
             # Calls the API to update the OGRE points of the user
             #Variable changeNicknameCost is refrenced from costValues.py where you can change the values
+            print(changeNicknameAPIcall+id+'&points='+str(changeNicknameCost)+'&action=update&alternatename='+username+'&encrypted_key=' + enc_key)
             r = requests.get(changeNicknameAPIcall+id+'&points='+str(changeNicknameCost)+'&action=update&alternatename='+username+'&encrypted_key=' + enc_key)
 
             d = r.json()
@@ -270,20 +251,89 @@ def changeUsername(request):
                 u.username = username
                 #Save the username on Django
                 u.save()
+            
         #Returns the request
             return HttpResponse(r)   
      
 
 #Displays the list of points to the user if they are logged in
-def ajaxpointlist(request): 
+def pointlist(request): 
     id=request.session['id']
-    request = requests.get(transactionsAPIcall+id+'&encrypted_key=' + enc_key)
-    return HttpResponse(request)
+    r = requests.get(transactionsAPIcall+id+'&encrypted_key=' + enc_key)
+    data = r.json()
+    if data['status'] == 1:
+        pointlist = data["rows"]
 
-#Displays the list of points to the user if they are logged in
-def pointlist(request):
-    if request.session.get('id'):
-        return render(request,'points/pointlist.html')
+    else:
+        pointlist = [{'type': 'null', 'detail': 'null', 'amount': 'null', 'userid': 'null', 'spentTime': 'null'}]
+        messages.error(request, "you do not have points transaction!")         
+
+    return render(request,'points/pointlist.html', {"pointlist": pointlist})
+
+# View that displays the points leaderboard to the user, using data from Moodle
+def leaderboard(request):
+    id = request.session['id']
+
+    # API call to the leader board php file in the Moodle server
+    r = requests.get(leaderboardAPIcall + id +'&encrypted_key=' + enc_key)
+    data = r.json()
+    leaderboard = data["rows"]
+
+    return render(request, 'points/leaderboard.html', {"leaderboard": leaderboard})
+
+
+def changeAvatar(request):
+    
+    if request.method == 'POST':
+       
+        if 'image' in request.FILES:
+            
+            id=request.session['id']
+            r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id+'&encrypted_key=' + enc_key)
+            d=r.json()
+            if d['status'] == 1:
+                if int(d['points']) >= 5:
+                    r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5&encrypted_key=' + enc_key)
+     
+                    u = User.objects.get(username=request.user.username)
+                    d = r.json()
+                
+                    u.studentprofileinfo.profile_pic = request.FILES['image']
+                    u.studentprofileinfo.save()
+                    messages.success(request, "Successfully update your avatar")
+                    return HttpResponseRedirect(reverse('index'))    
+
+                else:
+                    messages.error(request, "you do not have enough points!")
+            else:
+                    messages.error(request, "you do not have enough points!")
+
+        else:
+            messages.error(request, "something went wrong!")         
+
+    return render(request, 'points/shop.html')
+
+
+
+#Provides the back end functionaility for the contact page
+def contact(request):
+    form = ContactForm()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        #If the form is valid send the email to the account
+        if form.is_valid():
+            contact_name = form.cleaned_data['contact_name']
+            contact_email = form.cleaned_data['contact_email']
+            subject = form.cleaned_data['subject']
+            content = form.cleaned_data['content']
+            message = "Name: " + contact_name + "\nEmail: " + contact_email +  "\nMessage: " + content
+            email = EmailMessage(subject, message,
+                                to=['contactogre2020@gmail.com']) #change to your email
+            email.send()
+            #Redirect them to the thank you page
+            return redirect('../thanks/')
+    #Returns the contact page when requested
+    return render(request, 'points/contact.html', {'form': form})
 
 #Displays the list a list of games the user can play when requested
 @login_required
@@ -294,11 +344,6 @@ def game_menu(request):
 #View used for allowing users to navigate to login page if they AREN'T logged in
 @login_required
 def index(request):
-    
-    # enc_str = cipher.encrypt(APIkeys)
-    # dnc_str = cipher.decrypt(enc_str)
-    # print(enc_str)
-    #print(enc_str,dnc_str)   
     return render(request, 'points/index.html')
 
 #View used for redirecting user to login page when they log out
@@ -334,55 +379,7 @@ def thanks(request):
 def faq(request):
     return render(request, 'points/faq.html')
 
-# View that displays the points leaderboard to the user, using data from Moodle
-def leaderboard(request):
-    id = request.session['id']
 
-    # API call to the leader board php file in the Moodle server
-    r = requests.get(leaderboardAPIcall + id +'&encrypted_key=' + enc_key)
-    data = r.json()
-    leaderboard = data["rows"]
-
-    return render(request, 'points/leaderboard.html', {"leaderboard": leaderboard})
-
-
-def changeAvatar(request):
-    # id=request.session['id']
-    
-    # r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5' + '&encrypted_key='+enc_str)
-    # return HttpResponse(r)
-    if request.method == 'POST':
-       
-        if 'image' in request.FILES:
-            
-            id=request.session['id']
-           
-           
-            r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id+'&encrypted_key=' + enc_key)
-            d=r.json()
-            if int(d['points']) >= 5:
-                r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5&encrypted_key=' + enc_key)
-     
-                u = User.objects.get(username=request.user.username)
-                d = r.json()
-                
-                u.studentprofileinfo.profile_pic = request.FILES['image']
-                u.studentprofileinfo.save()
-                messages.success(request, "Successfully update your avatar")
-                return HttpResponseRedirect(reverse('index'))    
-
-            else:
-                messages.error(request, "you do not have enough points!")         
-
-                        
-
-            
-            
-        else:
-            messages.error(request, "something went wrong!")         
-
-   
-    return render(request, 'points/shop.html')
 
 #Makes sure user is an admin to see the JSON files for testing purposes
 @user_passes_test(lambda u: u.is_superuser)

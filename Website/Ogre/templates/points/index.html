@@ -181,16 +181,10 @@
 					 if(status == '1'){  
 						  $(".points").html(responce.points)
 					  }else{	  
+						  $(".points").html(0)
 					  }
 				})   
-		        $("#grid-data").bootgrid({
-		            ajaxSettings: {
-		            method: "GET",
-		            cache: false
-		            },
-		            ajax: true,
-		            url: "/leaderboard/",
-		        });  
+		        
 			$( "#usersave" ).submit(function( event ) {
 				event.preventDefault();
 				var username = $('#username').val(); 
@@ -210,7 +204,7 @@
 						var message = responce.message;
 						$('#successdiv').show();
 						$('#successmsg').text(message);
-						var delay = 2000;
+						var delay = 800;
 						var url = '/points/';
 						setTimeout(function(){ window.location = url; }, delay);
 					}
