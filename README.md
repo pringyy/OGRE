@@ -24,7 +24,7 @@ See [Installation Guide](INSTALLATIONGUIDE.md).
 
 #### Requirements
 
-This project has been created to motivate students to do University work. It does this by rewarding them with points that they can spend on cosmetic items. As we are working for a customer who is developing this idea, we were given a limited scope of requirements.
+This project has been created to motivate students to do University work. It does this by rewarding them with 'OGRE' points that they can spend on cosmetic items and games. As we are working for a customer who was already developing this project, we were given a limited scope of requirements to contribute.
 
 
 *Functional Requirements:*
@@ -71,12 +71,12 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 * Main menu of the application.
 * Users can see how many points they currently have.
-*![Screenshot of the dashboard](https://i.imgur.com/qXh9Jb5.png)
+![Screenshot of the dashboard](https://i.imgur.com/qXh9Jb5.png)
 
 #### Navigation Bar
 
 *  Navigation bar displayed on every page except Login page, and is a drop down design which expands when the button is pressed.
-*  . Looks like this when logged:
+*  Looks like this when logged:
 ![Picture of nav bar when user is logged in](https://i.imgur.com/iyFPgHH.png)
 
 *  Looks like this when not logged in:
@@ -110,10 +110,10 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 * Lets users have a choice of games that costs (by default) 5 points to play.
 ![Screenshot of games menu page](https://i.imgur.com/6V0lTaf.png)
 
-*  Re-wire game used as a placeholder for what our customers are working on and was not created by us. Credit: https://github.com/jmankopf/js13k-rewire
+*  Re-wire game used as a placeholder for what our customers are working on and was not created by us. Credit- https://github.com/jmankopf/js13k-rewire
 ![Screenshot of game1](https://i.imgur.com/WFDoAfb.png)
 
-* Tic Tac Toe game used as an other placeholder for what our customers are working on.
+* Tic Tac Toe game used as an other placeholder for what our customers are working on. Credit- https://github.com/BornaSepic/Tic-Tac-Toe
 ![Screenshot of game2](https://i.imgur.com/7i0CmnU.png)
 
 #### Change nickname
@@ -128,15 +128,12 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 ![Screenshot of the transaction history page](https://i.imgur.com/4druPxc.png)
 
 ## Licenses
-See [MIT License](LICENSE) for the license for our project.
 
-See [Creative Commons License](https://creativecommons.org/licenses/by/3.0/legalcode) for [bg1.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg1.jpg). Credit- https://opengameart.org/content/sky-background
-
-See [Public Domain License](https://creativecommons.org/publicdomain/zero/1.0/) for [bg2.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg2.jpg), [bg3.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg3.jpg), [bg4.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg4.jpg), [bg5.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg5.jpg).
-
-See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for the license of the Re-wire game. 
-
-See [MIT License](https://github.com/BornaSepic/Tic-Tac-Toe/blob/master/LICENSE) for the license of the game Tic Tac Toe. 
+*  See [MIT License](LICENSE) for the license for our project.
+*  See [Creative Commons License](https://creativecommons.org/licenses/by/3.0/legalcode) for [bg1.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg1.jpg). Credit- https://opengameart.org/content/sky-background
+*  See [Public Domain License](https://creativecommons.org/publicdomain/zero/1.0/) for [bg2.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg2.jpg), [bg3.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg3.jpg), [bg4.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg4.jpg), [bg5.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg5.jpg).
+*  See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for the license of the Re-wire game. 
+*  See [MIT License](https://github.com/BornaSepic/Tic-Tac-Toe/blob/master/LICENSE) for the license of the game Tic Tac Toe. 
 
 ## External Sources
 
