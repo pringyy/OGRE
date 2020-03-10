@@ -186,8 +186,9 @@ def game2(request):
 def getmypoint(request):
     #retrieves session ID
     id=request.session['id']
+    myobj = {'user_id': id, 'encrypted_key' : enc_key}
     #Retrieves the number of points the user currently has
-    noOfPoints = requests.get(getPointsAPIcall+id+'&encrypted_key=' + enc_key)
+    noOfPoints = requests.post(getPointsAPIcall, data = myobj)
     #Returns the number of points
     return HttpResponse(noOfPoints)
 
