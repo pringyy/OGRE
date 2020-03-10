@@ -84,12 +84,12 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 #### About
 
-* See information about the development team
+* See information about the development team.
 ![Screenshot of about page](https://i.imgur.com/kTNNaQc.png)
 
 #### Contact
 
-* Contact form to send a message to the development team
+* Contact form to send a message to the development team.
 ![Screenshot of contact page](https://i.imgur.com/9u0sgHI.png)
 
 #### FAQ
@@ -104,9 +104,13 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 ![Screenshot of  profile page](https://i.imgur.com/gVd2C2Q.png)
 
 #### Leaderboard
+
+*  Calculates which users have the most points and displays them on a leaderboard for all users to see.
+*  Adds a competitive element to the application.
 ![Screenshot of the leaderboard](https://i.imgur.com/lYkhZPQ.png)
 
 #### Games
+
 * Lets users have a choice of games that costs (by default) 5 points to play.
 ![Screenshot of games menu page](https://i.imgur.com/6V0lTaf.png)
 
@@ -117,6 +121,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 ![Screenshot of game2](https://i.imgur.com/7i0CmnU.png)
 
 #### Change nickname
+
 *  Allows user to change their nickname/Django username for (by default) 5 points.
 *  Displays as a pop up box on the dashboard
 ![Screen shot of where users can change their nickname](https://i.imgur.com/Gt7Cb5x.png)
@@ -124,7 +129,11 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 #### Avatar Shop
 
+*  Allows users to update their avatar for 5 points.
+
 #### Transaction History
+
+*  Allows users to see their transaction history on points they have earned or spent.
 ![Screenshot of the transaction history page](https://i.imgur.com/4druPxc.png)
 
 ## Licenses
