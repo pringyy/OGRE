@@ -145,18 +145,19 @@ def game1(request):
     
 
     #Provides back-end functionaility to see if the user can afford to play the game or not
-    myobj = {'user_id': '1',"points":5}
     # get the session id to auth user
     id=request.session['id']
+    myobj = {'user_id': id, 'encrypted_key' : enc_key}
     #Calls the API to get the active users points
-    r = requests.get(getPointsAPIcall+id+'&encrypted_key=' + enc_key)
+    r = requests.post(getPointsAPIcall, data = myobj)
     d=r.json()
 
     #If user has points more than the points required to play the game let them play
     if int(d['points']) >= gameCost:
         #Calls the API to remove user points from Moodle
         #Variable gameCost is refrenced from costValues.py where the cost to play the game is defined
-        r = requests.get(removePointsAPIcall+id+'&points='+str(gameCost))
+        myobj = {'user_id': id, 'points':str(gameCost), 'encrypted_key' : enc_key}
+        r = requests.post(removePointsAPIcall, data = myobj)
         return render(request,'points/game1.html')
 
     else:
@@ -166,15 +167,16 @@ def game1(request):
 
 
 def game2(request):
-    myobj = {'user_id': '1',"points":5}
     # get the session id to auth user
     id=request.session['id']
+    myobj = {'user_id': id, 'encrypted_key' : enc_key}
     # call the get user points api 
-    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id+'&encrypted_key=' + enc_key)
+    r = requests.post(getPointsAPIcall, data = myobj)
     d=r.json()
     # if user has points more than 5 then play game
-    if int(d['points']) >= 5:
-        r = requests.get('http://157.245.126.159/api/cut_user_points.php?user_id='+id+'&points=5', data = myobj)
+    if int(d['points']) >= gameCost:
+        myobj = {'user_id': id, 'points':str(gameCost), 'encrypted_key' : enc_key}
+        r = requests.post(removePointsAPIcall, data = myobj)
         return render(request,'points/game2.html')
     else:
         messages.error(request, "You don't have enough points to play!")
@@ -194,10 +196,14 @@ def getmypoint(request):
 
 #Provides the back end functionality to calcualte the points the user has spent and the total points they have earned
 def pointcalculate(request):
+    
+    
     #Gets session id
     id=request.session['id']
+    
+    myobj = {'user_id': id, 'encrypted_key' : enc_key}
     #API call to get the user points list
-    r = requests.get(transactionsAPIcall+id+'&encrypted_key=' + enc_key)
+    r = requests.post(transactionsAPIcall, data = myobj)
     #Intialisies variable stroing the JSON information
     d = r.json()
     #Stores points list in this variables for the user logged in
@@ -241,8 +247,8 @@ def changeUsername(request):
             # If they are not the same then it is valid
             # Calls the API to update the OGRE points of the user
             #Variable changeNicknameCost is refrenced from costValues.py where you can change the values
-            print(changeNicknameAPIcall+id+'&points='+str(changeNicknameCost)+'&action=update&alternatename='+username+'&encrypted_key=' + enc_key)
-            r = requests.get(changeNicknameAPIcall+id+'&points='+str(changeNicknameCost)+'&action=update&alternatename='+username+'&encrypted_key=' + enc_key)
+            myobj = {'user_id': id, 'points': str(changeNicknameCost), 'action':'update','alternatename': username, 'encrypted_key' : enc_key}
+            r = requests.post(changeNicknameAPIcall, data = myobj)
 
             d = r.json()
             if d["status"] != 0:
@@ -260,7 +266,8 @@ def changeUsername(request):
 #Displays the list of points to the user if they are logged in
 def pointlist(request): 
     id=request.session['id']
-    r = requests.get(transactionsAPIcall+id+'&encrypted_key=' + enc_key)
+    myobj = {'user_id': id, 'encrypted_key' : enc_key}
+    r = requests.post(transactionsAPIcall, data = myobj)
     data = r.json()
     if data['status'] == 1:
         pointlist = data["rows"]
@@ -274,9 +281,9 @@ def pointlist(request):
 # View that displays the points leaderboard to the user, using data from Moodle
 def leaderboard(request):
     id = request.session['id']
-
+    myobj = {'user_id': id, 'encrypted_key' : enc_key}
     # API call to the leader board php file in the Moodle server
-    r = requests.get(leaderboardAPIcall + id +'&encrypted_key=' + enc_key)
+    r = requests.post(leaderboardAPIcall, data = myobj)
     data = r.json()
     leaderboard = data["rows"]
 
@@ -290,7 +297,8 @@ def changeAvatar(request):
         if 'image' in request.FILES:
             
             id=request.session['id']
-            r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id+'&encrypted_key=' + enc_key)
+            myobj = {'user_id': id, 'encrypted_key' : enc_key}
+            r = requests.post(getPointsAPIcall, data = myobj)
             d=r.json()
             if d['status'] == 1:
                 if int(d['points']) >= 5:
