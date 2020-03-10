@@ -179,23 +179,6 @@ class AboutPageTest(TestCase):
         self.assertIn(b'Harry Yau', self.response.content)
 
 
-class StaticImageTests(TestCase):
-    # tests that static images display correctly on the website
-    def test_correct_static_images(self):
-
-        # Create dict mapping each file format to a list of the photos of that kind
-        images = {"jpg": ['alastair', 'bg1', 'bg2', 'bg3', 'bg4',
-                          'bg5', 'bg6', 'bg7', 'catoriona', 'harry',
-                          'mingfeng', 'robert'],
-                  "png": ['ogrelogo', 'unilogo']}
-
-        # Check that each image exists in th website
-        for format, file in images.items():
-            for f in file:
-                img = finders.find('images/{}.{}'.format(f, format))
-                self.assertIsNotNone(img)
-
-
 class StudentProfileTests(TestCase):
 
     def test_student_profile(self):
