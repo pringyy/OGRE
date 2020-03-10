@@ -130,14 +130,13 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 ## Licenses
 See [MIT License](LICENSE) for the license for our project.
 
-See [Creative Commons License](https://creativecommons.org/licenses/by/3.0/legalcode) for bg1.jpg. Credit:
-*  https://opengameart.org/content/sky-background
+See [Creative Commons License](https://creativecommons.org/licenses/by/3.0/legalcode) for bg1.jpg. Credit- https://opengameart.org/content/sky-background
 
 See [Public Domain License](https://creativecommons.org/publicdomain/zero/1.0/) for bg2.jpg, bg3.jpg, bg4.jpg, bg5.jpg.
 
-See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for license of Re-wire game. 
+See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for the license of the Re-wire game. 
 
-
+See [MIT License](https://github.com/BornaSepic/Tic-Tac-Toe/blob/master/LICENSE) for the license of the game Tic Tac Toe. 
 
 ## External Sources
 
