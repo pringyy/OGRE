@@ -116,8 +116,8 @@
 					<div class="our-team-main">
 						<a href="{% url 'profile' %}"     style="color:black">
 							<div class="team-front">
-								{% if user.studentprofileinfo.profile_pic %}
-	                				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+								{% if user.studentavatar.profile_pic %}
+	                				<img src="{{ MEDIA_URL }}{{ user.studentavatar.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
 	            				{% else %}
 	                				<img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
 	            				{% endif %}
@@ -184,14 +184,7 @@
 						  $(".points").html(0)
 					  }
 				})   
-		        $("#grid-data").bootgrid({
-		            ajaxSettings: {
-		            method: "GET",
-		            cache: false
-		            },
-		            ajax: true,
-		            url: "/leaderboard/",
-		        });  
+		        
 			$( "#usersave" ).submit(function( event ) {
 				event.preventDefault();
 				var username = $('#username').val(); 

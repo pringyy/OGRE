@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 import requests
 from points.forms import UserForm, UserProfileInfoForm, ContactForm
-from points.models import StudentProfileInfo
+from points.models import StudentProfileInfo, StudentAvatar
 import json
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
@@ -219,20 +219,22 @@ def pointcalculate(request):
     #Intialisies variable stroing the JSON information
     d = r.json()
     #Stores points list in this variables for the user logged in
-    point_d = d['rows']
-    #Initialises the variables being calculatedß
-    total_point = 0
-    spent_point = 0
-
-    #Loops through points list and calculates points
-    for i in range(len(point_d)):
-        if (point_d[i]['type'] == '-'):
-            spent_point += int(point_d[i]['amount'])
-        else:
-            total_point +=int(point_d[i]['amount'])
-    #Updates the variable stroing the JSON information
-    d.update({'total_point':total_point})
-    d.update({'spent_point':spent_point})
+    if d['status']==1:
+        point_d = d['rows']
+        #Initialises the variables being calculatedß
+        total_point = 0
+        spent_point = 0
+        #Loops through points list and calculates points
+        for i in range(len(point_d)):
+            if (point_d[i]['type'] == '-'):
+                spent_point += int(point_d[i]['amount'])
+            else:
+                total_point +=int(point_d[i]['amount'])
+        #Updates the variable stroing the JSON information
+        d.update({'total_point':total_point})
+        d.update({'spent_point':spent_point})
+    else:
+        return JsonResponse({'total_point':0,'spent_point':0})
     #Returns the calculated variables via a JSON response
     return JsonResponse(d)
 
@@ -273,27 +275,16 @@ def changeUsername(request):
         #Returns the request
             return HttpResponse(r)   
      
-def leaderboard2(request):
-    id = request.session['id']
 
-    # API call to the leader board php file in the Moodle server
-    r = requests.get(leaderboardAPIcall + id +'&encrypted_key=' + enc_key)
-    data = r.json()
-    leaderboard = data["rows"]
-
-    return render(request, 'points/leaderboard.html', {"leaderboard": leaderboard})
 #Displays the list of points to the user if they are logged in
 def pointlist(request): 
     id=request.session['id']
     r = requests.get(transactionsAPIcall+id+'&encrypted_key=' + enc_key)
     data = r.json()
     pointlist = data["rows"]
+    print(data)
     return render(request,'points/pointlist.html', {"pointlist": pointlist})
 
-#Displays the list of points to the user if they are logged in
-# def pointlist(request):
-#     if request.session.get('id'):
-#         return render(request,'points/pointlist.html')
 
 #Displays the list a list of games the user can play when requested
 @login_required
@@ -376,8 +367,8 @@ def changeAvatar(request):
                 u = User.objects.get(username=request.user.username)
                 d = r.json()
                 
-                u.studentprofileinfo.profile_pic = request.FILES['image']
-                u.studentprofileinfo.save()
+                u.studentavatar.profile_pic = request.FILES['image']
+                u.studentavatar.save()
                 messages.success(request, "Successfully update your avatar")
                 return HttpResponseRedirect(reverse('index'))    
 

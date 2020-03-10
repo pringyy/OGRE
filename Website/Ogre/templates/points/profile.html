@@ -54,8 +54,8 @@
                 </div>
                 <div class="col-lg-4 order-lg-1 text-center">
                     <!--checks to see if the user has a profile picture, and if they do it displays it-->
-                    {% if user.studentprofileinfo.profile_pic %}
-                        <img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
+                    {% if user.studentavatar.profile_pic %}
+                        <img src="{{ MEDIA_URL }}{{ user.studentavatar.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
                     {% else %}  <!--Else display the default profile picture-->
                         <img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar" style="border-radius:50%;width: 80%;">
                     {% endif %}
