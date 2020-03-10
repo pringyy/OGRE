@@ -281,8 +281,13 @@ def pointlist(request):
     id=request.session['id']
     r = requests.get(transactionsAPIcall+id+'&encrypted_key=' + enc_key)
     data = r.json()
-    pointlist = data["rows"]
-    print(data)
+    if data['status'] == 1:
+        pointlist = data["rows"]
+        print(pointlist)
+    else:
+        pointlist = [{'type': 'null', 'detail': 'null', 'amount': 'null', 'userid': 'null', 'spentTime': 'null'}]
+        messages.error(request, "you do not have points transaction!")         
+
     return render(request,'points/pointlist.html', {"pointlist": pointlist})
 
 
