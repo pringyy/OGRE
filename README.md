@@ -9,11 +9,6 @@ Before deploying the application, **please make sure you read through the entire
 
 See [Installation Guide](INSTALLATIONGUIDE.md).
 
-
-
-
-
-
 ## Introduction
 
 
@@ -112,8 +107,14 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 ![Screenshot of the leaderboard](https://i.imgur.com/lYkhZPQ.png)
 
 #### Games
-* Lets users play game that costs (by default) 5 points to play.
+* Lets users have a choice of games that costs (by default) 5 points to play.
 ![Screenshot of games menu page](https://i.imgur.com/6V0lTaf.png)
+
+*  Re-wire game used as a placeholder for what our customers are working on and was not created by us. Credit: https://github.com/jmankopf/js13k-rewire
+![Screenshot of game1](https://i.imgur.com/WFDoAfb.png)
+
+* Tic Tac Toe game used as an other placeholder for what our customers are working on.
+![Screenshot of game2](https://i.imgur.com/7i0CmnU.png)
 
 #### Change nickname
 *  Allows user to change their nickname/Django username for (by default) 5 points.
@@ -133,6 +134,10 @@ See [Creative Commons License](https://creativecommons.org/licenses/by/3.0/legal
 *  https://opengameart.org/content/sky-background
 
 See [Public Domain License](https://creativecommons.org/publicdomain/zero/1.0/) for bg2.jpg, bg3.jpg, bg4.jpg, bg5.jpg.
+
+See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for license of Re-wire game. 
+
+
 
 ## External Sources
 
