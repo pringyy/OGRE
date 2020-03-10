@@ -149,7 +149,7 @@ def game1(request):
     # get the session id to auth user
     id=request.session['id']
     #Calls the API to get the active users points
-    r = requests.get(getPointsAPIcall+id)
+    r = requests.get(getPointsAPIcall+id+'&encrypted_key=' + enc_key)
     d=r.json()
 
     #If user has points more than the points required to play the game let them play
@@ -157,7 +157,7 @@ def game1(request):
         #Calls the API to remove user points from Moodle
         #Variable gameCost is refrenced from costValues.py where the cost to play the game is defined
         r = requests.get(removePointsAPIcall+id+'&points='+str(gameCost))
-        return render(request,'points/game.html')
+        return render(request,'points/game1.html')
 
     else:
         #Else reject the user from playing them game
@@ -170,7 +170,7 @@ def game2(request):
     # get the session id to auth user
     id=request.session['id']
     # call the get user points api 
-    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id, data = myobj)
+    r = requests.get('http://157.245.126.159/api/get_user_points.php?user_id='+id+'&encrypted_key=' + enc_key)
     d=r.json()
     # if user has points more than 5 then play game
     if int(d['points']) >= 5:
