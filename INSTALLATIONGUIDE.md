@@ -118,6 +118,10 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 *to moodle/*
 
+*4. move cs17-main/api/include directory*
+
+*to moodle/*
+
 ## 4. Link Django with Moodle Server
 
 ## 5. Further Django Setup

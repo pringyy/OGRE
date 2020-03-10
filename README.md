@@ -1,6 +1,6 @@
 # University of Glasgow- Online Games and Resource Environment (OGRE)
 
-This README file outlines the [license](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#license), [requirements](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#requirements), our [approach](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#approach) and all the [features](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#features) that are implemented in our project.<br> 
+This README file outlines the  [requirements](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#requirements), our [approach](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#approach), all the [features](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#features) and [licenses](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#license) for the project.<br> 
 It also provides a link to our hand over documentation ([installation guide](INSTALLATIONGUIDE.md)). <br>
 If you have any queries about anything to do with this application please contact us using our emails below.<br>
 Before deploying the application, **please make sure you read through the entire document.** 
@@ -8,10 +8,6 @@ Before deploying the application, **please make sure you read through the entire
 ## Handover Documentation
 
 See [Installation Guide](INSTALLATIONGUIDE.md).
-
-## License
-See [License](LICENSE).
-
 
 ## Introduction
 
@@ -111,8 +107,14 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 ![Screenshot of the leaderboard](https://i.imgur.com/lYkhZPQ.png)
 
 #### Games
-* Lets users play game that costs (by default) 5 points to play.
+* Lets users have a choice of games that costs (by default) 5 points to play.
 ![Screenshot of games menu page](https://i.imgur.com/6V0lTaf.png)
+
+*  Re-wire game used as a placeholder for what our customers are working on and was not created by us. Credit: https://github.com/jmankopf/js13k-rewire
+![Screenshot of game1](https://i.imgur.com/WFDoAfb.png)
+
+* Tic Tac Toe game used as an other placeholder for what our customers are working on.
+![Screenshot of game2](https://i.imgur.com/7i0CmnU.png)
 
 #### Change nickname
 *  Allows user to change their nickname/Django username for (by default) 5 points.
@@ -124,6 +126,18 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 #### Transaction History
 ![Screenshot of the transaction history page](https://i.imgur.com/4druPxc.png)
+
+## Licenses
+See [MIT License](LICENSE) for the license for our project.
+
+See [Creative Commons License](https://creativecommons.org/licenses/by/3.0/legalcode) for bg1.jpg. Credit:
+*  https://opengameart.org/content/sky-background
+
+See [Public Domain License](https://creativecommons.org/publicdomain/zero/1.0/) for bg2.jpg, bg3.jpg, bg4.jpg, bg5.jpg.
+
+See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for license of Re-wire game. 
+
+
 
 ## External Sources
 
