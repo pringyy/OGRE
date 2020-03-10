@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 import requests
 from points.forms import UserForm, UserProfileInfoForm, ContactForm
-from points.models import StudentProfileInfo, StudentAvatar
+from points.models import StudentProfileInfo
 import json
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
@@ -251,9 +251,7 @@ def changeUsername(request):
                 u.username = username
                 #Save the username on Django
                 u.save()
-            else:
-                #JsonResponse({'status':0,'message':})
-                print(2323232)
+            
         #Returns the request
             return HttpResponse(r)   
      
@@ -265,7 +263,7 @@ def pointlist(request):
     data = r.json()
     if data['status'] == 1:
         pointlist = data["rows"]
-        print(pointlist)
+
     else:
         pointlist = [{'type': 'null', 'detail': 'null', 'amount': 'null', 'userid': 'null', 'spentTime': 'null'}]
         messages.error(request, "you do not have points transaction!")         
@@ -300,8 +298,8 @@ def changeAvatar(request):
                     u = User.objects.get(username=request.user.username)
                     d = r.json()
                 
-                    u.studentavatar.profile_pic = request.FILES['image']
-                    u.studentavatar.save()
+                    u.studentprofileinfo.profile_pic = request.FILES['image']
+                    u.studentprofileinfo.save()
                     messages.success(request, "Successfully update your avatar")
                     return HttpResponseRedirect(reverse('index'))    
 

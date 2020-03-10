@@ -27,7 +27,7 @@
           <!--Form displays where the user fills in their information to register-->
           <form enctype="multipart/form-data" method="POST"> 
             {% csrf_token %}
-            {{profile_form|crispy}} <!--Display just the StudentID field from the Profile form defined in form.py-->
+            {{profile_form.StudentID|as_crispy_field}} <!--Display just the StudentID field from the Profile form defined in form.py-->
             {{user_form|crispy}}
             <input type="submit" class= "button1" name="" value="Register"> 
           </form>    

@@ -116,8 +116,8 @@
 					<div class="our-team-main">
 						<a href="{% url 'profile' %}"     style="color:black">
 							<div class="team-front">
-								{% if user.studentavatar.profile_pic %}
-	                				<img src="{{ MEDIA_URL }}{{ user.studentavatar.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+								{% if user.studentprofileinfo.profile_pic %}
+	                				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
 	            				{% else %}
 	                				<img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
 	            				{% endif %}
@@ -204,7 +204,7 @@
 						var message = responce.message;
 						$('#successdiv').show();
 						$('#successmsg').text(message);
-						var delay = 2000;
+						var delay = 800;
 						var url = '/points/';
 						setTimeout(function(){ window.location = url; }, delay);
 					}
