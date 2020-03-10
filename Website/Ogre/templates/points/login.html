@@ -106,17 +106,15 @@ It is a unique HTML page, hence it does not inherit from base-->
       <script>
           var $imageArray = new Array();
           //Array stores all the possible background
-          $imageArray[0] = 'images/bg1.jpg';
-          $imageArray[1] = 'images/bg2.jpg';
-          $imageArray[2] = 'images/bg3.jpg';
-          $imageArray[3] = 'images/bg4.jpg';
-          $imageArray[4] = 'images/bg5.jpg';
-          $imageArray[5] = 'images/bg6.jpg';
-          $imageArray[6] = 'images/bg7.jpg';
+          $imageArray[0] = 'images/loginBackground/bg1.jpg';
+          $imageArray[1] = 'images/loginBackground/bg2.jpg';
+          $imageArray[2] = 'images/loginBackground/bg3.jpg';
+          $imageArray[3] = 'images/loginBackground/bg4.jpg';
+          $imageArray[4] = 'images/loginBackground/bg5.jpg';
 
           //function picks the image randomly using the random function
           function getRandomImage() {
-              var $num = Math.floor( Math.random() * 7);
+              var $num = Math.floor( Math.random() * 5);
               var $img = $imageArray[$num];
               var $bg = "url({% static 'replace' %}) ";
               $bg = $bg.replace('replace',$img);
