@@ -130,9 +130,9 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 ## Licenses
 See [MIT License](LICENSE) for the license for our project.
 
-See [Creative Commons License](https://creativecommons.org/licenses/by/3.0/legalcode) for bg1.jpg. Credit- https://opengameart.org/content/sky-background
+See [Creative Commons License](https://creativecommons.org/licenses/by/3.0/legalcode) for [bg1.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg1.jpg). Credit- https://opengameart.org/content/sky-background
 
-See [Public Domain License](https://creativecommons.org/publicdomain/zero/1.0/) for bg2.jpg, bg3.jpg, bg4.jpg, bg5.jpg.
+See [Public Domain License](https://creativecommons.org/publicdomain/zero/1.0/) for [bg2.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg2.jpg), [bg3.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg3.jpg), [bg4.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg4.jpg), [bg5.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg5.jpg).
 
 See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for the license of the Re-wire game. 
 
