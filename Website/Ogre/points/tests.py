@@ -185,7 +185,7 @@ class StaticImageTests(TestCase):
 
         # Create dict mapping each file format to a list of the photos of that kind
         images = {"jpg": ['alastair', 'bg1', 'bg2', 'bg3', 'bg4',
-                          'bg5', 'bg6', 'bg7', 'catoriona', 'harry',
+                          'bg5', 'catoriona', 'harry',
                           'mingfeng', 'robert'],
                   "png": ['ogrelogo', 'unilogo']}
 
