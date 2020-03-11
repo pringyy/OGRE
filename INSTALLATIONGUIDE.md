@@ -4,7 +4,7 @@ Please make sure you complete this **whole** guide for the application to work a
 If anything in this guide is not clear or you have any issues or queries please [contact us](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/README.md#meet-the-team) on the information provided in the README.
 ## Contents
 
-1. [Git](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#1-git-setup)
+1. [Git Setup](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#1-git-setup)
 2. [Django Application](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#2-django-application-setup)
 3. [Moodle Server](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#3-moodle-server-setup)
 4. [Django Application Configurations](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#4-django-application-configurations)
