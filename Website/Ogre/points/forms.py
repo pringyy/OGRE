@@ -12,7 +12,7 @@ class UserForm(forms.ModelForm):
 class UserProfileInfoForm(forms.ModelForm):
     class Meta():
         model = StudentProfileInfo
-        fields = ('StudentID','profile_pic')
+        fields = ('StudentID',)
 
 class ContactForm(forms.Form):
     contact_name = forms.CharField(required=True, label="Name")

@@ -1,13 +1,24 @@
 <?php
 
 include(dirname(dirname(__FILE__)).'/include/config.php');
+include(dirname(dirname(__FILE__)).'/include/encrypt.php');
+
 // verfiy if the php side receive the id and points
-if(isset($_REQUEST['user_id']) && isset($_REQUEST['points'])){
+if(isset($_REQUEST['user_id']) && isset($_REQUEST['points']) && isset($_REQUEST['encrypted_key'])){
 
 // receive the user_id and related points here
 $user_id = $_REQUEST['user_id'];
 $points = $_REQUEST['points'];
+$encrypted_key = $_REQUEST['encrypted_key'];
 
+$cypher = new MyCypher();
+$encrypted_api_key = $cypher->encrypt($api_key);
+
+if (strcmp($encrypted_api_key,$encrypted_key)!=0){
+    $data = array('status'=>0,'message'=>'wrong api key');
+    echo json_encode($data);
+    exit;
+}
 // use sql statement to exact the user
 $sql = "SELECT * FROM mdl_user WHERE id = '".$user_id."' ";
 $result = mysqli_query($con, $sql);
