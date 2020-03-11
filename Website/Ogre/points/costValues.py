@@ -3,3 +3,4 @@
 
 gameCost = 5
 changeNicknameCost = 5
+changeAvatarCost = 5
