@@ -1,6 +1,7 @@
 # Installation Guide
 
-Please make sure you complete this **whole** guide for the application to work as intended.
+Please make sure you complete this **whole** guide for the application to work as intended.<br>
+If anything in this guide is not clear or you have any issues or queries please [contact us](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/README.md#meet-the-team) on the information provided in the README.
 ## Contents
 
 1. [Git](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#1-git)
@@ -91,6 +92,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points (
     points INT NOT NULL
 );
 ```
+*If this does not work make sure you are in the database mode shown in Step 3.2*
 
 **Step 3.4** Next create the next table 'mdl_user_points_trans' by entering the following SQL into the console of the server:
 
@@ -104,6 +106,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
     spentTime DATE
 );
 ```
+*If this does not work make sure you are in the database mode shown in Step 3.2*
 
 **Step 3.3**: Once you have completed the setup above, you need to  replace and add some files in the moodle side:  
 
