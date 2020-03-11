@@ -175,11 +175,11 @@
 					url: "{% url 'getmypoint' %}",
 				  type: "GET",
 					dataType:'json',
-		 		  }).done(function( response ) {
-					  var status = response.status;
+		 		  }).done(function( responce ) {
+					  var status = responce.status;
 					  $('.alert').hide();
 					 if(status == '1'){  
-						  $(".points").html(response.points)
+						  $(".points").html(responce.points)
 					  }else{	  
 						  $(".points").html(0)
 					  }
@@ -193,15 +193,15 @@
 				    type: "GET",
 					dataType:'json',
 					data: {  username: username}
-				}).done(function( response ) {
+				}).done(function( responce ) {
 					var status = responce.status;  
 					$('.alert').hide();
 					if(status == '0'){
-						var message = response.message;
+						var message = responce.message;
 						$('#alertdiv').show();
 						$('#errmsg').text(message);
 					}else{
-						var message = response.message;
+						var message = responce.message;
 						$('#successdiv').show();
 						$('#successmsg').text(message);
 						var delay = 800;
