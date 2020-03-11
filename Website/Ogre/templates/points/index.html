@@ -194,7 +194,7 @@
 					dataType:'json',
 					data: {  username: username}
 				}).done(function( response ) {
-					var status = responce.status;  
+					var status = response.status;  
 					$('.alert').hide();
 					if(status == '0'){
 						var message = response.message;
