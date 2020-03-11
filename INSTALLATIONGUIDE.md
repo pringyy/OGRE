@@ -78,13 +78,12 @@ python manage.py runserver
 **Step 3.1**: You need to have a running Moodle server to link the Django application. If you do not already have one running, you can follow this setup guide:
 *  https://docs.moodle.org/38/en/Installing_Moodle
 
-**Step 3.2**: Next we need to access the moodle database, create two related table "mdl_user_points" and "mdl_user_points_trans", so enter the database mode by:
+**Step 3.2**: To create the Moodle mySQL Databases required, you must enter the database mode by entering the following into the console of the server:
 ```
 mysql -u <database_username> -p
 ```
-*Then create that two table*
+**Step 3.3** Now we are going to create the first table 'mdl_user_points' by entering the following SQL into the console of the server:
 
-*mdl_user_points*
 ```
 CREATE TABLE IF NOT EXISTS mdl_user_points (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -92,7 +91,9 @@ CREATE TABLE IF NOT EXISTS mdl_user_points (
     points INT NOT NULL
 );
 ```
-*mdl_user_points_trans*
+
+**Step 3.4** Next create the next table 'mdl_user_points_trans' by entering the following SQL into the console of the server:
+
 ```
 CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
     id INT AUTO_INCREMENT PRIMARY KEY,
