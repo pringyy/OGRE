@@ -138,6 +138,10 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 **Configuration 4.5 (optional):** Change the backgrounds to be whatever you want
 
+**Configuration 4.6 (optional):** How to change API encryption keys
+
+**Configuration 4.7 (optional):** You can configure a Django application in many different ways. If you are unfamiliar with how to do so, I would study these guides to understand how the technologies we use work to make additonal changes to our implementation:
+
 
 ## 5. Moodle Server Configurations:
 
