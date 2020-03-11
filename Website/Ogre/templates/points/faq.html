@@ -7,6 +7,7 @@
 
 {% block body_block %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/faq.css' %}">
+    <!--Page content-->
     <div class="container">
         <br>
         <h1 class="display-4 white-text">FAQ</h1>
@@ -22,26 +23,12 @@
                 </div>
                 <div id="question0" class="panel-collapse collapse" style="height: 0px;">
                     <div class="panel-body">
-                        <h5><span class="label label-primary">OGRE is an organisation that was created to encourage students to go to all their lectures, tutorials and labs.</span></h5>
+                        <h5><span class="label label-primary"> Online Games and Resource Environment (OGRE) is an application used to motivate students to participate in University work. It does this by rewarding them with 'OGRE' points. To register you must have an account on the University of Glasgow's Moodle.</span></h5>
                     </div>
                 </div>
             </div>
 
             <!--Question 2-->
-            <div class="panel panel-default">
-                <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question1">
-                    <h4 class="panel-title">
-                        <a href="#" >Q: What can I spend OGRE points on? </a>
-                    </h4>
-                </div>
-                <div id="question1" class="panel-collapse collapse" style="height: 0px;">
-                    <div class="panel-body">
-                        <h5><span class="label label-primary">You can spend your OGRE points on customising your avatar.</span></h5>
-                    </div>
-                </div>
-            </div>
-
-            <!--Question 3-->
             <div class="panel panel-default">
                 <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question2">
                     <h4 class="panel-title">
@@ -50,21 +37,37 @@
                 </div>
                 <div id="question2" class="panel-collapse collapse" style="height: 0px;">
                     <div class="panel-body">
-                        <h5><span class="label label-primary">By going to lectures, labs and tutorials and getting your cards scanned.</span></h5>
+                        <h5><span class="label label-primary">Currently you can earn points by submitting assignments and completing quizzes on the University Moodle. We hope to later implement a system that rewards you for points for attending University lectures and labs.</span></h5>
                     </div>
                 </div>
             </div>
+
+            <!--Question 3-->
+            <div class="panel panel-default">
+                <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question1">
+                    <h4 class="panel-title">
+                        <a href="#" >Q: What can I spend OGRE points on? </a>
+                    </h4>
+                </div>
+                <div id="question1" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                        <h5><span class="label label-primary">You can spend your OGRE points on customising your avatar and playing games.</span></h5>
+                    </div>
+                </div>
+            </div>
+
+            
 
             <!--Question 4-->
             <div class="panel panel-default">
                 <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
                     <h4 class="panel-title">
-                        <a href="#" >Q: What can I do if I lost my password?</a>
+                        <a href="#" >Q: What do I do if I forgot my password?</a>
                     </h4>
                 </div>
                 <div id="question3" class="panel-collapse collapse" style="height: 0px;">
                     <div class="panel-body">
-                        <h5><span class="label label-primary">In the login page, press the hyperlink named "Forgotten password" and you will be redirected to the moodle page for resetting password.</span></h5>
+                        <h5><span class="label label-primary">If you have forgotten your password please navigate to the login page and click the "Forgotten Password" hyperlink that will navigate you to the Moodle servers reset password screen. Once you have changed your password you <b>MUST</b> register your account again. Don't worry as you will not lose your existing OGRE points!
                     </div>
                 </div>
             </div>
@@ -73,12 +76,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question4">
                     <h4 class="panel-title">
-                        <a href="#" >Q: What can I do if I forget my username?</a>
+                        <a href="#" >Q: What do I do if I forgot my username?</a>
                     </h4>
                 </div>
                 <div id="question4" class="panel-collapse collapse" style="height: 0px;">
                     <div class="panel-body">
-                        <h5><span class="label label-primary">You should contact our staff by using the <a href="/points/contact/">contact page</a>.</br> The staff will then help you to reset the username.
+                        <h5><span class="label label-primary">Please contact the development team using the <a href="/points/contact/">contact page</a>.</br> The staff will reply as soon as possible to help you to reset your username.
                         </span></h5>
                     </div>
                 </div>
@@ -93,7 +96,7 @@
                 </div>
                 <div id="question5" class="panel-collapse collapse" style="height: 0px;">
                     <div class="panel-body">
-                        <h5><span class="label label-primary">Your OGRE points is located in the profile page. When you click in to the profile page, press the column "OGRE points" and it will show you the details of your ORGE points</span></h5>
+                        <h5><span class="label label-primary">You can see how many point you have on the Dashboard and on your profile page. Additionally you can see how many points other users have on the leaderboard page, adding a competitive element to collecting OGRE points.</span></h5>
                     </div>
                 </div>
             </div>
@@ -102,12 +105,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question6">
                     <h4 class="panel-title">
-                        <a href="#" >Q: Can I know where my OGRE points go?</a>
+                        <a href="#" >Q: Can I see a history of when I have earned/spent points?</a>
                     </h4>
                 </div>
                 <div id="question6" class="panel-collapse collapse" style="height: 0px;">
                     <div class="panel-body">
-                        <h5><span class="label label-primary">Yes, you can. The feature named "Points Transaction List" in index page will redirect you to a page with a list of OGRE points, which show you the details of every OGRE point transaction</span></h5>
+                        <h5><span class="label label-primary">Yes, you can. The feature "Points Transaction List" on the Dashboard will redirect you to a page which displays details of every OGRE point transaction you have ever made. </span></h5>
                     </div>
                 </div>
             </div>
