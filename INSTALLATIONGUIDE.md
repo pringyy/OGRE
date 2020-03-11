@@ -126,9 +126,18 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 *to moodle/*
 
-## 4. Link Django with Moodle Server
+## 4. Django Configurations:
 
-## 5. Further Django Setup
+**Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server
+
+**Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
+
+**Configuration 4.4 (optional):** Change how many Django points everything is worth
+
+
+**Configuration 4.3 (optional):** Change the backgrounds to be whatever you want
+
+
 
 
 ```
