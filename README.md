@@ -94,8 +94,8 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 #### FAQ
 
-* Displays freuqently asked questions to the user.
-![Screenshot of FAQ page]
+* Displays frequently asked questions to the user.
+![Screenshot of FAQ page](https://imgur.com/mYVtdR5.png)
 
 #### Profile
 
