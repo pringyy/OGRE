@@ -126,16 +126,22 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 *to moodle/*
 
-## 4. Django Configurations:
+## 4. Django Application Configurations:
 
 **Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server
 
 **Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
 
-**Configuration 4.4 (optional):** Change how many Django points everything is worth
+**Configuration 4.3 (optional):** Change how many Django points everything is worth
+
+**Configuration 4.4 (optional):** Change the email the contact page send emails to.
+
+**Configuration 4.5 (optional):** Change the backgrounds to be whatever you want
 
 
-**Configuration 4.3 (optional):** Change the backgrounds to be whatever you want
+## 5. Moodle Server Configurations:
+
+**Configuration 5.1:** How to change how much 'OGRE' points users are rewarded for carrying out tasks
 
 
 
