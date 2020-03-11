@@ -124,12 +124,15 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 *  Allows user to change their nickname/Django username for (by default) 5 points.
 *  Displays as a pop up box on the dashboard
-![Screen shot of where users can change their nickname](https://i.imgur.com/Gt7Cb5x.png)
+![Screenshot of where users can change their nickname](https://i.imgur.com/Gt7Cb5x.png)
 
 
 #### Avatar Shop
 
-*  Allows users to update their avatar for 5 points.
+*  Allows users to update their avatar to what ever imahe they upload for 5 points.
+*  Has back-end implementation to subtract OGRE points.
+*  Very minimal on front end design as this is what our customers are working on,.
+![Screenshot of the avatar shop](https://i.imgur.com/EUdvJi9.png)
 
 #### Transaction History
 
