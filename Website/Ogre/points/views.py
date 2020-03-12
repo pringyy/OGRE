@@ -302,7 +302,9 @@ def changeAvatar(request):
             d=r.json()
             if d['status'] == 1:
                 if int(d['points']) >= changeAvatarCost:
-                    r = requests.get('http://157.245.126.159/api/changeavatar.php?user_id='+id+'&points=5&encrypted_key=' + enc_key)
+                    myobj = {'user_id': id, 'points' : str(changeAvatarCost), 'encrypted_key' : enc_key}
+
+                    r = requests.post(changeAvatarAPIcall,data = myobj)
      
                     u = User.objects.get(username=request.user.username)
                     d = r.json()
