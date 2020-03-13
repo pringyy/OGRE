@@ -141,14 +141,19 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 **Configuration 4.6 (optional):** How to change API encryption keys
 
 **Configuration 4.7 (optional):** You can configure a Django application in many different ways. If you are unfamiliar with how to do so, I would study these guides to understand how the technologies we use work to make additonal changes to our implementation:
+*  See Django guide
+*  See HTML5 guide
+*  See CSS guide
+*  See Java Script guide
+*  See Ajax guide
 
 
 ## 5. Moodle Server Configurations:
 
 **Configuration 5.1:** How to change how much 'OGRE' points users are rewarded for carrying out tasks
 
-
-
+**Configuration 5.2:** If you want to make any further changes to our API code, and you are unfamilar with PHP we would recommend to follow this guide:
+*  See PHP guide
 
 ```
 
