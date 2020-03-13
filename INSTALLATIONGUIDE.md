@@ -53,24 +53,37 @@ pip install -r requirements
 *This installs all the packages, including Django, at the correct version required for the application to work.*<br>
 *Pip is a python package manager that automatically comes installed when you download Python 3.4 or above.*
 
-**Step 2.4 (Windows OS Only):** If you are trying the run the Django application locally, one of the requirements will NOT install correctly using Pip. You are going to have to download Anaconda on to your machine:
+**Step 2.3.1 *(Windows OS Only)*:** If you are trying the run the Django application locally, one of the requirements will NOT install correctly using Pip. You are going to have to download Anaconda on to your machine and create a virtual environment:
 *  https://docs.anaconda.com/anaconda/install/
 
-**Step 2.4.1 (Windows OS Only):** Once followed the setup guide enter the following into your console:
+**Step 2.3.2 *(Windows OS Only)*:** Once followed the setup guide enter the following into your console to create a virtual environment:
+
+*  To create a virtual environment, go onto the Anaconda Prompt (should be installed alongside anaconda) and type the following:
 
 ```
+conda create -n [environment_name] python=3.7
+```
+*  Next, inside the directory of the repository, type the following commands into Anaconda Prompt:
+```
+conda activate [environment_name]
+pip install -r requirements
 conda install pycrypto
 ```
+*  Every time you wish to use the website, you must always ensure you activate the virtual environment like so:
+```
+conda activate [environment_name]
+```
+
 *This package is essential as it encrypts our API keys to make sure user sessions are valid between our application and the server.*
 
 
-**Step 2.5**: Next navigate into the directory where the actual Django application is being stored by entering the following into the console:
+**Step 2.4**: Next navigate into the directory where the actual Django application is being stored by entering the following into the console:
 ```
 cd website/Ogre
 ```
 
 
-**Step 2.6**: Next you need to setup the Django database on your system, to do this run these two commands in the console one after the other:
+**Step 2.5**: Next you need to setup the Django database on your system, to do this run these two commands in the console one after the other:
 ```
 python manage.py makemigrations  
 
