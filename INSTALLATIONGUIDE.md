@@ -201,7 +201,3 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 **Configuration 5.3:** If you want to make any further changes to our API code, and you are unfamilar with PHP we would recommend to follow this guide:
 *  [See PHP guide](https://www.w3schools.com/php/).
 
-```
-
-Live server of Moodle server:
-Live server of Django webapp:
