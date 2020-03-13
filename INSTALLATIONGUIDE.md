@@ -49,16 +49,28 @@ python --version
 ```
 pip install -r requirements
 ```
+
 *This installs all the packages, including Django, at the correct version required for the application to work.*<br>
 *Pip is a python package manager that automatically comes installed when you download Python 3.4 or above.*
 
-**Step 2.4**: Next navigate into the directory where the actual Django application is being stored by entering the following into the console:
+**Step 2.4 (Windows OS Only):** If you are trying the run the Django application locally, one of the requirements will NOT install correctly using Pip. You are going to have to download Anaconda on to your machine:
+*  https://docs.anaconda.com/anaconda/install/
+
+**Step 2.4.1 (Windows OS Only):** Once followed the setup guide enter the following into your console:
+
+```
+conda install pycrypto
+```
+*This package is essential as it encrypts our API keys to make sure user sessions are valid between our application and the server.*
+
+
+**Step 2.5**: Next navigate into the directory where the actual Django application is being stored by entering the following into the console:
 ```
 cd website/Ogre
 ```
 
 
-**Step 2.5**: Next you need to setup the Django database on your system, to do this run these two commands in the console one after the other:
+**Step 2.6**: Next you need to setup the Django database on your system, to do this run these two commands in the console one after the other:
 ```
 python manage.py makemigrations  
 
@@ -140,12 +152,14 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 **Configuration 4.6 (optional):** How to change API encryption keys
 
-**Configuration 4.7 (optional):** You can configure a Django application in many different ways. If you are unfamiliar with how to do so, I would study these guides to understand how the technologies we use work to make additonal changes to our implementation:
-*  See Django guide
-*  See HTML5 guide
-*  See CSS guide
-*  See Java Script guide
-*  See Ajax guide
+**Configuration 4.7 (optional):** You can configure our Django application further in many different ways. If you are unfamiliar with how to do so, I would study these guides to understand how the technologies we use work to make additonal changes to our implementation:
+*  [See Django guide](https://docs.djangoproject.com/en/3.0/intro/tutorial01/)
+*  [See HTML guide](https://html.com/)
+*  [See CSS guide](https://www.w3schools.com/css/)
+*  [See Bootstrap4 guide](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
+*  [See Java Script guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
+*  [See Ajax guide](https://www.w3schools.com/xml/ajax_intro.asp)
+*  [See JQuery guide](https://www.w3schools.com/jquery/)
 
 
 ## 5. Moodle Server Configurations:
