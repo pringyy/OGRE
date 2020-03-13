@@ -157,10 +157,15 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 ## 4. Django Application Configurations:
 
 **Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server.
+*  On your repository open the file [cs17-main//Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/APIcalls.py).
+*  Here change the IP of the links, lines 5-11, to the IP of your Moodle server.
+*  Make sure you only change the IP and keep the directories after the same and do not change any variables names.
+*  This file is imported into views.py where the API calls are made.
+*  You can find the views.py file at the following directory in your repository[cs17-main/Website/Ogre/points/views.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/views.py).
 
 
 **Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
-*  On your repository open the Django application file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/templates/points/login.html)
+*  On your repository open the file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/templates/points/login.html).
 *  Then navigate to line (ENTER LINE HERE).
 *  Replace the link with the address to your Moodle servers reset password page.
 
@@ -169,8 +174,8 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 *  https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment
 
-**Configuration 4.3 (optional):** How to change the cost of acitvities on the Web Application.
-* On your repository open the file [cs17-main/Website/Ogre/points/costValues.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/develop/Website/Ogre/points/costValues.py).
+**Configuration 4.3 (optional):** How to change the cost of activities on the Web Application.
+* On your repository open the file  [cs17-main/Website/Ogre/points/costValues.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/develop/Website/Ogre/points/costValues.py).
 * From here you can edit the integer values to change the cost of different activities on the application.  
 
 **Configuration 4.4 (optional):** Change the email the contact page send emails to.
@@ -178,7 +183,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 *  WRITE MORE EXPLANATION
 
 **Configuration 4.5 (optional):** Change the random backgrounds displayed on the login screen.
-*  On your repository open the folder []
+*  On your repository open the folder [cs17-main/Website/Ogre/static/images/loginBackground](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/develop/Website/Ogre/static/images/loginBackground)
 *  Here is where you can import your own images and remove the placeholder ones.
 *  They HAVE to be called 'bg' followed by a number between 1 and 5, e.g. 'bg2', 'bg3'.
 *  They also HAVE to be .jpg files and in the default configuration there MUST be 5 pictures.
