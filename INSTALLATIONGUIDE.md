@@ -2,6 +2,7 @@
 
 Please make sure you complete this **whole** guide for the application to work as intended.<br>
 If anything in this guide is not clear or you have any issues or queries please [contact us](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/README.md#meet-the-team) on the information provided in the README.
+
 ## Contents
 
 1. [Git Setup](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#1-git-setup)
@@ -155,23 +156,35 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 ## 4. Django Application Configurations:
 
-**Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server
+**Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server.
+
 
 **Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
-*  Open the Django application file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/templates/points/login.html)
+*  On your repository open the Django application file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/templates/points/login.html)
 *  Then navigate to line (ENTER LINE HERE).
-*  Replace the link with the address to your Moodle servers reset password page
+*  Replace the link with the address to your Moodle servers reset password page.
 
 
 **Configuration 4.3:** To put the application on to a live server, so anyone can access it via the internet please follow this guide:
 
 *  https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment
 
-**Configuration 4.3 (optional):** Change how many Django points everything is worth
+**Configuration 4.3 (optional):** How to change the cost of acitvities on the Web Application.
+* On your repository open the file [cs17-main/Website/Ogre/points/costValues.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/develop/Website/Ogre/points/costValues.py).
+* From here you can edit the integer values to change the cost of different activities on the application.  
 
 **Configuration 4.4 (optional):** Change the email the contact page send emails to.
+*  Our contact page ONLY works for a gmail account
+*  WRITE MORE EXPLANATION
 
-**Configuration 4.5 (optional):** Change the backgrounds to be whatever you want
+**Configuration 4.5 (optional):** Change the random backgrounds displayed on the login screen.
+*  On your repository open the folder []
+*  Here is where you can import your own images and remove the placeholder ones.
+*  They HAVE to be called 'bg' followed by a number between 1 and 5, e.g. 'bg2', 'bg3'.
+*  They also HAVE to be .jpg files and in the default configuration there MUST be 5 pictures.
+*  If you want to change the number of random pictures displayed navigate to []()
+*  Change the number on line to the number of images you have subract one, so if you have 20 images enter 19 here.
+*  WRITE MORE EXPLANATION
 
 **Configuration 4.6 (optional):** How to change API encryption keys
 
