@@ -51,6 +51,12 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 * Cross browser support.
 * Clear and readable design.
 
+#### API encryption
+*  Write
+*  Stuff
+*  Here
+*  ...
+
 #### Login
 
 * First interface the user interacts with when application is opened.
