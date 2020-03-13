@@ -5,8 +5,8 @@ If anything in this guide is not clear or you have any issues or queries please 
 ## Contents
 
 1. [Git Setup](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#1-git-setup)
-2. [Django Application](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#2-django-application-setup)
-3. [Moodle Server](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#3-moodle-server-setup)
+2. [Django Application Setup](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#2-django-application-setup)
+3. [Moodle Server Setup](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#3-moodle-server-setup)
 4. [Django Application Configurations](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#4-django-application-configurations)
 5. [Moodle Server Configurations](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/INSTALLATIONGUIDE.md#5-moodle-server-configurations)
 
@@ -181,12 +181,15 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 ## 5. Moodle Server Configurations:
 
-**Configuration 5.1:** How to change how much 'OGRE' points users are rewarded for carrying out tasks
+**Configuration 5.1:** How to change how much 'OGRE' points users are rewarded for carrying out tasks:
+* Open the "togglecompletion.php" file
+* Navigate to line (ENTER LINE HERE ONCE COMMENTS ARE DONE)/
+* Here if you change the integer values it will change how many points users are given for submitting different assignments.
 
-**Configuration 5.2:** If you want to make any further changes to our API code, and you are unfamilar with PHP we would recommend to follow this guide:
-*  See PHP guide
+**Configuration 5.2:** If you want to make any further changes to our API code, and you are unfamilar with PHP we would recommend to follow these guides:
+*  [See PHP guide.](https://www.w3schools.com/php/)
 
-**Configuration 5.3:** If you want to make any further changes to the Moodle server, creating a course, enrolling users in a course and setting up quizes/assignments for those courses please follow this guide:
+**Configuration 5.3:** If you want to make any further changes to the Moodle server like creating a course, enrolling users in a course and setting up assignments for those courses please follow this guide:
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding users.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding courses.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for enrolling users on to courses.
