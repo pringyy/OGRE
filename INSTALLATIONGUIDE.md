@@ -90,7 +90,7 @@ python manage.py runserver
 
 **Step 3.1**: You need to have a running Moodle server to link the Django application. If you do not already have one running, you can follow this setup guide:
 *  https://docs.moodle.org/38/en/Installing_Moodle
-
+*The server CANNOT be local. It has to be on a server with a public IP address, so the Django application can access it*
 **Step 3.2**: To create the Moodle mySQL Databases required, you must enter the database mode by entering the following into the console of the server:
 ```
 mysql -u <database_username> -p
@@ -143,6 +143,10 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 **Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server
 
 **Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
+
+**Configuration 4.3:** To put the application on to a live server, so anyone can access it via the internet please follow this guide:
+
+*  https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment
 
 **Configuration 4.3 (optional):** Change how many Django points everything is worth
 
