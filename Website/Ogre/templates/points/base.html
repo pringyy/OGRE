@@ -4,7 +4,7 @@
 
 <html>
   <head lang = "en">
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" charset="UTF-8">  
   
     <title>
       {% block title_block %}OGRE - platform{% endblock %}
@@ -22,81 +22,116 @@
     <!--imports the css used for the base template-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 
+
   </head>
-  
+
   <body>
-  <!--Creates a nav bar to be displayed across all intended pages-->
-  <nav class="navbar navbar-lg navbar-dark navbar-custom ">
-      <a class="navbar-brand" href="{% url 'index' %}">
-          <img src="{% static "images/ogrelogo.png" %}" width="100 mlpx" alt="" class="d-inline-block align-middle mr-2">
-      </a>
-        
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'index'%}">Dashboard <span class="sr-only">(current)</span></a>
-              </li>
-              {% endif %}
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'about'%}">About</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'faq'%}">FAQ</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'contact'%}">Contact</a>
-              </li>
+  {% block navbar1 %}
+    <!--Creates a nav bar to be displayed across all intended pages-->
+    <nav class="navbar navbar-lg navbar-dark navbar-custom ">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static "images/ogrelogo.png" %}" width="100 mlpx" alt="" class="d-inline-block align-middle mr-2">
+        </a>
+          
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'profile'%}">My Profile <span class="sr-only">(current)</span></a>
-              </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index'%}">Dashboard <span class="sr-only">(current)</span></a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about'%}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'faq'%}">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact'%}">Contact</a>
+                </li>
 
-              {% endif %}
-          </ul>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile'%}">My Profile <span class="sr-only">(current)</span></a>
+                </li>
 
-          <ul class="navbar-nav ml-auto">
-              {# Some logic on what to display for last item#}
-              {% if user.is_authenticated %}
+                {% endif %}
+            </ul>
 
-              <a href="{% url 'logout' %}" class="btn btn-danger btn-md active button-size" role="button" aria-pressed="true">Logout</a>
+            <ul class="navbar-nav ml-auto">
+                {# Some logic on what to display for last item#}
+                {% if user.is_authenticated %}
 
-              {% else %}
-              <li class="nav-item mr-auto">
-                  <a href="{% url 'login' %}" class="btn btn-success btn-md active button-size" role="button" aria-pressed="true">Login</a>
-              </li>
+                <a href="{% url 'logout' %}" class="btn btn-danger btn-md active button-size" role="button" aria-pressed="true">Logout</a>
 
-              <li class="nav-item mr-auto">
-                  <a href="{% url 'register' %}" class="btn btn-primary btn-md active button-size" role="button" aria-pressed="true">Register</a>
-              </li>
-              {% endif %}
-          </ul>
-      </div>
-  </nav>
+                {% else %}
+                <li class="nav-item mr-auto">
+                    <a href="{% url 'login' %}" class="btn btn-success btn-md active button-size" role="button" aria-pressed="true">Login</a>
+                </li>
 
-  <!--Code used to display all the different Toastr notifcations to the user-->
-  {% if messages %}
-    {% for message in messages %}
-      {% if message.tags == 'success'%}
-        <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+                <li class="nav-item mr-auto">
+                    <a href="{% url 'register' %}" class="btn btn-primary btn-md active button-size" role="button" aria-pressed="true">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% endblock %}
+  
+  <div>
+      {% block body_block %}
+      {% endblock %}
+  </div>
 
-      {% elif message.tags == 'info' %}
-        <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+  {% block footer1 %}
+    <!--Represents the global footer you see on all the other pages except login-->
+    <footer>
+        <div class= "container footer">
+          <br>
+          <hr>
+            <a href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main" class="inherit-color logoPadding">
+              <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="{% url 'contact' %}" class="inherit-color logoPadding">
+               <i class="fas fa-envelope fa-2x"></i>
+            </a>
+            <a href="https://www.gla.ac.uk/" class="inherit-color logoPadding">
+              <img src="{% static "images/unilogo2.png" %}" class= "center" width = "40px" >
+            </a>
+            <a href="https://twitter.com/UofGlasgow?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="inherit-color logoPadding">
+              <i class="fab fa-twitter fa-2x"></i>
+            </a>
+            <a href="https://www.facebook.com/UofGlasgow/" class="inherit-color logoPadding">
+              <i class="fab fa-facebook-square fa-2x"></i>
+            </a>
+        </div>
+    </footer>
 
-      {% elif message.tags == 'warning' %}
-        <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+     <!--Code used to display all the different Toastr notifcations to the user-->
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == 'success'%}
+          <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
 
-      {% elif message.tags == 'error' %}
-        <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+        {% elif message.tags == 'info' %}
+          <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
 
-      {% endif %}
-    {% endfor %}
-  {% endif %}
+        {% elif message.tags == 'warning' %}
+          <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+
+        {% elif message.tags == 'error' %}
+          <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endblock %}
+  </body>
 
   <!--Reads in java script to be used by bootstrap-->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -108,44 +143,9 @@
 
   <!-- Components Vendor  -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" rel="stylesheet" id="bootstrap-css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.js"></script>
 
-
-  
-  <div>
-      {% block body_block %}
-      {% endblock %}
-  </div>
-
-  {% block footer1 %}
-  <!--Represents the global footer you see on all the other pages except login-->
-  <footer>
-      <div class= "container footer">
-        <br>
-        <hr>
-          <a href="https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main" class="inherit-color logoPadding">
-            <i class="fab fa-github fa-2x"></i>
-          </a>
-          <a href="{% url 'contact' %}" class="inherit-color logoPadding">
-             <i class="fas fa-envelope fa-2x"></i>
-          </a>
-          <a href="https://www.gla.ac.uk/" class="inherit-color logoPadding">
-            <img src="{% static "images/unilogo2.png" %}" class= "center" width = "40px" >
-          </a>
-          <a href="https://twitter.com/UofGlasgow?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="inherit-color logoPadding">
-            <i class="fab fa-twitter fa-2x"></i>
-          </a>
-          <a href="https://www.facebook.com/UofGlasgow/" class="inherit-color logoPadding">
-            <i class="fab fa-facebook-square fa-2x"></i>
-          </a>
-      </div>
-  </footer>
-
-  {% endblock %}
-  </body>
 </html>
