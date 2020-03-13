@@ -44,7 +44,7 @@ python --version
 ```
 *If the wrong version is displayed, try uninstalling python and reinstalling it again via the link.*
 
-**Step 2.3**: Once you have completed the setup above, navigate to the 'cs17-main' folder on your terminal and run the following command:
+**Step 2.3 *(Linux and Mac OS)***: Once you have completed the setup above, navigate to the 'cs17-main' folder on your terminal and run the following command:
 
 ```
 pip install -r requirements
@@ -53,37 +53,42 @@ pip install -r requirements
 *This installs all the packages, including Django, at the correct version required for the application to work.*<br>
 *Pip is a python package manager that automatically comes installed when you download Python 3.4 or above.*
 
-**Step 2.3.1 *(Windows OS Only)*:** If you are trying the run the Django application locally, one of the requirements will NOT install correctly using Pip. You are going to have to download Anaconda on to your machine and create a virtual environment:
+**Step 2.3 *(Windows OS)*:** If you are trying the run the Django application locally on Windows, one of the requirements will NOT install correctly using Pip. You are going to have to download Anaconda on to your machine:
 *  https://docs.anaconda.com/anaconda/install/
 
-**Step 2.3.2 *(Windows OS Only)*:** Once followed the setup guide enter the following into your console to create a virtual environment:
+*Anaconda is a package manager like Pip that also allows you to set-up virtual environments locally.*
 
-*  To create a virtual environment, go onto the Anaconda Prompt (should be installed alongside anaconda) and type the following:
+&nbsp;&nbsp;&nbsp;***Step 2.3.1 (Windows OS):*** Next you need to setup a virtual environment. Open the Anaconda Prompt application (should be installed alongside Anaconda) and input the following:
 
 ```
 conda create -n [environment_name] python=3.7
 ```
-*  Next, inside the directory of the repository, type the following commands into Anaconda Prompt:
+&nbsp;&nbsp;&nbsp;*Replace '[environment_name]' with what you want your Virtual Environment to be called, but make sure you remember it!*
+
+&nbsp;&nbsp;&nbsp;***Step 2.3.2 (Windows OS):***  Next navigate to the 'cs17-main' folder on Anaconda prompt and run the following commands in sequential order:
 ```
 conda activate [environment_name]
 pip install -r requirements
 conda install pycrypto
 ```
-*  Every time you wish to use the website, you must always ensure you activate the virtual environment like so:
+&nbsp;&nbsp;&nbsp;*Make sure you replace '[environment_name]' with the name you defined in the Step 2.3.2*<br>
+&nbsp;&nbsp;&nbsp;*Pycrypto is essential to install as it encrypts our API keys to make sure user sessions are valid between our application and the server.*
+
+&nbsp;&nbsp;&nbsp;***Step 2.3.3 (Windows OS):*** Every time you wish to use the website, you must always ensure you activate the virtual environment in Anaconda promptlike so:
 ```
 conda activate [environment_name]
 ```
+&nbsp;&nbsp;&nbsp;*Make sure you replace '[environment_name]' with the name you defined in the Step 2.3.2*
 
-*This package is essential as it encrypts our API keys to make sure user sessions are valid between our application and the server.*
 
 
 **Step 2.4**: Next navigate into the directory where the actual Django application is being stored by entering the following into the console:
 ```
-cd website/Ogre
+cd Website/Ogre
 ```
 
 
-**Step 2.5**: Next you need to setup the Django database on your system, to do this run these two commands in the console one after the other:
+**Step 2.5**: Next you need to setup the Django database on your system, to do this run these two commands into the console in sequential order:
 ```
 python manage.py makemigrations  
 
@@ -103,8 +108,11 @@ python manage.py runserver
 
 **Step 3.1**: You need to have a running Moodle server to link the Django application. If you do not already have one running, you can follow this setup guide:
 *  https://docs.moodle.org/38/en/Installing_Moodle
+
 *The server CANNOT be local. It has to be on a server with a public IP address, so the Django application can access it*
+
 **Step 3.2**: To create the Moodle mySQL Databases required, you must enter the database mode by entering the following into the console of the server:
+
 ```
 mysql -u <database_username> -p
 ```
@@ -133,29 +141,27 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 ```
 *If this does not work make sure you are in the database mode shown in Step 3.2*
 
-**Step 3.3**: Once you have completed the setup above, you need to  replace and add some files in the moodle side:  
+**Step 3.3**: Once you have completed the setup above, you need to  replace and add some files on the Moodle server:  
 
-*1. replace the moodle/api/mod/quiz/locallib.php*
 
-*with cs17-main/api/mod/quiz/locallib.php*
+&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle/api/mod/quiz/locallib.php with cs17-main/api/mod/quiz/locallib.php
 
-*2. replace the moodle/api/mod/assign/locallib.php*
+&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle/api/mod/assign/locallib.php with cs17-main/api/mod/assign/locallib.php
 
-*with cs17-main/api/mod/assign/locallib.php*
+&nbsp;&nbsp;&nbsp;**Step 3.3.3** move cs17-main/api directory to moodle/
 
-*3. move cs17-main/api directory*
+&nbsp;&nbsp;&nbsp;**Step 3.3.4** move cs17-main/api/include directory to moodle/
 
-*to moodle/*
-
-*4. move cs17-main/api/include directory*
-
-*to moodle/*
 
 ## 4. Django Application Configurations:
 
 **Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server
 
 **Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
+*  Open the Django application file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/templates/points/login.html)
+*  Then navigate to line (ENTER LINE HERE).
+*  Replace the link with the address to your Moodle servers reset password page
+
 
 **Configuration 4.3:** To put the application on to a live server, so anyone can access it via the internet please follow this guide:
 
@@ -182,18 +188,19 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 ## 5. Moodle Server Configurations:
 
 **Configuration 5.1:** How to change how much 'OGRE' points users are rewarded for carrying out tasks:
-* Open the "togglecompletion.php" file
-* Navigate to line (ENTER LINE HERE ONCE COMMENTS ARE DONE)/
+* Open the "togglecompletion.php" file on the moodle server.
+* Navigate to line (ENTER LINE HERE ONCE COMMENTS ARE DONE).
 * Here if you change the integer values it will change how many points users are given for submitting different assignments.
 
-**Configuration 5.2:** If you want to make any further changes to our API code, and you are unfamilar with PHP we would recommend to follow these guides:
-*  [See PHP guide.](https://www.w3schools.com/php/)
-
-**Configuration 5.3:** If you want to make any further changes to the Moodle server like creating a course, enrolling users in a course and setting up assignments for those courses please follow this guide:
+**Configuration 5.2:** If you want to make changes to the Moodle server like creating a course, enrolling users in a course and setting up assignments for those courses please follow this guide:
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding users.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding courses.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for enrolling users on to courses.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Assignment_quick_guide) for adding assignments to the courses.
+
+**Configuration 5.3:** If you want to make any further changes to our API code, and you are unfamilar with PHP we would recommend to follow this guide:
+*  [See PHP guide](https://www.w3schools.com/php/).
+
 ```
 
 Live server of Moodle server:
