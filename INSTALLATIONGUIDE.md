@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding users.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding courses.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for enrolling users on to courses.
-*  [See Moodle guide](https://docs.moodle.org/38/en/Assignment_quick_guide) for addign assignments to the courses.
+*  [See Moodle guide](https://docs.moodle.org/38/en/Assignment_quick_guide) for adding assignments to the courses.
 ```
 
 Live server of Moodle server:
