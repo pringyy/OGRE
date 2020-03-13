@@ -174,7 +174,8 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 *  See PHP guide
 
 **Configuration 5.3:** If you want to make any further changes to the Moodle server, creating a course, enrolling users in a course and setting up quizes/assignments for those courses please follow this guide:
-*  See Moodle guide
+*  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding users.
+*  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding courses.
 ```
 
 Live server of Moodle server:
