@@ -145,9 +145,9 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 **Step 3.3**: Once you have completed the setup above, you need to  replace and add some files on the Moodle server:  
 
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle/api/mod/quiz/locallib.php with cs17-main/api/mod/quiz/locallib.php
+&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle/mod/quiz/locallib.php with cs17-main/api/mod/quiz/locallib.php
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle/api/mod/assign/locallib.php with cs17-main/api/mod/assign/locallib.php
+&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle/mod/assign/locallib.php with cs17-main/api/mod/assign/locallib.php
 
 &nbsp;&nbsp;&nbsp;**Step 3.3.3** move cs17-main/api directory to moodle/
 
@@ -206,9 +206,11 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 ## 5. Moodle Server Configurations:
 
 **Configuration 5.1:** How to change how much 'OGRE' points users are rewarded for carrying out tasks:
-* Open the "togglecompletion.php" file on the moodle server.
-* Navigate to line (ENTER LINE HERE ONCE COMMENTS ARE DONE).
-* Here if you change the integer values it will change how many points users are given for submitting different assignments.
+* Open the "moodle/mod/asssign/locallib.php" file on the moodle server to channge the reward points for doing a assignment.
+* Navigate to line (7399 line -> $assignment_points)
+* Open the "moodle/mod/quiz/locallib.php" file on the moodle server to channge the reward points for doing a quiz
+* Navigate to line (1813 line -> $quiz_points)
+* Here if you change the integer values it will change how many points users are given for submitting different assignments and quiz.
 
 **Configuration 5.2:** If you want to make changes to the Moodle server like creating a course, enrolling users in a course and setting up assignments for those courses please follow this guide:
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding users.
