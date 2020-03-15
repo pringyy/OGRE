@@ -63,10 +63,9 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 * Clear and readable design.
 
 #### API encryption
-*  Write
-*  Stuff
-*  Here
-*  ...
+*  both django and moodle side will have AES encrytion that encrpty the api key,to prevent any illegal api call, brute force attack and CSRF attack
+*  The api key could be modified by maintainer.
+
 
 #### Login
 
