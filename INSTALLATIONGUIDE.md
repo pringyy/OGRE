@@ -192,6 +192,12 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 *  WRITE MORE EXPLANATION
 
 **Configuration 4.6 (optional):** How to change API encryption keys
+*  On your repository open the file [cs17-main//Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/APIcalls.py).
+*  There have a variable <APIkeys>
+*  Change to any key to like
+*  And then in the moodle side, change the api key in the directory /moodle/include/config.php
+*  There have a variable <$api_key> 
+*  change the key that must be same you changed in the Django side
 
 **Configuration 4.7 (optional):** You can configure our Django application further in many different ways. If you are unfamiliar with how to do so, I would study these guides to understand how the technologies we use work to make additonal changes to our implementation:
 *  [See Django guide](https://docs.djangoproject.com/en/3.0/intro/tutorial01/)
