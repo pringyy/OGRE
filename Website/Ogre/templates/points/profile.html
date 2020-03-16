@@ -68,10 +68,10 @@
                     url: "{% url 'getmypoint' %}",
                     type: "GET",
                     dataType:'json',
-                }).done(function( responce ) {
-                    var status = responce.status;
+                }).done(function( response ) {
+                    var status = response.status;
                     if(status == '1'){
-                        $(".points").html(responce.points)
+                        $(".points").html(response.points)
                     }else{
                         $(".points").html(0)
                     }
@@ -80,10 +80,10 @@
                     url: "{% url 'pointcalculate' %}",
                     type: "GET",
                     dataType:'json',
-                }).done(function( responce ) {
-                    var total_pt = responce.total_point;
-                    $(".total").html(responce.total_point)
-                    $(".spent").html(responce.spent_point)
+                }).done(function( response ) {
+                    var total_pt = response.total_point;
+                    $(".total").html(response.total_point)
+                    $(".spent").html(response.spent_point)
                 })
             });
         </script>
