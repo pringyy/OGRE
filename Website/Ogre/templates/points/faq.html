@@ -1,12 +1,12 @@
 <!--THIS HTML PAGE IS USED TO DISPLAY THE FAQ PAGE-->
-
 {% extends 'points/base.html' %}
 {% load static %}
-
 {% block title %} {{ block.super }} - FAQ {% endblock %}
-
 {% block body_block %}
+
+    <!--Imports external css-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/faq.css' %}">
+
     <!--Page content-->
     <div class="container">
         <br>
@@ -55,8 +55,6 @@
                     </div>
                 </div>
             </div>
-
-            
 
             <!--Question 4-->
             <div class="panel panel-default">
@@ -116,5 +114,6 @@
                 </div>
             </div>
         </div>
+        
     </div>
 {% endblock %}

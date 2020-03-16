@@ -1,14 +1,14 @@
 <!--THIS HTML CODE REPRESENTS THE CONTACT PAGE-->
-
 {% extends 'points/base.html' %}
 {% load static %}
 {% load widget_tweaks %}
 {% block title %} {{ block.super }} - Contact {% endblock %}
 {% block body_block %}
-    <!--Imports css file for this page-->
+
+    <!--Imports external CSS for this page-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
     
-    <!--Page content-->
+    <!--Page contents-->
     <div class="mb-4 container">
         <br>
         <h1 class="display-4 white-text ">Contact</h1>
@@ -51,8 +51,7 @@
                 </form>
                 <div class="status"></div>
             </div>
-
-
+    
             <!--Displays logos down the side of the page-->
             <div class="col-md-3 text-center">
                 <ul class="list-unstyled mb-0">
@@ -68,5 +67,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
+    </div>
 {% endblock %}

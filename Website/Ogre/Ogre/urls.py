@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^$', views.user_login, name='index'),
     url(r'^points/', include('points.urls')),
     url(r'^logout/$', views.user_logout, name='logout'),
-    url(r'profile/(?P<username>[a-zA-Z0-9]+)$', views.profile),
+    url(r'profile/', views.profile),
     url(r'^game_menu/$', views.game_menu, name = 'game_menu'),
     path('mytransaction/',views.pointlist,name='pointlist'),
     path('pointlist/',views.pointlist,name='pointlist'),

@@ -1,0 +1,8 @@
+/*USED TO REPRESENT THE CSS USED IN THE SHOP.html PAGE*/
+
+/*Code used to diaply submit button on mobile*/
+.button1 {
+  background-color: white;
+  color: black;
+  border: 1px solid black; /* black */
+}

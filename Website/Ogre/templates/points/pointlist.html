@@ -1,18 +1,16 @@
 <!--THIS PAGE IS USED TO REPRESENT THE PAGE WHERE USERS CAN SEE THEIR POINT TRANSACTION HISTORY-->
-
-<!--Inherits the html from base-->
 {% extends "points/base.html" %} 
 {% load static %}
 {% block body_block %}
 
+    <!--Imports extnernal CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pointlist.css' %}">
+
      <!--If the user is logged in display the page contents -->
     {%if user.is_authenticated %}
-        <!--Imports the style sheet unique for this webpage-->
-        <link rel="stylesheet" type="text/css" href="{% static 'css/pointlist.css' %}">
 
         <!-- Page Content -->
         <div class="container"> 
-            <!--usd to display the table of point transactions-->
             <table class="table">
                 <section class="wt-section" id="login">
                     <div class="container">
@@ -29,7 +27,6 @@
                                 <th data-column-id="amount" data-type="numeric">Amount</th>
                                 <th data-column-id="spentTime" data-type="numeric">spentTime</th>
                             </tr>
-
                             {% if pointlist %}
                                         {% for transactions in pointlist %}
                                             <tr>
@@ -48,14 +45,10 @@
                 </section>
             </table>
         </div>
-
-        
-
-       
-    <!--If the user is not authenticated let them know how they can access the page-->
+ 
+    <!--If the user is not authenticated do not show page contents-->
     {% else %}
         <br>
         <center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
-    {% endif %}
-      
+    {% endif %} 
 {% endblock %}
