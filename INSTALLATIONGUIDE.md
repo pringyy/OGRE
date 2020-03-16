@@ -145,13 +145,13 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 **Step 3.3**: Once you have completed the setup above, you need to  replace and add some files on the Moodle server:  
 
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle/mod/quiz/locallib.php with cs17-main/api/mod/quiz/locallib.php
+&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle/mod/quiz/locallib.php with cs17-main/mod/quiz/locallib.php
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle/mod/assign/locallib.php with cs17-main/api/mod/assign/locallib.php
+&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle/mod/assign/locallib.php with cs17-main/mod/assign/locallib.php
 
 &nbsp;&nbsp;&nbsp;**Step 3.3.3** move cs17-main/api directory to moodle/
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.4** move cs17-main/api/include directory to moodle/
+&nbsp;&nbsp;&nbsp;**Step 3.3.4** move cs17-main/include directory to moodle/
 
 
 ## 4. Django Application Configurations:
