@@ -163,12 +163,20 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 *  See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for the license of the Re-wire game. 
 *  See [MIT License](https://github.com/BornaSepic/Tic-Tac-Toe/blob/master/LICENSE) for the license of the game Tic Tac Toe. 
 
-## External Sources
+## Technologies Used / External Sources
 
-
-* django-crispy-forms | https://django-crispy-forms.readthedocs.io/en/latest/ | used to make forms match the look of Bootstrap
+* Django | |
+* Moodle | |
+* PHP | |
+* CSS | |
+* HTML | |
+* JavaScript | |
+* Ajax | |
 * Bootstrap 4 | https://getbootstrap.com | CSS framework for all pages
+* django-crispy-forms | https://django-crispy-forms.readthedocs.io/en/latest/ | used to make forms match the look of Bootstrap
+* Toastr | https://codeseven.github.io/toastr/ | javascript framework for notification toasts
 * Google Maps API | https://developers.google.com/maps/documentation/ | Map used to display the location of the University on the contact page
-* jQuery | https://jquery.com | 
+* jQuery | https://jquery.com |
+
 
 
