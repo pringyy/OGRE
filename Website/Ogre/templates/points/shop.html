@@ -1,22 +1,21 @@
+<!--THIS HTML PAGE REPRESENTS THE SHOP WHERE USERS CAN UPDATE THEIR AVATAR-->
 {% extends 'points/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-
-
 {% block title %} {{ block.super }} -Avatar Shop {% endblock %}
+
 {% block body_block %}
-<!--Reads in the external CSS for the shop page-->
-<link rel="stylesheet" type="text/css" href="{% static 'css/shop.css' %}">
+	<!--Reads in the external CSS-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/shop.css' %}">
 
-<div class="container">
-    <h1 class="display-4 white-text"> Avatar Shop</h1>
-    <hr>
-    <form enctype="multipart/form-data" method="POST"> 
-        {% csrf_token %}
-        <input id = "id_image" type = "file" class = "" name = "image">
-        <input type="submit" class= "button1" name="" value="update">
-    </form>
-</div>
-
-
+	<!--Page content-->
+	<div class="container">
+	    <h1 class="display-4 white-text"> Avatar Shop</h1>
+	    <hr>
+	    <form enctype="multipart/form-data" method="POST"> 
+	        {% csrf_token %}
+	        <input id = "id_image" type = "file" class = "" name = "image">
+	        <input type="submit" class= "button1" name="" value="update">
+	    </form>
+	</div>
 {% endblock %}

@@ -1,16 +1,15 @@
 <!--THIS HTML PAGE REPRESENTS THE LEADERBOARD PAGE-->
-
 {% extends "points/base.html" %}
 {% load static %}
 {% block title %} {{ block.super }} - Leaderboard {% endblock %}
 {% block body_block %}
 
+    <!--imports CSS for grid table-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/pointlist.css' %}">
+
     <!--If user is logged in display contents-->
     {%if user.is_authenticated %}
 
-        <!--imports CSS for grid table-->
-        <link rel="stylesheet" type="text/css" href="{% static 'css/pointlist.css' %}">
-        
         <!--Page contents-->
         <div class="container"> 
             <table class="table">
@@ -26,9 +25,7 @@
                                         <th data-column-id="id" data-type="numeric">Position</th>
                                         <th data-column-id="type">Student ID</th>
                                         <th data-column-id="detail" data-order="desc">Points</th>
-
                                     </tr>
-
                                     {% if leaderboard %}
                                         {% for student in leaderboard %}
                                             <tr>
@@ -40,13 +37,14 @@
                                     {% endif %}
                                 </thead>
                             </table>
-                        </div><!-- dashboard end -->
+                        </div><
                     </div>
                 </section>
             </table>
         </div>
 
-    {% else %} <!--Else inform the user what to do to access the page-->
+    <!--Else inform the user what to do to access the page-->
+    {% else %} 
         <br>
         <center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
     {% endif %}
