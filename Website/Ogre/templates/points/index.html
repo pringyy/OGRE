@@ -1,9 +1,11 @@
 <!--THIS CODE REPRESENTS THE DASHBOARD/INDEX OF THE WEB APPLICATION-->
-
 {% extends "points/base.html" %}
 {% load static %}
 {% block body_block %}
+	
+	<!--Imports external css-->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+	
 	<section class="wt-section" id="login">
 
 		<!--Page content-->
@@ -73,25 +75,24 @@
 				</div>
 			</div>
 
-				<!--Tile 4-->
-		 		<div class="col-lg-4">
-					<div class="our-team-main">
-						<a href="/changeAvatar/"   style="color:black">
-							<div class="team-front">
-								<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
-								<h3>Pick A Avatar</h3>
-								<p>Cost 5 points</p>
-							</div>
-							<div class="team-back">
-								<p class= 'dashboard-text'>
-									Click here to buy a new avatar!
-								<center> (Costs 5 Points)</center>
+			<!--Tile 4-->
+	 		<div class="col-lg-4">
+				<div class="our-team-main">
+					<a href="/changeAvatar/"   style="color:black">
+						<div class="team-front">
+							<img src="https://cdn4.iconfinder.com/data/icons/seo-and-digital-marketing-7-1/128/319-512.png" class="img-fluid" />
+							<h3>Pick A Avatar</h3>
+							<p>Cost 5 points</p>
+						</div>
+						<div class="team-back">
+							<p class= 'dashboard-text'>
+								Click here to buy a new avatar!
+							<center> (Costs 5 Points)</center>
 							</p>
 						</div>
 					</a>
 				</div>
 			</div>
-
 
 			<!--Tile 5-->
 			<div class="col-lg-4">
@@ -111,30 +112,31 @@
 					</a>
 				</div>
 		 	</div>
-		 		<!--Tile 6-->
-				<div class="col-lg-4">
-					<div class="our-team-main">
-						<a href="{% url 'profile' %}"     style="color:black">
-							<div class="team-front">
-								{% if user.studentprofileinfo.profile_pic %}
-	                				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-	            				{% else %}
-	                				<img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-	            				{% endif %}
-								<h3>My Profile</h3>
-								<p> &nbsp;</p>
-							</div>
-							<div class="team-back">
-								<p class= 'dashboard-text2'>
-									Click here to view your Profile!
-								</p>
-							</div>
-						</a>
-					</div>
+
+	 		<!--Tile 6-->
+			<div class="col-lg-4">
+				<div class="our-team-main">
+					<a href="{% url 'profile' %}"     style="color:black">
+						<div class="team-front">
+							{% if user.studentprofileinfo.profile_pic %}
+                				<img src="{{ MEDIA_URL }}{{ user.studentprofileinfo.profile_pic }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            				{% else %}
+                				<img src="{% static "images/avatar-default-icon.png" %}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            				{% endif %}
+							<h3>My Profile</h3>
+							<p> &nbsp;</p>
+						</div>
+						<div class="team-back">
+							<p class= 'dashboard-text2'>
+								Click here to view your Profile!
+							</p>
+						</div>
+					</a>
 				</div>
+			</div>
 	</section>
 
-	<!--Used to display the pop up box when tile 3 is clicked-->
+	<!--Used to display the pop up box when Tile 3 is clicked-->
 	<form id="usersave" >
 		<div class="modal fade" id="usernameModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
 			<div class="modal-dialog">
@@ -168,7 +170,7 @@
 		</div>
 	</form>
 
-
+	<!--Scripts used to retrieve user points and change the username-->
 	<script type="text/javascript">
 		$('document').ready(function(){
 				  $.ajax({
@@ -212,4 +214,5 @@
 			});
 		});
 	</script>
+	
 {% endblock %}
