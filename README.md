@@ -128,7 +128,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 #### Games
 
 * Lets users have a choice of games that costs (by default) 5 points to play.
-![Screenshot of games menu page](https://i.imgur.com/6V0lTaf.png)
+![Screenshot of games menu page](https://imgur.com/XfcJb06.png)
 
 *  Re-wire game used as a placeholder for what our customers are working on and was not created by us. Credit- https://github.com/jmankopf/js13k-rewire
 ![Screenshot of game1](https://i.imgur.com/WFDoAfb.png)
