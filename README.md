@@ -62,10 +62,10 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 * Cross browser support.
 * Clear and readable design.
 
-#### API encryption
-*  both django and moodle side will have AES encrytion that encrpty the api key,to prevent any illegal api call, brute force attack and CSRF attack
-*  The api key could be modified by maintainer.
-
+#### AES encryption
+*  Both the Django Application and Moodle server use Advanced Encryption Standard (AES) encrytion that encrypts the API key to prevent any illegal API calls, brute force attacks and CSRF attacks.
+*  This is is the main security for the interactions between the server and our application.
+*  If you would like to learn more on AES encryption you can read up on it here: https://searchsecurity.techtarget.com/definition/Advanced-Encryption-Standard
 
 #### Login
 
