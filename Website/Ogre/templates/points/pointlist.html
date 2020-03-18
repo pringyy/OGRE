@@ -1,53 +1,54 @@
-
-{% extends "points/base.html" %}
+<!--THIS PAGE IS USED TO REPRESENT THE PAGE WHERE USERS CAN SEE THEIR POINT TRANSACTION HISTORY-->
+{% extends "points/base.html" %} 
 {% load static %}
 {% block body_block %}
 
-{%if user.is_authenticated %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/pointlist.css' %}">
-<div class="container"> <table class="table">
-    <section class="wt-section" id="login">
-    	<div class="container">
-            <br>
-    	    <h1 class="display-4 white-text">My Point Transactions</h1>
-            <hr>
-            <div class="row">
-                <table id="grid-data" class="table table-condensed table-hover table-striped">
-                <thead class="data">
-                <tr>
-                    <th data-column-id="id" data-type="numeric">ID</th>
-                    <th data-column-id="type">Type(+/-)</th>
-                    <th data-column-id="detail" data-order="desc">Point paid for</th>
-                    <th data-column-id="amount" data-type="numeric">Amount</th>
-                </tr>
-                </thead>
-                </table>
-            </div><!-- dashboard end -->
+    <!--Imports extnernal CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pointlist.css' %}">
+
+     <!--If the user is logged in display the page contents -->
+    {%if user.is_authenticated %}
+
+        <!-- Page Content -->
+        <div class="container"> 
+            <table class="table">
+                <section class="wt-section" id="login">
+                    <div class="container">
+                        <br>
+                	    <h1 class="display-4 white-text">My Point Transactions</h1>
+                        <hr>
+                        <div class="row">
+                            <table id="grid-data" class="table table-condensed table-hover table-striped">
+                            <thead class="data">
+                            <tr>
+                                <th data-column-id="id" data-type="numeric">ID</th>
+                                <th data-column-id="type">Type(+/-)</th>
+                                <th data-column-id="detail">Point paid for</th>
+                                <th data-column-id="amount" data-type="numeric">Amount</th>
+                                <th data-column-id="spentTime" data-type="numeric">spentTime</th>
+                            </tr>
+                            {% if pointlist %}
+                                        {% for transactions in pointlist %}
+                                            <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{transactions.type}}</td>
+                                                <td>{{transactions.detail}}</td>
+                                                <td>{{transactions.amount}}</td>
+                                                <td>{{transactions.spentTime}}</td>
+                                                
+                                            </tr>
+                                        {% endfor %}
+                            {% endif %}
+                            </thead>
+                        </div>
+                    </div>
+                </section>
+            </table>
         </div>
-    </section>
-</div>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.js"></script>
-
-<script>
-     $('document').ready(function(){
-        $("#grid-data").bootgrid({
-            ajaxSettings: {
-            method: "GET",
-            cache: false
-        
-        },
-        ajax: true,
-        url: "/ajaxpointlist/", 
-    });
-
-        });
-</script>
-
-{% else %}
-    <br>
-    <center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
-{% endif %}
-  
+ 
+    <!--If the user is not authenticated do not show page contents-->
+    {% else %}
+        <br>
+        <center><h2 class = "display-4 white-text">Register or Login to access this page!</h2></center>
+    {% endif %} 
 {% endblock %}

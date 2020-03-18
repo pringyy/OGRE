@@ -1,3 +1,4 @@
+/*THIS IS THE CSS CODE USED TO REPRESENT THE INDEX OR THE DASHBOARD*/
 
 .dashboard-text{
 	padding-top: 70px;
@@ -5,11 +6,13 @@
 	font-weight: bold;
 }
 
+.dashboard-weight{
+	font-weight: bold;
+}
 
 .headings{
 	color: black;
 }
-
 
 .dashboard-text2{
 	padding-top: 85px;
@@ -88,5 +91,4 @@ h1 h2{
 
 .our-team-main:hover {
 	border-color:#777;
-	transit
 }

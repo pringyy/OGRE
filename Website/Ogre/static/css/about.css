@@ -1,9 +1,10 @@
+/*THIS IS THE CSS USED TO REPESENT THE ABOUT PAGE*/
 
 /* Let cards inherit parent color*/
 .inherit-color {
 	color: inherit;
 }
-
+/*Used to add padding to the top of the card*/
 .top-padding {
 	padding-top: 3%
 }

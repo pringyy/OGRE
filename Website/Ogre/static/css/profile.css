@@ -1,5 +1,6 @@
+/*USED TO RESPRESENT THE CSS IN THE PROFILE PAGE*/
 
-
+/*Used to make the profile panel have a rounded white background*/
 .white-bg{
 	background: white; 
 	background-size: 300px 150px;
@@ -7,10 +8,12 @@
 	background-attachment: fixed;
 }
 
+/*Used to make th tabs fit the content*/
 .nav{
     width: fit-content;
 }
+
+/*Used to make the link on the tabs black*/
 .nav-link{
     color: black;
 }
-
