@@ -5,14 +5,11 @@ It also provides a link to our hand over documentation ([installation guide](INS
 If you have any queries about anything to do with this application please contact us using our emails below.<br>
 Before deploying the application, **please make sure you read through the entire document.** 
 
-## Demonstration
-
-Video Demonstration:
-*  YOUTUBE LINK
+## Live Demonstration
 
 ```
-Live demo of Moodle server:
-Live demo of of Django application:
+Live demo of Moodle server: http://157.245.126.159:12345/
+Live demo of of Django application: http://moodlecs17uog.com/
 ```
 *Disclaimer: These servers will be temporarily live, so may not be active anymore.*
 
@@ -157,25 +154,26 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 ## Licenses
 
-*  See [MIT License](LICENSE) for the license for our project.
+*  See [MIT License](LICENSE) for the license for **THIS REPOSITORY**.
 *  See [Creative Commons License](https://creativecommons.org/licenses/by/3.0/legalcode) for [bg1.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg1.jpg). Credit- https://opengameart.org/content/sky-background
 *  See [Public Domain License](https://creativecommons.org/publicdomain/zero/1.0/) for [bg2.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg2.jpg), [bg3.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg3.jpg), [bg4.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg4.jpg), [bg5.jpg](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/static/images/loginBackground/bg5.jpg).
 *  See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for the license of the Re-wire game. 
 *  See [MIT License](https://github.com/BornaSepic/Tic-Tac-Toe/blob/master/LICENSE) for the license of the game Tic Tac Toe. 
 
-## Technologies Used / External Sources
+## Technologies Used/External Sources
 
-* Django | |
-* Moodle | |
-* PHP | |
-* CSS | |
-* HTML | |
-* JavaScript | |
-* Ajax | |
+* Django | https://www.djangoproject.com/ |
+* Moodle | https://moodle.org/ |
+* PHP | https://www.php.net/ |
+* CSS |
+* HTML |
+* JavaScript | 
+* Ajax | 
 * Bootstrap 4 | https://getbootstrap.com | CSS framework for all pages
+* Pycrypto | https://pypi.org/project/pycrypto/ | used for AES encryption between Moodle server and Django application
 * django-crispy-forms | https://django-crispy-forms.readthedocs.io/en/latest/ | used to make forms match the look of Bootstrap
 * Toastr | https://codeseven.github.io/toastr/ | javascript framework for notification toasts
-* Google Maps API | https://developers.google.com/maps/documentation/ | Map used to display the location of the University on the contact page
+* Google Maps API | https://developers.google.com/maps/documentation/ | Map used to display the location of the University on th Django application's contact page
 * jQuery | https://jquery.com |
 
 
