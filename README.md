@@ -5,14 +5,11 @@ It also provides a link to our hand over documentation ([installation guide](INS
 If you have any queries about anything to do with this application please contact us using our emails below.<br>
 Before deploying the application, **please make sure you read through the entire document.** 
 
-## Demonstration
-
-Video Demonstration:
-*  YOUTUBE LINK
+## Live Demonstration
 
 ```
-Live demo of Moodle server:
-Live demo of of Django application:
+Live demo of Moodle server: http://moodlecs17uog.com/ 
+Live demo of of Django application: http://157.245.126.159:12345/
 ```
 *Disclaimer: These servers will be temporarily live, so may not be active anymore.*
 
