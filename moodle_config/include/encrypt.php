@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Valid encryption methods AES-256-CFB
  *

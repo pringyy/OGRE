@@ -1802,21 +1802,15 @@ function quiz_attempt_submitted_handler($event) {
         $completion->update_state($cm, COMPLETION_COMPLETE, $event->userid);
     }
     
-    
-    
-    
-    
-    
-    
-    /* My code start */
-        include(dirname(dirname(dirname(__FILE__))).'/include/config.php'); //My code
+    /* Our code starts */
+        include(dirname(dirname(dirname(__FILE__))).'/include/config.php');
         $quiz_points = 10;
 
         $c_user_id = $USER->id;
         $cmid = $event->get_context()->instanceid;
         
         
-        // get the ralted course id 
+        // Get the related course ID
         $sql = "SELECT * FROM mdl_course_modules WHERE id = '".$cmid."' ";
         $result = mysqli_query($con, $sql);
         if(mysqli_num_rows($result) > 0){
@@ -1824,21 +1818,21 @@ function quiz_attempt_submitted_handler($event) {
             $course_id = $row['course'];
             $instance_id = $row['instance'];
         }
-        // get the related course name
+        //Get the related course name
         $sql = "SELECT * FROM mdl_course WHERE id = '".$course_id."' ";
         $result = mysqli_query($con, $sql);
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);
             $course_fullname = $row['fullname'];
         }
-        // get the quzi id and name
+        //Get the quiz id and name
         $sql = "SELECT * FROM mdl_quiz WHERE id = '".$instance_id."' ";
         $result = mysqli_query($con, $sql);
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);
             $quiz_name = $row['name'];
         }
-        // update the user points to add related points to it
+        //Update the user points to add related points to it
         $sql = "SELECT * FROM mdl_user_points WHERE user_id = '".$c_user_id."' ";
         $result = mysqli_query($con, $sql);
         if(mysqli_num_rows($result) > 0){
@@ -1853,26 +1847,13 @@ function quiz_attempt_submitted_handler($event) {
             $sql = "INSERT INTO mdl_user_points (user_id, points) VALUES ('".$c_user_id."', '".$quiz_points."')";
             mysqli_query($con, $sql);
         }
-        // update the user transaction
+        //Update the user transaction list
         $details = $course_fullname.' - '.$quiz_name;
         $spentTime = date('Y-m-d');
         $sql = "INSERT INTO mdl_user_points_trans (type, detail, amount, userid, spentTime) VALUES ('+', '".$details."', ".$quiz_points.",'".$c_user_id."','".$spentTime."' )";
         mysqli_query($con, $sql);
     
-
-        /* My code end */
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    /* Our code end */
     
     return quiz_send_notification_messages($course, $quiz, $attempt,
             context_module::instance($cm->id), $cm);
