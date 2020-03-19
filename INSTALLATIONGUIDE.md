@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 *  WRITE MORE EXPLANATION
 
 **Configuration 4.6 (optional):** How to change API encryption keys
-*  On your repository open the file [cs17-main//Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/APIcalls.py).
+*  On your repository open the file [cs17-main//Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/APIcalls.py).
 *  There have a variable <APIkeys>
 *  Change to any key to like
 *  And then in the moodle side, change the api key in the directory /moodle/include/config.php
@@ -222,8 +222,8 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 **Configuration 5.2:** If you want to make changes to the Moodle server like creating a course, enrolling users in a course and setting up assignments for those courses please follow this guide:
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding users.
-*  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding courses.
-*  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for enrolling users on to courses.
+*  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_courses) for adding courses.
+*  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Step_2:_Enrolment) for enrolling users on to courses.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Assignment_quick_guide) for adding assignments to the courses.
 
 **Configuration 5.3:** If you want to make any further changes to our API code, and you are unfamilar with PHP we would recommend to follow this guide:
