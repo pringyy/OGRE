@@ -148,16 +148,16 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 **Step 3.3**: Once you have completed the setup above, you need to  replace and add some files on the Moodle server:  
 
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle/mod/quiz/locallib.php with cs17-main/mod/quiz/locallib.php <br>
+&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle server directory moodle/mod/quiz/locallib.php with [cs17-main/moodle_config/mod/quiz/locallib.php](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/quiz/locallib.php) <br>
 &nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when a quiz is submitted and updates the user's points record.*
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle/mod/assign/locallib.php with cs17-main/mod/assign/locallib.php<br>
+&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle server directory moodle/mod/assign/locallib.php with [cs17-main/moodle_config/mod/assign/locallib.php](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/assign/locallib.php)<br>
 &nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when an assignment is submitted and updates the user's points record.*
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.3** move cs17-main/api directory to moodle/ <br>
+&nbsp;&nbsp;&nbsp;**Step 3.3.3** move [cs17-main/moodle_config/api](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/api) directory to the moodle server directory moodle/ <br>
 &nbsp;&nbsp;&nbsp; *This is the API code that allows for interaction between the Moodle server and Django application.*
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.4** move cs17-main/include directory to moodle/<br>
+&nbsp;&nbsp;&nbsp;**Step 3.3.4** move [cs17-main/moodle_config/include](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/include) directory to the moodle server directory moodle/<br>
 &nbsp;&nbsp;&nbsp; *This is the code that allows for the AES encryption on the Moodle side.*
 
 
@@ -171,17 +171,18 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 **Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
 *  On your repository open the file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/templates/points/login.html).
-*  Then navigate to line 51.
-*  Replace the link with the address to your Moodle servers reset password page.
+*  Then navigate to **line 51** and replace the link with the address to your Moodle servers reset password page.
 
-**Configuration 4.3:** 
+
 **Configuration 4.3 (optional):** How to change the cost of activities on the Web Application.
 * On your repository open the file  [cs17-main/Website/Ogre/points/costValues.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/develop/Website/Ogre/points/costValues.py).
 * From here you can edit the integer values to change the cost of different activities on the application.  
 
 **Configuration 4.4 (optional):** Change the email the contact page send emails to.
-*  Our contact page ONLY works for a gmail account
-*  WRITE MORE EXPLANATION
+*  Our contact page backend implementation only works for a gmail account
+*  You can use the login details we have supplied in the [secretsettings.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/Ogre/secretsettings.py)file.
+*  This can be located at this directory in your repository: [cs17-main/Website/Ogre/Ogre/secretsettings.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/Ogre/secretsettings.py).
+*  You can change the email and password to your own gmail account.
 
 **Configuration 4.5 (optional):** Change the random backgrounds displayed on the login screen.
 *  On your repository open the folder [cs17-main/Website/Ogre/static/images/loginBackground](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/develop/Website/Ogre/static/images/loginBackground)
