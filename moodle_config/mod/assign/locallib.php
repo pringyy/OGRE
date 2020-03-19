@@ -7325,19 +7325,6 @@ class assign {
         }
 
         $this->update_submission($submission, $userid, true, $instance->teamsubmission);
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         if ($instance->teamsubmission && !$instance->requireallteammemberssubmit) {
             $team = $this->get_submission_group_members($submission->groupid, true);
@@ -7371,17 +7358,18 @@ class assign {
         }
         
         
-        /* My code start */
+        /* Our code starts */
         include(dirname(dirname(dirname(__FILE__))).'/include/config.php'); //My code
-        // define the award points here
+        
+        //Define the award points here
         $assignment_points = 20;
         
-        //get the id staff
+        //Get ID of the user
         $c_user_id = $USER->id;
         $cmid = $data->id;
         
         
-        //get the related course id
+        //Get the related course ID
         $sql = "SELECT * FROM mdl_course_modules WHERE id = '".$cmid."' ";
         $result = mysqli_query($con, $sql);
         if(mysqli_num_rows($result) > 0){
@@ -7390,7 +7378,7 @@ class assign {
             $instance_id = $row['instance'];
         }
         
-        // get the related course name
+        //Get the related course name
         $sql = "SELECT * FROM mdl_course WHERE id = '".$course_id."' ";
         $result = mysqli_query($con, $sql);
         if(mysqli_num_rows($result) > 0){
@@ -7398,7 +7386,7 @@ class assign {
             $course_fullname = $row['fullname'];
         }
         
-        // get the assignment id and name
+        //Get the assignment ID and name
         $sql = "SELECT * FROM mdl_assign WHERE id = '".$instance_id."' ";
         $result = mysqli_query($con, $sql);
         if(mysqli_num_rows($result) > 0){
@@ -7406,7 +7394,7 @@ class assign {
             $assignment_name = $row['name'];
         }
     
-        // update the user points indo
+        //Update the user points information
         $sql = "SELECT * FROM mdl_user_points WHERE user_id = '".$c_user_id."' ";
         $result = mysqli_query($con, $sql);
         if(mysqli_num_rows($result) > 0){
@@ -7422,14 +7410,14 @@ class assign {
             mysqli_query($con, $sql);
         }
         
-        //update the user transactions
+        //Update the user transactions
         $details = $course_fullname.' - '.$assignment_name;
         $spentTime = date('Y-m-d');
         $sql = "INSERT INTO mdl_user_points_trans (type, detail, amount, userid, spentTime) VALUES ('+', '".$details."', ".$assignment_points.",'".$c_user_id."','".$spentTime."' )";
         mysqli_query($con, $sql);
     
 
-        /* My code end */
+        /* our code end */
 
         
         return true;

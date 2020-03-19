@@ -8,12 +8,8 @@ define('NO_MOODLE_COOKIES', true);
 require_once(dirname(dirname(__FILE__)).'/config.php');
 require_once($CFG->libdir . '/externallib.php');
 
-
-
 // Allow CORS requests.
 header('Access-Control-Allow-Origin: *');
-
-
 
 
 if((isset($_REQUEST['username']) && $_REQUEST['username'] != "") && (isset($_REQUEST['password']) && $_REQUEST['password'] != '') && isset($_REQUEST['encrypted_key'])){

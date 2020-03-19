@@ -3,9 +3,7 @@
 include(dirname(dirname(__FILE__)).'/include/config.php');
 include(dirname(dirname(__FILE__)).'/include/encrypt.php');
 
-
 if(isset($_REQUEST['user_id']) && isset($_REQUEST['encrypted_key'])){
-    
     
     $user_id = $_REQUEST['user_id'];
     $encrypted_key = $_REQUEST['encrypted_key'];

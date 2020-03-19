@@ -3,9 +3,7 @@
 include(dirname(dirname(__FILE__)).'/include/config.php');
 include(dirname(dirname(__FILE__)).'/include/encrypt.php');
 
-
 if(isset($_REQUEST['user_id']) && isset($_REQUEST['encrypted_key'])){
-    
     
     $user_id = $_REQUEST['user_id'];
     $encrypted_key = $_REQUEST['encrypted_key'];
@@ -50,9 +48,7 @@ if(isset($_REQUEST['user_id']) && isset($_REQUEST['encrypted_key'])){
         echo json_encode($data);
         exit;
     }
-    
-    
-    
+       
 }else{
         $data = array('status'=>0,"current"=> 1,"rowCount"=>10,'user_id'=>'null','total'=>'null','rows'=>$data);
         echo json_encode($data);

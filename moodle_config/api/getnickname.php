@@ -3,10 +3,6 @@
 include(dirname(dirname(__FILE__)) . '/include/config.php');
 include(dirname(dirname(__FILE__)) . '/include/encrypt.php');
 
-
-
-
-
 // verfiy if the php side receive the id and points
 if (isset($_REQUEST['user_id']) && isset($_REQUEST['points']) && isset($_REQUEST['encrypted_key'])) {
     
