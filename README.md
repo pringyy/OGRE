@@ -162,17 +162,18 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 ## Technologies Used/External Sources
 
-* Django | https://www.djangoproject.com/ |
-* Moodle | https://moodle.org/ |
-* PHP | https://www.php.net/ |
+* Django 3.02| https://www.djangoproject.com/ | used for backend of web application
+* Moodle | https://moodle.org/ | used 
+
+* SQL | https://www.mysql.com/ | used to create and handle Moodle's mySQL database 
 * CSS |
 * HTML |
 * JavaScript | 
 * Ajax | 
 * Bootstrap 4 | https://getbootstrap.com | CSS framework for all pages
 * Pycrypto | https://pypi.org/project/pycrypto/ | used for AES encryption between Moodle server and Django application
-* django-crispy-forms | https://django-crispy-forms.readthedocs.io/en/latest/ | used to make forms match the look of Bootstrap
-* Toastr | https://codeseven.github.io/toastr/ | javascript framework for notification toasts
+* django-crispy-forms | https://django-crispy-forms.readthedocs.io/en/latest/ | used to make Django forms match the look of Bootstrap
+* Toastr | https://codeseven.github.io/toastr/ | javascript framework for pop-up notifications
 * Google Maps API | https://developers.google.com/maps/documentation/ | Map used to display the location of the University on th Django application's contact page
 * jQuery | https://jquery.com |
 
