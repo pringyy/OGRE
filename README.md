@@ -161,10 +161,10 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 *  See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for the license of the Re-wire game. 
 *  See [MIT License](https://github.com/BornaSepic/Tic-Tac-Toe/blob/master/LICENSE) for the license of the game Tic Tac Toe. 
 
-## Technologies Used/External Sources
+## Tehcnnoglies External Sources
 
-* Django 3.0.2| https://www.djangoproject.com/ | used for backend of website application.
-* Moodle | https://moodle.org/ | used for backend of the server which the student can earn points.
+* Django 3.0.2| https://www.djangoproject.com/ | used for backend of website application which users can interact with their points.<br> *In Django appication we made use of general languages such as CSS, JavaScript, HTML and AJAX.*
+* Moodle | https://moodle.org/ | used for backend/front of where users submit their assignment/quizes.
 * mySQL | https://www.mysql.com/ | used to create and handle Moodle's mySQL database.
 * PHP | https://www.php.net/ | used to create backend APIs to retrieve information from/update the Moodle mySQL database.
 * Bootstrap 4 | https://getbootstrap.com | CSS framework for all pages.
