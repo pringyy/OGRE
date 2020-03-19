@@ -148,44 +148,44 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 **Step 3.3**: Once you have completed the setup above, you need to  replace and add some files on the Moodle server:  
 
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle server directory moodle/mod/quiz/locallib.php with [cs17-main/moodle_config/mod/quiz/locallib.php](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/quiz/locallib.php) <br>
+&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle server directory 'moodle/mod/quiz/locallib.php' with ['cs17-main/moodle_config/mod/quiz/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/quiz/locallib.php) <br>
 &nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when a quiz is submitted and updates the user's points record.*
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle server directory moodle/mod/assign/locallib.php with [cs17-main/moodle_config/mod/assign/locallib.php](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/assign/locallib.php)<br>
+&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle server directory 'moodle/mod/assign/locallib.php' with ['cs17-main/moodle_config/mod/assign/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/assign/locallib.php)<br>
 &nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when an assignment is submitted and updates the user's points record.*
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.3** move [cs17-main/moodle_config/api](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/api) directory to the moodle server directory moodle/ <br>
+&nbsp;&nbsp;&nbsp;**Step 3.3.3** move the folder of the directory ['cs17-main/moodle_config/api'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/api) into the moodle server directory 'moodle/'<br>
 &nbsp;&nbsp;&nbsp; *This is the API code that allows for interaction between the Moodle server and Django application.*
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.4** move [cs17-main/moodle_config/include](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/include) directory to the moodle server directory moodle/<br>
+&nbsp;&nbsp;&nbsp;**Step 3.3.4** move the folder of the directory ['cs17-main/moodle_config/include'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/include) into the moodle server directory 'moodle/'<br>
 &nbsp;&nbsp;&nbsp; *This is the code that allows for the AES encryption on the Moodle side.*
 
 
 ## 4. Django Application Configurations:
 
 **Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server.
-*  On your repository open the file [cs17-main/Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/APIcalls.py).
+*  On your repository open the file ['cs17-main/Website/Ogre/points/APIcalls.py'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/APIcalls.py).
 *  Here change the IP of the links, **lines 5-11**, to the IP of your Moodle server.
 *  Make sure you only change the IP address and keep the directories after the address the exact same.
-*  This file is imported into [views.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/views.py) where the API calls are made.
+*  This file is imported into ['views.py'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/views.py) where the API calls are made.
 
 **Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
-*  On your repository open the file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/templates/points/login.html).
+*  On your repository open the file ['cs17-main/Website/Ogre/templates/points/login.html'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/templates/points/login.html).
 *  Then navigate to **line 51** and replace the link with the address to your Moodle servers reset password page.
 
 
 **Configuration 4.3 (optional):** How to change the cost of activities on the Web Application.
-* On your repository open the file  [cs17-main/Website/Ogre/points/costValues.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/Website/Ogre/points/costValues.py).
+* On your repository open the file  ['cs17-main/Website/Ogre/points/costValues.py'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/Website/Ogre/points/costValues.py).
 * From here you can edit the integer values to change the cost of different activities on the application.  
 
 **Configuration 4.4 (optional):** Change the email the contact page send emails to.
 *  Our contact page backend implementation only works for a gmail account
-*  You can use the login details we have supplied in the [secretsettings.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/Ogre/secretsettings.py)file.
-*  This can be located at this directory in your repository: [cs17-main/Website/Ogre/Ogre/secretsettings.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/Ogre/secretsettings.py).
+*  You can use the login details we have supplied in the [secretsettings.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/Ogre/secretsettings.py) file.
+*  This can be located at this directory in your repository: ['cs17-main/Website/Ogre/Ogre/secretsettings.py'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/Ogre/secretsettings.py).
 *  You can change the email and password to your own gmail account.
 
 **Configuration 4.5 (optional):** Change the random backgrounds displayed on the login screen.
-*  On your repository open the folder [cs17-main/Website/Ogre/static/images/loginBackground](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/Website/Ogre/static/images/loginBackground)
+*  On your repository open the folder ['cs17-main/Website/Ogre/static/images/loginBackground'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/Website/Ogre/static/images/loginBackground)
 *  Here is where you can import your own images and remove the placeholder ones.
 *  They HAVE to be called 'bg' followed by a number between 1 and 5, e.g. 'bg2', 'bg3'.
 *  They also HAVE to be .jpg files and in the default configuration there MUST be 5 pictures.
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 *  WRITE MORE EXPLANATION
 
 **Configuration 4.6 (optional):** How to change API encryption keys
-*  On your Django Application open the file [cs17-main/Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/APIcalls.py).
+*  On your Django Application open the file ['cs17-main/Website/Ogre/points/APIcalls.py'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/APIcalls.py).
 *  On **line 12** you can chenge the variable 'APIkeys' to any sequence of characters you like.
 *  And then on the moodle server, change the api key in the directory moodle/include/config.php
 *  It has the same variable name 'APIkeys' and you need to make sure it is the same sequence of chracters as the variables in the Django server.
@@ -212,11 +212,10 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 ## 5. Moodle Server Configurations:
 
 **Configuration 5.1:** How to change how much 'OGRE' points users are rewarded for carrying out tasks:
-* Open the "moodle/mod/asssign/locallib.php" file on the moodle server to channge the reward points for doing a assignment.
-* Navigate to line (7399 line -> $assignment_points)
-* Open the "moodle/mod/quiz/locallib.php" file on the moodle server to channge the reward points for doing a quiz
-* Navigate to line (1813 line -> $quiz_points)
-* Here if you change the integer values it will change how many points users are given for submitting different assignments and quiz.
+* Open the ['moodle/mod/assign/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/mod/assign/locallib.php) file on the moodle server to change the points rewarded for submitting an assignment.
+* Navigate to **line 7365**  and you can change the veriable '$assignment_points' to any integer value you want rewarded.
+* Open the ['moodle/mod/quiz/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/quiz/locallib.php) file on the moodle server to change the points rewarded for finishing a quiz.
+* Navigate to **line 1807**  and you can change the veriable '$quiz_points' to any integer value you want rewarded.
 
 **Configuration 5.2:** If you want to make changes to the Moodle server like creating a course, enrolling users in a course and setting up assignments for those courses please follow this guide:
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding users.
