@@ -3,7 +3,7 @@
 This README file outlines the  [requirements](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#requirements), our [approach](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#approach), all the [features](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#features) and [licenses](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#license) for the project.<br> 
 It also provides a link to our hand over documentation ([installation guide](INSTALLATIONGUIDE.md)). <br>
 If you have any queries about anything to do with this application please contact us using our emails below.<br>
-Before deploying the application, **please make sure you read through the entire document.** 
+Before deploying the application, **please make sure you read through this entire document.** 
 
 ## Live Demonstration
 
@@ -161,7 +161,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 *  See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for the license of the Re-wire game. 
 *  See [MIT License](https://github.com/BornaSepic/Tic-Tac-Toe/blob/master/LICENSE) for the license of the game Tic Tac Toe. 
 
-## Tehcnnoglies External Sources
+## Technologies/External Sources
 
 * Django 3.0.2| https://www.djangoproject.com/ | used for backend of website application which users can interact with their points.<br> *In Django appication we made use of general languages such as CSS, JavaScript, HTML and AJAX.*
 * Moodle | https://moodle.org/ | used for backend/front of where users submit their assignment/quizes.
