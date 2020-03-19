@@ -1,4 +1,4 @@
-# Installation Guide
+# Installation Guide / Handover Documentation
 
 Please make sure you complete this **whole** guide for the application to work as intended.<br>
 If anything in this guide is not clear or you have any issues or queries please [contact us](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/README.md#meet-the-team) on the information provided in the README.
@@ -75,7 +75,7 @@ conda install pycrypto
 &nbsp;&nbsp;&nbsp;*Make sure you replace '[environment_name]' with the name you defined in the Step 2.3.2*<br>
 &nbsp;&nbsp;&nbsp;*Pycrypto is essential to install as it encrypts our API keys to make sure user sessions are valid between our application and the server.*
 
-&nbsp;&nbsp;&nbsp;***Step 2.3.3 (Windows OS):*** Every time you wish to use the website, you must always ensure you activate the virtual environment in Anaconda promptlike so:
+&nbsp;&nbsp;&nbsp;***Step 2.3.3 (Windows OS):*** Every time you wish to use the website, you must always ensure you activate the virtual environment in Anaconda prompt like so:
 ```
 conda activate [environment_name]
 ```
@@ -164,18 +164,18 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 ## 4. Django Application Configurations:
 
 **Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server.
-*  On your repository open the file [cs17-main/Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/APIcalls.py).
-*  Here change the IP of the links, lines 5-11, to the IP of your Moodle server.
+*  On your repository open the file [cs17-main/Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/APIcalls.py).
+*  Here change the IP of the links, **lines 5-11**, to the IP of your Moodle server.
 *  Make sure you only change the IP address and keep the directories after the address the exact same.
-*  This file is imported into [views.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/views.py) where the API calls are made.
+*  This file is imported into [views.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/views.py) where the API calls are made.
 
 **Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
-*  On your repository open the file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/templates/points/login.html).
+*  On your repository open the file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/templates/points/login.html).
 *  Then navigate to **line 51** and replace the link with the address to your Moodle servers reset password page.
 
 
 **Configuration 4.3 (optional):** How to change the cost of activities on the Web Application.
-* On your repository open the file  [cs17-main/Website/Ogre/points/costValues.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/develop/Website/Ogre/points/costValues.py).
+* On your repository open the file  [cs17-main/Website/Ogre/points/costValues.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/Website/Ogre/points/costValues.py).
 * From here you can edit the integer values to change the cost of different activities on the application.  
 
 **Configuration 4.4 (optional):** Change the email the contact page send emails to.
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 *  You can change the email and password to your own gmail account.
 
 **Configuration 4.5 (optional):** Change the random backgrounds displayed on the login screen.
-*  On your repository open the folder [cs17-main/Website/Ogre/static/images/loginBackground](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/develop/Website/Ogre/static/images/loginBackground)
+*  On your repository open the folder [cs17-main/Website/Ogre/static/images/loginBackground](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/Website/Ogre/static/images/loginBackground)
 *  Here is where you can import your own images and remove the placeholder ones.
 *  They HAVE to be called 'bg' followed by a number between 1 and 5, e.g. 'bg2', 'bg3'.
 *  They also HAVE to be .jpg files and in the default configuration there MUST be 5 pictures.
@@ -194,12 +194,10 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 *  WRITE MORE EXPLANATION
 
 **Configuration 4.6 (optional):** How to change API encryption keys
-*  On your repository open the file [cs17-main//Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/APIcalls.py).
-*  There have a variable <APIkeys>
-*  Change to any key to like
-*  And then in the moodle side, change the api key in the directory /moodle/include/config.php
-*  There have a variable <$api_key> 
-*  change the key that must be same you changed in the Django side
+*  On your Django Application open the file [cs17-main/Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/APIcalls.py).
+*  On **line 12** you can chenge the variable 'APIkeys' to any sequence of characters you like.
+*  And then on the moodle server, change the api key in the directory moodle/include/config.php
+*  It has the same variable name 'APIkeys' and you need to make sure it is the same sequence of chracters as the variables in the Django server.
 
 **Configuration 4.7 (optional):** You can configure our Django application further in many different ways. If you are unfamiliar with how to do so, I would study these guides to understand how the technologies we use work to make additonal changes to our implementation:
 *  [See Django guide](https://docs.djangoproject.com/en/3.0/intro/tutorial01/)
