@@ -7359,15 +7359,14 @@ class assign {
         
         
         /* Our code starts */
-        include(dirname(dirname(dirname(__FILE__))).'/include/config.php'); //My code
+        include(dirname(dirname(dirname(__FILE__))).'/include/config.php');
         
-        //Define the award points here
+        //Define the amount of points awarded here
         $assignment_points = 20;
         
         //Get ID of the user
         $c_user_id = $USER->id;
         $cmid = $data->id;
-        
         
         //Get the related course ID
         $sql = "SELECT * FROM mdl_course_modules WHERE id = '".$cmid."' ";
@@ -7410,16 +7409,14 @@ class assign {
             mysqli_query($con, $sql);
         }
         
-        //Update the user transactions
+        //Update the user transaction list
         $details = $course_fullname.' - '.$assignment_name;
         $spentTime = date('Y-m-d');
         $sql = "INSERT INTO mdl_user_points_trans (type, detail, amount, userid, spentTime) VALUES ('+', '".$details."', ".$assignment_points.",'".$c_user_id."','".$spentTime."' )";
         mysqli_query($con, $sql);
     
-
-        /* our code end */
-
-        
+        /* Our code end */
+  
         return true;
     }
 

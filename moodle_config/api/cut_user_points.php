@@ -16,6 +16,7 @@ $encrypted_key = $_REQUEST['encrypted_key'];
 $cypher = new MyCypher();
 $encrypted_api_key = $cypher->encrypt($api_key);
 
+//Checks to see that the API keys match with Django and Moodle server
 if (strcmp($encrypted_api_key,$encrypted_key)!=0){
     $data = array('status'=>0,'message'=>'wrong api key');
     echo json_encode($data);

@@ -1803,7 +1803,7 @@ function quiz_attempt_submitted_handler($event) {
     }
     
     /* Our code starts */
-        include(dirname(dirname(dirname(__FILE__))).'/include/config.php'); //My code
+        include(dirname(dirname(dirname(__FILE__))).'/include/config.php');
         $quiz_points = 10;
 
         $c_user_id = $USER->id;
@@ -1853,7 +1853,7 @@ function quiz_attempt_submitted_handler($event) {
         $sql = "INSERT INTO mdl_user_points_trans (type, detail, amount, userid, spentTime) VALUES ('+', '".$details."', ".$quiz_points.",'".$c_user_id."','".$spentTime."' )";
         mysqli_query($con, $sql);
     
-        /* Our code end */
+    /* Our code end */
     
     return quiz_send_notification_messages($course, $quiz, $attempt,
             context_module::instance($cm->id), $cm);

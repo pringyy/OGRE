@@ -10,7 +10,7 @@ if (mysqli_connect_errno()) {
   exit();
 }
 
-//apikey
+//API key
 $api_key = ')ma#e*lz)m*881ghgwgkc&vodfodfdopvjdqp9vb_4pdohndpw2o8g2hf=s';
 
 ?>
