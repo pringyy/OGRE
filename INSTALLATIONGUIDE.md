@@ -95,15 +95,18 @@ python manage.py makemigrations
 
 python manage.py migrate
 ```
-*If this does not work make sure you are in the correct directory shown in Step 2.4*
+*If this does not work make sure you are in the correct directory*
 
 **Step 2.6**: Now you will be able to run the Django server using:
 ```
-python manage.py runserver
+python manage.py runserver --insecure
 ```
-*To see the application you need navigate to the address displayed in the console on a web browser.*
+*To see the application you need navigate to the address displayed in the console on a web browser.*<br>
+***You WILL NOT be able to register or login until you complete the installation guide!***
 
-**You WILL NOT be able to register or login until you complete the installation guide!**
+**Step 2.7 (Optional)**: This setup guide is for running the application locally. To put the application on a live server, so anyone can access it via the internet, please follow this guide:
+
+*  https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment
 
 ## 3. Moodle Server Setup
 
@@ -145,35 +148,33 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 **Step 3.3**: Once you have completed the setup above, you need to  replace and add some files on the Moodle server:  
 
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle/mod/quiz/locallib.php with cs17-main/mod/quiz/locallib.php
+&nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle/mod/quiz/locallib.php with cs17-main/mod/quiz/locallib.php <br>
+&nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when a quiz is submitted and updates the user's points record.*
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle/mod/assign/locallib.php with cs17-main/mod/assign/locallib.php
+&nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle/mod/assign/locallib.php with cs17-main/mod/assign/locallib.php<br>
+&nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when an assignment is submitted and updates the user's points record.*
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.3** move cs17-main/api directory to moodle/
+&nbsp;&nbsp;&nbsp;**Step 3.3.3** move cs17-main/api directory to moodle/ <br>
+&nbsp;&nbsp;&nbsp; *This is the API code that allows for interaction between the Moodle server and Django application.*
 
-&nbsp;&nbsp;&nbsp;**Step 3.3.4** move cs17-main/include directory to moodle/
+&nbsp;&nbsp;&nbsp;**Step 3.3.4** move cs17-main/include directory to moodle/<br>
+&nbsp;&nbsp;&nbsp; *This is the code that allows for the AES encryption on the Moodle side.*
 
 
 ## 4. Django Application Configurations:
 
 **Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server.
-*  On your repository open the file [cs17-main//Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/APIcalls.py).
+*  On your repository open the file [cs17-main/Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/APIcalls.py).
 *  Here change the IP of the links, lines 5-11, to the IP of your Moodle server.
-*  Make sure you only change the IP and keep the directories after the same and do not change any variables names.
-*  This file is imported into views.py where the API calls are made.
-*  You can find the views.py file at the following directory in your repository[cs17-main/Website/Ogre/points/views.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/views.py).
-
+*  Make sure you only change the IP address and keep the directories after the address the exact same.
+*  This file is imported into [views.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/views.py) where the API calls are made.
 
 **Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
 *  On your repository open the file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/templates/points/login.html).
-*  Then navigate to line (ENTER LINE HERE).
+*  Then navigate to line 51.
 *  Replace the link with the address to your Moodle servers reset password page.
 
-
-**Configuration 4.3:** To put the application on to a live server, so anyone can access it via the internet please follow this guide:
-
-*  https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Deployment
-
+**Configuration 4.3:** 
 **Configuration 4.3 (optional):** How to change the cost of activities on the Web Application.
 * On your repository open the file  [cs17-main/Website/Ogre/points/costValues.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/develop/Website/Ogre/points/costValues.py).
 * From here you can edit the integer values to change the cost of different activities on the application.  
