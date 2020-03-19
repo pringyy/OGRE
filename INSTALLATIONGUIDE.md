@@ -164,15 +164,14 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 ## 4. Django Application Configurations:
 
 **Configuration 4.1:** Now you have to change the API calls on the Django application to link to your Moodle server.
-*  On your repository open the file [cs17-main//Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/APIcalls.py).
+*  On your repository open the file [cs17-main/Website/Ogre/points/APIcalls.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/APIcalls.py).
 *  Here change the IP of the links, lines 5-11, to the IP of your Moodle server.
 *  Make sure you only change the IP address and keep the directories after the address the exact same.
-*  This file is imported into views.py where the API calls are made.
-*  You can find the views.py file at the following directory in your repository[cs17-main/Website/Ogre/points/views.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/views.py).
+*  This file is imported into [views.py](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/points/views.py) where the API calls are made.
 
 **Configuration 4.2:** Change forgotten password link to redirect to your Moodle server.
 *  On your repository open the file [cs17-main/Website/Ogre/templates/points/login.html](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/Website/Ogre/templates/points/login.html).
-*  Then navigate to line (ENTER LINE HERE).
+*  Then navigate to line 51.
 *  Replace the link with the address to your Moodle servers reset password page.
 
 **Configuration 4.3:** 
