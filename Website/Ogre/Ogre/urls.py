@@ -18,7 +18,6 @@ urlpatterns = [
     path('pointcalculate/',views.pointcalculate,name = 'pointcalculate'),
     path('game1/',views.game1,name='game1'),
     path('game2/', views.game2, name = 'game2'),
-    url(r'^iterateJSON/$', views.iterateJSON, name='iterateJSON'),
     path('changeUsername/', views.changeUsername, name='changeUsername'),
     path('leaderboard/', views.leaderboard, name='leaderboard'),
     path('changeAvatar/', views.changeAvatar, name = 'changeAvatar'),

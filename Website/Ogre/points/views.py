@@ -31,6 +31,8 @@ from points.costValues import *
 from points.encrypt import *
 cipher = Cryptor()
 enc_key = cipher.encrypt(APIkeys)
+#Used to import email settings for contact page
+from Ogre.secretsettings import *
 
 #View to define the back-end functionality for user registration
 def register(request):
@@ -157,7 +159,7 @@ def game1(request):
         messages.error(request, "You don't have enough points to play!")
         return HttpResponseRedirect(reverse('index'))
 
-#View used for Tic Tax Toe game
+#View used for Tic Tac Toe game
 def game2(request):
 
     # get the session id to auth user
@@ -176,7 +178,6 @@ def game2(request):
     else:
         messages.error(request, "You don't have enough points to play!")
         return HttpResponseRedirect(reverse('index'))
-
 
 #View used to retrieve the users points from the Moodle server
 def getmypoint(request):
@@ -251,7 +252,6 @@ def changeUsername(request):
         #Returns the request
             return HttpResponse(r)   
      
-
 #Displays the list of points to the user if they are logged in
 def pointlist(request): 
     id=request.session['id']
@@ -303,8 +303,6 @@ def changeAvatar(request):
             messages.error(request, "something went wrong!")         
     return render(request, 'points/shop.html')
 
-
-
 #Provides the back end functionaility for the contact page
 def contact(request):
     form = ContactForm()
@@ -318,7 +316,7 @@ def contact(request):
             content = form.cleaned_data['content']
             message = "Name: " + contact_name + "\nEmail: " + contact_email +  "\nMessage: " + content
             email = EmailMessage(subject, message,
-                                to=['contactogre2020@gmail.com']) #change to your email
+                                to=[EMAIL]) #change to your email
             email.send()
             #Redirect them to the thank you page
             return redirect('../thanks/')
@@ -361,9 +359,3 @@ def thanks(request):
 #Displays FAQ page to the user when requested
 def faq(request):
     return render(request, 'points/faq.html')
-
-#Makes sure user is an admin to see the JSON files for testing purposes
-@user_passes_test(lambda u: u.is_superuser)
-def iterateJSON(request):
-    return render(request, 'points/iterateJSON.html')
-   
