@@ -60,7 +60,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 * Clear and readable design.
 
 #### AES encryption
-*  Both the Django Application and Moodle server use Advanced Encryption Standard (AES) encrytion that encrypts the API key to prevent any illegal API calls, brute force attacks and CSRF attacks.
+*  Both the Django Application and Moodle server use Advanced Encryption Standard (AES) encryption that encrypts the API key to prevent any illegal API calls, brute force attacks and CSRF attacks.
 *  This is is the main security for the interactions between the server and our application.
 *  If you would like to learn more on AES encryption you can read up on it here: https://searchsecurity.techtarget.com/definition/Advanced-Encryption-Standard
 
@@ -103,6 +103,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 #### Contact
 
 * Contact form to send a message to the development team.
+* This is setup so an email, we have defined, sends an email to itself with all the details filled in the form shown below.
 ![Screenshot of contact page](https://i.imgur.com/9u0sgHI.png)
 
 #### FAQ
@@ -162,19 +163,18 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 ## Technologies Used/External Sources
 
-* Django | https://www.djangoproject.com/ |
-* Moodle | https://moodle.org/ |
-* PHP | https://www.php.net/ |
-* CSS |
-* HTML |
-* JavaScript | 
-* Ajax | 
-* Bootstrap 4 | https://getbootstrap.com | CSS framework for all pages
-* Pycrypto | https://pypi.org/project/pycrypto/ | used for AES encryption between Moodle server and Django application
-* django-crispy-forms | https://django-crispy-forms.readthedocs.io/en/latest/ | used to make forms match the look of Bootstrap
-* Toastr | https://codeseven.github.io/toastr/ | javascript framework for notification toasts
-* Google Maps API | https://developers.google.com/maps/documentation/ | Map used to display the location of the University on th Django application's contact page
-* jQuery | https://jquery.com |
+* Django 3.0.2| https://www.djangoproject.com/ | used for backend of website application.
+* Moodle | https://moodle.org/ | used for backend of the server which the student can earn points.
+* mySQL | https://www.mysql.com/ | used to create and handle Moodle's mySQL database.
+* PHP | https://www.php.net/ | used to create backend APIs to retrieve information from/update the Moodle mySQL database.
+* Bootstrap 4 | https://getbootstrap.com | CSS framework for all pages.
+* Pycrypto | https://pypi.org/project/pycrypto/ | used for AES encryption between Moodle server and Django application.
+* pillow | https://pypi.org/project/Pillow | allows for images to be stored on the Django database.
+* sqlparse | https://pypi.org/project/sqlparse/ | provides support for manipulating SQL statements.
+* django-crispy-forms | https://django-crispy-forms.readthedocs.io/en/latest/ | used to make Django forms match the look of Bootstrap.
+* Toastr | https://codeseven.github.io/toastr/ | javascript framework for pop-up notifications.
+* Google Maps API | https://developers.google.com/maps/documentation/ | Map used to display the location of the University on th Django application's contact page.
+* jQuery | https://jquery.com |  JavaScript library used for html document manipulation and traversal.
 
 
 
