@@ -196,8 +196,8 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 **Configuration 4.6 (optional):** How to change API encryption keys
 *  On your Django Application open the file ['cs17-main/Website/Ogre/points/APIcalls.py'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/APIcalls.py).
 *  On **line 12** you can chenge the variable 'APIkeys' to any sequence of characters you like.
-*  And then on the moodle server, change the api key in the directory moodle/include/config.php
-*  It has the same variable name 'APIkeys' and you need to make sure it is the same sequence of chracters as the variables in the Django server.
+*  And then on the moodle server, you need configure the file ['moodle/include/config.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/include/config.php).
+*  On **line 14** you need to change the variable '$api_key' to the same sequence of characters as the 'APIkeys' variable on the Django server.
 
 **Configuration 4.7 (optional):** You can configure our Django application further in many different ways. If you are unfamiliar with how to do so, I would study these guides to understand how the technologies we use work to make additonal changes to our implementation:
 *  [See Django guide](https://docs.djangoproject.com/en/3.0/intro/tutorial01/)
@@ -211,18 +211,18 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 ## 5. Moodle Server Configurations:
 
-**Configuration 5.1:** How to change how much 'OGRE' points users are rewarded for carrying out tasks:
+**Configuration 5.1 (optional):** How to change how much 'OGRE' points users are rewarded for carrying out tasks:
 * Open the ['moodle/mod/assign/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/mod/assign/locallib.php) file on the moodle server to change the points rewarded for submitting an assignment.
 * Navigate to **line 7365**  and you can change the variable '$assignment_points' to any integer value you want rewarded.
 * Open the ['moodle/mod/quiz/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/quiz/locallib.php) file on the moodle server to change the points rewarded for finishing a quiz.
 * Navigate to **line 1807**  and you can change the variable '$quiz_points' to any integer value you want rewarded.
 
-**Configuration 5.2:** If you want to make changes to the Moodle server like creating a course, enrolling users in a course and setting up assignments for those courses please follow this guide:
+**Configuration 5.2 (optional):** If you want to make changes to the Moodle server like creating a course, enrolling users in a course and setting up assignments for those courses please follow this guide:
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding users.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_courses) for adding courses.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Step_2:_Enrolment) for enrolling users on to courses.
 *  [See Moodle guide](https://docs.moodle.org/38/en/Assignment_quick_guide) for adding assignments to the courses.
 
-**Configuration 5.3:** If you want to make any further changes to our API code, and you are unfamilar with PHP we would recommend to follow this guide:
+**Configuration 5.3 (optional):** If you want to make any further changes to our API code, and you are unfamilar with PHP we would recommend to follow this guide:
 *  [See PHP guide](https://www.w3schools.com/php/).
 
