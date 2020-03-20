@@ -1,7 +1,7 @@
 # Installation Guide / Handover Documentation
 
-Please make sure you complete this **whole** guide for the application to work as intended.<br>
-If anything in this guide is not clear or you have any issues or queries please [contact us](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/README.md#meet-the-team) on the information provided in the README.
+Please make sure you complete/read this **whole** guide for the application to work as intended.<br>
+If anything in this guide is not clear, or you have any issues or queries, please [contact us](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/develop/README.md#meet-the-team) on the information provided in the README.
 
 ## Contents
 
@@ -36,7 +36,7 @@ git clone https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main.git
  
 ## 2. Django Application Setup
 
-**Step 2.1**: You need to have Python 3.7 installed onto your machine to run this application. Download the version for the Operating System you are using here: 
+**Step 2.1**: You need to have Python 3.7 installed onto your machine to run this application. Download the version and follow the installation guide for the Operating System you are using here: 
 *  https://www.python.org/downloads/release/python-376/
 
 **Step 2.2**: Check you have successfully installed the correct version of Python using the command in the console:
@@ -72,7 +72,7 @@ conda activate [environment_name]
 pip install -r requirements
 conda install pycrypto
 ```
-&nbsp;&nbsp;&nbsp;*Make sure you replace '[environment_name]' with the name you defined in the Step 2.3.2*<br>
+&nbsp;&nbsp;&nbsp;*Make sure you replace '[environment_name]' with the name you defined in the Step 2.3.2.*<br>
 &nbsp;&nbsp;&nbsp;*Pycrypto is essential to install as it encrypts our API keys to make sure user sessions are valid between our application and the server.* <br>
 &nbsp;&nbsp;&nbsp;*Pip is a python package manager that automatically comes installed when you download Python 3.4 or above.*
 
@@ -80,7 +80,7 @@ conda install pycrypto
 ```
 conda activate [environment_name]
 ```
-&nbsp;&nbsp;&nbsp;*Make sure you replace '[environment_name]' with the name you defined in the Step 2.3.2*
+&nbsp;&nbsp;&nbsp;*Make sure you replace '[environment_name]' with the name you defined in the Step 2.3.2.*
 
 
 
@@ -96,7 +96,7 @@ python manage.py makemigrations
 
 python manage.py migrate
 ```
-*If this does not work make sure you are in the correct directory*
+*If this does not work make sure you are in the correct directory.*
 
 **Step 2.6**: Now you will be able to run the Django server using:
 ```
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points (
     points INT NOT NULL
 );
 ```
-*If this does not work make sure you are in the database mode shown in Step 3.2*
+*If this does not work make sure you are in the database mode shown in Step 3.2.*
 
 **Step 3.4** Next create the next table 'mdl_user_points_trans' by entering the following SQL into the console of the server:
 
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
     spentTime DATE
 );
 ```
-*If this does not work make sure you are in the database mode shown in Step 3.2*
+*If this does not work make sure you are in the database mode shown in Step 3.2.*
 
 **Step 3.3**: Once you have completed the setup above, you need to  replace and add some files on the Moodle server:  
 
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 &nbsp;&nbsp;&nbsp; *The 'mod' folder should be at that directory on the moodle server by default after you have set it up.*
 
 &nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle server directory 'moodle/mod/assign/locallib.php' with ['cs17-main/moodle_config/mod/assign/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/assign/locallib.php)<br>
-&nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when an assignment is submitted and updates the user's points record.*
+&nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when an assignment is submitted and updates the user's points record.* <br>
 &nbsp;&nbsp;&nbsp; *The 'assign' folder should be at that directory on the moodle server by default after you have set it up.*
 
 &nbsp;&nbsp;&nbsp;**Step 3.3.3** move the folder of the directory ['cs17-main/moodle_config/api'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/api) into the moodle server directory 'moodle/'<br>
@@ -205,7 +205,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 *  [See CSS guide](https://www.w3schools.com/css/)
 *  [See Bootstrap4 guide](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 *  [See Java Script guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
-*  [See Ajax guide](https://www.w3schools.com/xml/ajax_intro.asp)
+*  [See AJAX guide](https://www.w3schools.com/xml/ajax_intro.asp)
 *  [See JQuery guide](https://www.w3schools.com/jquery/)
 
 
@@ -213,9 +213,9 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 **Configuration 5.1:** How to change how much 'OGRE' points users are rewarded for carrying out tasks:
 * Open the ['moodle/mod/assign/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/mod/assign/locallib.php) file on the moodle server to change the points rewarded for submitting an assignment.
-* Navigate to **line 7365**  and you can change the veriable '$assignment_points' to any integer value you want rewarded.
+* Navigate to **line 7365**  and you can change the variable '$assignment_points' to any integer value you want rewarded.
 * Open the ['moodle/mod/quiz/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/quiz/locallib.php) file on the moodle server to change the points rewarded for finishing a quiz.
-* Navigate to **line 1807**  and you can change the veriable '$quiz_points' to any integer value you want rewarded.
+* Navigate to **line 1807**  and you can change the variable '$quiz_points' to any integer value you want rewarded.
 
 **Configuration 5.2:** If you want to make changes to the Moodle server like creating a course, enrolling users in a course and setting up assignments for those courses please follow this guide:
 *  [See Moodle guide](https://docs.moodle.org/38/en/Admin_quick_guide#Adding_users) for adding users.
