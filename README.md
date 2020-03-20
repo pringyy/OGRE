@@ -3,7 +3,7 @@
 This README file outlines the  [requirements](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#requirements), our [approach](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#approach), all the [features](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#features) and [licenses](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/edit/develop/README.md#license) for the project.<br> 
 It also provides a link to our hand over documentation ([installation guide](INSTALLATIONGUIDE.md)). <br>
 If you have any queries about anything to do with this application please contact us using our emails below.<br>
-Before deploying the application, **please make sure you read through the entire document.** 
+Before deploying the application, **please make sure you read through this entire document.** 
 
 ## Live Demonstration
 
@@ -61,7 +61,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 #### AES encryption
 *  Both the Django Application and Moodle server use Advanced Encryption Standard (AES) encryption that encrypts the API key to prevent any illegal API calls, brute force attacks and CSRF attacks.
-*  This is is the main security for the interactions between the server and our application.
+*  This allows for secure interaction between the Django application and a Moodle server.
 *  If you would like to learn more on AES encryption you can read up on it here: https://searchsecurity.techtarget.com/definition/Advanced-Encryption-Standard
 
 #### Login
@@ -78,7 +78,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 * Only lets user register to the Django application if and only if the user is registered on the corresponding Moodle server.
 * Does this by checking Student ID and Password entered  match an user ID and corresponding password on the Moodle server.
 * Lets users decide a username or 'nickname' for the application.
-![Screenshot of the registration page](https://i.imgur.com/H8czMjd.png)
+![Screenshot of the registration page](https://i.imgur.com/CSVn9ki.png)
 
 #### Dashboard
 
@@ -126,7 +126,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 #### Games
 
 * Lets users have a choice of games that costs (by default) 5 points to play.
-![Screenshot of games menu page](https://i.imgur.com/6V0lTaf.png)
+![Screenshot of games menu page](https://i.imgur.com/iLs3xsp.png)
 
 *  Re-wire game used as a placeholder for what our customers are working on and was not created by us. Credit- https://github.com/jmankopf/js13k-rewire
 ![Screenshot of game1](https://i.imgur.com/WFDoAfb.png)
@@ -145,7 +145,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 
 *  Allows users to update their avatar to what ever image they upload for (by default) 5 points.
 *  Has back-end implementation to subtract OGRE points.
-*  Very minimal on front end design as this is what our customers are working on,.
+*  Very minimal on front end design as this is what our customers are working on.
 ![Screenshot of the avatar shop](https://i.imgur.com/EUdvJi9.png)
 
 #### Transaction History
@@ -161,10 +161,10 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 *  See [MIT License](https://github.com/jmankopf/js13k-rewire/blob/master/LICENSE) for the license of the Re-wire game. 
 *  See [MIT License](https://github.com/BornaSepic/Tic-Tac-Toe/blob/master/LICENSE) for the license of the game Tic Tac Toe. 
 
-## Technologies Used/External Sources
+## Technologies/External Sources
 
-* Django 3.0.2| https://www.djangoproject.com/ | used for backend of website application.
-* Moodle | https://moodle.org/ | used for backend of the server which the student can earn points.
+* Django 3.0.2| https://www.djangoproject.com/ | used for backend of website application which users can interact with their points.<br> *In Django appication we made use of general languages such as CSS, JavaScript, HTML and AJAX.*
+* Moodle | https://moodle.org/ | used for backend/front of where users submit their assignment/quizes.
 * mySQL | https://www.mysql.com/ | used to create and handle Moodle's mySQL database.
 * PHP | https://www.php.net/ | used to create backend APIs to retrieve information from/update the Moodle mySQL database.
 * Bootstrap 4 | https://getbootstrap.com | CSS framework for all pages.
