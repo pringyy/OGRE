@@ -164,7 +164,7 @@ We decided to approach this challenge by creating a mySQL table on a Moodle serv
 ## Technologies/External Sources
 
 * Django 3.0.2| https://www.djangoproject.com/ | used for backend of website application which users can interact with their points.<br> *In Django appication we made use of general languages such as CSS, JavaScript, HTML and AJAX.*
-* Python 3.7 | https://www.python.org/ | programming laguage used to configure Django application's backend
+* Python 3.7 | https://www.python.org/ | programming language used to configure Django application's backend.
 * Moodle | https://moodle.org/ | used for backend/front of where users submit their assignment/quizes.
 * mySQL | https://www.mysql.com/ | used to create and handle Moodle's mySQL database.
 * PHP | https://www.php.net/ | used to create backend APIs to retrieve information from/update the Moodle mySQL database.
