@@ -73,7 +73,8 @@ pip install -r requirements
 conda install pycrypto
 ```
 &nbsp;&nbsp;&nbsp;*Make sure you replace '[environment_name]' with the name you defined in the Step 2.3.2*<br>
-&nbsp;&nbsp;&nbsp;*Pycrypto is essential to install as it encrypts our API keys to make sure user sessions are valid between our application and the server.*
+&nbsp;&nbsp;&nbsp;*Pycrypto is essential to install as it encrypts our API keys to make sure user sessions are valid between our application and the server.* <br>
+&nbsp;&nbsp;&nbsp;*Pip is a python package manager that automatically comes installed when you download Python 3.4 or above.*
 
 &nbsp;&nbsp;&nbsp;***Step 2.3.3 (Windows OS):*** Every time you wish to use the website, you must always ensure you activate the virtual environment in Anaconda prompt like so:
 ```
@@ -149,10 +150,12 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 
 
 &nbsp;&nbsp;&nbsp;**Step 3.3.1:** replace the moodle server directory 'moodle/mod/quiz/locallib.php' with ['cs17-main/moodle_config/mod/quiz/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/quiz/locallib.php) <br>
-&nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when a quiz is submitted and updates the user's points record.*
+&nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when a quiz is submitted and updates the user's points record.* <br>
+&nbsp;&nbsp;&nbsp; *The 'mod' folder should be at that directory on the moodle server by default after you have set it up.*
 
 &nbsp;&nbsp;&nbsp;**Step 3.3.2:** replace the moodle server directory 'moodle/mod/assign/locallib.php' with ['cs17-main/moodle_config/mod/assign/locallib.php'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/moodle_config/mod/assign/locallib.php)<br>
 &nbsp;&nbsp;&nbsp; *This is the code for the event listener that listens for when an assignment is submitted and updates the user's points record.*
+&nbsp;&nbsp;&nbsp; *The 'assign' folder should be at that directory on the moodle server by default after you have set it up.*
 
 &nbsp;&nbsp;&nbsp;**Step 3.3.3** move the folder of the directory ['cs17-main/moodle_config/api'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/moodle_config/api) into the moodle server directory 'moodle/'<br>
 &nbsp;&nbsp;&nbsp; *This is the API code that allows for interaction between the Moodle server and Django application.*
@@ -188,10 +191,7 @@ CREATE TABLE IF NOT EXISTS mdl_user_points_trans (
 *  On your repository open the folder ['cs17-main/Website/Ogre/static/images/loginBackground'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/tree/master/Website/Ogre/static/images/loginBackground)
 *  Here is where you can import your own images and remove the placeholder ones.
 *  They HAVE to be called 'bg' followed by a number between 1 and 5, e.g. 'bg2', 'bg3'.
-*  They also HAVE to be .jpg files and in the default configuration there MUST be 5 pictures.
-*  If you want to change the number of random pictures displayed navigate to []()
-*  Change the number on line to the number of images you have subract one, so if you have 20 images enter 19 here.
-*  WRITE MORE EXPLANATION
+*  They also HAVE to be .jpg files and in the default configuration there **must** be 5 pictures.
 
 **Configuration 4.6 (optional):** How to change API encryption keys
 *  On your Django Application open the file ['cs17-main/Website/Ogre/points/APIcalls.py'](https://stgit.dcs.gla.ac.uk/tp3-2019-cs17/cs17-main/-/blob/master/Website/Ogre/points/APIcalls.py).
