@@ -2,4 +2,4 @@
 
 #Password for the email in the contact page
 EMAIL = 'contactogre2020@gmail.com'
-EMAIL_PASSWORD = 'jbccahgrsoaflxbr'
+EMAIL_PASSWORD = 'oGREsUppOrT827384#'
